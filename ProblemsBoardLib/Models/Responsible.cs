@@ -7,16 +7,44 @@ using System.Threading.Tasks;
 
 namespace ProblemsBoardLib.Models
 {
+    /// <summary>
+    /// Модель Ответственных
+    /// </summary>
     public class Responsible
     {
+        /// <summary>
+        /// Идентификатор ответственного
+        /// </summary>
         public int ResponsibleId { get; set; }
+        /// <summary>
+        /// Идентификатор рабочего, назначаемого ответственным
+        /// </summary>
         public int WorkerId { get; set; }
+        /// <summary>
+        /// Идентификатор отдела, в котором назначается ответственный
+        /// </summary>
         public int DepartmentId { get; set; }
+        /// <summary>
+        /// Флаг, является ли ответственный текущим
+        /// </summary>
         public bool IsCurrent { get; set; }
+<<<<<<< HEAD:ProblemsBoardLib/Models/Responsible.cs
         public string Login { get; set; }
         public string Password { get; set; }
+=======
+
+        /// <summary>
+        /// Ссылка на отдел
+        /// </summary>
+>>>>>>> 7ec80ee (Added XML comments):BoardOfDecisionProblems/Models/Responsible.cs
         public Department Department { get; set; }
+        /// <summary>
+        /// Ссылка на рабочего
+        /// </summary>
         public Worker Worker { get; set; }
+        /// <summary>
+        /// Ссылка на проблему
+        /// </summary>
         public ICollection<Problem> Problem { get; set; }
 
         [NotMapped]
@@ -24,10 +52,17 @@ namespace ProblemsBoardLib.Models
         
         [NotMapped]
         public string WorkerView { get => $"{Worker.SecondName} {Worker.FirstName}"; }
+<<<<<<< HEAD:ProblemsBoardLib/Models/Responsible.cs
 
         [NotMapped]
         public string FullName { get => $"{Worker.SecondName} {Worker.FirstName} {Worker.MiddleName}"; }
 
+=======
+        /// <summary>
+        /// Представление объекта ответственного в виде строки
+        /// </summary>
+        /// <returns>Сторка вида "[Отдел] Фамилия Имя"</returns>
+>>>>>>> 7ec80ee (Added XML comments):BoardOfDecisionProblems/Models/Responsible.cs
         public override string ToString()
         {
             return $"{Worker.Department} {Worker.SecondName} {Worker.FirstName}";
