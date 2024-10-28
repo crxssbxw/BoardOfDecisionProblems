@@ -11,8 +11,14 @@ namespace BoardOfDecisionProblems
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Хранение текущего пользователя в программе
+        /// </summary>
         public static User? CurrentUser { get; set; }
 
+        /// <summary>
+        /// Контекст базы данных
+        /// </summary>
         public static DatabaseContext dbContext = new();
 
         protected override void OnStartup(StartupEventArgs e)

@@ -7,18 +7,51 @@ using System.Threading.Tasks;
 
 namespace BoardOfDecisionProblems.Models
 {
+    /// <summary>
+    /// Модель Проблем
+    /// </summary>
     public class Problem
     {
+        /// <summary>
+        /// Идентификатор проблемы
+        /// </summary>
         public int ProblemId { get; set; }
+        /// <summary>
+        /// Дата создания проблемы
+        /// </summary>
         public DateTime DateOccurance { get; set; }
+        /// <summary>
+        /// Статус проблемы
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// Описание проблемы
+        /// </summary>
         public string Description { get; set; } = string.Empty;
+        /// <summary>
+        /// Дата решения проблемы
+        /// </summary>
         public DateTime? DateElimination { get; set; }
+        /// <summary>
+        /// Описание решения проблемы
+        /// </summary>
         public string? Decision { get; set; }
+        /// <summary>
+        /// Идентификатор ответственного за решение проблемы
+        /// </summary>
         public int? ResponsibleId { get; set; }
+        /// <summary>
+        /// Идентификатор Отдела, в котором возникла проблемы
+        /// </summary>
         public int? DepartmentId { get; set; }
+        /// <summary>
+        /// Идентификатор темы
+        /// </summary>
         public int? ThemeId { get; set; }
         
+        /// <summary>
+        /// Время решения проблемы (в БД не записывается)
+        /// </summary>
         [NotMapped]
         public int? DecisionTime
         {
@@ -32,6 +65,9 @@ namespace BoardOfDecisionProblems.Models
             }
         }
 
+        /// <summary>
+        /// Отображаемый статус (в БД не записывается)
+        /// </summary>
         [NotMapped]
         public byte ViewStatus
         {
@@ -45,14 +81,29 @@ namespace BoardOfDecisionProblems.Models
             }
         }
         
+        /// <summary>
+        /// Название темы
+        /// </summary>
         [NotMapped]
         public string ThemeName { get => Theme.Name; }
 
+        /// <summary>
+        /// Имя ответственного
+        /// </summary>
         [NotMapped]
         public string ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
 
+        /// <summary>
+        /// Ссылка на тему
+        /// </summary>
         public Theme? Theme { get; set; }
+        /// <summary>
+        /// Ссылка на ответственного
+        /// </summary>
         public Responsible? Responsible { get; set; }
+        /// <summary>
+        /// Ссылка на отдел
+        /// </summary>
         public Department? Department { get; set; }
     }
 }

@@ -18,7 +18,13 @@ namespace BoardOfDecisionProblems
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Главное объектное представление программы
+        /// </summary>
         public static ProblemViewModel ProblemViewModel { get; set; } = new();
+        /// <summary>
+        /// Инициализация главного окна
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +53,11 @@ namespace BoardOfDecisionProblems
 
         }
 
+        /// <summary>
+        /// Обработка события нажатия кнопки "Рабочие"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WorkersButton_Click(object sender, RoutedEventArgs e)
         {
             WorkersView workersView = new WorkersView();
