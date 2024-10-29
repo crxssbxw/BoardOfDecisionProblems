@@ -12,9 +12,15 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Работников
+    /// </summary>
     public class WorkersViewModel : BaseViewModel
     {
         private ObservableCollection<Worker> workers = new();
+        /// <summary>
+        /// Коллекция работников
+        /// </summary>
         public ObservableCollection<Worker> Workers
         {
             get => workers;
@@ -26,6 +32,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Worker selectedWorker;
+        /// <summary>
+        /// Объект выбранного работника
+        /// </summary>
         public Worker SelectedWorker
         {
             get => selectedWorker;
@@ -51,6 +60,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления работника
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -75,6 +87,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления работника
+        /// </summary>
         public RelayCommand Delete
         {
             get

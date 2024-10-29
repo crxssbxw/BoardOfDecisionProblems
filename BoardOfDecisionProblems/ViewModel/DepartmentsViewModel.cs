@@ -12,8 +12,14 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Отделов
+    /// </summary>
     public class DepartmentsViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Объект выбранного отдела в таблице
+        /// </summary>
         private Department selectedDepartment;
         public Department SelectedDepartment
         {
@@ -24,7 +30,9 @@ namespace BoardOfDecisionProblems.ViewModel
                 OnPropertyChanged(nameof(SelectedDepartment));
             }
         }
-
+        /// <summary>
+        /// Коллекция отделов
+        /// </summary>
         private ObservableCollection<Department> departments = new();
         public ObservableCollection<Department> Departments
         {
@@ -50,6 +58,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления отдела
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -73,6 +84,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления отдела
+        /// </summary>
         public RelayCommand Delete
         {
             get

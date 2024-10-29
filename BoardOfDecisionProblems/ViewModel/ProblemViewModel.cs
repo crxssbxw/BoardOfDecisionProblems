@@ -14,32 +14,63 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Проблем
+    /// </summary>
     public class ProblemViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Представление модели тем
+        /// </summary>
         public static ThemesViewModel ThemesViewModel { get; set; } = new();
+        /// <summary>
+        /// Представление модели Отделов
+        /// </summary>
         public static DepartmentsViewModel DepartmentsViewModel { get; set; } = new();
+        /// <summary>
+        /// Представление модели Работников
+        /// </summary>
         public static WorkersViewModel WorkersViewModel { get; set; } = new();
+        /// <summary>
+        /// Представление модели Ответственных
+        /// </summary>
         public static ResponsiblesViewModel ResponsiblesViewModel { get; set; } = new();
 
+        /// <summary>
+        /// Текущая дата
+        /// </summary>
         public static DateTime Today { get; set; } = DateTime.Now;
 
+        /// <summary>
+        /// Список отделов
+        /// </summary>
         public ObservableCollection<Department> DepartmentsList
         {
             get => DepartmentsViewModel.Departments;
         }
 
+        /// <summary>
+        /// Логическое значение, является ли текущий пользователь администратором
+        /// </summary>
         public static bool IsAdmin
         {
             get => App.CurrentUser.Role.ToLower() == "admin"; 
         }
+        /// <summary>
+        /// Логическое значение, является ли текущий пользователь работником
+        /// </summary>
         public static bool IsWorker
         {
             get => App.CurrentUser.Role.ToLower() == "worker";
         }
+        /// <summary>
+        /// Логическое значение, является ли текущий пользователь ответственным
+        /// </summary>
         public static bool IsResponsible
         {
             get => App.CurrentUser.Role.ToLower() == "responsible";
         }
+
 
         #region Filters
         public ObservableCollection<Responsible> ResponsiblesSD
@@ -188,10 +219,17 @@ namespace BoardOfDecisionProblems.ViewModel
 
         #endregion
 
+        /// <summary>
+        /// Счетчик количества проблем (Всего)
+        /// </summary>
         public int? TotalProblems => Problems.Count;
-
+        /// <summary>
+        /// Счетчик решенных проблем
+        /// </summary>
         public int? TotalDecided => Problems.Where(a => a.Status == "Решено" || a.Status == "Решено оп.").Count();
-
+        /// <summary>
+        /// Счетчик проблем в процессе решения
+        /// </summary>
         public int? TotalDeciding => Problems.Where(a => a.Status == "Решается" || a.Status == "Решается оп.").Count();
 
         public int? DecidedByFilter
@@ -251,6 +289,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private ObservableCollection<Problem> problems = new();
+        /// <summary>
+        /// Коллекция проблем
+        /// </summary>
         public ObservableCollection<Problem> Problems
         {
             get => problems;
@@ -260,7 +301,9 @@ namespace BoardOfDecisionProblems.ViewModel
                 OnPropertyChanged(nameof(Problems));
             }
         }
-
+        /// <summary>
+        /// Объект выбранной проблемы в таблице
+        /// </summary>
         private Problem selectedProblem = new();
 
         public ProblemViewModel()
@@ -289,6 +332,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand newProblem;
+        /// <summary>
+        /// Команда создания новой проблемы
+        /// </summary>
         public RelayCommand NewProblem
         {
             get
@@ -337,6 +383,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand decide;
+        /// <summary>
+        /// Команда решения проблемы
+        /// </summary>
         public RelayCommand Decide
         {
             get
@@ -400,6 +449,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand watch;
+        /// <summary>
+        /// Команда просмотра проблемы
+        /// </summary>
         public RelayCommand Watch
         {
             get
@@ -417,6 +469,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления проблемы
+        /// </summary>
         public RelayCommand Delete
         {
             get
@@ -436,6 +491,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand totalProblemsFilter;
+        /// <summary>
+        /// Команда фильтрации проблем
+        /// </summary>
         public RelayCommand TotalProblemsFilter
         {
             get
@@ -449,6 +507,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand totalDecidedFilter;
+        /// <summary>
+        /// Команда отображения решенных проблем
+        /// </summary>
         public RelayCommand TotalDecidedFilter
         {
             get
@@ -467,6 +528,9 @@ namespace BoardOfDecisionProblems.ViewModel
         
 
         private RelayCommand totalDecidingFilter;
+        /// <summary>
+        /// Команда отображения проблем в процессе решения
+        /// </summary>
         public RelayCommand TotalDecidingFilter
         {
             get
@@ -483,6 +547,11 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
+        /// <summary>
+        /// Логика фильтра
+        /// </summary>
+        /// <param name="item">Проблема</param>
+        /// <returns>Логическое значение фильтрации</returns>
         protected bool FilterLogic(object item)
         {
             Problem problem = item as Problem;
@@ -494,7 +563,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand acceptFilter;
-
+        /// <summary>
+        /// Команда применения фильтра
+        /// </summary>
         public RelayCommand AcceptFilter
         {
             get

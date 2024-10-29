@@ -13,13 +13,28 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели пользователей
+    /// </summary>
     public class UserViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Список доступных ролей пользователей
+        /// </summary>
         public List<string> Roles => new() { "Работник", "Ответственный" };
+        /// <summary>
+        /// Свойство для вызова окна авторизации
+        /// </summary>
         public BoardOfDecisionProblems.Windows.Authorization Authorization { get; set; }
+        /// <summary>
+        /// Свойство для вызова окна регистрации
+        /// </summary>
         public BoardOfDecisionProblems.Windows.Registration RegistrationWindow { get; set; }
 
         private ObservableCollection<User> users = new();
+        /// <summary>
+        /// Коллекция Пользователей
+        /// </summary>
         public ObservableCollection<User> Users
         {
             get => users;
@@ -30,10 +45,22 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
+        /// <summary>
+        /// Представление ответственных
+        /// </summary>
         public ResponsiblesViewModel responsibles { get; set; } = new();
+        /// <summary>
+        /// Представление отделов
+        /// </summary>
         public DepartmentsViewModel departments { get; set; } = new();
+        /// <summary>
+        /// Представление работников
+        /// </summary>
         public WorkersViewModel workers { get; set; } = new();
 
+        /// <summary>
+        /// Изменение выпадающего списка при регистрации в зависимости от выбора роли
+        /// </summary>
         public IList Collection
         {
             get
@@ -47,6 +74,9 @@ namespace BoardOfDecisionProblems.ViewModel
 
 
         private string loginField;
+        /// <summary>
+        /// Поле Логина
+        /// </summary>
         public string LoginField
         {
             get => loginField;
@@ -58,6 +88,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private string passwordField;
+        /// <summary>
+        /// Поле Пароля
+        /// </summary>
         public string PasswordField
         {
             private get => passwordField;
@@ -69,6 +102,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private string repeatPasswordField;
+        /// <summary>
+        /// Поле повтора пароля
+        /// </summary>
         public string RepeatPasswordField
         {
             private get => repeatPasswordField;
@@ -80,6 +116,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private string selectedRole;
+        /// <summary>
+        /// Объект выбранной роли
+        /// </summary>
         public string SelectedRole
         {
             get => selectedRole;
@@ -92,6 +131,10 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private object? selectedObject;
+        /// <summary>
+        /// Объект выбранной роли. 
+        /// Используется для дальнейшей регистрации
+        /// </summary>
         public object? SelectedObject
         {
             get => selectedObject;
@@ -141,6 +184,11 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
+        /// <summary>
+        /// Валидация логина
+        /// </summary>
+        /// <param name="login">Строка логина</param>
+        /// <returns>bool</returns>
         public bool LoginValidation(string login)
         {
             if (Users.Any(a => a.Login == login))
@@ -150,6 +198,12 @@ namespace BoardOfDecisionProblems.ViewModel
             return false;
         }
 
+        /// <summary>
+        /// Валидация пароля
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="password">Пароль</param>
+        /// <returns>bool</returns>
         public bool PasswordValidation(string login, string password)
         {
             if (Users.Any(a => a.Login == login && a.Password == password)){
@@ -158,6 +212,12 @@ namespace BoardOfDecisionProblems.ViewModel
             return false;
         }
 
+        /// <summary>
+        /// Валидация регистрации
+        /// </summary>
+        /// <param name="login">Логин</param>
+        /// <param name="password">Пароль</param>
+        /// <returns>bool</returns>
         public bool RegistrationValidation(string login, string password)
         {
             if (string.IsNullOrEmpty(password)) return false;
@@ -168,6 +228,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand login;
+        /// <summary>
+        /// Команда авторизации
+        /// </summary>
         public RelayCommand Login
         {
             get

@@ -12,9 +12,15 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Тем
+    /// </summary>
     public class ThemesViewModel : BaseViewModel
     {
         private ObservableCollection<Theme> themes = new();
+        /// <summary>
+        /// Коллекция Тем
+        /// </summary>
         public ObservableCollection<Theme> Themes
         {
             get => themes;
@@ -26,6 +32,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Theme selectedTheme = new();
+        /// <summary>
+        /// Объект выбранной Темы в таблице
+        /// </summary>
         public Theme SelectedTheme
         {
             get => selectedTheme;
@@ -49,6 +58,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления темы
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -71,6 +83,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления темы
+        /// </summary>
         public RelayCommand Delete
         {
             get

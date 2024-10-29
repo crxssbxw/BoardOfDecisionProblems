@@ -11,9 +11,16 @@ using System.Threading.Tasks;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Ответственных
+    /// </summary>
     public class ResponsiblesViewModel : BaseViewModel
     {
         private ObservableCollection<Responsible> responsibles = new();
+        
+        /// <summary>
+        /// Коллекция ответственных
+        /// </summary>
         public ObservableCollection<Responsible> Responsibles
         {
             get => responsibles;
@@ -25,6 +32,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Responsible selectedResponsibility;
+        /// <summary>
+        /// Выбранный ответственный в таблице
+        /// </summary>
         public Responsible SelectedResponsibility
         {
             get => selectedResponsibility;
@@ -48,15 +58,15 @@ namespace BoardOfDecisionProblems.ViewModel
 
         #region Commands
 
-        /*
-         Команда set должна отвечать за переназначение работников на участке, делая их ответственными или снимая с них эту ответственность.
-        Если переназначается существующий работник, ему устанавливается флаг IsCurrent, обозначающий, что в текущий момент он ответственный на этом участке.
-        При этом у предыдущего назначенного этот флаг снимается.
-        Если добавляется новый ответственный, добавляется новая запись с ответственностью, устанавливается флаг IsCurrent, у предыдущего - снимается.
-        Реализовано это для того, чтобы была возможность просматривать ответственных за все время.
-         */
-
         private RelayCommand set;
+        /// <summary>
+        /// Команда переназначения работника на участке.
+        /// Команда set должна отвечать за переназначение работников на участке, делая их ответственными или снимая с них эту ответственность.
+        ///Если переназначается существующий работник, ему устанавливается флаг IsCurrent, обозначающий, что в текущий момент он ответственный на этом участке.
+        ///При этом у предыдущего назначенного этот флаг снимается.
+        ///Если добавляется новый ответственный, добавляется новая запись с ответственностью, устанавливается флаг IsCurrent, у предыдущего - снимается.
+        ///Реализовано это для того, чтобы была возможность просматривать ответственных за все время.
+        /// </summary>
         public RelayCommand Set
         {
             get
