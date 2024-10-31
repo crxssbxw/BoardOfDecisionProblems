@@ -79,6 +79,7 @@ namespace BoardOfDecisionProblems
             themesView.DataContext = ProblemViewModel.ThemesViewModel;
             themesView.Show();
         }
+<<<<<<< HEAD
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
@@ -93,5 +94,7 @@ namespace BoardOfDecisionProblems
                 ProblemViewModel.IsAdmin = true;
             }
         }
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
     }
 }

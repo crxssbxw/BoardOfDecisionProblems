@@ -12,9 +12,12 @@ namespace BoardOfDecisionProblems.Models
     /// </summary>
     public class DatabaseContext : DbContext
     {
+<<<<<<< HEAD
         /// <summary>
         /// Таблица Users
         /// </summary>
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
         public DbSet<Worker> Workers { get; set; }
         /// <summary>
         /// Таблица Отделов

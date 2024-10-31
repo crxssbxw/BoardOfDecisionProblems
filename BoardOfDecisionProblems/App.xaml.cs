@@ -15,9 +15,12 @@ namespace BoardOfDecisionProblems
     /// </summary>
     public partial class App : Application
     {
+<<<<<<< HEAD
         /// <summary>
         /// Контекст базы данных
         /// </summary>
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
         public static DatabaseContext dbContext = new();
 
         public static ResponsibleUser CurrentResponsible = new();

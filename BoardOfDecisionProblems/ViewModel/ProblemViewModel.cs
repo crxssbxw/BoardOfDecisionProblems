@@ -50,7 +50,10 @@ namespace BoardOfDecisionProblems.ViewModel
             get => DepartmentsViewModel.Departments;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
         #region Filters
         public ObservableCollection<Responsible> ResponsiblesSD
         {
@@ -401,6 +404,7 @@ namespace BoardOfDecisionProblems.ViewModel
                     else SelectedProblem.Status = "Решено";
                     */
 
+<<<<<<< HEAD
                     LoginForm loginForm = new LoginForm();
 
                     if (loginForm.ShowDialog() == true)
@@ -412,6 +416,8 @@ namespace BoardOfDecisionProblems.ViewModel
                     }
                     else return;
 
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
                     Problem temp = new();
                     temp = SelectedProblem;
                     temp.DateElimination = DateTime.Now;
@@ -523,7 +529,11 @@ namespace BoardOfDecisionProblems.ViewModel
                         dbContext.SaveChanges();
                     }
                 },
+<<<<<<< HEAD
                 obj => SelectedProblem != null && IsAdmin == true));
+=======
+                obj => SelectedProblem != null));
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
             }
         }
 

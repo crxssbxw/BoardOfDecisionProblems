@@ -34,10 +34,14 @@ namespace BoardOfDecisionProblems.Models
         {
             return $"[{ViewerNumber}] {Name}";
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Рабочие, связанные с этим отделом
         /// </summary>
+=======
+        
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
         public ICollection<Worker> Workers { get; set; }
 
         /// <summary>

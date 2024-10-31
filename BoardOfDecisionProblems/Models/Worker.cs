@@ -47,9 +47,12 @@ namespace BoardOfDecisionProblems.Models
             get => Department.ViewerNumber;
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Ответственные, связанные с работником
         /// </summary>
+=======
+>>>>>>> 0e3fd82 (Edited database model and removed Users functions)
         public ICollection<Responsible>? Responsibles { get; set; }
 
         /// <summary>
