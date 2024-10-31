@@ -285,6 +285,7 @@
                             Content="Новая проблема" 
                             Grid.Row="4"
                             Command="{Binding NewProblem}"/>
+<<<<<<< HEAD
                         <Button 
                             x:Name="AdminButton"
                             Background="#EA6B66"
@@ -305,6 +306,8 @@
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
+=======
+>>>>>>> 16393da (startup window - mainwindow.xaml)
                     </Grid>
                 </Border>
             </Grid>
