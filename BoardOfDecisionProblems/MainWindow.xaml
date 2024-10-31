@@ -326,22 +326,6 @@
                             Content="Новая проблема" 
                             Grid.Row="4"
                             Command="{Binding NewProblem}"/>
-                        <Button 
-                            Background="#EA6B66"
-                            Content="Пользователь" 
-                            Grid.Row="4" 
-                            Grid.Column="1">
-                            <Button.ToolTip>
-                                <ToolTip>Открыть контекстное меню</ToolTip>
-                            </Button.ToolTip>
-                            <Button.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Выход" x:Name="LogoutBtn"
-                                              Click="LogoutBtn_Click"/>
-                                    <MenuItem Header="Сменить пароль" x:Name="ChangePasswordBtn"/>
-                                </ContextMenu>
-                            </Button.ContextMenu>
-                        </Button>
                     </Grid>
                 </Border>
             </Grid>
