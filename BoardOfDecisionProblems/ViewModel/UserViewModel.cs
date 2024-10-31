@@ -188,7 +188,7 @@ namespace BoardOfDecisionProblems.ViewModel
         /// Валидация логина
         /// </summary>
         /// <param name="login">Строка логина</param>
-        /// <returns>bool</returns>
+        /// <returns>True если логин прошел валидацию</returns>
         public bool LoginValidation(string login)
         {
             if (Users.Any(a => a.Login == login))
@@ -203,7 +203,7 @@ namespace BoardOfDecisionProblems.ViewModel
         /// </summary>
         /// <param name="login">Логин</param>
         /// <param name="password">Пароль</param>
-        /// <returns>bool</returns>
+        /// <returns>True если пароль прошел валидацию, иначе False</returns>
         public bool PasswordValidation(string login, string password)
         {
             if (Users.Any(a => a.Login == login && a.Password == password)){
@@ -217,7 +217,7 @@ namespace BoardOfDecisionProblems.ViewModel
         /// </summary>
         /// <param name="login">Логин</param>
         /// <param name="password">Пароль</param>
-        /// <returns>bool</returns>
+        /// <returns>True, если регистрация прошла валидацию, иначе False</returns>
         public bool RegistrationValidation(string login, string password)
         {
             if (string.IsNullOrEmpty(password)) return false;
@@ -255,6 +255,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand registration;
+        /// <summary>
+        /// Команда регистрации
+        /// </summary>
         public RelayCommand Registration
         {
             get
