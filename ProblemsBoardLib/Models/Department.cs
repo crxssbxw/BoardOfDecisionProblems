@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ProblemsBoardLib.Models
 {
     /// <summary>
-    /// Модель отдела
+    /// Модель Отдела
     /// </summary>
     public class Department
     {

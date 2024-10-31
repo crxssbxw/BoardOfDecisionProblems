@@ -10,11 +10,21 @@ using System.Windows.Data;
 
 namespace ProblemsBoardLib.ViewModel
 {
+    /// <summary>
+    /// Общее модельное представление, реализует интерфейс INotifyPropertyChanged для обновления связанных значений
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+<<<<<<< HEAD:ProblemsBoardLib/ViewModel/BaseViewModel.cs
         public DatabaseContext dbContext { get; protected set; } = new();
+=======
+        /// <summary>
+        /// Контекст БД
+        /// </summary>
+        public DatabaseContext dbContext = App.dbContext;
+>>>>>>> 4757661 (edited XML comments):BoardOfDecisionProblems/ViewModel/BaseViewModel.cs
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
