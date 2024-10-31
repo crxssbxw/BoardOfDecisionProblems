@@ -66,7 +66,7 @@ namespace BoardOfDecisionProblems.ViewModel
 
                         Themes.Add(theme);
                     }
-                }, obj => ProblemViewModel.IsWorker == false));
+                }, obj => true));
             }
         }
 
@@ -89,7 +89,7 @@ namespace BoardOfDecisionProblems.ViewModel
                         dbContext.SaveChanges();
                         Themes.Remove(SelectedTheme);
                     }
-                }, obj => SelectedTheme != null && ProblemViewModel.IsWorker == false));
+                }, obj => SelectedTheme != null));
             }
         }
 
