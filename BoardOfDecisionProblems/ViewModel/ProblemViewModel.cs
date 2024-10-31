@@ -28,19 +28,6 @@ namespace BoardOfDecisionProblems.ViewModel
             get => DepartmentsViewModel.Departments;
         }
 
-        public static bool IsAdmin
-        {
-            get => App.CurrentUser.Role.ToLower() == "admin"; 
-        }
-        public static bool IsWorker
-        {
-            get => App.CurrentUser.Role.ToLower() == "worker";
-        }
-        public static bool IsResponsible
-        {
-            get => App.CurrentUser.Role.ToLower() == "responsible";
-        }
-
         #region Filters
         public ObservableCollection<Responsible> ResponsiblesSD
         {
@@ -352,12 +339,6 @@ namespace BoardOfDecisionProblems.ViewModel
                     else SelectedProblem.Status = "Решено";
                     */
 
-                    if(!IsAdmin && App.CurrentUser.Worker.Department != SelectedProblem.Department)
-                    {
-                        MessageBox.Show("Вы не можете решать проблемы не своего участка!");
-                        return;
-                    }
-
                     Problem temp = new();
                     temp = SelectedProblem;
                     temp.DateElimination = DateTime.Now;
@@ -395,7 +376,7 @@ namespace BoardOfDecisionProblems.ViewModel
 
                     CollectionView.Refresh();
                 },
-                obj => SelectedProblem != null && (SelectedProblem.Status != "Решено" && SelectedProblem.Status != "Решено оп.") && !IsWorker));
+                obj => SelectedProblem != null && (SelectedProblem.Status != "Решено" && SelectedProblem.Status != "Решено оп.")));
             }
         }
 
@@ -431,7 +412,7 @@ namespace BoardOfDecisionProblems.ViewModel
                         dbContext.SaveChanges();
                     }
                 },
-                obj => SelectedProblem != null && (IsAdmin == true || IsResponsible == true)));
+                obj => SelectedProblem != null));
             }
         }
 

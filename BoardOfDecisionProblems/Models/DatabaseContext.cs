@@ -9,7 +9,6 @@ namespace BoardOfDecisionProblems.Models
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Problem> Problems { get; set; }

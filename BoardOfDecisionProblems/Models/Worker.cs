@@ -23,7 +23,6 @@ namespace BoardOfDecisionProblems.Models
             get => Department.ViewerNumber;
         }
 
-        public ICollection<User>? Users { get; set; }
         public ICollection<Responsible>? Responsibles { get; set; }
 
         public override string ToString()

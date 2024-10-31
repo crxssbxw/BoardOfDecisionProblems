@@ -11,8 +11,6 @@ namespace BoardOfDecisionProblems
     /// </summary>
     public partial class App : Application
     {
-        public static User? CurrentUser { get; set; }
-
         public static DatabaseContext dbContext = new();
 
         protected override void OnStartup(StartupEventArgs e)
