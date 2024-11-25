@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BoardOfDecisionProblems.Models
+namespace ProblemsBoardLib.Models
 {
     public class DatabaseContext : DbContext
     {

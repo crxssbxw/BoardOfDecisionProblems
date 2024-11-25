@@ -1,8 +1,9 @@
-﻿using BoardOfDecisionProblems.Commands;
-using BoardOfDecisionProblems.Forms;
-using BoardOfDecisionProblems.Models;
-using BoardOfDecisionProblems.Windows;
+﻿using ProblemsBoardLib.Commands;
+using ProblemsBoardLib.Forms;
+using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Windows;
 using Microsoft.EntityFrameworkCore;
+using ProblemsBoardLib.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BoardOfDecisionProblems.ViewModel
+namespace ProblemsBoardLib.ViewModel
 {
     public class ProblemViewModel : BaseViewModel
     {
