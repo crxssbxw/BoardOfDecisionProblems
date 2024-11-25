@@ -1,8 +1,8 @@
-﻿<Application x:Class="ProblemsBoardLib.App"
+﻿<Application x:Class="ProblemsBoard.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:BoardOfDecisionProblems"
-             xmlns:src="clr-namespace:ProblemsBoardLib"
+             xmlns:local="clr-namespace:ProblemsBoard"
+             xmlns:lib="clr-namespace:ProblemsBoardLib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
