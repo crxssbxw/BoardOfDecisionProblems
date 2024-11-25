@@ -32,7 +32,5 @@ namespace ProblemsBoardLib.ViewModel
 
         public CollectionViewSource ViewSource { get; set; } = new();
         public ICollectionView CollectionView { get => ViewSource.View; }
-
-
     }
 }
