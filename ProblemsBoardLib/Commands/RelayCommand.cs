@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BoardOfDecisionProblems.Commands
+namespace ProblemsBoardLib.Commands
 {
     /// <summary>
     /// Логика команд через интерфейс ICommand

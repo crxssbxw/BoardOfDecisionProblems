@@ -1,4 +1,4 @@
-﻿using BoardOfDecisionProblems.Models;
+﻿using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace BoardOfDecisionProblems.ViewModel
+namespace ProblemsBoardLib.ViewModel
 {
     /// <summary>
     /// Общее модельное представление, реализует интерфейс INotifyPropertyChanged для обновления связанных значений
