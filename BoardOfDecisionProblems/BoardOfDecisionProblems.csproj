@@ -31,4 +31,8 @@
     <Resource Include="Images\kemz.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProblemsBoardLib\ProblemsBoardLib.csproj" />
+  </ItemGroup>
+
 </Project>
