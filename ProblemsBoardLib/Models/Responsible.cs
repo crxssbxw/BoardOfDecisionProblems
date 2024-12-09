@@ -13,7 +13,8 @@ namespace ProblemsBoardLib.Models
         public int WorkerId { get; set; }
         public int DepartmentId { get; set; }
         public bool IsCurrent { get; set; }
-
+        public string Login { get; set; }
+        public string Password { get; set; }
         public Department Department { get; set; }
         public Worker Worker { get; set; }
         public ICollection<Problem> Problem { get; set; }

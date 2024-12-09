@@ -11,7 +11,7 @@ namespace ProblemsBoardLib.Models
     {
         public int ProblemId { get; set; }
         public DateTime DateOccurance { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
         public string Description { get; set; } = string.Empty;
         public DateTime? DateElimination { get; set; }
         public string? Decision { get; set; }
