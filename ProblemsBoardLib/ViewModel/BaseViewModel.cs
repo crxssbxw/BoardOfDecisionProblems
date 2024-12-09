@@ -18,6 +18,7 @@ namespace ProblemsBoardLib.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// Контекст БД
         /// </summary>
@@ -25,6 +26,9 @@ namespace ProblemsBoardLib.ViewModel
 =======
         public static DatabaseContext dbContext = new();
 >>>>>>> 038f31d (Deleted Old and created New WPF project)
+=======
+        public static DatabaseContext dbContext;
+>>>>>>> 0bd6498 (Test commit)
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows;
 using ProblemsBoardLib;
+using ProblemsBoardLib.Models;
+using ProblemsBoardLib.ViewModel;
 
 namespace ProblemsBoard;
 
@@ -10,6 +12,10 @@ namespace ProblemsBoard;
 /// </summary>
 public partial class App : Application
 {
-    
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        BaseViewModel.dbContext = new();
+        base.OnStartup(e);
+    }
 }
 

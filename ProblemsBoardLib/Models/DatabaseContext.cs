@@ -35,6 +35,9 @@ namespace ProblemsBoardLib.Models
         /// Таблица Тем
         /// </summary>
         public DbSet<Theme> Themes { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogEvent> LogEvents { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
@@ -45,6 +48,7 @@ namespace ProblemsBoardLib.Models
         /// </summary>
         public DatabaseContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

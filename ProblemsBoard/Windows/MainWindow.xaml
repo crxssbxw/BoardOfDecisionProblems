@@ -114,6 +114,7 @@
                      ItemTemplate="{StaticResource Problem}"
                      ItemsPanel="{StaticResource ProblemsList}"
                      ItemsSource="{Binding CollectionView}"
+                     SelectedItem="{Binding SelectedProblem}"
                      HorizontalContentAlignment="Stretch"
                      HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}"/>
         </Grid>

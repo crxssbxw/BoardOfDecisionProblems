@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace ProblemsBoardLib.Models
 {
     public class LogEvent
     {
-        public int EventId { get; set; }
+        public int LogEventId { get; set; }
         public string Title { get; set; }
         public DateOnly Date { get; set; }
         public TimeOnly Time { get; set; }
