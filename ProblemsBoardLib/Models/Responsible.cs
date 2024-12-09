@@ -28,6 +28,7 @@ namespace ProblemsBoardLib.Models
         /// Флаг, является ли ответственный текущим
         /// </summary>
         public bool IsCurrent { get; set; }
+<<<<<<< HEAD
 
         /// <summary>
         /// Логин ответственного, null, если IsCurrent = false
@@ -41,6 +42,10 @@ namespace ProblemsBoardLib.Models
         /// <summary>
         /// Ссылка на отдел
         /// </summary>
+=======
+        public string Login { get; set; }
+        public string Password { get; set; }
+>>>>>>> 2c81db8 (Added models for Log, Report and Log Events, created base viewmodel for problems)
         public Department Department { get; set; }
         /// <summary>
         /// Ссылка на рабочего

@@ -20,6 +20,7 @@ namespace ProblemsBoardLib.Models
         /// Дата создания проблемы
         /// </summary>
         public DateTime DateOccurance { get; set; }
+<<<<<<< HEAD
         /// <summary>
         /// Статус проблемы
         /// </summary>
@@ -27,6 +28,9 @@ namespace ProblemsBoardLib.Models
         /// <summary>
         /// Описание проблемы
         /// </summary>
+=======
+        public string? Status { get; set; }
+>>>>>>> 2c81db8 (Added models for Log, Report and Log Events, created base viewmodel for problems)
         public string Description { get; set; } = string.Empty;
         /// <summary>
         /// Дата решения проблемы

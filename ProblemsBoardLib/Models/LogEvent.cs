@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD
 namespace BoardOfDecisionProblems.Models
 {
     public class LogEvent
@@ -22,5 +23,19 @@ namespace BoardOfDecisionProblems.Models
             Date = DateOnly.FromDateTime(DateTime.Now);
             Time = TimeOnly.FromDateTime(DateTime.Now);
         }
+=======
+namespace ProblemsBoardLib.Models
+{
+    public class LogEvent
+    {
+        public int EventId { get; set; }
+        public string Title { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly Time { get; set; }
+        public string User { get; set; }
+        public string Table { get; set; }
+        public string Object { get; set; }
+        public string Comment { get; set; }
+>>>>>>> 2c81db8 (Added models for Log, Report and Log Events, created base viewmodel for problems)
     }
 }

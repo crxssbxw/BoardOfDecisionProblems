@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD
 namespace BoardOfDecisionProblems.Models
+=======
+namespace ProblemsBoardLib.Models
+>>>>>>> 2c81db8 (Added models for Log, Report and Log Events, created base viewmodel for problems)
 {
     public class Log
     {
