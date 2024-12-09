@@ -21,6 +21,10 @@
 =======
 >>>>>>> 038f31d (Deleted Old and created New WPF project):ProblemsBoard/ProblemsBoard.csproj
   <ItemGroup>
+    <None Remove="Assets\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProblemsBoardLib\ProblemsBoardLib.csproj" />
   </ItemGroup>
 
@@ -32,6 +36,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\logo.png" />
   </ItemGroup>
   
   <PropertyGroup>
