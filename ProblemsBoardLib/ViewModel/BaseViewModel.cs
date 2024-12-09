@@ -14,7 +14,7 @@ namespace ProblemsBoardLib.ViewModel
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public static DatabaseContext dbContext = new();
+        public static DatabaseContext dbContext;
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

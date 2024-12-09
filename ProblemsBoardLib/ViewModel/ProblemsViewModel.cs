@@ -1,4 +1,5 @@
-﻿using ProblemsBoardLib.Models;
+﻿using ProblemsBoardLib.Commands;
+using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,17 +20,31 @@ namespace ProblemsBoardLib.ViewModel
                 problems = value;
                 OnPropertyChanged(nameof(Problems));
             }
-        }
-        
+        }        
         public void Add(Problem problem)
         {
             problems.Add(problem);
             OnPropertyChanged(nameof(Problems));
         }
 
+        public Problem selectedProblem = new();
+        public Problem SelectedProblem
+        {
+            get => selectedProblem;
+            set
+            {
+                selectedProblem = value;
+                OnPropertyChanged(nameof(SelectedProblem));
+            }
+        }
+
         public ProblemsViewModel()
         {
             ViewSource.Source = Problems;
         }
+
+        #region Commands
+
+        #endregion
     }
 }

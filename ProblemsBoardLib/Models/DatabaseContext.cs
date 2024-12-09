@@ -14,9 +14,13 @@ namespace ProblemsBoardLib.Models
         public DbSet<Problem> Problems { get; set; }
         public DbSet<Responsible> Responsibles { get; set; }
         public DbSet<Theme> Themes { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogEvent> LogEvents { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         public DatabaseContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

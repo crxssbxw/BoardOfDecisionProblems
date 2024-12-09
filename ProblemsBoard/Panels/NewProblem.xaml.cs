@@ -44,7 +44,7 @@ namespace ProblemsBoard.Panels
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             ProblemsBoardLib.Models.Problem? problem = DataContext as ProblemsBoardLib.Models.Problem;
-            MainWindow.problemsViewModel.Add(problem);
+            MainWindow.ProblemsViewModel.Add(problem);
             this.BeginAnimation(OpacityProperty, Animation);
         }
     }

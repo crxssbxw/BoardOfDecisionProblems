@@ -19,7 +19,12 @@ namespace ProblemsBoard.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public static ProblemsViewModel problemsViewModel = new();
+    private static ProblemsViewModel problemsViewModel = new();
+    public static ProblemsViewModel ProblemsViewModel
+    {
+        get => problemsViewModel;
+        set => problemsViewModel = value;
+    }
     public MainWindow()
     {
         InitializeComponent();
@@ -59,6 +64,7 @@ public partial class MainWindow : Window
         ProblemPanel.Visibility = Visibility.Visible;
         ProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
         var DataSender = sender as Button;
-        ProblemPanel.DataContext = DataSender.DataContext;
+        problemsViewModel.SelectedProblem = DataSender.DataContext as Problem;
+        ProblemPanel.DataContext = problemsViewModel.SelectedProblem;
     }
 }
