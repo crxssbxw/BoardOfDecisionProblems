@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Remove="Assets\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProblemsBoardLib\ProblemsBoardLib.csproj" />
   </ItemGroup>
 
@@ -11,6 +15,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\logo.png" />
   </ItemGroup>
   
   <PropertyGroup>

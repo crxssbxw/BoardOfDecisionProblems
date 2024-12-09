@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="ProblemsBoard.Panels.NewProblem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProblemsBoard.Panels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Button Content="X"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="20" Height="20"
+                Click="Close_Click"
+                Panel.ZIndex="1"/>
+        <Border Background="#E6E6E6" Opacity="0.9" CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="30" FontWeight="Bold" Foreground="#3A6AB2" Panel.ZIndex="1"
+                           Text="Новая Проблема" HorizontalAlignment="Center"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.25*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="5">
+                        <Label Content="Номер"/>
+                        <TextBox IsReadOnly="True"
+                             Text="{Binding ProblemId}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Margin="5">
+                        <Label Content="Тема"/>
+                        <ComboBox/>
+                    </StackPanel>
+
+                    <StackPanel Grid.ColumnSpan="3" Grid.Row="1" Margin="5">
+                        <Label Content="Участок/Отдел"/>
+                        <ComboBox/>
+                    </StackPanel>
+
+                    <Label Content="Описание" Grid.Row="2" Margin="5 0"/>
+                    <TextBox Grid.Row="3" Grid.ColumnSpan="3" Margin="5"
+                             Text="{Binding Description}"/>
+
+                    <DatePicker Grid.Row="4" Margin="5" SelectedDate="{Binding DateOccurance}"/>
+                    <Button x:Name="Accept" Content="Принять" Grid.Row="4" Grid.Column="2"
+                            Margin="5" Background="#008CFF" Foreground="White"
+                            Click="Accept_Click"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
