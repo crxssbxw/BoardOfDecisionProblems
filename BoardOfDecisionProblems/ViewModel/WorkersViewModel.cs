@@ -79,6 +79,8 @@ namespace BoardOfDecisionProblems.ViewModel
                     if(workerNew.ShowDialog() == true)
                     {
                         dbContext.Workers.Add(worker);
+                        dbContext.SaveChanges();
+
                         LogEvent logEvent = new LogEvent()
                         {
                             Date = DateOnly.FromDateTime(DateTime.Now),
@@ -115,6 +117,8 @@ namespace BoardOfDecisionProblems.ViewModel
                     if (result == MessageBoxResult.Yes)
                     {
                         dbContext.Workers.Remove(SelectedWorker);
+                        dbContext.SaveChanges();
+
                         LogEvent logEvent = new LogEvent()
                         {
                             Date = DateOnly.FromDateTime(DateTime.Now),

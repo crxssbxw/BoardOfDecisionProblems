@@ -41,7 +41,7 @@
                            Text="Описание" FontWeight="Bold" FontSize="18"/>
                 <TextBlock Text="{Binding Title}"/>
                 <TextBlock Text="{Binding Date, StringFormat=Дата: \{0:dd.MM.yyyy\}}"/>
-                <TextBlock Text="{Binding Time, StringFormat='Время: hh часов, mm минут'}"/>
+                <TextBlock Text="{Binding Time, StringFormat='Время: HH час., mm минут'}"/>
                 <TextBlock Text="{Binding User}"/>
                 <TextBlock Text="{Binding Object}"/>
             </StackPanel>

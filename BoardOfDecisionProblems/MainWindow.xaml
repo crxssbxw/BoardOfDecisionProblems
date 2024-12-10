@@ -337,6 +337,7 @@
                             <Button.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Журнал событий" Command="{Binding OpenLogger}"/>
+                                    <MenuItem Header="Журнал отчетов" Command="{Binding OpenReports}"/>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>

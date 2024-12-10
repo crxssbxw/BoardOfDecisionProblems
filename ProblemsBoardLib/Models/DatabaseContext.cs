@@ -49,13 +49,13 @@ namespace ProblemsBoardLib.Models
 
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         /// <summary>
         /// Создание БД, если она не создана
         /// </summary>
         public DatabaseContext()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
