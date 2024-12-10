@@ -75,19 +75,20 @@ namespace BoardOfDecisionProblems.ViewModel
                     if(newDepartment.ShowDialog() == true)
                     {
                         dbContext.Add(department);
-                        Departments.Add(department);
+                        dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()
                         {
                             Date = DateOnly.FromDateTime(DateTime.Now),
                             Time = TimeOnly.FromDateTime(DateTime.Now),
-                            Title = $"Создание отдела №{department.DepartmentId}",
+                            Title = $"Создание отдела Id:{department.DepartmentId}",
                             User = "Admin"
                         };
-                        logEvent.Object = $"Отдел №{department.DepartmentId}";
+                        logEvent.Object = $"Отдел Id:{department.DepartmentId}";
                         dbContext.Add(logEvent);
                         ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
 
+                        Departments.Add(department);
                         dbContext.SaveChanges();
                     }
                 },
@@ -109,6 +110,7 @@ namespace BoardOfDecisionProblems.ViewModel
                     if (result == MessageBoxResult.Yes)
                     {
                         dbContext.Remove(SelectedDepartment);
+                        dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()
                         {

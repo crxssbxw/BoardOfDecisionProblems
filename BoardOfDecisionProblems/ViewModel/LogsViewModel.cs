@@ -17,6 +17,14 @@ namespace BoardOfDecisionProblems.ViewModel
         private ObservableCollection<Log> _logs = new();
         private ObservableCollection<LogEvent> _logEvents = new();
 
+        public LogsViewModel()
+        {
+            foreach(var logevent in dbContext.LogEvents)
+            {
+                LogEvents.Add(logevent);
+            }
+        }
+
         public ObservableCollection<Log> Logs
         {
             get => _logs;
@@ -117,6 +125,8 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand _saveLog;
+
+
         public RelayCommand SaveLog
         {
             get

@@ -36,6 +36,7 @@ namespace BoardOfDecisionProblems.ViewModel
         /// </summary>
         public static ResponsiblesViewModel ResponsiblesViewModel { get; set; } = new();
         public static LogsViewModel LogsViewModel { get; set; } = new();
+        public static ReportsViewModel ReportsViewModel { get; set; } = new();
         /// <summary>
         /// Текущая дата
         /// </summary>
@@ -348,6 +349,7 @@ namespace BoardOfDecisionProblems.ViewModel
 
                         //newProblem.Theme.Problems.Add(newProblem);
                         dbContext.Problems.Add(newProblem);
+                        dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()
                         {
@@ -412,6 +414,7 @@ namespace BoardOfDecisionProblems.ViewModel
                             temp.Status = "Решено";
                             dbContext.Problems.Entry(SelectedProblem).CurrentValues.SetValues(temp);
                         }
+                        dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()
                         {
@@ -488,6 +491,7 @@ namespace BoardOfDecisionProblems.ViewModel
                     {
                         dbContext.Problems.Remove(SelectedProblem);
                         Problems.Remove(SelectedProblem);
+                        dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()
                         {
@@ -611,6 +615,20 @@ namespace BoardOfDecisionProblems.ViewModel
                     Logger logger = new();
                     logger.DataContext = LogsViewModel;
                     logger.Show();
+                }, obj => true));
+            }
+        }
+
+        private RelayCommand openReports;
+        public RelayCommand OpenReports
+        {
+            get
+            {
+                return openReports ?? (openReports = new(obj =>
+                {
+                    ReportsView reports = new();
+                    reports.DataContext = ReportsViewModel;
+                    reports.Show();
                 }, obj => true));
             }
         }

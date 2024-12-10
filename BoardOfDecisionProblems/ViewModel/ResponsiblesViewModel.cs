@@ -130,6 +130,7 @@ namespace BoardOfDecisionProblems.ViewModel
                                 Responsibles.Add(responsible);
                                 logEvent.Title = $"Добавление ответственного Id:{responsible.ResponsibleId}";
                             }
+                            dbContext.SaveChanges();
 
                             logEvent.Object = $"Responsibles";
                             logEvent.Table = $"Responsibles";
