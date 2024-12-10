@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
@@ -74,11 +75,22 @@ namespace BoardOfDecisionProblems.ViewModel
                     if(newTheme.ShowDialog() == true)
                     {
                         dbContext.Themes.Add(theme);
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление темы №{theme.ThemeId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Тема №{theme.ThemeId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
 
                         Themes.Add(theme);
                     }
-                }, obj => ProblemViewModel.IsWorker == false));
+                }, obj => true));
             }
         }
 
@@ -101,10 +113,21 @@ namespace BoardOfDecisionProblems.ViewModel
                     if(result == MessageBoxResult.Yes)
                     {
                         dbContext.Themes.Remove(SelectedTheme);
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление темы №{SelectedTheme.ThemeId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Тема №{SelectedTheme.ThemeId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         Themes.Remove(SelectedTheme);
                     }
-                }, obj => SelectedTheme != null && ProblemViewModel.IsWorker == false));
+                }, obj => SelectedTheme != null));
             }
         }
 

@@ -15,10 +15,6 @@ namespace BoardOfDecisionProblems.Models
         /// <summary>
         /// Таблица Users
         /// </summary>
-        public DbSet<User> Users { get; set; }
-        /// <summary>
-        /// Таблица Работников
-        /// </summary>
         public DbSet<Worker> Workers { get; set; }
         /// <summary>
         /// Таблица Отделов
@@ -37,11 +33,15 @@ namespace BoardOfDecisionProblems.Models
         /// </summary>
         public DbSet<Theme> Themes { get; set; }
 
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogEvent> LogEvents { get; set; }
+
         /// <summary>
         /// Создание БД, если она не создана
         /// </summary>
         public DatabaseContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

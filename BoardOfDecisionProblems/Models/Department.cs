@@ -36,11 +36,6 @@ namespace BoardOfDecisionProblems.Models
         }
 
         /// <summary>
-        /// Пользователи, связанные с этим отделом
-        /// </summary>
-        public ICollection<User> Users { get; set; }
-
-        /// <summary>
         /// Рабочие, связанные с этим отделом
         /// </summary>
         public ICollection<Worker> Workers { get; set; }

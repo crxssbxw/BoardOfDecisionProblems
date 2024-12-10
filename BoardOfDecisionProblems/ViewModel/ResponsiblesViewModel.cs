@@ -85,7 +85,14 @@ namespace BoardOfDecisionProblems.ViewModel
                         set.WorkersBox.ItemsSource = ProblemViewModel.WorkersViewModel.Workers;
                         set.DepartmentsBox.ItemsSource = ProblemViewModel.DepartmentsViewModel.Departments;
 
-                        if(set.ShowDialog() == true)
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            User = "Admin"
+                        };
+
+                        if (set.ShowDialog() == true)
                         {
                             responsible.IsCurrent = true;
 
@@ -101,6 +108,7 @@ namespace BoardOfDecisionProblems.ViewModel
                                 temp.IsCurrent = false;
                                 dbContext.Responsibles.Entry(dbpr).CurrentValues.SetValues(temp);
                                 dbContext.SaveChanges();
+                                logEvent.Title = $"Переназначение ответственных: Id:{prevResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
 
                             if (Responsibles.Any(a => a.Worker == responsible.Worker))
@@ -113,13 +121,22 @@ namespace BoardOfDecisionProblems.ViewModel
                                 temp.IsCurrent = true;
                                 dbContext.Responsibles.Entry(dbcr).CurrentValues.SetValues(temp);
                                 dbContext.SaveChanges();
+                                logEvent.Title = $"Переназначение ответственных: Id:{currentResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
                             else
                             {
                                 dbContext.Responsibles.Add(responsible);
                                 dbContext.SaveChanges();
                                 Responsibles.Add(responsible);
+                                logEvent.Title = $"Добавление ответственного Id:{responsible.ResponsibleId}";
                             }
+
+                            logEvent.Object = $"Responsibles";
+                            logEvent.Table = $"Responsibles";
+                            dbContext.Add(logEvent);
+                            ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
+                            dbContext.SaveChanges(); 
                         }
                         CollectionView.Refresh();
                     }

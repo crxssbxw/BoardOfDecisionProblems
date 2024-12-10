@@ -48,10 +48,6 @@ namespace BoardOfDecisionProblems.Models
         }
 
         /// <summary>
-        /// Пользователи, связанные с работником
-        /// </summary>
-        public ICollection<User>? Users { get; set; }
-        /// <summary>
         /// Ответственные, связанные с работником
         /// </summary>
         public ICollection<Responsible>? Responsibles { get; set; }

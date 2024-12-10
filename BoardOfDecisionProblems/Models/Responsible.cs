@@ -29,6 +29,9 @@ namespace BoardOfDecisionProblems.Models
         /// </summary>
         public bool IsCurrent { get; set; }
 
+        //public string Login { get; set; }
+        //public string Password { get; set; }
+
         /// <summary>
         /// Ссылка на отдел
         /// </summary>

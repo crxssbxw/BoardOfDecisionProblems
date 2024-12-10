@@ -328,7 +328,7 @@
                             Command="{Binding NewProblem}"/>
                         <Button 
                             Background="#EA6B66"
-                            Content="Пользователь" 
+                            Content="Дополнительно" 
                             Grid.Row="4" 
                             Grid.Column="1">
                             <Button.ToolTip>
@@ -336,9 +336,7 @@
                             </Button.ToolTip>
                             <Button.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Выход" x:Name="LogoutBtn"
-                                              Click="LogoutBtn_Click"/>
-                                    <MenuItem Header="Сменить пароль" x:Name="ChangePasswordBtn"/>
+                                    <MenuItem Header="Журнал событий" Command="{Binding OpenLogger}"/>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>

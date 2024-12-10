@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
@@ -78,6 +79,17 @@ namespace BoardOfDecisionProblems.ViewModel
                     if(workerNew.ShowDialog() == true)
                     {
                         dbContext.Workers.Add(worker);
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление работника №{worker.WorkerId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Работник {worker.WorkerId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         Workers.Add(worker);
                     }
@@ -103,6 +115,17 @@ namespace BoardOfDecisionProblems.ViewModel
                     if (result == MessageBoxResult.Yes)
                     {
                         dbContext.Workers.Remove(SelectedWorker);
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Удаление работника №{worker.WorkerId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Работник {worker.WorkerId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         Workers.Remove(worker);
                     }

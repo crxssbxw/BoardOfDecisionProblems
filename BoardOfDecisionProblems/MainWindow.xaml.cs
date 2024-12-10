@@ -78,13 +78,5 @@ namespace BoardOfDecisionProblems
             themesView.DataContext = ProblemViewModel.ThemesViewModel;
             themesView.Show();
         }
-
-        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
-        {
-            App.CurrentUser = null;
-            Authorization authorization = new();
-            authorization.Show();
-            Close();
-        }
     }
 }

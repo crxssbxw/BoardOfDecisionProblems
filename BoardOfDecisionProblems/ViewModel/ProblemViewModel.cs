@@ -35,7 +35,7 @@ namespace BoardOfDecisionProblems.ViewModel
         /// Представление модели Ответственных
         /// </summary>
         public static ResponsiblesViewModel ResponsiblesViewModel { get; set; } = new();
-
+        public static LogsViewModel LogsViewModel { get; set; } = new();
         /// <summary>
         /// Текущая дата
         /// </summary>
@@ -47,28 +47,6 @@ namespace BoardOfDecisionProblems.ViewModel
         public ObservableCollection<Department> DepartmentsList
         {
             get => DepartmentsViewModel.Departments;
-        }
-
-        /// <summary>
-        /// Логическое значение, является ли текущий пользователь администратором
-        /// </summary>
-        public static bool IsAdmin
-        {
-            get => App.CurrentUser.Role.ToLower() == "admin"; 
-        }
-        /// <summary>
-        /// Логическое значение, является ли текущий пользователь работником
-        /// </summary>
-        public static bool IsWorker
-        {
-            get => App.CurrentUser.Role.ToLower() == "worker";
-        }
-        /// <summary>
-        /// Логическое значение, является ли текущий пользователь ответственным
-        /// </summary>
-        public static bool IsResponsible
-        {
-            get => App.CurrentUser.Role.ToLower() == "responsible";
         }
 
 
@@ -370,8 +348,19 @@ namespace BoardOfDecisionProblems.ViewModel
 
                         //newProblem.Theme.Problems.Add(newProblem);
                         dbContext.Problems.Add(newProblem);
-                        dbContext.SaveChanges();
 
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление проблемы №{newProblem.ProblemId}",
+                            User = "Guest"
+                        };
+                        logEvent.Object = $"Проблема {newProblem.ProblemId}";
+                        dbContext.Add(logEvent);
+                        LogsViewModel.LogEvents.Add(logEvent);
+
+                        dbContext.SaveChanges();
                         Problems.Add(newProblem);
                         OnPropertyChanged(nameof(TotalProblems));
                         OnPropertyChanged(nameof(TotalDecided));
@@ -401,12 +390,6 @@ namespace BoardOfDecisionProblems.ViewModel
                     else SelectedProblem.Status = "Решено";
                     */
 
-                    if(!IsAdmin && App.CurrentUser.Worker.Department != SelectedProblem.Department)
-                    {
-                        MessageBox.Show("Вы не можете решать проблемы не своего участка!");
-                        return;
-                    }
-
                     Problem temp = new();
                     temp = SelectedProblem;
                     temp.DateElimination = DateTime.Now;
@@ -429,6 +412,18 @@ namespace BoardOfDecisionProblems.ViewModel
                             temp.Status = "Решено";
                             dbContext.Problems.Entry(SelectedProblem).CurrentValues.SetValues(temp);
                         }
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Решение проблемы №{SelectedProblem.ProblemId}",
+                            User = $"Ответственный {SelectedProblem.ResponsibleName}"
+                        };
+                        logEvent.Object = $"Проблема {SelectedProblem.ProblemId}";
+                        dbContext.Add(logEvent);
+                        LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         SelectedProblem = temp;
                     }
@@ -444,7 +439,7 @@ namespace BoardOfDecisionProblems.ViewModel
 
                     CollectionView.Refresh();
                 },
-                obj => SelectedProblem != null && (SelectedProblem.Status != "Решено" && SelectedProblem.Status != "Решено оп.") && !IsWorker));
+                obj => SelectedProblem != null && (SelectedProblem.Status != "Решено" && SelectedProblem.Status != "Решено оп.")));
             }
         }
 
@@ -461,7 +456,17 @@ namespace BoardOfDecisionProblems.ViewModel
                     ProblemView problemView = new ProblemView();
                     problemView.DataContext = SelectedProblem;
                     problemView.Title = $"Проблема №{SelectedProblem.ProblemId}";
-
+                    LogEvent logEvent = new LogEvent()
+                    {
+                        Date = DateOnly.FromDateTime(DateTime.Now),
+                        Time = TimeOnly.FromDateTime(DateTime.Now),
+                        Title = $"Просмотр проблемы №{SelectedProblem.ProblemId}",
+                        User = "Guest"
+                    };
+                    logEvent.Object = $"Проблема {SelectedProblem.ProblemId}";
+                    dbContext.Add(logEvent);
+                    LogsViewModel.LogEvents.Add(logEvent);
+                    dbContext.SaveChanges();
                     problemView.ShowDialog();
                 },
                 obj => SelectedProblem != null));
@@ -483,10 +488,22 @@ namespace BoardOfDecisionProblems.ViewModel
                     {
                         dbContext.Problems.Remove(SelectedProblem);
                         Problems.Remove(SelectedProblem);
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Удаление проблемы №{SelectedProblem.ProblemId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Проблема {SelectedProblem.ProblemId}";
+                        dbContext.Add(logEvent);
+                        LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                     }
                 },
-                obj => SelectedProblem != null && (IsAdmin == true || IsResponsible == true)));
+                obj => SelectedProblem != null));
             }
         }
 
@@ -582,6 +599,20 @@ namespace BoardOfDecisionProblems.ViewModel
                 },
                 obj => true));
             } 
+        }
+
+        private RelayCommand openLogger;
+        public RelayCommand OpenLogger
+        {
+            get
+            {
+                return openLogger ?? (openLogger = new(obj =>
+                {
+                    Logger logger = new();
+                    logger.DataContext = LogsViewModel;
+                    logger.Show();
+                }, obj => true));
+            }
         }
 
         #endregion
