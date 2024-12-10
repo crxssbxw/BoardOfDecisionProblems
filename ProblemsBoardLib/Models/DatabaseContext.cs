@@ -17,11 +17,14 @@ namespace ProblemsBoardLib.Models
         /// <summary>
         /// Таблица Users
         /// </summary>
+<<<<<<< HEAD:ProblemsBoardLib/Models/DatabaseContext.cs
         public DbSet<User> Users { get; set; }
         /// <summary>
         /// Таблица Работников
         /// </summary>
 >>>>>>> 7ec80ee (Added XML comments):BoardOfDecisionProblems/Models/DatabaseContext.cs
+=======
+>>>>>>> 5820342 (Added Logging Function):BoardOfDecisionProblems/Models/DatabaseContext.cs
         public DbSet<Worker> Workers { get; set; }
         /// <summary>
         /// Таблица Отделов
@@ -44,11 +47,15 @@ namespace ProblemsBoardLib.Models
         public DbSet<Report> Reports { get; set; }
         public DbSet<Admin> Admins { get; set; }
 
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogEvent> LogEvents { get; set; }
+
         /// <summary>
         /// Создание БД, если она не создана
         /// </summary>
         public DatabaseContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

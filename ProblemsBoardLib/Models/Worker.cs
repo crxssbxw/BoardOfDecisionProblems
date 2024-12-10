@@ -57,10 +57,6 @@ namespace ProblemsBoardLib.Models
 
 =======
         /// <summary>
-        /// Пользователи, связанные с работником
-        /// </summary>
-        public ICollection<User>? Users { get; set; }
-        /// <summary>
         /// Ответственные, связанные с работником
         /// </summary>
 >>>>>>> 7ec80ee (Added XML comments):BoardOfDecisionProblems/Models/Worker.cs

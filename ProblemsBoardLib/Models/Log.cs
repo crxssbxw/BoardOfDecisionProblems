@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD:ProblemsBoardLib/Models/Log.cs
 namespace ProblemsBoardLib.Models
+=======
+namespace BoardOfDecisionProblems.Models
+>>>>>>> 5820342 (Added Logging Function):BoardOfDecisionProblems/Models/Log.cs
 {
     public class Log
     {

@@ -1,11 +1,19 @@
+<<<<<<< HEAD:ProblemsBoardLib/Models/LogEvent.cs
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+=======
+﻿using System;
+>>>>>>> 5820342 (Added Logging Function):BoardOfDecisionProblems/Models/LogEvent.cs
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD:ProblemsBoardLib/Models/LogEvent.cs
 namespace ProblemsBoardLib.Models
+=======
+namespace BoardOfDecisionProblems.Models
+>>>>>>> 5820342 (Added Logging Function):BoardOfDecisionProblems/Models/LogEvent.cs
 {
     public class LogEvent
     {
@@ -13,9 +21,22 @@ namespace ProblemsBoardLib.Models
         public string Title { get; set; }
         public DateOnly Date { get; set; }
         public TimeOnly Time { get; set; }
+<<<<<<< HEAD:ProblemsBoardLib/Models/LogEvent.cs
         public string User { get; set; }
         public string Table { get; set; }
         public string Object { get; set; }
         public string Comment { get; set; }
+=======
+        public string? User { get; set; }
+        public string? Table { get; set; }
+        public string? Object { get; set; }
+        public string? Comment { get; set; }
+
+        public LogEvent()
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now);
+            Time = TimeOnly.FromDateTime(DateTime.Now);
+        }
+>>>>>>> 5820342 (Added Logging Function):BoardOfDecisionProblems/Models/LogEvent.cs
     }
 }
