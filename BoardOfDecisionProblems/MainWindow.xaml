@@ -164,9 +164,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="Выполнено за период" Margin="10 0"
+                            <TextBlock Grid.Row="0" Text="Выполнено" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="1" Text="Всего за период" Margin="10 0"
+                            <TextBlock Grid.Row="1" Text="Всего" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
                             <TextBlock Grid.Row="2" Text="Затраченное время" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -175,16 +175,16 @@
 
                             <TextBlock Grid.Column="1" Grid.Row="0"
                                        VerticalAlignment="Center"
-                                       Text="{Binding DecidedByFilter}"/>
+                                       Text="{Binding DecidedStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="1"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AllByFilter}"/>
+                                       Text="{Binding AllStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="2"
                                        VerticalAlignment="Center"
-                                       Text="{Binding TimeByFilter}"/>
+                                       Text="{Binding TimeStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="3"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AVGTimeByFilter}"/>
+                                       Text="{Binding AVGTimeStat, StringFormat={}{0:N4}}"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -235,36 +235,17 @@
                                         DisplayDateEnd="{Binding Today}"
                                         DisplayDateStart="{Binding ElementName=FromDatePicker, Path=SelectedDate}"/>
                                 </DockPanel>
-                                
-                                <ComboBox Grid.Row="1" Margin="10 5" ToolTip="Подразделение"
-                                          ItemsSource="{Binding DepartmentsViewModel.Departments}"
-                                          IsEditable="True" StaysOpenOnEdit="True"
-                                          SelectedItem="{Binding SelectedDepartmentFilter}"
-                                          x:Name="DepartmentBox" SelectionChanged="DepartmentBox_SelectionChanged"/>
-                                
-                                <ComboBox Grid.Row="2" Margin="10 5" ToolTip="Тематика"
-                                          ItemsSource="{Binding ThemesViewModel.Themes}"
-                                          x:Name="ThemesBox" 
-                                          SelectedItem="{Binding SelectedThemeFilter}"
-                                          IsEditable="True" StaysOpenOnEdit="True"/>
-                                
-                                <ComboBox Grid.Row="3" Margin="10 5" ToolTip="Ответственный"
-                                          ItemsSource="{Binding ResponsiblesSD}"
-                                          x:Name="ResponsibleBox" SelectionChanged="DepartmentBox_SelectionChanged"
-                                          SelectedItem="{Binding SelectedResponsibleFilter}"
-                                          IsEditable="True" StaysOpenOnEdit="True"/>
-                                
-                                <DockPanel Margin="10 5" Grid.Row="4">
-                                    <TextBlock Text="Решаются более"/>
-                                    <TextBox Margin="5 0" Width="30"
-                                         x:Name="DecisionTimeBox"  TextChanged="DecisionTimeBox_TextChanged"
-                                         Text="{Binding DecisionDaysInput}"/>
-                                    <TextBlock Text="дней"/>
+
+                                <DockPanel Grid.Row="1" Margin="10 5" HorizontalAlignment="Center">
+                                    <CheckBox IsChecked="{Binding Urgent}" Content="Срочные"/>
                                 </DockPanel>
 
-                                <Button x:Name="FilterAccept" Grid.Row="5"
-                                        Content="Применить" HorizontalAlignment="Center"
-                                        Margin="10 5" Padding="10 0" Command="{Binding AcceptFilter}"/>
+                                <DockPanel Grid.Row="5" HorizontalAlignment="Center" Margin="10 5">
+                                    <Button x:Name="FilterAccept"  Margin="5 0"
+                                        Content="Применить" Command="{Binding AcceptFilter}"/>
+                                    <Button Margin="5 0"
+                                        Content="Сбросить" Command="{Binding ResetFilter}"/>
+                                </DockPanel>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
