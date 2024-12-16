@@ -70,7 +70,7 @@ namespace BoardOfDecisionProblems.Forms
             SuperUser newAdmin = new SuperUser()
             {
                 Login = Login,
-                Password = Password,
+                Password = Encrypt.DataEncryption.EncrtyptString(Password),
             };
             File.Delete("Settings/Admin.json");
             using (FileStream fs = new("Settings/Admin.json", FileMode.CreateNew))

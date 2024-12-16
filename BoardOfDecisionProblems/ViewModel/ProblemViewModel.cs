@@ -349,18 +349,12 @@ namespace BoardOfDecisionProblems.ViewModel
                         newProblem.Responsible = ResponsiblesViewModel.Responsibles.Where
                             (a => a.Department == newProblem.Department && a.IsCurrent == true).FirstOrDefault();
 
-                        if (Math.Abs(newProblem.DateOccurance.Subtract(DateTime.Now).Days) >= 20)
-                        {
-                            newProblem.Status = "Решается оп.";
-                        }
-                        else
-                        {
-                            newProblem.Status = "Решается";
-                        }
+                        newProblem.Status = "Решается";
 
                         //newProblem.Theme.Problems.Add(newProblem);
                         dbContext.Problems.Add(newProblem);
                         dbContext.SaveChanges();
+                        Problems.Add(newProblem);
 
                         LogEvent logEvent = new LogEvent()
                         {
@@ -374,7 +368,6 @@ namespace BoardOfDecisionProblems.ViewModel
                         LogsViewModel.LogEvents.Add(logEvent);
 
                         dbContext.SaveChanges();
-                        Problems.Add(newProblem);
                         OnPropertyChanged(nameof(TotalProblems));
                         OnPropertyChanged(nameof(TotalDecided));
                         OnPropertyChanged(nameof(TotalDeciding));
@@ -403,6 +396,17 @@ namespace BoardOfDecisionProblems.ViewModel
                     else SelectedProblem.Status = "Решено";
                     */
 
+                    LoginForm loginForm = new LoginForm();
+
+                    if (loginForm.ShowDialog() == true)
+                    {
+                        bool LoginCheck = loginForm.Login == SelectedProblem.Responsible.Login;
+                        bool PasswordCheck = Encrypt.DataEncryption.EncrtyptString(loginForm.Password) == SelectedProblem.Responsible.Password;
+                        if (!LoginCheck) { MessageBox.Show("Неверный логин"); return; }
+                        if (!PasswordCheck) { MessageBox.Show("Неверный пароль"); return; }
+                    }
+                    else return;
+
                     Problem temp = new();
                     temp = SelectedProblem;
                     temp.DateElimination = DateTime.Now;
@@ -415,16 +419,8 @@ namespace BoardOfDecisionProblems.ViewModel
 
                     if(decisionForm.ShowDialog() == true)
                     {
-                        if (temp.DecisionTime >= 20)
-                        {
-                            temp.Status = "Решено оп.";
-                            dbContext.Problems.Entry(SelectedProblem).CurrentValues.SetValues(temp);
-                        }
-                        else
-                        {
-                            temp.Status = "Решено";
-                            dbContext.Problems.Entry(SelectedProblem).CurrentValues.SetValues(temp);
-                        }
+                        temp.Status = "Решено";
+                        dbContext.Problems.Entry(SelectedProblem).CurrentValues.SetValues(temp);
                         dbContext.SaveChanges();
 
                         LogEvent logEvent = new LogEvent()

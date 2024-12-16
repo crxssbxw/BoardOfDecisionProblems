@@ -45,7 +45,7 @@ namespace BoardOfDecisionProblems
             {
                 using (FileStream fs = new("Settings/Admin.json", FileMode.CreateNew))
                 {
-                    Admin = new() { Login = "admin", Password = "admin" };
+                    Admin = new() { Login = "admin", Password = Encrypt.DataEncryption.EncrtyptString("admin") };
                     await JsonSerializer.SerializeAsync(fs, Admin);
                 }
             }
