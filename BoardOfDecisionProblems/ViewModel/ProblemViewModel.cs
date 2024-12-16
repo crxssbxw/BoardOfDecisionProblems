@@ -119,6 +119,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private DateTime selectedDateFrom = DateTime.Now;
+        /// <summary>
+        /// Фильтрация: дата "С"
+        /// </summary>
         public DateTime SelectedDateFrom
         {
             get => selectedDateFrom;
@@ -130,6 +133,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private DateTime selectedDateTo = DateTime.Now;
+        /// <summary>
+        /// Фильтрация: дата "По"
+        /// </summary>
         public DateTime SelectedDateTo
         {
             get => selectedDateTo;
@@ -196,6 +202,17 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
+        private bool urgent;
+        public bool Urgent
+        {
+            get => urgent;
+            set
+            {
+                urgent = value;
+                OnPropertyChanged(nameof(Urgent));
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -211,37 +228,31 @@ namespace BoardOfDecisionProblems.ViewModel
         /// </summary>
         public int? TotalDeciding => Problems.Where(a => a.Status == "Решается" || a.Status == "Решается оп.").Count();
 
-        public int? DecidedByFilter
+        public int? DecidedStat
         {
             get
             {
                 return Problems
-                    .Where(a => a.Status == "Решено" && a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateOccurance <= SelectedDateTo.Date)
+                    .Where(a => a.Status == "Решено")
                     .Count();
             }
         }
 
-        public int? AllByFilter
+        public int? AllStat
         {
             get
             {
                 return Problems
-                    .Where(a => a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateOccurance <= SelectedDateTo.Date)
                     .Count();
             }
         }
 
-        public int? TimeByFilter
+        public int? TimeStat
         {
             get
             {
-                List<Problem> filtered = new();
-                foreach(var problem in Problems.Where(a => FilterLogic(a)).ToList())
-                {
-                    filtered.Add(problem);
-                }
                 int? time = 0;
-                foreach(var problem in filtered)
+                foreach(var problem in Problems)
                 {
                     time += problem.DecisionTime;
                 }
@@ -249,21 +260,11 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
-        public float? AVGTimeByFilter
+        public float? AVGTimeStat
         {
             get
             {
-                List<Problem> filtered = new();
-                foreach (var problem in Problems.Where(a => FilterLogic(a)).ToList())
-                {
-                    filtered.Add(problem);
-                }
-                int? time = 0;
-                foreach (var problem in filtered)
-                {
-                    time += problem.DecisionTime;
-                }
-                return (float)(time / filtered.Count);
+                return (float)TimeStat / (float)AllStat;
             }
         }
 
@@ -371,6 +372,10 @@ namespace BoardOfDecisionProblems.ViewModel
                         OnPropertyChanged(nameof(TotalProblems));
                         OnPropertyChanged(nameof(TotalDecided));
                         OnPropertyChanged(nameof(TotalDeciding));
+                        OnPropertyChanged(nameof(AllStat));
+                        OnPropertyChanged(nameof(DecidedStat));
+                        OnPropertyChanged(nameof(TimeStat));
+                        OnPropertyChanged(nameof(AVGTimeStat));
                     }
                 },
                 obj => true));
@@ -446,6 +451,10 @@ namespace BoardOfDecisionProblems.ViewModel
                     OnPropertyChanged(nameof(TotalProblems));
                     OnPropertyChanged(nameof(TotalDecided));
                     OnPropertyChanged(nameof(TotalDeciding));
+                    OnPropertyChanged(nameof(AllStat));
+                    OnPropertyChanged(nameof(DecidedStat));
+                    OnPropertyChanged(nameof(TimeStat));
+                    OnPropertyChanged(nameof(AVGTimeStat));
 
                     CollectionView.Refresh();
                 },
@@ -575,21 +584,6 @@ namespace BoardOfDecisionProblems.ViewModel
             }
         }
 
-        /// <summary>
-        /// Логика фильтра
-        /// </summary>
-        /// <param name="item">Проблема</param>
-        /// <returns>Логическое значение фильтрации</returns>
-        protected bool FilterLogic(object item)
-        {
-            Problem problem = item as Problem;
-            return  problem.DateOccurance.Date >= SelectedDateFrom.Date && problem.DateOccurance.Date <= SelectedDateTo.Date
-                && Problems.Any(a => problem.Department == SelectedDepartmentFilter)
-                && Problems.Any(a => problem.Responsible == SelectedResponsibleFilter)
-                && Problems.Any(a => problem.Theme == SelectedThemeFilter)
-                && problem.DecisionTime >= DecisionDaysInput;
-        }
-
         private RelayCommand acceptFilter;
         /// <summary>
         /// Команда применения фильтра
@@ -600,16 +594,23 @@ namespace BoardOfDecisionProblems.ViewModel
             {
                 return acceptFilter ?? (acceptFilter = new(obj => 
                 {
-                    CollectionView.Filter = (a) => FilterLogic(a);
-                    CollectionView.Refresh();
-
-                    OnPropertyChanged(nameof(DecidedByFilter));
-                    OnPropertyChanged(nameof(AllByFilter));
-                    OnPropertyChanged(nameof(TimeByFilter));
-                    OnPropertyChanged(nameof(AVGTimeByFilter));
+                    CollectionView.Filter = (b) =>
+                    {
+                        var a = (Problem)b;
+                        return a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateElimination <= SelectedDateTo.Date;
+                    };
                 },
                 obj => true));
             } 
+        }
+
+        private RelayCommand resetFilter;
+        public RelayCommand ResetFilter
+        {
+            get
+            {
+                CollectionView.Filter = (a) => true;
+            }
         }
 
         private RelayCommand openLogger;
