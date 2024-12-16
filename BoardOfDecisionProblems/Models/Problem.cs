@@ -66,6 +66,19 @@ namespace BoardOfDecisionProblems.Models
         }
 
         /// <summary>
+        /// Сколько осталось времени на решение
+        /// </summary>
+        [NotMapped]
+        public int? DaysLeft
+        {
+            get
+            {
+                if (DecisionTime >= Theme.DaysToDecide) return 0;
+                else return Theme.DaysToDecide - DecisionTime;
+            }
+        }
+
+        /// <summary>
         /// Отображаемый статус (в БД не записывается)
         /// </summary>
         [NotMapped]

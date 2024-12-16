@@ -1,4 +1,5 @@
-﻿using BoardOfDecisionProblems.ViewModel;
+﻿using BoardOfDecisionProblems.Forms;
+using BoardOfDecisionProblems.ViewModel;
 using BoardOfDecisionProblems.Windows;
 using System.Text;
 using System.Windows;
@@ -77,6 +78,20 @@ namespace BoardOfDecisionProblems
             ThemesView themesView = new ThemesView();
             themesView.DataContext = ProblemViewModel.ThemesViewModel;
             themesView.Show();
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ProblemViewModel.IsAdmin == true)
+            {
+                MessageBox.Show("Вы уже авторизованы как администратор", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            if(adminLoginForm.ShowDialog() == true)
+            {
+                ProblemViewModel.IsAdmin = true;
+            }
         }
     }
 }

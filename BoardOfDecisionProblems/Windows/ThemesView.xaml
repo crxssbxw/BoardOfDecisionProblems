@@ -24,6 +24,7 @@
                   IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тема" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Дней на решение" Binding="{Binding DaysToDecide}"/>
             </DataGrid.Columns>
         </DataGrid>
 

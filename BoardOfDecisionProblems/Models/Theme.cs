@@ -25,6 +25,11 @@ namespace BoardOfDecisionProblems.Models
         public string? Description { get; set; }
 
         /// <summary>
+        /// Количество дней на решение проблемы этой темы
+        /// </summary>
+        public int DaysToDecide { get; set; }
+
+        /// <summary>
         /// Проблемы, связанные с этой темой
         /// </summary>
         public ICollection<Problem> Problems { get; set; }

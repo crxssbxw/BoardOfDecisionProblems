@@ -298,6 +298,17 @@ namespace BoardOfDecisionProblems.ViewModel
             ViewSource.Source = Problems;
         }
 
+        private bool _isAdmin;
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged(nameof(IsAdmin));
+            }
+        }
+
         public Problem SelectedProblem
         {
             get => selectedProblem;
@@ -629,6 +640,19 @@ namespace BoardOfDecisionProblems.ViewModel
                     ReportsView reports = new();
                     reports.DataContext = ReportsViewModel;
                     reports.Show();
+                }, obj => true));
+            }
+        }
+
+        private RelayCommand changeAdminData;
+        public RelayCommand ChangeAdminData
+        {
+            get
+            {
+                return changeAdminData ?? (changeAdminData = new(obj =>
+                {
+                    AdminChange adminChange = new();
+                    adminChange.Show();
                 }, obj => true));
             }
         }

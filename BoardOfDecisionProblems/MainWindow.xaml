@@ -294,50 +294,33 @@
                             </Style>
                         </Grid.Resources>
                         
-                        <Button 
-                            IsEnabled="{Binding IsAdmin}"
-                            x:Name="DepartmentsButton"
-                            Content="Подразделения / Участки" 
-                            Grid.ColumnSpan="2"
-                            Grid.Row="0"
-                            Click="DepartmentsButton_Click"/>
-                        <Button 
-                            IsEnabled="{Binding IsAdmin}"
-                            Content="Ответственные" 
-                            Grid.ColumnSpan="2"
-                            Grid.Row="1"
-                            x:Name="ResponsiblesButton"
-                            Click="ResponsiblesButton_Click"/>
-                        <Button 
-                            Content="Справочник тем"
+                        <Button
+                            Content="Журнал отчетов"
                             Grid.ColumnSpan="2"
                             Grid.Row="2"
-                            x:Name="ThemesButton"
-                            Click="ThemesButton_Click"/>
-                        <Button
-                            IsEnabled="{Binding IsAdmin}"
-                            x:Name="WorkersButton"
-                            Click="WorkersButton_Click"
-                            Content="Рабочие"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="3"/>
+                            Command="{Binding OpenReports}"/>
                         <Button 
                             Background="#B9E0A5"
                             Content="Новая проблема" 
                             Grid.Row="4"
                             Command="{Binding NewProblem}"/>
                         <Button 
+                            x:Name="AdminButton"
                             Background="#EA6B66"
-                            Content="Дополнительно" 
-                            Grid.Row="4" 
-                            Grid.Column="1">
+                            Content="Администратор" 
+                            Grid.Row="3"
+                            Click="AdminButton_Click">
                             <Button.ToolTip>
                                 <ToolTip>Открыть контекстное меню</ToolTip>
                             </Button.ToolTip>
                             <Button.ContextMenu>
-                                <ContextMenu>
+                                <ContextMenu IsEnabled="{Binding IsAdmin}">
                                     <MenuItem Header="Журнал событий" Command="{Binding OpenLogger}"/>
-                                    <MenuItem Header="Журнал отчетов" Command="{Binding OpenReports}"/>
+                                    <MenuItem Header="Рабочие" Click="WorkersButton_Click"/>
+                                    <MenuItem Header="Ответственные" Click="ResponsiblesButton_Click"/>
+                                    <MenuItem Header="Подразделения/Участки" Click="DepartmentsButton_Click"/>
+                                    <MenuItem Header="Темы" Click="ThemesButton_Click"/>
+                                    <MenuItem Header="Сменить данные администратора" Command="{Binding ChangeAdminData}"/>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
@@ -369,15 +352,23 @@
                             <DataTrigger Binding="{Binding Status}" Value="Решено">
                                 <Setter Property="Background" Value="#B9E0A5"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Status}" Value="Решается оп.">
-                                <Setter Property="Background" Value="#EA6B66"/>
-                            </DataTrigger>
                             <DataTrigger Binding="{Binding Status}" Value="Решается">
                                 <Setter Property="Background" Value="#FFE599"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Status}" Value="Решено оп.">
-                                <Setter Property="Background" Value="#A680B8"/>
-                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Status}" Value="Решается"/>
+                                    <Condition Binding="{Binding DaysLeft}" Value="0"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background" Value="#EA6B66"/>
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Status}" Value="Решается"/>
+                                    <Condition Binding="{Binding DaysLeft}" Value="1"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background" Value="#EA6B66"/>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </DataGrid.Resources>
@@ -406,6 +397,10 @@
                     <DataGridTextColumn
                         Binding="{Binding DecisionTime}"
                         Header="Время устранения"
+                        Width="0.5*"/>
+                    <DataGridTextColumn
+                        Binding="{Binding DaysLeft}"
+                        Header="Осталось дней"
                         Width="0.5*"/>
                 </DataGrid.Columns>
 
