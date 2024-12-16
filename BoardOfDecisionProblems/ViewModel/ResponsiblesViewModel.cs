@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
@@ -98,18 +99,23 @@ namespace BoardOfDecisionProblems.ViewModel
 
                             var prevResponsible = Responsibles.Where(a => a.Department == responsible.Department
                                 && a.IsCurrent == true).FirstOrDefault();
-                            if(prevResponsible != null)
-                            { 
-                                prevResponsible.IsCurrent = false;
 
-                                var dbpr = dbContext.Responsibles.Where(a => a.Department == responsible.Department 
-                                    && a.IsCurrent == true).FirstOrDefault();
-                                var temp = dbpr;
-                                temp.IsCurrent = false;
-                                dbContext.Responsibles.Entry(dbpr).CurrentValues.SetValues(temp);
-                                dbContext.SaveChanges();
-                                logEvent.Title = $"Переназначение ответственных: Id:{prevResponsible.ResponsibleId} на {responsible.ResponsibleId}";
+                            if (Responsibles.Any(a => a.Worker == responsible.Worker && responsible.IsCurrent == true))
+                            {
+                                MessageBox.Show("Ответственный уже назначен!");
+                                return;
                             }
+
+                            string GenLogin, GenPass;
+                            do
+                            {
+                                GenLogin = Encrypt.DataEncryption.RandomLoginString();
+                                GenPass = Encrypt.DataEncryption.RandomPasswordString();
+                            }
+                            while (dbContext.Responsibles.Any(a => a.Login == GenLogin));
+
+                            responsible.Login = GenLogin;
+                            responsible.Password = Encrypt.DataEncryption.EncrtyptString(GenPass);
 
                             if (Responsibles.Any(a => a.Worker == responsible.Worker))
                             {
@@ -123,6 +129,24 @@ namespace BoardOfDecisionProblems.ViewModel
                                 dbContext.SaveChanges();
                                 logEvent.Title = $"Переназначение ответственных: Id:{currentResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
+                            if (prevResponsible != null)
+                            { 
+                                prevResponsible.IsCurrent = false;
+                                prevResponsible.Login = null;
+                                prevResponsible.Password = null;
+
+                                var dbpr = dbContext.Responsibles.Where(a => a.Department == responsible.Department 
+                                    && a.IsCurrent == true).FirstOrDefault();
+                                var temp = dbpr;
+                                temp.IsCurrent = false;
+                                temp.Login = null;
+                                temp.Password = null;
+
+                                dbContext.Responsibles.Entry(dbpr).CurrentValues.SetValues(temp);
+                                dbContext.SaveChanges();
+                                logEvent.Title = $"Переназначение ответственных: Id:{prevResponsible.ResponsibleId} на {responsible.ResponsibleId}";
+                            }
+
                             else
                             {
                                 dbContext.Responsibles.Add(responsible);
@@ -137,7 +161,9 @@ namespace BoardOfDecisionProblems.ViewModel
                             dbContext.Add(logEvent);
                             ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
 
-                            dbContext.SaveChanges(); 
+                            dbContext.SaveChanges();
+
+                            MessageBox.Show($"Логин: {GenLogin}\nПароль: {GenPass}\nОбязательно запишите эти данные для входа!", "Данные для входа ответственного!");
                         }
                         CollectionView.Refresh();
                     }

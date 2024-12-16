@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BoardOfDecisionProblems.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -17,16 +19,16 @@ using System.Windows.Shapes;
 namespace BoardOfDecisionProblems.Forms
 {
     /// <summary>
-    /// Логика взаимодействия для AdminLoginForm.xaml
+    /// Логика взаимодействия для LoginForm.xaml
     /// </summary>
-    public partial class AdminLoginForm : Window, INotifyPropertyChanged
+    public partial class LoginForm : Window, INotifyPropertyChanged
     {
         private string _login;
         public string Login
         {
             get => _login;
-            set 
-            { 
+            set
+            {
                 _login = value;
                 OnPropertyChanged(nameof(Login));
             }
@@ -39,11 +41,11 @@ namespace BoardOfDecisionProblems.Forms
         }
 
         private string warningMessage = "";
-        public string WarningMessage 
-        { 
-            get => warningMessage; 
-            set 
-            { 
+        public string WarningMessage
+        {
+            get => warningMessage;
+            set
+            {
                 warningMessage = value;
                 OnPropertyChanged(nameof(WarningMessage));
             }
@@ -55,7 +57,7 @@ namespace BoardOfDecisionProblems.Forms
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public AdminLoginForm()
+        public LoginForm()
         {
             InitializeComponent();
             DataContext = this;
@@ -63,16 +65,7 @@ namespace BoardOfDecisionProblems.Forms
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
-            if (Login == App.Admin.Login)
-            {
-                if (Encrypt.DataEncryption.EncrtyptString(Password) == App.Admin.Password)
-                {
-                    DialogResult = true;
-                    return;
-                }
-                else WarningMessage = "Неверный пароль";
-            }
-            else WarningMessage = "Неверный логин";
+            DialogResult = true;
         }
     }
 }
