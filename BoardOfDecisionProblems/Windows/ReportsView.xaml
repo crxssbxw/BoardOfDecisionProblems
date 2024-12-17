@@ -1,0 +1,56 @@
+﻿<Window x:Class="BoardOfDecisionProblems.Windows.ReportsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoardOfDecisionProblems.ViewModel"
+        mc:Ignorable="d"
+        Title="Отчеты" Height="450" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.8*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid
+            Margin="5"
+            ItemsSource="{Binding Reports}"
+            SelectedItem="{Binding SelectedReport}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding ReportId}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1">
+                <Button Content="Скачать отчет" Command="{Binding Save}"/>
+                <Button Content="Создать отчет по Ответственному" Command="{Binding ResponsibleReport}" IsEnabled="False"/>
+                <DockPanel IsEnabled="False">
+                    <CheckBox IsChecked="{Binding InRange}" Content="В диапазоне:" VerticalAlignment="Center" Margin="10 0"/>
+                    <DatePicker SelectedDate="{Binding RangeStart}"/>
+                    <DatePicker SelectedDate="{Binding RangeEnd}"/>
+                </DockPanel>
+                <Button Content="Создать отчет по Проблеме"
+                        Command="{Binding ProblemReport}"/>
+                <DockPanel>
+                    <TextBlock Text="Выберите проблему. ID:"/>
+                    <ComboBox ItemsSource="{Binding Problems}"
+                            SelectedItem="{Binding SelectedProblem}"/>
+                </DockPanel>
+                <Button Content="Создать отчет по Статистике"
+                        Command="{Binding StatsReport}" IsEnabled="False"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

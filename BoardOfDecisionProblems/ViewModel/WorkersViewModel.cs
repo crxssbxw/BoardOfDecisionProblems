@@ -9,12 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Работников
+    /// </summary>
     public class WorkersViewModel : BaseViewModel
     {
         private ObservableCollection<Worker> workers = new();
+        /// <summary>
+        /// Коллекция работников
+        /// </summary>
         public ObservableCollection<Worker> Workers
         {
             get => workers;
@@ -26,6 +33,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Worker selectedWorker;
+        /// <summary>
+        /// Объект выбранного работника
+        /// </summary>
         public Worker SelectedWorker
         {
             get => selectedWorker;
@@ -51,6 +61,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления работника
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -67,6 +80,19 @@ namespace BoardOfDecisionProblems.ViewModel
                     {
                         dbContext.Workers.Add(worker);
                         dbContext.SaveChanges();
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление работника №{worker.WorkerId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Работник {worker.WorkerId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
+                        dbContext.SaveChanges();
                         Workers.Add(worker);
                     }
                 },
@@ -75,6 +101,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления работника
+        /// </summary>
         public RelayCommand Delete
         {
             get
@@ -88,6 +117,19 @@ namespace BoardOfDecisionProblems.ViewModel
                     if (result == MessageBoxResult.Yes)
                     {
                         dbContext.Workers.Remove(SelectedWorker);
+                        dbContext.SaveChanges();
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Удаление работника №{worker.WorkerId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Работник {worker.WorkerId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         Workers.Remove(worker);
                     }

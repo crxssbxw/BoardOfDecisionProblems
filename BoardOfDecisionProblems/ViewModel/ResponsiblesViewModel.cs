@@ -8,12 +8,20 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Ответственных
+    /// </summary>
     public class ResponsiblesViewModel : BaseViewModel
     {
         private ObservableCollection<Responsible> responsibles = new();
+        
+        /// <summary>
+        /// Коллекция ответственных
+        /// </summary>
         public ObservableCollection<Responsible> Responsibles
         {
             get => responsibles;
@@ -25,6 +33,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Responsible selectedResponsibility;
+        /// <summary>
+        /// Выбранный ответственный в таблице
+        /// </summary>
         public Responsible SelectedResponsibility
         {
             get => selectedResponsibility;
@@ -48,15 +59,15 @@ namespace BoardOfDecisionProblems.ViewModel
 
         #region Commands
 
-        /*
-         Команда set должна отвечать за переназначение работников на участке, делая их ответственными или снимая с них эту ответственность.
-        Если переназначается существующий работник, ему устанавливается флаг IsCurrent, обозначающий, что в текущий момент он ответственный на этом участке.
-        При этом у предыдущего назначенного этот флаг снимается.
-        Если добавляется новый ответственный, добавляется новая запись с ответственностью, устанавливается флаг IsCurrent, у предыдущего - снимается.
-        Реализовано это для того, чтобы была возможность просматривать ответственных за все время.
-         */
-
         private RelayCommand set;
+        /// <summary>
+        /// Команда переназначения работника на участке.
+        /// Команда set должна отвечать за переназначение работников на участке, делая их ответственными или снимая с них эту ответственность.
+        ///Если переназначается существующий работник, ему устанавливается флаг IsCurrent, обозначающий, что в текущий момент он ответственный на этом участке.
+        ///При этом у предыдущего назначенного этот флаг снимается.
+        ///Если добавляется новый ответственный, добавляется новая запись с ответственностью, устанавливается флаг IsCurrent, у предыдущего - снимается.
+        ///Реализовано это для того, чтобы была возможность просматривать ответственных за все время.
+        /// </summary>
         public RelayCommand Set
         {
             get
@@ -75,23 +86,36 @@ namespace BoardOfDecisionProblems.ViewModel
                         set.WorkersBox.ItemsSource = ProblemViewModel.WorkersViewModel.Workers;
                         set.DepartmentsBox.ItemsSource = ProblemViewModel.DepartmentsViewModel.Departments;
 
-                        if(set.ShowDialog() == true)
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            User = "Admin"
+                        };
+
+                        if (set.ShowDialog() == true)
                         {
                             responsible.IsCurrent = true;
 
                             var prevResponsible = Responsibles.Where(a => a.Department == responsible.Department
                                 && a.IsCurrent == true).FirstOrDefault();
-                            if(prevResponsible != null)
-                            { 
-                                prevResponsible.IsCurrent = false;
 
-                                var dbpr = dbContext.Responsibles.Where(a => a.Department == responsible.Department 
-                                    && a.IsCurrent == true).FirstOrDefault();
-                                var temp = dbpr;
-                                temp.IsCurrent = false;
-                                dbContext.Responsibles.Entry(dbpr).CurrentValues.SetValues(temp);
-                                dbContext.SaveChanges();
+                            if (Responsibles.Any(a => a.Worker == responsible.Worker && responsible.IsCurrent == true))
+                            {
+                                MessageBox.Show("Ответственный уже назначен!");
+                                return;
                             }
+
+                            string GenLogin, GenPass;
+                            do
+                            {
+                                GenLogin = Encrypt.DataEncryption.RandomLoginString();
+                                GenPass = Encrypt.DataEncryption.RandomPasswordString();
+                            }
+                            while (dbContext.Responsibles.Any(a => a.Login == GenLogin));
+
+                            responsible.Login = GenLogin;
+                            responsible.Password = Encrypt.DataEncryption.EncrtyptString(GenPass);
 
                             if (Responsibles.Any(a => a.Worker == responsible.Worker))
                             {
@@ -103,13 +127,43 @@ namespace BoardOfDecisionProblems.ViewModel
                                 temp.IsCurrent = true;
                                 dbContext.Responsibles.Entry(dbcr).CurrentValues.SetValues(temp);
                                 dbContext.SaveChanges();
+                                logEvent.Title = $"Переназначение ответственных: Id:{currentResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
                             else
                             {
                                 dbContext.Responsibles.Add(responsible);
                                 dbContext.SaveChanges();
                                 Responsibles.Add(responsible);
+                                logEvent.Title = $"Добавление ответственного Id:{responsible.ResponsibleId}";
                             }
+                            if (prevResponsible != null)
+                            { 
+                                prevResponsible.IsCurrent = false;
+                                prevResponsible.Login = null;
+                                prevResponsible.Password = null;
+
+                                var dbpr = dbContext.Responsibles.Where(a => a.Department == responsible.Department 
+                                    && a.IsCurrent == true).FirstOrDefault();
+                                var temp = dbpr;
+                                temp.IsCurrent = false;
+                                temp.Login = null;
+                                temp.Password = null;
+
+                                dbContext.Responsibles.Entry(dbpr).CurrentValues.SetValues(temp);
+                                dbContext.SaveChanges();
+                                logEvent.Title = $"Переназначение ответственных: Id:{prevResponsible.ResponsibleId} на {responsible.ResponsibleId}";
+                            }
+
+                            dbContext.SaveChanges();
+
+                            logEvent.Object = $"Responsibles";
+                            logEvent.Table = $"Responsibles";
+                            dbContext.Add(logEvent);
+                            ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
+                            dbContext.SaveChanges();
+
+                            MessageBox.Show($"Логин: {GenLogin}\nПароль: {GenPass}\nОбязательно запишите эти данные для входа!", "Данные для входа ответственного!");
                         }
                         CollectionView.Refresh();
                     }

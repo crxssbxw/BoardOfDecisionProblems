@@ -164,9 +164,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="Выполнено за период" Margin="10 0"
+                            <TextBlock Grid.Row="0" Text="Выполнено" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="1" Text="Всего за период" Margin="10 0"
+                            <TextBlock Grid.Row="1" Text="Всего" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
                             <TextBlock Grid.Row="2" Text="Затраченное время" Margin="10 0"
                                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -175,16 +175,16 @@
 
                             <TextBlock Grid.Column="1" Grid.Row="0"
                                        VerticalAlignment="Center"
-                                       Text="{Binding DecidedByFilter}"/>
+                                       Text="{Binding DecidedStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="1"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AllByFilter}"/>
+                                       Text="{Binding AllStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="2"
                                        VerticalAlignment="Center"
-                                       Text="{Binding TimeByFilter}"/>
+                                       Text="{Binding TimeStat}"/>
                             <TextBlock Grid.Column="1" Grid.Row="3"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AVGTimeByFilter}"/>
+                                       Text="{Binding AVGTimeStat, StringFormat={}{0:N4}}"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -235,36 +235,17 @@
                                         DisplayDateEnd="{Binding Today}"
                                         DisplayDateStart="{Binding ElementName=FromDatePicker, Path=SelectedDate}"/>
                                 </DockPanel>
-                                
-                                <ComboBox Grid.Row="1" Margin="10 5" ToolTip="Подразделение"
-                                          ItemsSource="{Binding DepartmentsViewModel.Departments}"
-                                          IsEditable="True" StaysOpenOnEdit="True"
-                                          SelectedItem="{Binding SelectedDepartmentFilter}"
-                                          x:Name="DepartmentBox" SelectionChanged="DepartmentBox_SelectionChanged"/>
-                                
-                                <ComboBox Grid.Row="2" Margin="10 5" ToolTip="Тематика"
-                                          ItemsSource="{Binding ThemesViewModel.Themes}"
-                                          x:Name="ThemesBox" 
-                                          SelectedItem="{Binding SelectedThemeFilter}"
-                                          IsEditable="True" StaysOpenOnEdit="True"/>
-                                
-                                <ComboBox Grid.Row="3" Margin="10 5" ToolTip="Ответственный"
-                                          ItemsSource="{Binding ResponsiblesSD}"
-                                          x:Name="ResponsibleBox" SelectionChanged="DepartmentBox_SelectionChanged"
-                                          SelectedItem="{Binding SelectedResponsibleFilter}"
-                                          IsEditable="True" StaysOpenOnEdit="True"/>
-                                
-                                <DockPanel Margin="10 5" Grid.Row="4">
-                                    <TextBlock Text="Решаются более"/>
-                                    <TextBox Margin="5 0" Width="30"
-                                         x:Name="DecisionTimeBox"  TextChanged="DecisionTimeBox_TextChanged"
-                                         Text="{Binding DecisionDaysInput}"/>
-                                    <TextBlock Text="дней"/>
+
+                                <DockPanel Grid.Row="1" Margin="10 5" HorizontalAlignment="Center">
+                                    <CheckBox IsChecked="{Binding Urgent}" Content="Срочные"/>
                                 </DockPanel>
 
-                                <Button x:Name="FilterAccept" Grid.Row="5"
-                                        Content="Применить" HorizontalAlignment="Center"
-                                        Margin="10 5" Padding="10 0" Command="{Binding AcceptFilter}"/>
+                                <DockPanel Grid.Row="5" HorizontalAlignment="Center" Margin="10 5">
+                                    <Button x:Name="FilterAccept"  Margin="5 0"
+                                        Content="Применить" Command="{Binding AcceptFilter}"/>
+                                    <Button Margin="5 0"
+                                        Content="Сбросить" Command="{Binding ResetFilter}"/>
+                                </DockPanel>
                             </Grid>
                         </ScrollViewer>
                     </Grid>
@@ -294,51 +275,33 @@
                             </Style>
                         </Grid.Resources>
                         
-                        <Button 
-                            IsEnabled="{Binding IsAdmin}"
-                            x:Name="DepartmentsButton"
-                            Content="Подразделения / Участки" 
-                            Grid.ColumnSpan="2"
-                            Grid.Row="0"
-                            Click="DepartmentsButton_Click"/>
-                        <Button 
-                            IsEnabled="{Binding IsAdmin}"
-                            Content="Ответственные" 
-                            Grid.ColumnSpan="2"
-                            Grid.Row="1"
-                            x:Name="ResponsiblesButton"
-                            Click="ResponsiblesButton_Click"/>
-                        <Button 
-                            Content="Справочник тем"
+                        <Button
+                            Content="Журнал отчетов"
                             Grid.ColumnSpan="2"
                             Grid.Row="2"
-                            x:Name="ThemesButton"
-                            Click="ThemesButton_Click"/>
-                        <Button
-                            IsEnabled="{Binding IsAdmin}"
-                            x:Name="WorkersButton"
-                            Click="WorkersButton_Click"
-                            Content="Рабочие"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="3"/>
+                            Command="{Binding OpenReports}"/>
                         <Button 
                             Background="#B9E0A5"
                             Content="Новая проблема" 
                             Grid.Row="4"
                             Command="{Binding NewProblem}"/>
                         <Button 
+                            x:Name="AdminButton"
                             Background="#EA6B66"
-                            Content="Пользователь" 
-                            Grid.Row="4" 
-                            Grid.Column="1">
+                            Content="Администратор" 
+                            Grid.Row="3"
+                            Click="AdminButton_Click">
                             <Button.ToolTip>
                                 <ToolTip>Открыть контекстное меню</ToolTip>
                             </Button.ToolTip>
                             <Button.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Выход" x:Name="LogoutBtn"
-                                              Click="LogoutBtn_Click"/>
-                                    <MenuItem Header="Сменить пароль" x:Name="ChangePasswordBtn"/>
+                                <ContextMenu IsEnabled="{Binding IsAdmin}">
+                                    <MenuItem Header="Журнал событий" Command="{Binding OpenLogger}"/>
+                                    <MenuItem Header="Рабочие" Click="WorkersButton_Click"/>
+                                    <MenuItem Header="Ответственные" Click="ResponsiblesButton_Click"/>
+                                    <MenuItem Header="Подразделения/Участки" Click="DepartmentsButton_Click"/>
+                                    <MenuItem Header="Темы" Click="ThemesButton_Click"/>
+                                    <MenuItem Header="Сменить данные администратора" Command="{Binding ChangeAdminData}"/>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
@@ -370,15 +333,23 @@
                             <DataTrigger Binding="{Binding Status}" Value="Решено">
                                 <Setter Property="Background" Value="#B9E0A5"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Status}" Value="Решается оп.">
-                                <Setter Property="Background" Value="#EA6B66"/>
-                            </DataTrigger>
                             <DataTrigger Binding="{Binding Status}" Value="Решается">
                                 <Setter Property="Background" Value="#FFE599"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Status}" Value="Решено оп.">
-                                <Setter Property="Background" Value="#A680B8"/>
-                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Status}" Value="Решается"/>
+                                    <Condition Binding="{Binding DaysLeft}" Value="0"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background" Value="#EA6B66"/>
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Status}" Value="Решается"/>
+                                    <Condition Binding="{Binding DaysLeft}" Value="1"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background" Value="#EA6B66"/>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </DataGrid.Resources>
@@ -407,6 +378,10 @@
                     <DataGridTextColumn
                         Binding="{Binding DecisionTime}"
                         Header="Время устранения"
+                        Width="0.5*"/>
+                    <DataGridTextColumn
+                        Binding="{Binding DaysLeft}"
+                        Header="Осталось дней"
                         Width="0.5*"/>
                 </DataGrid.Columns>
 

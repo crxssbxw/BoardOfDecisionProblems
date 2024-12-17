@@ -12,8 +12,14 @@ using System.Windows;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Отделов
+    /// </summary>
     public class DepartmentsViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Объект выбранного отдела в таблице
+        /// </summary>
         private Department selectedDepartment;
         public Department SelectedDepartment
         {
@@ -24,7 +30,9 @@ namespace BoardOfDecisionProblems.ViewModel
                 OnPropertyChanged(nameof(SelectedDepartment));
             }
         }
-
+        /// <summary>
+        /// Коллекция отделов
+        /// </summary>
         private ObservableCollection<Department> departments = new();
         public ObservableCollection<Department> Departments
         {
@@ -50,6 +58,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления отдела
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -65,7 +76,20 @@ namespace BoardOfDecisionProblems.ViewModel
                     {
                         dbContext.Add(department);
                         dbContext.SaveChanges();
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Создание отдела Id:{department.DepartmentId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Отдел Id:{department.DepartmentId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         Departments.Add(department);
+                        dbContext.SaveChanges();
                     }
                 },
                 obj => true));
@@ -73,6 +97,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления отдела
+        /// </summary>
         public RelayCommand Delete
         {
             get
@@ -83,6 +110,19 @@ namespace BoardOfDecisionProblems.ViewModel
                     if (result == MessageBoxResult.Yes)
                     {
                         dbContext.Remove(SelectedDepartment);
+                        dbContext.SaveChanges();
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Удаление отдела №{SelectedDepartment.DepartmentId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Отдел №{SelectedDepartment.DepartmentId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
                         dbContext.SaveChanges();
                         Departments.Remove(SelectedDepartment);
                     }

@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace BoardOfDecisionProblems.Commands
 {
+    /// <summary>
+    /// Логика команд через интерфейс ICommand
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private Action<object> execute;

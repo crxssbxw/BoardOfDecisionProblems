@@ -9,12 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Представление модели Тем
+    /// </summary>
     public class ThemesViewModel : BaseViewModel
     {
         private ObservableCollection<Theme> themes = new();
+        /// <summary>
+        /// Коллекция Тем
+        /// </summary>
         public ObservableCollection<Theme> Themes
         {
             get => themes;
@@ -26,6 +33,9 @@ namespace BoardOfDecisionProblems.ViewModel
         }
 
         private Theme selectedTheme = new();
+        /// <summary>
+        /// Объект выбранной Темы в таблице
+        /// </summary>
         public Theme SelectedTheme
         {
             get => selectedTheme;
@@ -49,6 +59,9 @@ namespace BoardOfDecisionProblems.ViewModel
         #region Commands
 
         private RelayCommand add;
+        /// <summary>
+        /// Команда добавления темы
+        /// </summary>
         public RelayCommand Add
         {
             get
@@ -64,13 +77,29 @@ namespace BoardOfDecisionProblems.ViewModel
                         dbContext.Themes.Add(theme);
                         dbContext.SaveChanges();
 
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление темы №{theme.ThemeId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Тема №{theme.ThemeId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
+                        dbContext.SaveChanges();
+
                         Themes.Add(theme);
                     }
-                }, obj => ProblemViewModel.IsWorker == false));
+                }, obj => true));
             }
         }
 
         private RelayCommand delete;
+        /// <summary>
+        /// Команда удаления темы
+        /// </summary>
         public RelayCommand Delete
         {
             get
@@ -87,9 +116,22 @@ namespace BoardOfDecisionProblems.ViewModel
                     {
                         dbContext.Themes.Remove(SelectedTheme);
                         dbContext.SaveChanges();
+
+                        LogEvent logEvent = new LogEvent()
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Title = $"Добавление темы №{SelectedTheme.ThemeId}",
+                            User = "Admin"
+                        };
+                        logEvent.Object = $"Тема №{SelectedTheme.ThemeId}";
+                        dbContext.Add(logEvent);
+                        ProblemViewModel.LogsViewModel.LogEvents.Add(logEvent);
+
+                        dbContext.SaveChanges();
                         Themes.Remove(SelectedTheme);
                     }
-                }, obj => SelectedTheme != null && ProblemViewModel.IsWorker == false));
+                }, obj => SelectedTheme != null));
             }
         }
 

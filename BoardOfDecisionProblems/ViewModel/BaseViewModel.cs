@@ -10,10 +10,16 @@ using System.Windows.Data;
 
 namespace BoardOfDecisionProblems.ViewModel
 {
+    /// <summary>
+    /// Общее модельное представление, реализует интерфейс INotifyPropertyChanged для обновления связанных значений
+    /// </summary>
     public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        /// Контекст БД
+        /// </summary>
         public DatabaseContext dbContext = App.dbContext;
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

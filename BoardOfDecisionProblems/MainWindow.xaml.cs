@@ -1,4 +1,5 @@
-﻿using BoardOfDecisionProblems.ViewModel;
+﻿using BoardOfDecisionProblems.Forms;
+using BoardOfDecisionProblems.ViewModel;
 using BoardOfDecisionProblems.Windows;
 using System.Text;
 using System.Windows;
@@ -18,7 +19,13 @@ namespace BoardOfDecisionProblems
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Главное объектное представление программы
+        /// </summary>
         public static ProblemViewModel ProblemViewModel { get; set; } = new();
+        /// <summary>
+        /// Инициализация главного окна
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +54,11 @@ namespace BoardOfDecisionProblems
 
         }
 
+        /// <summary>
+        /// Обработка события нажатия кнопки "Рабочие"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WorkersButton_Click(object sender, RoutedEventArgs e)
         {
             WorkersView workersView = new WorkersView();
@@ -68,12 +80,18 @@ namespace BoardOfDecisionProblems
             themesView.Show();
         }
 
-        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            App.CurrentUser = null;
-            Authorization authorization = new();
-            authorization.Show();
-            Close();
+            if (ProblemViewModel.IsAdmin == true)
+            {
+                MessageBox.Show("Вы уже авторизованы как администратор", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            if(adminLoginForm.ShowDialog() == true)
+            {
+                ProblemViewModel.IsAdmin = true;
+            }
         }
     }
 }

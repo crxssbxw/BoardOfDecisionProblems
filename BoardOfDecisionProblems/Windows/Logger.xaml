@@ -1,0 +1,55 @@
+﻿<Window x:Class="BoardOfDecisionProblems.Windows.Logger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BoardOfDecisionProblems.Windows"
+        mc:Ignorable="d"
+        Title="Журнал событий" Height="450" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid ItemsSource="{Binding LogEvents}"
+                  SelectedItem="{Binding SelectedLogEvent}"
+                  IsReadOnly="True"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  FontSize="14">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding LogEventId}"/>
+                <DataGridTextColumn Header="Событие" Binding="{Binding Title}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel DataContext="{Binding SelectedLogEvent}">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Описание" FontWeight="Bold" FontSize="18"/>
+                <TextBlock Text="{Binding Title}"/>
+                <TextBlock Text="{Binding Date, StringFormat=Дата: \{0:dd.MM.yyyy\}}"/>
+                <TextBlock Text="{Binding Time, StringFormat='Время: HH час., mm минут'}"/>
+                <TextBlock Text="{Binding User}"/>
+                <TextBlock Text="{Binding Object}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <Button Content="Выгрузить лог" FontSize="16"
+                        Command="{Binding SaveLog}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
