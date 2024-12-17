@@ -35,12 +35,21 @@
 
             <StackPanel Grid.Row="1">
                 <Button Content="Скачать отчет" Command="{Binding Save}"/>
-                <Button Content="Создать отчет по Ответственному"/>
+                <Button Content="Создать отчет по Ответственному" Command="{Binding ResponsibleReport}" IsEnabled="False"/>
+                <DockPanel IsEnabled="False">
+                    <CheckBox IsChecked="{Binding InRange}" Content="В диапазоне:" VerticalAlignment="Center" Margin="10 0"/>
+                    <DatePicker SelectedDate="{Binding RangeStart}"/>
+                    <DatePicker SelectedDate="{Binding RangeEnd}"/>
+                </DockPanel>
                 <Button Content="Создать отчет по Проблеме"
                         Command="{Binding ProblemReport}"/>
-                <ComboBox ItemsSource="{Binding Problems}"
-                          DisplayMemberPath="ProblemId" SelectedItem="{Binding SelectedProblem}"/>
-                <Button Content="Создать отчет по Статистике"/>
+                <DockPanel>
+                    <TextBlock Text="Выберите проблему. ID:"/>
+                    <ComboBox ItemsSource="{Binding Problems}"
+                            SelectedItem="{Binding SelectedProblem}"/>
+                </DockPanel>
+                <Button Content="Создать отчет по Статистике"
+                        Command="{Binding StatsReport}" IsEnabled="False"/>
             </StackPanel>
         </Grid>
     </Grid>

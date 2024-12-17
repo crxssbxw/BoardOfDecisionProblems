@@ -84,32 +84,28 @@ namespace BoardOfDecisionProblems.ViewModel
             };
 
             string path = $"{report.Type}{report.Number}.docx";
+
+            string headertext = $"{ReportHeader}" + Environment.NewLine + $"Отчет №{report.Number} от {report.Date}" + Environment.NewLine;
+            string paragraphtext = $"Проблема №{problem.ProblemId}, созданная {problem.DateOccurance}";
+            if (problem.Decision != null)
+            {
+                paragraphtext += $", была решена {problem.DateElimination} ответственным {problem.Responsible.Worker.SecondName} {problem.Responsible.Worker.FirstName} за {problem.DecisionTime} дня(ей)";
+            }
+            else if (problem.DaysLeft == 1)
+            {
+                paragraphtext += $", требует срочного решения в течении {problem.DaysLeft} дня!";
+            }
+            else if (problem.DaysLeft == 0) paragraphtext += $", требует срочного решения уже сегодня!";
+            else paragraphtext += $", решается в течении {problem.DecisionTime} дня(ей). До конца срока осталось {problem.DaysLeft} дня(ей)";
+
             using (DocX document = DocX.Create(path))
             {
-                Formatting titleFormat = new Formatting();
-                titleFormat.FontFamily = new Font("Times New Roman");
-                titleFormat.Size = 14D;
-
-                Formatting paragraphFormat = new Formatting();
-                paragraphFormat.FontFamily = new Font("Times New Roman");
-                paragraphFormat.Size = 14D;
-
-                Paragraph header = document.InsertParagraph("", false, titleFormat).Append(ReportHeader);
-                header.Font("Times New Roman");
-                header.AppendLine("Отчет ").Font("Times New Roman").Bold().AppendLine($"№{report.Number} от {report.Date}");
-
-                Paragraph text = document.InsertParagraph("", false, paragraphFormat).Font("Times New Roman");
-                text.AppendLine($"Проблема, появившаяся {problem.DateOccurance} в отделе ").Font("Times New Roman").Append($"№{problem.Department.ViewerNumber} ").Font("Times New Roman").Bold();
-                if (problem.Status == "Решена" || problem.Status == "Решена оп.")
-                {
-                    text.Append($"была решена {problem.DateElimination}").Font("Times New Roman").Append($"ответственным {problem.ResponsibleName}").Bold().Font("Times New Roman");
-                }
-                else
-                {
-                    text.Append("не была решена").Font("Times New Roman").Append($" {problem.DecisionTime} ").Font("Times New Roman").Bold().Append("дней").Font("Times New Roman");
-                }
+                Paragraph header = document.InsertParagraph(headertext).Font("Times New Roman").FontSize(14).SpacingAfter(10);
                 header.Alignment = Alignment.left;
-                text.Alignment = Alignment.both;
+                Paragraph paragraph = document.InsertParagraph(paragraphtext).Font("Times New Roman").FontSize(14);
+                paragraph.Alignment = Alignment.both;
+                Paragraph description = document.InsertParagraph($"Описание: <<{problem.Description}>>").FontSize(14).Font("Times New Roman");
+                description.Alignment = Alignment.both;
 
                 document.Save();
             }

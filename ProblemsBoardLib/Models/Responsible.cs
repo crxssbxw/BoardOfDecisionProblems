@@ -36,11 +36,11 @@ namespace ProblemsBoardLib.Models
         /// <summary>
         /// Логин ответственного, null, если IsCurrent = false
         /// </summary>
-        public string Login { get; set; }
+        public string? Login { get; set; }
         /// <summary>
         /// Пароль ответственного, null, если IsCurrent = false
         /// </summary>
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         /// Ссылка на отдел

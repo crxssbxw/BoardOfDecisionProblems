@@ -161,5 +161,10 @@ namespace ProblemsBoardLib.Models
         /// </summary>
 >>>>>>> 7ec80ee (Added XML comments):BoardOfDecisionProblems/Models/Problem.cs
         public Department? Department { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{ProblemId}] {Description} ({DateOccurance})";
+        }
     }
 }

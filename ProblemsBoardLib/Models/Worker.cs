@@ -68,7 +68,7 @@ namespace ProblemsBoardLib.Models
         /// <returns>Строка вида "Фамилия Имя"</returns>
         public override string ToString()
         {
-            return $"{SecondName} {FirstName}";
+            return $"[{DepartmentNumber}] {SecondName} {FirstName}";
         }
     }
 }

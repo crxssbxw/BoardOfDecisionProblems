@@ -129,6 +129,13 @@ namespace BoardOfDecisionProblems.ViewModel
                                 dbContext.SaveChanges();
                                 logEvent.Title = $"Переназначение ответственных: Id:{currentResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
+                            else
+                            {
+                                dbContext.Responsibles.Add(responsible);
+                                dbContext.SaveChanges();
+                                Responsibles.Add(responsible);
+                                logEvent.Title = $"Добавление ответственного Id:{responsible.ResponsibleId}";
+                            }
                             if (prevResponsible != null)
                             { 
                                 prevResponsible.IsCurrent = false;
@@ -147,13 +154,6 @@ namespace BoardOfDecisionProblems.ViewModel
                                 logEvent.Title = $"Переназначение ответственных: Id:{prevResponsible.ResponsibleId} на {responsible.ResponsibleId}";
                             }
 
-                            else
-                            {
-                                dbContext.Responsibles.Add(responsible);
-                                dbContext.SaveChanges();
-                                Responsibles.Add(responsible);
-                                logEvent.Title = $"Добавление ответственного Id:{responsible.ResponsibleId}";
-                            }
                             dbContext.SaveChanges();
 
                             logEvent.Object = $"Responsibles";
