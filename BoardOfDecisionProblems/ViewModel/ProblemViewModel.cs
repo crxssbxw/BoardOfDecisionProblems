@@ -523,7 +523,7 @@ namespace BoardOfDecisionProblems.ViewModel
                         dbContext.SaveChanges();
                     }
                 },
-                obj => SelectedProblem != null));
+                obj => SelectedProblem != null && IsAdmin == true));
             }
         }
 
@@ -597,8 +597,14 @@ namespace BoardOfDecisionProblems.ViewModel
                     CollectionView.Filter = (b) =>
                     {
                         var a = (Problem)b;
-                        return a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateElimination <= SelectedDateTo.Date;
+                        return a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateOccurance.Date <= SelectedDateTo.Date;
                     };
+                    if (Urgent)
+                        CollectionView.Filter = (b) =>
+                        {
+                            var a = (Problem)b;
+                            return a.DateOccurance.Date >= SelectedDateFrom.Date && a.DateOccurance.Date <= SelectedDateTo.Date && a.Status == "Решается" && a.DaysLeft <= 1;
+                        };
                 },
                 obj => true));
             } 
@@ -609,7 +615,11 @@ namespace BoardOfDecisionProblems.ViewModel
         {
             get
             {
-                CollectionView.Filter = (a) => true;
+                return resetFilter ?? (resetFilter = new(obj =>
+                {
+                    CollectionView.Filter = (a) => true;
+                },
+                obj => true));
             }
         }
 

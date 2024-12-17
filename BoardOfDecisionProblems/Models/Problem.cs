@@ -118,5 +118,10 @@ namespace BoardOfDecisionProblems.Models
         /// Ссылка на отдел
         /// </summary>
         public Department? Department { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{ProblemId}] {Description} ({DateOccurance})";
+        }
     }
 }

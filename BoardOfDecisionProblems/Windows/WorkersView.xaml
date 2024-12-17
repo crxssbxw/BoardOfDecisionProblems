@@ -52,9 +52,6 @@
             <Button Content="Редактировать"
                     Background="#FFE599"
                     Command="{Binding Edit}"/>
-            <Button Content="Удалить"
-                    Background="#EA6B66"
-                    Command="{Binding Delete}"/>
         </DockPanel>
     </Grid>
 </Window>

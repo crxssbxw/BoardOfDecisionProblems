@@ -51,10 +51,6 @@
                     Content="Редактировать"
                     Background="#FFE599"
                     Command="{Binding Edit}"/>
-            <Button Grid.Column="3"
-                    Content="Удалить"
-                    Background="#EA6B66"
-                    Command="{Binding Delete}"/>
         </Grid>
     </Grid>
 </Window>
