@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.ViewModel
+  commentId: N:BoardOfDecisionProblems.ViewModel
+  id: BoardOfDecisionProblems.ViewModel
+  children:
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel
+  - BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  - BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+  - BoardOfDecisionProblems.ViewModel.ThemesViewModel
+  - BoardOfDecisionProblems.ViewModel.UserViewModel
+  - BoardOfDecisionProblems.ViewModel.WorkersViewModel
+  langs:
+  - csharp
+  - vb
+  name: BoardOfDecisionProblems.ViewModel
+  nameWithType: BoardOfDecisionProblems.ViewModel
+  fullName: BoardOfDecisionProblems.ViewModel
+  type: Namespace
+  assemblies:
+  - BoardOfDecisionProblems
+references:
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.BaseViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html
+  name: BaseViewModel
+  nameWithType: BaseViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel
+- uid: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel.html
+  name: DepartmentsViewModel
+  nameWithType: DepartmentsViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html
+  name: ProblemViewModel
+  nameWithType: ProblemViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel.html
+  name: ResponsiblesViewModel
+  nameWithType: ResponsiblesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ThemesViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.ThemesViewModel.html
+  name: ThemesViewModel
+  nameWithType: ThemesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.UserViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.UserViewModel
+  href: BoardOfDecisionProblems.ViewModel.UserViewModel.html
+  name: UserViewModel
+  nameWithType: UserViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.UserViewModel
+- uid: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.WorkersViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.WorkersViewModel.html
+  name: WorkersViewModel
+  nameWithType: WorkersViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+- uid: BoardOfDecisionProblems.ViewModel
+  commentId: N:BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.ViewModel
+  nameWithType: BoardOfDecisionProblems.ViewModel
+  fullName: BoardOfDecisionProblems.ViewModel
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.ViewModel
+    name: ViewModel
+    href: BoardOfDecisionProblems.ViewModel.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.ViewModel
+    name: ViewModel
+    href: BoardOfDecisionProblems.ViewModel.html

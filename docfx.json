@@ -1,0 +1,63 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "BoardOfDecisionProblems",
+          "files": [
+            "/*.csproj"
+          ]
+        }
+      ],
+      "language": [
+        {
+          "name": "en-us",
+          "value":
+            {
+              "name": "English",
+              "href": "/"
+            }
+        },
+        {
+          "name": "RU-ru",
+          "value":
+          {
+            "name": "English",
+            "href": "/ru/"
+          }
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "Board Of Decision Problems",
+      "_appTitle": "Board Of Decision Problems",
+      "_enableSearch": false,
+      "pdf": true
+    }
+  }
+}
