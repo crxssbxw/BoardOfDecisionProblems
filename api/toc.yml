@@ -1,0 +1,81 @@
+### YamlMime:TableOfContent
+items:
+- uid: BoardOfDecisionProblems
+  name: BoardOfDecisionProblems
+  items:
+  - uid: BoardOfDecisionProblems.App
+    name: App
+  - uid: BoardOfDecisionProblems.MainWindow
+    name: MainWindow
+- uid: BoardOfDecisionProblems.Commands
+  name: BoardOfDecisionProblems.Commands
+  items:
+  - uid: BoardOfDecisionProblems.Commands.RelayCommand
+    name: RelayCommand
+- uid: BoardOfDecisionProblems.Forms
+  name: BoardOfDecisionProblems.Forms
+  items:
+  - uid: BoardOfDecisionProblems.Forms.DecisionForm
+    name: DecisionForm
+  - uid: BoardOfDecisionProblems.Forms.NewDepartment
+    name: NewDepartment
+  - uid: BoardOfDecisionProblems.Forms.NewProblem
+    name: NewProblem
+  - uid: BoardOfDecisionProblems.Forms.NewTheme
+    name: NewTheme
+  - uid: BoardOfDecisionProblems.Forms.NewWorker
+    name: NewWorker
+  - uid: BoardOfDecisionProblems.Forms.SetResponsibility
+    name: SetResponsibility
+- uid: BoardOfDecisionProblems.Models
+  name: BoardOfDecisionProblems.Models
+  items:
+  - uid: BoardOfDecisionProblems.Models.DatabaseContext
+    name: DatabaseContext
+  - uid: BoardOfDecisionProblems.Models.Department
+    name: Department
+  - uid: BoardOfDecisionProblems.Models.Problem
+    name: Problem
+  - uid: BoardOfDecisionProblems.Models.Responsible
+    name: Responsible
+  - uid: BoardOfDecisionProblems.Models.Theme
+    name: Theme
+  - uid: BoardOfDecisionProblems.Models.User
+    name: User
+  - uid: BoardOfDecisionProblems.Models.Worker
+    name: Worker
+- uid: BoardOfDecisionProblems.ViewModel
+  name: BoardOfDecisionProblems.ViewModel
+  items:
+  - uid: BoardOfDecisionProblems.ViewModel.BaseViewModel
+    name: BaseViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+    name: DepartmentsViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+    name: ProblemViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+    name: ResponsiblesViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+    name: ThemesViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.UserViewModel
+    name: UserViewModel
+  - uid: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+    name: WorkersViewModel
+- uid: BoardOfDecisionProblems.Windows
+  name: BoardOfDecisionProblems.Windows
+  items:
+  - uid: BoardOfDecisionProblems.Windows.Authorization
+    name: Authorization
+  - uid: BoardOfDecisionProblems.Windows.DepartmentsView
+    name: DepartmentsView
+  - uid: BoardOfDecisionProblems.Windows.ProblemView
+    name: ProblemView
+  - uid: BoardOfDecisionProblems.Windows.Registration
+    name: Registration
+  - uid: BoardOfDecisionProblems.Windows.ResponsibleView
+    name: ResponsibleView
+  - uid: BoardOfDecisionProblems.Windows.ThemesView
+    name: ThemesView
+  - uid: BoardOfDecisionProblems.Windows.WorkersView
+    name: WorkersView
+memberLayout: SamePage

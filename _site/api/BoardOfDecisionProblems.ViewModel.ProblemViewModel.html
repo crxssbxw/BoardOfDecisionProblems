@@ -1,0 +1,1470 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ProblemViewModel | Board Of Decision Problems </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ProblemViewModel | Board Of Decision Problems ">
+      
+      <meta name="description" content="Представление модели Проблем">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/crxssbxw/BoardOfDecisionProblems/new/Prototype/apiSpec/new?filename=BoardOfDecisionProblems_ViewModel_ProblemViewModel.md&amp;value=---%0Auid%3A%20BoardOfDecisionProblems.ViewModel.ProblemViewModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Board Of Decision Problems">
+            Board Of Decision Problems
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel">
+
+
+
+  <h1 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel" class="text-break">
+Class ProblemViewModel  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BoardOfDecisionProblems.html">BoardOfDecisionProblems</a>.<a class="xref" href="BoardOfDecisionProblems.ViewModel.html">ViewModel</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BoardOfDecisionProblems.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Представление модели Проблем</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ProblemViewModel : BaseViewModel, INotifyPropertyChanged</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html">BaseViewModel</a></div>
+      <div><span class="xref">ProblemViewModel</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_PropertyChanged">BaseViewModel.PropertyChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_dbContext">BaseViewModel.dbContext</a>
+    </div>
+    <div>
+      <a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_OnPropertyChanged_System_String_">BaseViewModel.OnPropertyChanged(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_ViewSource">BaseViewModel.ViewSource</a>
+    </div>
+    <div>
+      <a class="xref" href="BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_CollectionView">BaseViewModel.CollectionView</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel__ctor_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel__ctor" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor">
+  ProblemViewModel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L309"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProblemViewModel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AVGTimeByFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AVGTimeByFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter">
+  AVGTimeByFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L273"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? AVGTimeByFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AcceptFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AcceptFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter">
+  AcceptFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L569"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда применения фильтра</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand AcceptFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AllByFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_AllByFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter">
+  AllByFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? AllByFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DateCheck_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DateCheck" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck">
+  DateCheck
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DateCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Decide_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Decide" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide">
+  Decide
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L389"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда решения проблемы</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand Decide { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecidedByFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecidedByFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter">
+  DecidedByFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? DecidedByFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionDaysInput_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionDaysInput" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput">
+  DecisionDaysInput
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? DecisionDaysInput { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionTimeCheck_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionTimeCheck" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck">
+  DecisionTimeCheck
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DecisionTimeCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Delete_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Delete" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete">
+  Delete
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L475"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда удаления проблемы</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand Delete { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentCheck_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentCheck" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck">
+  DepartmentCheck
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DepartmentCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsList_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsList" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList">
+  DepartmentsList
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Список отделов</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;Department&gt; DepartmentsList { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="BoardOfDecisionProblems.Models.Department.html">Department</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsViewModel_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsViewModel" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel">
+  DepartmentsViewModel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Представление модели Отделов</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DepartmentsViewModel DepartmentsViewModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.ViewModel.DepartmentsViewModel.html">DepartmentsViewModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsAdmin_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsAdmin" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin">
+  IsAdmin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Логическое значение, является ли текущий пользователь администратором</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAdmin { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsResponsible_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsResponsible" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible">
+  IsResponsible
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Логическое значение, является ли текущий пользователь ответственным</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsResponsible { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsWorker_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsWorker" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker">
+  IsWorker
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Логическое значение, является ли текущий пользователь работником</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsWorker { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_NewProblem_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_NewProblem" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem">
+  NewProblem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L338"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда создания новой проблемы</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand NewProblem { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Problems_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Problems" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems">
+  Problems
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Коллекция проблем</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;Problem&gt; Problems { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="BoardOfDecisionProblems.Models.Problem.html">Problem</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsibleCheck_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsibleCheck" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck">
+  ResponsibleCheck
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResponsibleCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesSD_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesSD" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD">
+  ResponsiblesSD
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;Responsible&gt; ResponsiblesSD { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="BoardOfDecisionProblems.Models.Responsible.html">Responsible</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesViewModel_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesViewModel" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel">
+  ResponsiblesViewModel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Представление модели Ответственных</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResponsiblesViewModel ResponsiblesViewModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel.html">ResponsiblesViewModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateFrom_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateFrom" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom">
+  SelectedDateFrom
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime SelectedDateFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateTo_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateTo" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo">
+  SelectedDateTo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime SelectedDateTo { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDepartmentFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDepartmentFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter">
+  SelectedDepartmentFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Department SelectedDepartmentFilter { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Models.Department.html">Department</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedProblem_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedProblem" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem">
+  SelectedProblem
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L322"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Problem SelectedProblem { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Models.Problem.html">Problem</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedResponsibleFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedResponsibleFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter">
+  SelectedResponsibleFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Responsible SelectedResponsibleFilter { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Models.Responsible.html">Responsible</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedThemeFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedThemeFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter">
+  SelectedThemeFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Theme SelectedThemeFilter { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Models.Theme.html">Theme</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemeCheck_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemeCheck" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck">
+  ThemeCheck
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ThemeCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemesViewModel_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemesViewModel" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel">
+  ThemesViewModel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L25"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Представление модели тем</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ThemesViewModel ThemesViewModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.ViewModel.ThemesViewModel.html">ThemesViewModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TimeByFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TimeByFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter">
+  TimeByFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? TimeByFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Today_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Today" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today">
+  Today
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Текущая дата</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DateTime Today { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecided_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecided" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided">
+  TotalDecided
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Счетчик решенных проблем</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? TotalDecided { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidedFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidedFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter">
+  TotalDecidedFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L513"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда отображения решенных проблем</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand TotalDecidedFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDeciding_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDeciding" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding">
+  TotalDeciding
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Счетчик проблем в процессе решения</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? TotalDeciding { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidingFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidingFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter">
+  TotalDecidingFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L534"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда отображения проблем в процессе решения</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand TotalDecidingFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblems_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblems" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems">
+  TotalProblems
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Счетчик количества проблем (Всего)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? TotalProblems { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblemsFilter_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblemsFilter" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter">
+  TotalProblemsFilter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L497"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда фильтрации проблем</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand TotalProblemsFilter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Watch_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_Watch" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch">
+  Watch
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L455"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Команда просмотра проблемы</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand Watch { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.Commands.RelayCommand.html">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_WorkersViewModel_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_WorkersViewModel" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel">
+  WorkersViewModel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Представление модели Работников</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static WorkersViewModel WorkersViewModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BoardOfDecisionProblems.ViewModel.WorkersViewModel.html">WorkersViewModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_FilterLogic_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic*"></a>
+
+  <h3 id="BoardOfDecisionProblems_ViewModel_ProblemViewModel_FilterLogic_System_Object_" data-uid="BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(System.Object)">
+  FilterLogic(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L555"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Логика фильтра</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool FilterLogic(object item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Проблема</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Логическое значение фильтрации</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/crxssbxw/BoardOfDecisionProblems/blob/Prototype/BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

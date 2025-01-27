@@ -1,0 +1,89 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.Windows
+  commentId: N:BoardOfDecisionProblems.Windows
+  id: BoardOfDecisionProblems.Windows
+  children:
+  - BoardOfDecisionProblems.Windows.Authorization
+  - BoardOfDecisionProblems.Windows.DepartmentsView
+  - BoardOfDecisionProblems.Windows.ProblemView
+  - BoardOfDecisionProblems.Windows.Registration
+  - BoardOfDecisionProblems.Windows.ResponsibleView
+  - BoardOfDecisionProblems.Windows.ThemesView
+  - BoardOfDecisionProblems.Windows.WorkersView
+  langs:
+  - csharp
+  - vb
+  name: BoardOfDecisionProblems.Windows
+  nameWithType: BoardOfDecisionProblems.Windows
+  fullName: BoardOfDecisionProblems.Windows
+  type: Namespace
+  assemblies:
+  - BoardOfDecisionProblems
+references:
+- uid: BoardOfDecisionProblems.Windows.Authorization
+  commentId: T:BoardOfDecisionProblems.Windows.Authorization
+  parent: BoardOfDecisionProblems.Windows
+  href: BoardOfDecisionProblems.Windows.Authorization.html
+  name: Authorization
+  nameWithType: Authorization
+  fullName: BoardOfDecisionProblems.Windows.Authorization
+- uid: BoardOfDecisionProblems.Windows.DepartmentsView
+  commentId: T:BoardOfDecisionProblems.Windows.DepartmentsView
+  href: BoardOfDecisionProblems.Windows.DepartmentsView.html
+  name: DepartmentsView
+  nameWithType: DepartmentsView
+  fullName: BoardOfDecisionProblems.Windows.DepartmentsView
+- uid: BoardOfDecisionProblems.Windows.ProblemView
+  commentId: T:BoardOfDecisionProblems.Windows.ProblemView
+  href: BoardOfDecisionProblems.Windows.ProblemView.html
+  name: ProblemView
+  nameWithType: ProblemView
+  fullName: BoardOfDecisionProblems.Windows.ProblemView
+- uid: BoardOfDecisionProblems.Windows.Registration
+  commentId: T:BoardOfDecisionProblems.Windows.Registration
+  parent: BoardOfDecisionProblems.Windows
+  href: BoardOfDecisionProblems.Windows.Registration.html
+  name: Registration
+  nameWithType: Registration
+  fullName: BoardOfDecisionProblems.Windows.Registration
+- uid: BoardOfDecisionProblems.Windows.ResponsibleView
+  commentId: T:BoardOfDecisionProblems.Windows.ResponsibleView
+  href: BoardOfDecisionProblems.Windows.ResponsibleView.html
+  name: ResponsibleView
+  nameWithType: ResponsibleView
+  fullName: BoardOfDecisionProblems.Windows.ResponsibleView
+- uid: BoardOfDecisionProblems.Windows.ThemesView
+  commentId: T:BoardOfDecisionProblems.Windows.ThemesView
+  href: BoardOfDecisionProblems.Windows.ThemesView.html
+  name: ThemesView
+  nameWithType: ThemesView
+  fullName: BoardOfDecisionProblems.Windows.ThemesView
+- uid: BoardOfDecisionProblems.Windows.WorkersView
+  commentId: T:BoardOfDecisionProblems.Windows.WorkersView
+  href: BoardOfDecisionProblems.Windows.WorkersView.html
+  name: WorkersView
+  nameWithType: WorkersView
+  fullName: BoardOfDecisionProblems.Windows.WorkersView
+- uid: BoardOfDecisionProblems.Windows
+  commentId: N:BoardOfDecisionProblems.Windows
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.Windows
+  nameWithType: BoardOfDecisionProblems.Windows
+  fullName: BoardOfDecisionProblems.Windows
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Windows
+    name: Windows
+    href: BoardOfDecisionProblems.Windows.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Windows
+    name: Windows
+    href: BoardOfDecisionProblems.Windows.html

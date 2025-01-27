@@ -1,0 +1,2270 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  id: ProblemViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  children:
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(System.Object)
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+  - BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+  langs:
+  - csharp
+  - vb
+  name: ProblemViewModel
+  nameWithType: ProblemViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  type: Class
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ProblemViewModel
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 19
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Представление модели Проблем
+  example: []
+  syntax:
+    content: 'public class ProblemViewModel : BaseViewModel, INotifyPropertyChanged'
+    content.vb: Public Class ProblemViewModel Inherits BaseViewModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel.PropertyChanged
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel.dbContext
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(System.String)
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel.ViewSource
+  - BoardOfDecisionProblems.ViewModel.BaseViewModel.CollectionView
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+  id: ThemesViewModel
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ThemesViewModel
+  nameWithType: ProblemViewModel.ThemesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ThemesViewModel
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 24
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Представление модели тем
+  example: []
+  syntax:
+    content: public static ThemesViewModel ThemesViewModel { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+    content.vb: Public Shared Property ThemesViewModel As ThemesViewModel
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+  id: DepartmentsViewModel
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DepartmentsViewModel
+  nameWithType: ProblemViewModel.DepartmentsViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DepartmentsViewModel
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 28
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Представление модели Отделов
+  example: []
+  syntax:
+    content: public static DepartmentsViewModel DepartmentsViewModel { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+    content.vb: Public Shared Property DepartmentsViewModel As DepartmentsViewModel
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+  id: WorkersViewModel
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: WorkersViewModel
+  nameWithType: ProblemViewModel.WorkersViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: WorkersViewModel
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 32
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Представление модели Работников
+  example: []
+  syntax:
+    content: public static WorkersViewModel WorkersViewModel { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+    content.vb: Public Shared Property WorkersViewModel As WorkersViewModel
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+  id: ResponsiblesViewModel
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ResponsiblesViewModel
+  nameWithType: ProblemViewModel.ResponsiblesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ResponsiblesViewModel
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 36
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Представление модели Ответственных
+  example: []
+  syntax:
+    content: public static ResponsiblesViewModel ResponsiblesViewModel { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+    content.vb: Public Shared Property ResponsiblesViewModel As ResponsiblesViewModel
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+  id: Today
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Today
+  nameWithType: ProblemViewModel.Today
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: Today
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 41
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Текущая дата
+  example: []
+  syntax:
+    content: public static DateTime Today { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Shared Property Today As Date
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+  id: DepartmentsList
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DepartmentsList
+  nameWithType: ProblemViewModel.DepartmentsList
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DepartmentsList
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 46
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Список отделов
+  example: []
+  syntax:
+    content: public ObservableCollection<Department> DepartmentsList { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Department}
+    content.vb: Public ReadOnly Property DepartmentsList As ObservableCollection(Of Department)
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+  id: IsAdmin
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsAdmin
+  nameWithType: ProblemViewModel.IsAdmin
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: IsAdmin
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 54
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Логическое значение, является ли текущий пользователь администратором
+  example: []
+  syntax:
+    content: public static bool IsAdmin { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property IsAdmin As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+  id: IsWorker
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsWorker
+  nameWithType: ProblemViewModel.IsWorker
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: IsWorker
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 61
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Логическое значение, является ли текущий пользователь работником
+  example: []
+  syntax:
+    content: public static bool IsWorker { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property IsWorker As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+  id: IsResponsible
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsResponsible
+  nameWithType: ProblemViewModel.IsResponsible
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: IsResponsible
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 68
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Логическое значение, является ли текущий пользователь ответственным
+  example: []
+  syntax:
+    content: public static bool IsResponsible { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ReadOnly Property IsResponsible As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+  id: ResponsiblesSD
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ResponsiblesSD
+  nameWithType: ProblemViewModel.ResponsiblesSD
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ResponsiblesSD
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 75
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public ObservableCollection<Responsible> ResponsiblesSD { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Responsible}
+    content.vb: Public ReadOnly Property ResponsiblesSD As ObservableCollection(Of Responsible)
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+  id: SelectedDepartmentFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedDepartmentFilter
+  nameWithType: ProblemViewModel.SelectedDepartmentFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedDepartmentFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 97
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public Department SelectedDepartmentFilter { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Models.Department
+    content.vb: Public Property SelectedDepartmentFilter As Department
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+  id: SelectedResponsibleFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedResponsibleFilter
+  nameWithType: ProblemViewModel.SelectedResponsibleFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedResponsibleFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 109
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public Responsible SelectedResponsibleFilter { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Models.Responsible
+    content.vb: Public Property SelectedResponsibleFilter As Responsible
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+  id: SelectedThemeFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedThemeFilter
+  nameWithType: ProblemViewModel.SelectedThemeFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedThemeFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 120
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public Theme SelectedThemeFilter { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Models.Theme
+    content.vb: Public Property SelectedThemeFilter As Theme
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+  id: DecisionDaysInput
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DecisionDaysInput
+  nameWithType: ProblemViewModel.DecisionDaysInput
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DecisionDaysInput
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 131
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public int? DecisionDaysInput { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property DecisionDaysInput As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+  id: SelectedDateFrom
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedDateFrom
+  nameWithType: ProblemViewModel.SelectedDateFrom
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedDateFrom
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 142
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public DateTime SelectedDateFrom { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property SelectedDateFrom As Date
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+  id: SelectedDateTo
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedDateTo
+  nameWithType: ProblemViewModel.SelectedDateTo
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedDateTo
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 153
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public DateTime SelectedDateTo { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property SelectedDateTo As Date
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+  id: DateCheck
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DateCheck
+  nameWithType: ProblemViewModel.DateCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DateCheck
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 165
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public bool DateCheck { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DateCheck As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+  id: DepartmentCheck
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DepartmentCheck
+  nameWithType: ProblemViewModel.DepartmentCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DepartmentCheck
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 176
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public bool DepartmentCheck { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DepartmentCheck As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+  id: ThemeCheck
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ThemeCheck
+  nameWithType: ProblemViewModel.ThemeCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ThemeCheck
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 187
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public bool ThemeCheck { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ThemeCheck As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+  id: ResponsibleCheck
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ResponsibleCheck
+  nameWithType: ProblemViewModel.ResponsibleCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: ResponsibleCheck
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 198
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public bool ResponsibleCheck { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResponsibleCheck As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+  id: DecisionTimeCheck
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DecisionTimeCheck
+  nameWithType: ProblemViewModel.DecisionTimeCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DecisionTimeCheck
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 209
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public bool DecisionTimeCheck { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DecisionTimeCheck As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+  id: TotalProblems
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalProblems
+  nameWithType: ProblemViewModel.TotalProblems
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalProblems
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 224
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Счетчик количества проблем (Всего)
+  example: []
+  syntax:
+    content: public int? TotalProblems { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property TotalProblems As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+  id: TotalDecided
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalDecided
+  nameWithType: ProblemViewModel.TotalDecided
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalDecided
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 228
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Счетчик решенных проблем
+  example: []
+  syntax:
+    content: public int? TotalDecided { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property TotalDecided As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+  id: TotalDeciding
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalDeciding
+  nameWithType: ProblemViewModel.TotalDeciding
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalDeciding
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 232
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Счетчик проблем в процессе решения
+  example: []
+  syntax:
+    content: public int? TotalDeciding { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property TotalDeciding As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+  id: DecidedByFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DecidedByFilter
+  nameWithType: ProblemViewModel.DecidedByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: DecidedByFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 234
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public int? DecidedByFilter { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property DecidedByFilter As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+  id: AllByFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: AllByFilter
+  nameWithType: ProblemViewModel.AllByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: AllByFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 244
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public int? AllByFilter { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property AllByFilter As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+  id: TimeByFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TimeByFilter
+  nameWithType: ProblemViewModel.TimeByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TimeByFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 254
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public int? TimeByFilter { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public ReadOnly Property TimeByFilter As Integer?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+  id: AVGTimeByFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: AVGTimeByFilter
+  nameWithType: ProblemViewModel.AVGTimeByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: AVGTimeByFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 272
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public float? AVGTimeByFilter { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public ReadOnly Property AVGTimeByFilter As Single?
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+  id: Problems
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Problems
+  nameWithType: ProblemViewModel.Problems
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: Problems
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 294
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Коллекция проблем
+  example: []
+  syntax:
+    content: public ObservableCollection<Problem> Problems { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Problem}
+    content.vb: Public Property Problems As ObservableCollection(Of Problem)
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor
+  commentId: M:BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor
+  id: '#ctor'
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ProblemViewModel()
+  nameWithType: ProblemViewModel.ProblemViewModel()
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ProblemViewModel()
+  type: Constructor
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: .ctor
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 308
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public ProblemViewModel()
+    content.vb: Public Sub New()
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor*
+  nameWithType.vb: ProblemViewModel.New()
+  fullName.vb: BoardOfDecisionProblems.ViewModel.ProblemViewModel.New()
+  name.vb: New()
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+  id: SelectedProblem
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedProblem
+  nameWithType: ProblemViewModel.SelectedProblem
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: SelectedProblem
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 321
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  syntax:
+    content: public Problem SelectedProblem { get; set; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Models.Problem
+    content.vb: Public Property SelectedProblem As Problem
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+  id: NewProblem
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: NewProblem
+  nameWithType: ProblemViewModel.NewProblem
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: NewProblem
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 337
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда создания новой проблемы
+  example: []
+  syntax:
+    content: public RelayCommand NewProblem { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property NewProblem As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+  id: Decide
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Decide
+  nameWithType: ProblemViewModel.Decide
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: Decide
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 388
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда решения проблемы
+  example: []
+  syntax:
+    content: public RelayCommand Decide { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property Decide As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+  id: Watch
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Watch
+  nameWithType: ProblemViewModel.Watch
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: Watch
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 454
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда просмотра проблемы
+  example: []
+  syntax:
+    content: public RelayCommand Watch { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property Watch As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+  id: Delete
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Delete
+  nameWithType: ProblemViewModel.Delete
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: Delete
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 474
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда удаления проблемы
+  example: []
+  syntax:
+    content: public RelayCommand Delete { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property Delete As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+  id: TotalProblemsFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalProblemsFilter
+  nameWithType: ProblemViewModel.TotalProblemsFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalProblemsFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 496
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда фильтрации проблем
+  example: []
+  syntax:
+    content: public RelayCommand TotalProblemsFilter { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property TotalProblemsFilter As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+  id: TotalDecidedFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalDecidedFilter
+  nameWithType: ProblemViewModel.TotalDecidedFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalDecidedFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 512
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда отображения решенных проблем
+  example: []
+  syntax:
+    content: public RelayCommand TotalDecidedFilter { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property TotalDecidedFilter As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+  id: TotalDecidingFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: TotalDecidingFilter
+  nameWithType: ProblemViewModel.TotalDecidingFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: TotalDecidingFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 533
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда отображения проблем в процессе решения
+  example: []
+  syntax:
+    content: public RelayCommand TotalDecidingFilter { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property TotalDecidingFilter As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter*
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(System.Object)
+  commentId: M:BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(System.Object)
+  id: FilterLogic(System.Object)
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: FilterLogic(object)
+  nameWithType: ProblemViewModel.FilterLogic(object)
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(object)
+  type: Method
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: FilterLogic
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 554
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Логика фильтра
+  example: []
+  syntax:
+    content: protected bool FilterLogic(object item)
+    parameters:
+    - id: item
+      type: System.Object
+      description: Проблема
+    return:
+      type: System.Boolean
+      description: Логическое значение фильтрации
+    content.vb: Protected Function FilterLogic(item As Object) As Boolean
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic*
+  nameWithType.vb: ProblemViewModel.FilterLogic(Object)
+  fullName.vb: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic(Object)
+  name.vb: FilterLogic(Object)
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter
+  commentId: P:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter
+  id: AcceptFilter
+  parent: BoardOfDecisionProblems.ViewModel.ProblemViewModel
+  langs:
+  - csharp
+  - vb
+  name: AcceptFilter
+  nameWithType: ProblemViewModel.AcceptFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter
+  type: Property
+  source:
+    remote:
+      path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+      branch: Prototype
+      repo: https://github.com/crxssbxw/BoardOfDecisionProblems.git
+    id: AcceptFilter
+    path: BoardOfDecisionProblems/ViewModel/ProblemViewModel.cs
+    startLine: 568
+  assemblies:
+  - BoardOfDecisionProblems
+  namespace: BoardOfDecisionProblems.ViewModel
+  summary: Команда применения фильтра
+  example: []
+  syntax:
+    content: public RelayCommand AcceptFilter { get; }
+    parameters: []
+    return:
+      type: BoardOfDecisionProblems.Commands.RelayCommand
+    content.vb: Public ReadOnly Property AcceptFilter As RelayCommand
+  overload: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter*
+references:
+- uid: BoardOfDecisionProblems.ViewModel
+  commentId: N:BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.ViewModel
+  nameWithType: BoardOfDecisionProblems.ViewModel
+  fullName: BoardOfDecisionProblems.ViewModel
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.ViewModel
+    name: ViewModel
+    href: BoardOfDecisionProblems.ViewModel.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.ViewModel
+    name: ViewModel
+    href: BoardOfDecisionProblems.ViewModel.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.BaseViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html
+  name: BaseViewModel
+  nameWithType: BaseViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.PropertyChanged
+  commentId: E:BoardOfDecisionProblems.ViewModel.BaseViewModel.PropertyChanged
+  parent: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_PropertyChanged
+  name: PropertyChanged
+  nameWithType: BaseViewModel.PropertyChanged
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel.PropertyChanged
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.dbContext
+  commentId: F:BoardOfDecisionProblems.ViewModel.BaseViewModel.dbContext
+  parent: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_dbContext
+  name: dbContext
+  nameWithType: BaseViewModel.dbContext
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel.dbContext
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(System.String)
+  commentId: M:BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(System.String)
+  parent: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  isExternal: true
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged(string)
+  nameWithType: BaseViewModel.OnPropertyChanged(string)
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(string)
+  nameWithType.vb: BaseViewModel.OnPropertyChanged(String)
+  fullName.vb: BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+  spec.csharp:
+  - uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(System.String)
+    name: OnPropertyChanged
+    href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_OnPropertyChanged_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.OnPropertyChanged(System.String)
+    name: OnPropertyChanged
+    href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_OnPropertyChanged_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.ViewSource
+  commentId: P:BoardOfDecisionProblems.ViewModel.BaseViewModel.ViewSource
+  parent: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_ViewSource
+  name: ViewSource
+  nameWithType: BaseViewModel.ViewSource
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel.ViewSource
+- uid: BoardOfDecisionProblems.ViewModel.BaseViewModel.CollectionView
+  commentId: P:BoardOfDecisionProblems.ViewModel.BaseViewModel.CollectionView
+  parent: BoardOfDecisionProblems.ViewModel.BaseViewModel
+  href: BoardOfDecisionProblems.ViewModel.BaseViewModel.html#BoardOfDecisionProblems_ViewModel_BaseViewModel_CollectionView
+  name: CollectionView
+  nameWithType: BaseViewModel.CollectionView
+  fullName: BoardOfDecisionProblems.ViewModel.BaseViewModel.CollectionView
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemesViewModel
+  name: ThemesViewModel
+  nameWithType: ProblemViewModel.ThemesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ThemesViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.ThemesViewModel.html
+  name: ThemesViewModel
+  nameWithType: ThemesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ThemesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsViewModel
+  name: DepartmentsViewModel
+  nameWithType: ProblemViewModel.DepartmentsViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsViewModel
+- uid: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel.html
+  name: DepartmentsViewModel
+  nameWithType: DepartmentsViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.DepartmentsViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_WorkersViewModel
+  name: WorkersViewModel
+  nameWithType: ProblemViewModel.WorkersViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.WorkersViewModel
+- uid: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.WorkersViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.WorkersViewModel.html
+  name: WorkersViewModel
+  nameWithType: WorkersViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.WorkersViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesViewModel
+  name: ResponsiblesViewModel
+  nameWithType: ProblemViewModel.ResponsiblesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+  commentId: T:BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+  parent: BoardOfDecisionProblems.ViewModel
+  href: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel.html
+  name: ResponsiblesViewModel
+  nameWithType: ResponsiblesViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_Today
+  name: Today
+  nameWithType: ProblemViewModel.Today
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Today
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentsList
+  name: DepartmentsList
+  nameWithType: ProblemViewModel.DepartmentsList
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentsList
+- uid: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Department}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Department}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<Department>
+  nameWithType: ObservableCollection<Department>
+  fullName: System.Collections.ObjectModel.ObservableCollection<BoardOfDecisionProblems.Models.Department>
+  nameWithType.vb: ObservableCollection(Of Department)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of BoardOfDecisionProblems.Models.Department)
+  name.vb: ObservableCollection(Of Department)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: BoardOfDecisionProblems.Models.Department
+    name: Department
+    href: BoardOfDecisionProblems.Models.Department.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BoardOfDecisionProblems.Models.Department
+    name: Department
+    href: BoardOfDecisionProblems.Models.Department.html
+  - name: )
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  commentId: T:System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>
+  nameWithType.vb: ObservableCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of T)
+  name.vb: ObservableCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsAdmin
+  name: IsAdmin
+  nameWithType: ProblemViewModel.IsAdmin
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsAdmin
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsWorker
+  name: IsWorker
+  nameWithType: ProblemViewModel.IsWorker
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsWorker
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_IsResponsible
+  name: IsResponsible
+  nameWithType: ProblemViewModel.IsResponsible
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.IsResponsible
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsiblesSD
+  name: ResponsiblesSD
+  nameWithType: ProblemViewModel.ResponsiblesSD
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsiblesSD
+- uid: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Responsible}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Responsible}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<Responsible>
+  nameWithType: ObservableCollection<Responsible>
+  fullName: System.Collections.ObjectModel.ObservableCollection<BoardOfDecisionProblems.Models.Responsible>
+  nameWithType.vb: ObservableCollection(Of Responsible)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of BoardOfDecisionProblems.Models.Responsible)
+  name.vb: ObservableCollection(Of Responsible)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: BoardOfDecisionProblems.Models.Responsible
+    name: Responsible
+    href: BoardOfDecisionProblems.Models.Responsible.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BoardOfDecisionProblems.Models.Responsible
+    name: Responsible
+    href: BoardOfDecisionProblems.Models.Responsible.html
+  - name: )
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDepartmentFilter
+  name: SelectedDepartmentFilter
+  nameWithType: ProblemViewModel.SelectedDepartmentFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDepartmentFilter
+- uid: BoardOfDecisionProblems.Models.Department
+  commentId: T:BoardOfDecisionProblems.Models.Department
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Department.html
+  name: Department
+  nameWithType: Department
+  fullName: BoardOfDecisionProblems.Models.Department
+- uid: BoardOfDecisionProblems.Models
+  commentId: N:BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.Models
+  nameWithType: BoardOfDecisionProblems.Models
+  fullName: BoardOfDecisionProblems.Models
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Models
+    name: Models
+    href: BoardOfDecisionProblems.Models.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Models
+    name: Models
+    href: BoardOfDecisionProblems.Models.html
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedResponsibleFilter
+  name: SelectedResponsibleFilter
+  nameWithType: ProblemViewModel.SelectedResponsibleFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedResponsibleFilter
+- uid: BoardOfDecisionProblems.Models.Responsible
+  commentId: T:BoardOfDecisionProblems.Models.Responsible
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Responsible.html
+  name: Responsible
+  nameWithType: Responsible
+  fullName: BoardOfDecisionProblems.Models.Responsible
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedThemeFilter
+  name: SelectedThemeFilter
+  nameWithType: ProblemViewModel.SelectedThemeFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedThemeFilter
+- uid: BoardOfDecisionProblems.Models.Theme
+  commentId: T:BoardOfDecisionProblems.Models.Theme
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Theme.html
+  name: Theme
+  nameWithType: Theme
+  fullName: BoardOfDecisionProblems.Models.Theme
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionDaysInput
+  name: DecisionDaysInput
+  nameWithType: ProblemViewModel.DecisionDaysInput
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionDaysInput
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateFrom
+  name: SelectedDateFrom
+  nameWithType: ProblemViewModel.SelectedDateFrom
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateFrom
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedDateTo
+  name: SelectedDateTo
+  nameWithType: ProblemViewModel.SelectedDateTo
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedDateTo
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DateCheck
+  name: DateCheck
+  nameWithType: ProblemViewModel.DateCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DateCheck
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DepartmentCheck
+  name: DepartmentCheck
+  nameWithType: ProblemViewModel.DepartmentCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DepartmentCheck
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_ThemeCheck
+  name: ThemeCheck
+  nameWithType: ProblemViewModel.ThemeCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ThemeCheck
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_ResponsibleCheck
+  name: ResponsibleCheck
+  nameWithType: ProblemViewModel.ResponsibleCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ResponsibleCheck
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecisionTimeCheck
+  name: DecisionTimeCheck
+  nameWithType: ProblemViewModel.DecisionTimeCheck
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecisionTimeCheck
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblems
+  name: TotalProblems
+  nameWithType: ProblemViewModel.TotalProblems
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblems
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecided
+  name: TotalDecided
+  nameWithType: ProblemViewModel.TotalDecided
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecided
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDeciding
+  name: TotalDeciding
+  nameWithType: ProblemViewModel.TotalDeciding
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDeciding
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_DecidedByFilter
+  name: DecidedByFilter
+  nameWithType: ProblemViewModel.DecidedByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.DecidedByFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_AllByFilter
+  name: AllByFilter
+  nameWithType: ProblemViewModel.AllByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AllByFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TimeByFilter
+  name: TimeByFilter
+  nameWithType: ProblemViewModel.TimeByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TimeByFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_AVGTimeByFilter
+  name: AVGTimeByFilter
+  nameWithType: ProblemViewModel.AVGTimeByFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AVGTimeByFilter
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_Problems
+  name: Problems
+  nameWithType: ProblemViewModel.Problems
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Problems
+- uid: System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Problem}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{BoardOfDecisionProblems.Models.Problem}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<Problem>
+  nameWithType: ObservableCollection<Problem>
+  fullName: System.Collections.ObjectModel.ObservableCollection<BoardOfDecisionProblems.Models.Problem>
+  nameWithType.vb: ObservableCollection(Of Problem)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of BoardOfDecisionProblems.Models.Problem)
+  name.vb: ObservableCollection(Of Problem)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: BoardOfDecisionProblems.Models.Problem
+    name: Problem
+    href: BoardOfDecisionProblems.Models.Problem.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: BoardOfDecisionProblems.Models.Problem
+    name: Problem
+    href: BoardOfDecisionProblems.Models.Problem.html
+  - name: )
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.#ctor
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel__ctor
+  name: ProblemViewModel
+  nameWithType: ProblemViewModel.ProblemViewModel
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.ProblemViewModel
+  nameWithType.vb: ProblemViewModel.New
+  fullName.vb: BoardOfDecisionProblems.ViewModel.ProblemViewModel.New
+  name.vb: New
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_SelectedProblem
+  name: SelectedProblem
+  nameWithType: ProblemViewModel.SelectedProblem
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.SelectedProblem
+- uid: BoardOfDecisionProblems.Models.Problem
+  commentId: T:BoardOfDecisionProblems.Models.Problem
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Problem.html
+  name: Problem
+  nameWithType: Problem
+  fullName: BoardOfDecisionProblems.Models.Problem
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_NewProblem
+  name: NewProblem
+  nameWithType: ProblemViewModel.NewProblem
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.NewProblem
+- uid: BoardOfDecisionProblems.Commands.RelayCommand
+  commentId: T:BoardOfDecisionProblems.Commands.RelayCommand
+  parent: BoardOfDecisionProblems.Commands
+  href: BoardOfDecisionProblems.Commands.RelayCommand.html
+  name: RelayCommand
+  nameWithType: RelayCommand
+  fullName: BoardOfDecisionProblems.Commands.RelayCommand
+- uid: BoardOfDecisionProblems.Commands
+  commentId: N:BoardOfDecisionProblems.Commands
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.Commands
+  nameWithType: BoardOfDecisionProblems.Commands
+  fullName: BoardOfDecisionProblems.Commands
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Commands
+    name: Commands
+    href: BoardOfDecisionProblems.Commands.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Commands
+    name: Commands
+    href: BoardOfDecisionProblems.Commands.html
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_Decide
+  name: Decide
+  nameWithType: ProblemViewModel.Decide
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Decide
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_Watch
+  name: Watch
+  nameWithType: ProblemViewModel.Watch
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Watch
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_Delete
+  name: Delete
+  nameWithType: ProblemViewModel.Delete
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.Delete
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalProblemsFilter
+  name: TotalProblemsFilter
+  nameWithType: ProblemViewModel.TotalProblemsFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalProblemsFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidedFilter
+  name: TotalDecidedFilter
+  nameWithType: ProblemViewModel.TotalDecidedFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidedFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_TotalDecidingFilter
+  name: TotalDecidingFilter
+  nameWithType: ProblemViewModel.TotalDecidingFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.TotalDecidingFilter
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_FilterLogic_System_Object_
+  name: FilterLogic
+  nameWithType: ProblemViewModel.FilterLogic
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.FilterLogic
+- uid: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter*
+  commentId: Overload:BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter
+  href: BoardOfDecisionProblems.ViewModel.ProblemViewModel.html#BoardOfDecisionProblems_ViewModel_ProblemViewModel_AcceptFilter
+  name: AcceptFilter
+  nameWithType: ProblemViewModel.AcceptFilter
+  fullName: BoardOfDecisionProblems.ViewModel.ProblemViewModel.AcceptFilter

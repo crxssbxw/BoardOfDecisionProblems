@@ -1,0 +1,57 @@
+\doxysection{Board\+Of\+Decision\+Problems.\+Models.\+Database\+Context Class Reference}
+\hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context}{}\label{class_board_of_decision_problems_1_1_models_1_1_database_context}\index{BoardOfDecisionProblems.Models.DatabaseContext@{BoardOfDecisionProblems.Models.DatabaseContext}}
+
+
+Логика взаимодействия с Базой Данных  
+
+
+Inheritance diagram for Board\+Of\+Decision\+Problems.\+Models.\+Database\+Context\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_board_of_decision_problems_1_1_models_1_1_database_context}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_a811523d5beab1343cc0501933e37da0a}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_a811523d5beab1343cc0501933e37da0a} 
+{\bfseries Database\+Context} ()
+\begin{DoxyCompactList}\small\item\em Создание БД, если она не создана \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_ae0a633a61abbd99165022606971c039c}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_ae0a633a61abbd99165022606971c039c} 
+override void {\bfseries On\+Configuring} (Db\+Context\+Options\+Builder options\+Builder)
+\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_a318534cb4fd0b3140a117512c725430b}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_a318534cb4fd0b3140a117512c725430b} 
+override void {\bfseries On\+Model\+Creating} (Model\+Builder model\+Builder)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_a077ed65a3d4d472e5cf01c5bf433991d}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_a077ed65a3d4d472e5cf01c5bf433991d} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_user}{User}} $>$ {\bfseries Users}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица Users. \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_a81642117b60cdd9dfb659113f1407cd5}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_a81642117b60cdd9dfb659113f1407cd5} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_worker}{Worker}} $>$ {\bfseries Workers}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица Работников \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_ac1dcaa2e5426dfc33e5162b9be1ae46c}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_ac1dcaa2e5426dfc33e5162b9be1ae46c} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_department}{Department}} $>$ {\bfseries Departments}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица Отделов \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_a7263183b2d96baf2682616f5bc0487b2}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_a7263183b2d96baf2682616f5bc0487b2} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_problem}{Problem}} $>$ {\bfseries Problems}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица Проблем \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_ae4a476ded06c8603a34b9f3cdbda2988}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_ae4a476ded06c8603a34b9f3cdbda2988} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_responsible}{Responsible}} $>$ {\bfseries Responsibles}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица ответственных \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_models_1_1_database_context_aac06f407c12b93e0aa76d42c39872422}\label{class_board_of_decision_problems_1_1_models_1_1_database_context_aac06f407c12b93e0aa76d42c39872422} 
+Db\+Set$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_theme}{Theme}} $>$ {\bfseries Themes}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Таблица Тем \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Логика взаимодействия с Базой Данных 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Board\+Of\+Decision\+Problems/\+Models/Database\+Context.\+cs\end{DoxyCompactItemize}
