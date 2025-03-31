@@ -1,0 +1,56 @@
+\doxysection{Board\+Of\+Decision\+Problems.\+View\+Model.\+Responsibles\+View\+Model Class Reference}
+\hypertarget{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model}{}\label{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model}\index{BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel@{BoardOfDecisionProblems.ViewModel.ResponsiblesViewModel}}
+
+
+Представление модели Ответственных  
+
+
+Inheritance diagram for Board\+Of\+Decision\+Problems.\+View\+Model.\+Responsibles\+View\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a06ff3f607ab76cea5a6b68dd1765595f}\label{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a06ff3f607ab76cea5a6b68dd1765595f} 
+Observable\+Collection$<$ \mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_responsible}{Responsible}} $>$ {\bfseries Responsibles}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Коллекция ответственных \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a35c203152d30e345eac06042e0f70bc2}\label{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a35c203152d30e345eac06042e0f70bc2} 
+\mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_responsible}{Responsible}} {\bfseries Selected\+Responsibility}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Выбранный ответственный в таблице \end{DoxyCompactList}\item 
+\Hypertarget{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a3d53830ca59ec5c79845998ed343eecd}\label{class_board_of_decision_problems_1_1_view_model_1_1_responsibles_view_model_a3d53830ca59ec5c79845998ed343eecd} 
+Relay\+Command {\bfseries Set}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Команда переназначения работника на участке. Команда set должна отвечать за переназначение работников на участке, делая их ответственными или снимая с них эту ответственность. Если переназначается существующий работник, ему устанавливается флаг Is\+Current, обозначающий, что в текущий момент он ответственный на этом участке. При этом у предыдущего назначенного этот флаг снимается. Если добавляется новый ответственный, добавляется новая запись с ответственностью, устанавливается флаг Is\+Current, у предыдущего -\/ снимается. Реализовано это для того, чтобы была возможность просматривать ответственных за все время. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{class_board_of_decision_problems_1_1_view_model_1_1_base_view_model}{Board\+Of\+Decision\+Problems.\+View\+Model.\+Base\+View\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+Collection\+View\+Source {\bfseries View\+Source} = new()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+ICollection\+View {\bfseries Collection\+View}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_board_of_decision_problems_1_1_view_model_1_1_base_view_model}{Board\+Of\+Decision\+Problems.\+View\+Model.\+Base\+View\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries On\+Property\+Changed} (\mbox{[}Caller\+Member\+Name\mbox{]} string property\+Name="{}"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_board_of_decision_problems_1_1_view_model_1_1_base_view_model}{Board\+Of\+Decision\+Problems.\+View\+Model.\+Base\+View\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_board_of_decision_problems_1_1_models_1_1_database_context}{Database\+Context}} {\bfseries db\+Context} = App.\+db\+Context
+\begin{DoxyCompactList}\small\item\em Контекст БД \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events inherited from \mbox{\hyperlink{class_board_of_decision_problems_1_1_view_model_1_1_base_view_model}{Board\+Of\+Decision\+Problems.\+View\+Model.\+Base\+View\+Model}}}
+\begin{DoxyCompactItemize}
+\item 
+Property\+Changed\+Event\+Handler? {\bfseries Property\+Changed}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Представление модели Ответственных 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Board\+Of\+Decision\+Problems/\+View\+Model/Responsibles\+View\+Model.\+cs\end{DoxyCompactItemize}

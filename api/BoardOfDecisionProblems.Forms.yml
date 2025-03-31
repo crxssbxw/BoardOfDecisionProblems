@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.Forms
+  commentId: N:BoardOfDecisionProblems.Forms
+  id: BoardOfDecisionProblems.Forms
+  children:
+  - BoardOfDecisionProblems.Forms.DecisionForm
+  - BoardOfDecisionProblems.Forms.NewDepartment
+  - BoardOfDecisionProblems.Forms.NewProblem
+  - BoardOfDecisionProblems.Forms.NewTheme
+  - BoardOfDecisionProblems.Forms.NewWorker
+  - BoardOfDecisionProblems.Forms.SetResponsibility
+  langs:
+  - csharp
+  - vb
+  name: BoardOfDecisionProblems.Forms
+  nameWithType: BoardOfDecisionProblems.Forms
+  fullName: BoardOfDecisionProblems.Forms
+  type: Namespace
+  assemblies:
+  - BoardOfDecisionProblems
+references:
+- uid: BoardOfDecisionProblems.Forms.DecisionForm
+  commentId: T:BoardOfDecisionProblems.Forms.DecisionForm
+  href: BoardOfDecisionProblems.Forms.DecisionForm.html
+  name: DecisionForm
+  nameWithType: DecisionForm
+  fullName: BoardOfDecisionProblems.Forms.DecisionForm
+- uid: BoardOfDecisionProblems.Forms.NewDepartment
+  commentId: T:BoardOfDecisionProblems.Forms.NewDepartment
+  href: BoardOfDecisionProblems.Forms.NewDepartment.html
+  name: NewDepartment
+  nameWithType: NewDepartment
+  fullName: BoardOfDecisionProblems.Forms.NewDepartment
+- uid: BoardOfDecisionProblems.Forms.NewProblem
+  commentId: T:BoardOfDecisionProblems.Forms.NewProblem
+  href: BoardOfDecisionProblems.Forms.NewProblem.html
+  name: NewProblem
+  nameWithType: NewProblem
+  fullName: BoardOfDecisionProblems.Forms.NewProblem
+- uid: BoardOfDecisionProblems.Forms.NewTheme
+  commentId: T:BoardOfDecisionProblems.Forms.NewTheme
+  href: BoardOfDecisionProblems.Forms.NewTheme.html
+  name: NewTheme
+  nameWithType: NewTheme
+  fullName: BoardOfDecisionProblems.Forms.NewTheme
+- uid: BoardOfDecisionProblems.Forms.NewWorker
+  commentId: T:BoardOfDecisionProblems.Forms.NewWorker
+  href: BoardOfDecisionProblems.Forms.NewWorker.html
+  name: NewWorker
+  nameWithType: NewWorker
+  fullName: BoardOfDecisionProblems.Forms.NewWorker
+- uid: BoardOfDecisionProblems.Forms.SetResponsibility
+  commentId: T:BoardOfDecisionProblems.Forms.SetResponsibility
+  href: BoardOfDecisionProblems.Forms.SetResponsibility.html
+  name: SetResponsibility
+  nameWithType: SetResponsibility
+  fullName: BoardOfDecisionProblems.Forms.SetResponsibility

@@ -6,14 +6,36 @@
              xmlns:local="clr-namespace:ProblemsBoard.Panels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Button Content="X" Panel.ZIndex="1"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Width="20" Height="20"
+                    Width="30" Height="30"
                     Click="Close_Click"/>
-        <Border Background="#E6E6E6" Opacity="0.99" CornerRadius="10">
-            <Grid>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -38,6 +60,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
@@ -72,12 +95,15 @@
                                FontSize="18" FontWeight="Bold"
                                Text="{Binding ResponsibleName}"/>
 
-                    <TextBox Grid.Row="4" Grid.ColumnSpan="4" Margin="5" Background="White"
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="4" Margin="5" Background="White"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding DepartmentName}"/>
+
+                    <TextBox Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Background="White"
                              Text="{Binding Decision}" TextWrapping="Wrap"/>
 
-                    <DatePicker Grid.Row="5" Margin="5" SelectedDate="{Binding DateElimination}" VerticalAlignment="Top"/>
-
-                    <StackPanel Grid.Row="5" Grid.Column="4">
+                    <DatePicker Grid.Row="6" Margin="5" SelectedDate="{Binding DateElimination}" VerticalAlignment="Center" IsEnabled="{Binding IsProblemDecided}"/>
+                    <StackPanel Grid.Row="6" Grid.Column="4">
                         <Button Content="Добавить решение" Background="#008CFF" Foreground="White" Margin="5 2.5"/>
                         <Button Content="Принять" Background="#008CFF" Foreground="White" Margin="5 2.5"/>
                     </StackPanel>

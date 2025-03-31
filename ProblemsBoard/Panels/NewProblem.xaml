@@ -6,15 +6,37 @@
              xmlns:local="clr-namespace:ProblemsBoard.Panels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Button Content="X"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Width="20" Height="20"
+                Width="30" Height="30"
                 Click="Close_Click"
                 Panel.ZIndex="1"/>
-        <Border Background="#E6E6E6" Opacity="0.9" CornerRadius="10">
-            <Grid>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -34,7 +56,6 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="0.25*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 

@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.Models
+  commentId: N:BoardOfDecisionProblems.Models
+  id: BoardOfDecisionProblems.Models
+  children:
+  - BoardOfDecisionProblems.Models.DatabaseContext
+  - BoardOfDecisionProblems.Models.Department
+  - BoardOfDecisionProblems.Models.Problem
+  - BoardOfDecisionProblems.Models.Responsible
+  - BoardOfDecisionProblems.Models.Theme
+  - BoardOfDecisionProblems.Models.User
+  - BoardOfDecisionProblems.Models.Worker
+  langs:
+  - csharp
+  - vb
+  name: BoardOfDecisionProblems.Models
+  nameWithType: BoardOfDecisionProblems.Models
+  fullName: BoardOfDecisionProblems.Models
+  type: Namespace
+  assemblies:
+  - BoardOfDecisionProblems
+references:
+- uid: BoardOfDecisionProblems.Models.DatabaseContext
+  commentId: T:BoardOfDecisionProblems.Models.DatabaseContext
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.DatabaseContext.html
+  name: DatabaseContext
+  nameWithType: DatabaseContext
+  fullName: BoardOfDecisionProblems.Models.DatabaseContext
+- uid: BoardOfDecisionProblems.Models.Department
+  commentId: T:BoardOfDecisionProblems.Models.Department
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Department.html
+  name: Department
+  nameWithType: Department
+  fullName: BoardOfDecisionProblems.Models.Department
+- uid: BoardOfDecisionProblems.Models.Problem
+  commentId: T:BoardOfDecisionProblems.Models.Problem
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Problem.html
+  name: Problem
+  nameWithType: Problem
+  fullName: BoardOfDecisionProblems.Models.Problem
+- uid: BoardOfDecisionProblems.Models.Responsible
+  commentId: T:BoardOfDecisionProblems.Models.Responsible
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Responsible.html
+  name: Responsible
+  nameWithType: Responsible
+  fullName: BoardOfDecisionProblems.Models.Responsible
+- uid: BoardOfDecisionProblems.Models.Theme
+  commentId: T:BoardOfDecisionProblems.Models.Theme
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Theme.html
+  name: Theme
+  nameWithType: Theme
+  fullName: BoardOfDecisionProblems.Models.Theme
+- uid: BoardOfDecisionProblems.Models.User
+  commentId: T:BoardOfDecisionProblems.Models.User
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.User.html
+  name: User
+  nameWithType: User
+  fullName: BoardOfDecisionProblems.Models.User
+- uid: BoardOfDecisionProblems.Models.Worker
+  commentId: T:BoardOfDecisionProblems.Models.Worker
+  parent: BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.Models.Worker.html
+  name: Worker
+  nameWithType: Worker
+  fullName: BoardOfDecisionProblems.Models.Worker
+- uid: BoardOfDecisionProblems.Models
+  commentId: N:BoardOfDecisionProblems.Models
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.Models
+  nameWithType: BoardOfDecisionProblems.Models
+  fullName: BoardOfDecisionProblems.Models
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Models
+    name: Models
+    href: BoardOfDecisionProblems.Models.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Models
+    name: Models
+    href: BoardOfDecisionProblems.Models.html

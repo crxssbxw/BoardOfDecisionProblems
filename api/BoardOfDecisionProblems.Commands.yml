@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: BoardOfDecisionProblems.Commands
+  commentId: N:BoardOfDecisionProblems.Commands
+  id: BoardOfDecisionProblems.Commands
+  children:
+  - BoardOfDecisionProblems.Commands.RelayCommand
+  langs:
+  - csharp
+  - vb
+  name: BoardOfDecisionProblems.Commands
+  nameWithType: BoardOfDecisionProblems.Commands
+  fullName: BoardOfDecisionProblems.Commands
+  type: Namespace
+  assemblies:
+  - BoardOfDecisionProblems
+references:
+- uid: BoardOfDecisionProblems.Commands.RelayCommand
+  commentId: T:BoardOfDecisionProblems.Commands.RelayCommand
+  parent: BoardOfDecisionProblems.Commands
+  href: BoardOfDecisionProblems.Commands.RelayCommand.html
+  name: RelayCommand
+  nameWithType: RelayCommand
+  fullName: BoardOfDecisionProblems.Commands.RelayCommand
+- uid: BoardOfDecisionProblems.Commands
+  commentId: N:BoardOfDecisionProblems.Commands
+  href: BoardOfDecisionProblems.html
+  name: BoardOfDecisionProblems.Commands
+  nameWithType: BoardOfDecisionProblems.Commands
+  fullName: BoardOfDecisionProblems.Commands
+  spec.csharp:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Commands
+    name: Commands
+    href: BoardOfDecisionProblems.Commands.html
+  spec.vb:
+  - uid: BoardOfDecisionProblems
+    name: BoardOfDecisionProblems
+    href: BoardOfDecisionProblems.html
+  - name: .
+  - uid: BoardOfDecisionProblems.Commands
+    name: Commands
+    href: BoardOfDecisionProblems.Commands.html

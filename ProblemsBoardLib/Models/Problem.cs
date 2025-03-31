@@ -51,6 +51,9 @@ namespace ProblemsBoardLib.Models
         [NotMapped]
         public string ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
 
+        [NotMapped]
+        public string DepartmentName { get => $"[{Department.ViewerNumber}] {Department.Name}"; }
+
         public Theme? Theme { get; set; }
         public Responsible? Responsible { get; set; }
         public Department? Department { get; set; }
