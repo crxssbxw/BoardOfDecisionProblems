@@ -18,18 +18,46 @@ namespace ProblemsBoardLib.ViewModel
             {
                 problems = value;
                 OnPropertyChanged(nameof(Problems));
+                OnPropertyChanged(nameof(DepartmentProblems));
             }
         }
-        
-        public void Add(Problem problem)
+
+        private ObservableCollection<Problem> departmentProblems = new();
+        public ObservableCollection<Problem> DepartmentProblems 
         {
-            problems.Add(problem);
-            OnPropertyChanged(nameof(Problems));
+            get => departmentProblems;
+            set
+            {
+                departmentProblems = value;
+                OnPropertyChanged(nameof(DepartmentProblems));
+            }
+        }
+
+        private Department department = new();
+        public Department Department
+        {
+            get => department;
+            set
+            {
+                department = value;
+                OnPropertyChanged(nameof(Department));
+                foreach (var problem in Problems)
+                {
+                    if (problem.DepartmentId == value.DepartmentId)
+                        DepartmentProblems.Add(problem);
+                }
+                OnPropertyChanged(nameof(DepartmentProblems));
+            }
         }
 
         public ProblemsViewModel()
         {
-            ViewSource.Source = Problems;
+            foreach (var problem in dbContext.Problems)
+            {
+                Problems.Add(problem);
+            }
+
+            ViewSource.Source = DepartmentProblems;
         }
     }
 }

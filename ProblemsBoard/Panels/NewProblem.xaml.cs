@@ -1,6 +1,7 @@
 ﻿using ProblemsBoard.Windows;
 using ProblemsBoardLib;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,14 @@ namespace ProblemsBoard.Panels
     /// </summary>
     public partial class NewProblem : UserControl
     {
+        public ProblemsViewModel ViewModel { get; set; } = new();
         public NewProblem()
         {
             Animation.Completed += Animation_Completed;
             InitializeComponent();
         }
 
-        static DoubleAnimation Animation = new DoubleAnimation() { From = 0.9, To = 0, Duration = TimeSpan.FromSeconds(0.5) };
+        static DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.BeginAnimation(OpacityProperty, Animation);
@@ -44,7 +46,7 @@ namespace ProblemsBoard.Panels
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             ProblemsBoardLib.Models.Problem? problem = DataContext as ProblemsBoardLib.Models.Problem;
-            MainWindow.problemsViewModel.Add(problem);
+            ViewModel.Problems.Add(problem);
             this.BeginAnimation(OpacityProperty, Animation);
         }
     }

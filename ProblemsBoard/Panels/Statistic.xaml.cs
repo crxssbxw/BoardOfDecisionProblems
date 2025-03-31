@@ -29,7 +29,7 @@ namespace ProblemsBoard.Panels
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            var Animation = new DoubleAnimation() { From = this.Opacity, To = 0, Duration = TimeSpan.FromSeconds(0.5) };
+            var Animation = new DoubleAnimation() { From = this.Opacity, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
             Animation.Completed += Animation_Completed;
             this.BeginAnimation(OpacityProperty, Animation);
         }

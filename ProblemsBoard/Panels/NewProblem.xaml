@@ -35,8 +35,8 @@
                 Width="30" Height="30"
                 Click="Close_Click"
                 Panel.ZIndex="1"/>
-        <Border Background="#E6E6E6" Opacity="0.9" CornerRadius="10">
-            <Grid>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
@@ -56,7 +56,6 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="0.25*"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
