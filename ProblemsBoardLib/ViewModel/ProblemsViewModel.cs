@@ -19,12 +19,41 @@ namespace ProblemsBoardLib.ViewModel
             {
                 problems = value;
                 OnPropertyChanged(nameof(Problems));
+                OnPropertyChanged(nameof(DepartmentProblems));
             }
+<<<<<<< HEAD
         }        
         public void Add(Problem problem)
+=======
+        }
+
+        private ObservableCollection<Problem> departmentProblems = new();
+        public ObservableCollection<Problem> DepartmentProblems 
+>>>>>>> 081a081 (Added Startup Window)
         {
-            problems.Add(problem);
-            OnPropertyChanged(nameof(Problems));
+            get => departmentProblems;
+            set
+            {
+                departmentProblems = value;
+                OnPropertyChanged(nameof(DepartmentProblems));
+            }
+        }
+
+        private Department department = new();
+        public Department Department
+        {
+            get => department;
+            set
+            {
+                department = value;
+                OnPropertyChanged(nameof(Department));
+                foreach (var problem in Problems)
+                {
+                    if (problem.DepartmentId == value.DepartmentId)
+                        DepartmentProblems.Add(problem);
+                }
+                OnPropertyChanged(nameof(DepartmentProblems));
+            }
         }
 
         public Problem selectedProblem = new();
@@ -40,7 +69,12 @@ namespace ProblemsBoardLib.ViewModel
 
         public ProblemsViewModel()
         {
-            ViewSource.Source = Problems;
+            foreach (var problem in dbContext.Problems)
+            {
+                Problems.Add(problem);
+            }
+
+            ViewSource.Source = DepartmentProblems;
         }
 
         #region Commands

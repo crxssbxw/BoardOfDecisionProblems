@@ -110,9 +110,15 @@ namespace ProblemsBoardLib.Models
         [NotMapped]
         public string ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
 
+<<<<<<< HEAD
         /// <summary>
         /// Ссылка на тему
         /// </summary>
+=======
+        [NotMapped]
+        public string DepartmentName { get => $"[{Department.ViewerNumber}] {Department.Name}"; }
+
+>>>>>>> 081a081 (Added Startup Window)
         public Theme? Theme { get; set; }
         /// <summary>
         /// Ссылка на ответственного

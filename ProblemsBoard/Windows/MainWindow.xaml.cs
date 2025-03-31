@@ -19,18 +19,24 @@ namespace ProblemsBoard.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
+<<<<<<< HEAD
     private static ProblemsViewModel problemsViewModel = new();
     public static ProblemsViewModel ProblemsViewModel
     {
         get => problemsViewModel;
         set => problemsViewModel = value;
     }
+=======
+    public ProblemsViewModel ViewModel { get; set; } = new();
+>>>>>>> 081a081 (Added Startup Window)
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = problemsViewModel;
+        NewProblemPanel.ViewModel = ViewModel;
+        ProblemPanel.ViewModel = ViewModel;
+        DataContext = ViewModel;
     }
-    private DoubleAnimation OpacityAnimation = new DoubleAnimation() { From = 0, To = 0.9, Duration = TimeSpan.FromSeconds(0.5) };
+    private DoubleAnimation OpacityAnimation = new DoubleAnimation() { From = 0, To = 1.0, Duration = TimeSpan.FromSeconds(0.25) };
     private void Statistic_Click(object sender, RoutedEventArgs e)
     {
         StatisticPanel.Visibility = Visibility.Visible;
@@ -56,7 +62,7 @@ public partial class MainWindow : Window
             Description = "Test",
             Status = Statuses[new Random().Next(0, 2)]
         };
-        problemsViewModel.Add(problem);
+        ViewModel.Problems.Add(problem);
     }
 
     private void ProblemView_Click(object sender, RoutedEventArgs e)

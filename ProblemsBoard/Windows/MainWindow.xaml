@@ -66,6 +66,7 @@
             <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch"/>
         </ItemsPanelTemplate>
     </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -83,8 +84,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu">
-            <MenuItem Header="Доска"/>
+        <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu" IsMainMenu="True" >
+            <MenuItem Header="Доска">
+                <MenuItem Header="Новая проблема"/>
+                <Separator/>
+                <MenuItem Header="Сортировать">
+                    <MenuItem Header="Сначала просроченные"/>
+                    <MenuItem Header="Сначала действительные"/>
+                    <MenuItem Header="Сначала новые"/>
+                    <MenuItem Header="Сначала старые"/>
+                </MenuItem>
+            </MenuItem>
             <MenuItem Header="Отчеты"/>
             <MenuItem Header="Статистика" Click="Statistic_Click"/>
             <MenuItem Header="Журнал событий"/>
@@ -97,12 +107,17 @@
                 </Image.Source>
             </Image>
             <Label FontSize="30" FontWeight="Bold"
-                   Content="ДОСКА РЕШЕНИЯ ПРОБЛЕМ"
                    Foreground="#3A6AB2" HorizontalAlignment="Right">
+                <Label.Content>
+                    <TextBlock>
+                        <Run Text="ДОСКА РЕШЕНИЯ ПРОБЛЕМ |"/>
+                        <Run Text="{Binding Department.ViewerNumber, StringFormat=УЧАСТОК №{0}}"/>
+                    </TextBlock>
+                </Label.Content>
             </Label>
         </DockPanel>
         
-        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="15">
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="10">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -115,7 +130,8 @@
                      ItemsSource="{Binding CollectionView}"
                      SelectedItem="{Binding SelectedProblem}"
                      HorizontalContentAlignment="Stretch"
-                     HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                     HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="4"
@@ -173,7 +189,7 @@
                 <Label Content="Фильтры" Grid.Row="0"
                        FontWeight="Bold"/>
 
-                <ScrollViewer Grid.Row="1">
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                     <Grid>
                         
                     </Grid>

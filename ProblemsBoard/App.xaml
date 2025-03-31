@@ -13,6 +13,7 @@
 =======
              xmlns:local="clr-namespace:ProblemsBoard"
 <<<<<<< HEAD
+<<<<<<< HEAD
              xmlns:lib="clr-namespace:ProblemsBoardLib"
 >>>>>>> 038f31d (Deleted Old and created New WPF project):ProblemsBoard/App.xaml
              StartupUri="MainWindow.xaml">
@@ -20,11 +21,14 @@
 =======
              StartupUri="Windows/MainWindow.xaml">
 >>>>>>> 4d8f345 (Main Problems List, panels for add and watch problems)
+=======
+             StartupUri="Windows/Startup.xaml">
+>>>>>>> 081a081 (Added Startup Window)
     <Application.Resources>
         <Style TargetType="Button">
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="CornerRadius" Value="7.5"/>
                 </Style>
             </Style.Resources>
         </Style>

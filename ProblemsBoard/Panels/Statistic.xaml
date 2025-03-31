@@ -34,8 +34,8 @@
                     VerticalAlignment="Top"
                     Width="30" Height="30"
                     Click="Close_Click"/>
-        <Border Background="#E6E6E6" Opacity="0.9" CornerRadius="10">
-            <Grid>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
