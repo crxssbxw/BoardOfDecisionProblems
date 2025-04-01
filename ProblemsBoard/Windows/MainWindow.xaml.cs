@@ -61,7 +61,7 @@ public partial class MainWindow : Window
         ProblemPanel.Visibility = Visibility.Visible;
         ProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
         var DataSender = sender as Button;
-        problemsViewModel.SelectedProblem = DataSender.DataContext as Problem;
-        ProblemPanel.DataContext = problemsViewModel.SelectedProblem;
+        ViewModel.SelectedProblem = DataSender.DataContext as Problem;
+        ProblemPanel.DataContext = ViewModel.SelectedProblem;
     }
 }

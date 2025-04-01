@@ -43,13 +43,16 @@
             </ListBox>
         </StackPanel>
 
-        <Button x:Name="Continue" Grid.Row="2" HorizontalAlignment="Center"
-                Content="Продолжить" Margin="10" Padding="10 2"
-                BorderBrush="#3A6AB2" BorderThickness="2" Background="Transparent"
-                Click="Continue_Click" FontSize="24" FontWeight="Bold"
-                IsEnabled="{Binding ContinueAvailable}">
-            <Button.Style>
+        <DockPanel Grid.Row="2" HorizontalAlignment="Center">
+            <DockPanel.Resources>
                 <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Padding" Value="10 2"/>
+                    <Setter Property="BorderBrush" Value="#3A6AB2"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="Foreground" Value="#3A6AB2"/>
                     <Style.Resources>
                         <Style TargetType="Border">
@@ -62,7 +65,17 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-            </Button.Style>
-        </Button>
+            </DockPanel.Resources>
+
+            <Button x:Name="Continue"  HorizontalAlignment="Center"
+                Content="Продолжить" Margin="10" Padding="10 2"
+                BorderBrush="#3A6AB2" BorderThickness="2" Background="Transparent"
+                Click="Continue_Click" FontSize="24" FontWeight="Bold"
+                IsEnabled="{Binding ContinueAvailable}">
+            </Button>
+
+            <Button x:Name="Import" Content="Импорт"
+                    Click="Import_Click"/>
+        </DockPanel>
     </Grid>
 </Window>
