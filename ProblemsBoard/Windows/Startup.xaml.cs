@@ -24,17 +24,21 @@ namespace ProblemsBoard.Windows
 	/// </summary>
 	public partial class Startup : Window, INotifyPropertyChanged
     {
+		public DatabaseContext DatabaseContext { get; set; } = new();
         public Startup()
         {
             DataContext = this;
-			using (DatabaseContext dbContext = new())
-			{
-				foreach (var dep in dbContext.Departments)
-				{
-					Departments.Add(dep);
-				}
-			}
+			Refresh();
             InitializeComponent();
+        }
+
+		private void Refresh()
+		{
+            foreach (var dep in DatabaseContext.Departments)
+            {
+				Departments.Add(dep);
+            }
+			OnPropertyChanged(nameof(Departments));
         }
 
 		private Department selectedDepartment;
@@ -86,6 +90,39 @@ namespace ProblemsBoard.Windows
 			mainWindow.ViewModel.Department = SelectedDepartment;
 			mainWindow.ViewModel.Department.DepartmentId = SelectedDepartment.DepartmentId;
 			mainWindow.Show();
+        }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+			ImportData importData = new();
+
+			var dialogResult = importData.ShowDialog();
+
+			if (dialogResult == true)
+			{
+				if (importData.DeltaDepartments.Count == 0 && importData.DeltaWorkers.Count == 0)
+					MessageBox.Show("Нечего импортировать", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+				else
+				{
+					var result = MessageBox.Show($"В базу данных будет добавлено:\n{importData.DeltaDepartments.Count} строк участков" +
+						$"\n{importData.DeltaWorkers.Count} строк работников", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+
+					if (result == MessageBoxResult.OK)
+					{
+						using (DatabaseContext context = new())
+						{
+							context.Departments.AddRange(importData.DeltaDepartments);
+							context.Workers.AddRange(importData.DeltaWorkers);
+							context.SaveChanges();
+						}
+                        Refresh();
+                    }
+				}
+			}
+			else if (dialogResult == false)
+				MessageBox.Show("Импорт отменен", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+			else
+				MessageBox.Show("Пользователь не воспользовался окном импорта", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
