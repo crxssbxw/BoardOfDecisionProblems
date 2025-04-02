@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.Models;
 using ProblemsBoardLib.ViewModel;
 
@@ -27,6 +28,10 @@ namespace ProblemsBoard.Windows
 		public DatabaseContext DatabaseContext { get; set; } = new();
         public Startup()
         {
+			DatabaseContext.Problems.Load();
+			DatabaseContext.Workers.Load();
+			DatabaseContext.Responsibles.Load();
+			DatabaseContext.Themes.Load();
             DataContext = this;
 			Refresh();
             InitializeComponent();
@@ -34,6 +39,7 @@ namespace ProblemsBoard.Windows
 
 		private void Refresh()
 		{
+			Departments.Clear();
             foreach (var dep in DatabaseContext.Departments)
             {
 				Departments.Add(dep);
@@ -86,10 +92,20 @@ namespace ProblemsBoard.Windows
 
 		private void Continue_Click(object sender, RoutedEventArgs e)
 		{
-			MainWindow mainWindow = new();
-			mainWindow.ViewModel.Department = SelectedDepartment;
-			mainWindow.ViewModel.Department.DepartmentId = SelectedDepartment.DepartmentId;
+			Department department = new()
+			{
+				DepartmentId = SelectedDepartment.DepartmentId,
+				Name = SelectedDepartment.Name,
+				Problems = SelectedDepartment.Problems,
+				Responsibles = SelectedDepartment.Responsibles,
+				ViewerNumber = SelectedDepartment.ViewerNumber,
+				Workers = SelectedDepartment.Workers
+			};
+
+			MainWindow mainWindow = new(department);
 			mainWindow.Show();
+
+			Close();
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)

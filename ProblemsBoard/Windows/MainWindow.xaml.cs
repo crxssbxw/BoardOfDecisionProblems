@@ -19,12 +19,11 @@ namespace ProblemsBoard.Windows;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public ProblemsViewModel ViewModel { get; set; } = new();
-    public MainWindow()
+    public static ProblemsViewModel ViewModel { get; set; }
+    public MainWindow(Department department)
     {
+        ViewModel = new(department);
         InitializeComponent();
-        NewProblemPanel.ViewModel = ViewModel;
-        ProblemPanel.ViewModel = ViewModel;
         DataContext = ViewModel;
     }
     private DoubleAnimation OpacityAnimation = new DoubleAnimation() { From = 0, To = 1.0, Duration = TimeSpan.FromSeconds(0.25) };
@@ -38,8 +37,13 @@ public partial class MainWindow : Window
     {
         NewProblemPanel.Visibility = Visibility.Visible;
         NewProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
-        Problem newProblem = new();
-        newProblem.Status = "Решается";
+        Problem newProblem = new()
+        {
+            Department = ViewModel.Department,
+            DateOccurance = DateTime.Now,
+            Description = "Описание",
+            Status = "Решается"
+        };
         NewProblemPanel.DataContext = newProblem;
     }
 
@@ -53,7 +57,7 @@ public partial class MainWindow : Window
             Description = "Test",
             Status = Statuses[new Random().Next(0, 2)]
         };
-        ViewModel.DepartmentProblems.Add(problem);
+        ViewModel.Problems.Add(problem);
     }
 
     private void ProblemView_Click(object sender, RoutedEventArgs e)
@@ -63,5 +67,17 @@ public partial class MainWindow : Window
         var DataSender = sender as Button;
         ViewModel.SelectedProblem = DataSender.DataContext as Problem;
         ProblemPanel.DataContext = ViewModel.SelectedProblem;
+    }
+
+    private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+        var result = MessageBox.Show("Хотите сменить отдел / цех?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+        if (result == MessageBoxResult.Yes)
+        {
+            Startup startup = new();
+            startup.Show();
+        }
+        else Application.Current.Shutdown();
     }
 }

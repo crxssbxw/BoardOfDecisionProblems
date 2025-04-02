@@ -25,9 +25,10 @@ namespace ProblemsBoard.Panels
     /// </summary>
     public partial class NewProblem : UserControl
     {
-        public ProblemsViewModel ViewModel { get; set; } = new();
+        public ProblemsViewModel ViewModel { get; set; }
         public NewProblem()
         {
+            ViewModel = MainWindow.ViewModel;
             Animation.Completed += Animation_Completed;
             InitializeComponent();
         }
@@ -45,8 +46,20 @@ namespace ProblemsBoard.Panels
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
-            ProblemsBoardLib.Models.Problem? problem = DataContext as ProblemsBoardLib.Models.Problem;
+            ProblemsBoardLib.Models.Problem problem = DataContext as ProblemsBoardLib.Models.Problem;
             ViewModel.Problems.Add(problem);
+            try
+            {
+                var dep = ViewModel.dbContext.Departments.Find(problem.Department.DepartmentId);
+                if (dep.Problems == null)
+                    dep.Problems = [];
+                dep.Problems.Add(problem);
+                ViewModel.dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             this.BeginAnimation(OpacityProperty, Animation);
         }
     }

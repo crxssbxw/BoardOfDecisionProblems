@@ -72,7 +72,7 @@
 
                     <StackPanel Grid.ColumnSpan="3" Grid.Row="1" Margin="5">
                         <Label Content="Участок/Отдел"/>
-                        <ComboBox/>
+                        <ComboBox IsEnabled="False" x:Name="DepartmentsCB" SelectedValue="{Binding Department}"/>
                     </StackPanel>
 
                     <Label Content="Описание" Grid.Row="2" Margin="5 0"/>
@@ -81,7 +81,8 @@
 
                     <DatePicker Grid.Row="4" Margin="5" SelectedDate="{Binding DateOccurance}"/>
                     <Button x:Name="Accept" Content="Принять" Grid.Row="4" Grid.Column="2"
-                            Margin="5" Background="#008CFF" Foreground="White"/>
+                            Margin="5" Background="#008CFF" Foreground="White"
+                            Click="Accept_Click"/>
                 </Grid>
             </Grid>
         </Border>
