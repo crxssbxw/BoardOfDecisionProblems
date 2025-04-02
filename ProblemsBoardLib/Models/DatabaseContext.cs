@@ -48,7 +48,6 @@ namespace ProblemsBoardLib.Models
         /// </summary>
         public DatabaseContext()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

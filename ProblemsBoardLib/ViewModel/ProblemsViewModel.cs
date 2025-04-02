@@ -19,6 +19,7 @@ namespace ProblemsBoardLib.ViewModel
             {
                 problems = value;
                 OnPropertyChanged(nameof(Problems));
+<<<<<<< HEAD
                 OnPropertyChanged(nameof(DepartmentProblems));
             }
 <<<<<<< HEAD
@@ -36,6 +37,8 @@ namespace ProblemsBoardLib.ViewModel
             {
                 departmentProblems = value;
                 OnPropertyChanged(nameof(DepartmentProblems));
+=======
+>>>>>>> e8a7a46 (Now problems added to DB)
             }
         }
 
@@ -47,12 +50,6 @@ namespace ProblemsBoardLib.ViewModel
             {
                 department = value;
                 OnPropertyChanged(nameof(Department));
-                foreach (var problem in Problems)
-                {
-                    if (problem.DepartmentId == value.DepartmentId)
-                        DepartmentProblems.Add(problem);
-                }
-                OnPropertyChanged(nameof(DepartmentProblems));
             }
         }
 
@@ -67,14 +64,16 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        public ProblemsViewModel()
+        public ProblemsViewModel(Department department)
         {
-            foreach (var problem in dbContext.Problems)
-            {
-                Problems.Add(problem);
-            }
+            Department = department;
+            if (Department.Problems != null) 
+                foreach (var problem in Department.Problems)
+                {
+                    Problems.Add(problem);
+                }
 
-            ViewSource.Source = DepartmentProblems;
+            ViewSource.Source = Problems;
         }
 
         #region Commands

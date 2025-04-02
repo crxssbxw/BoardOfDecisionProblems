@@ -102,13 +102,13 @@ namespace ProblemsBoardLib.Models
         /// Название темы
         /// </summary>
         [NotMapped]
-        public string ThemeName { get => Theme.Name; }
+        public string? ThemeName { get => Theme.Name; }
 
         /// <summary>
         /// Имя ответственного
         /// </summary>
         [NotMapped]
-        public string ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
+        public string? ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
 
 <<<<<<< HEAD
         /// <summary>
@@ -116,7 +116,7 @@ namespace ProblemsBoardLib.Models
         /// </summary>
 =======
         [NotMapped]
-        public string DepartmentName { get => $"[{Department.ViewerNumber}] {Department.Name}"; }
+        public string? DepartmentName { get => $"[{Department.ViewerNumber}] {Department.Name}"; }
 
 >>>>>>> 081a081 (Added Startup Window)
         public Theme? Theme { get; set; }

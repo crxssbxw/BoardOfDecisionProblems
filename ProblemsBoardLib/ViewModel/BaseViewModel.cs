@@ -19,6 +19,7 @@ namespace ProblemsBoardLib.ViewModel
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// Контекст БД
         /// </summary>
@@ -29,6 +30,9 @@ namespace ProblemsBoardLib.ViewModel
 =======
         public static DatabaseContext dbContext;
 >>>>>>> 0bd6498 (Test commit)
+=======
+        public DatabaseContext dbContext { get; private set; } = new();
+>>>>>>> e8a7a46 (Now problems added to DB)
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

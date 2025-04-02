@@ -1,4 +1,5 @@
-﻿using ProblemsBoardLib.ViewModel;
+﻿using ProblemsBoard.Windows;
+using ProblemsBoardLib.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,10 @@ namespace ProblemsBoard.Panels
     /// </summary>
     public partial class Problem : UserControl
     {
-        public ProblemsViewModel ViewModel { get; set; } = new();
+        public ProblemsViewModel ViewModel { get; set; }
         public Problem()
         {
+            ViewModel = MainWindow.ViewModel;
             InitializeComponent();
         }
         private void Close_Click(object sender, RoutedEventArgs e)
