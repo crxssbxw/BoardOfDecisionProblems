@@ -62,7 +62,7 @@ public partial class MainWindow : Window
             Description = "Test",
             Status = Statuses[new Random().Next(0, 2)]
         };
-        ViewModel.Problems.Add(problem);
+        ViewModel.DepartmentProblems.Add(problem);
     }
 
     private void ProblemView_Click(object sender, RoutedEventArgs e)

@@ -33,13 +33,13 @@ namespace ProblemsBoard.Windows
         public string Help { get; set; } =
             @"Для импорта данных книга Excel должна содержать два листа с названиями ""Участки"" и ""Сотрудники"". " +
             @"Лист ""Участки"" должен содержать три столбца: ID, Название, Номер участка. " +
-            @"Лист ""Сотрудники"" должен содержать шесть столбцов: ID, Имя, Фамилия, Отчество, Должность, ID Участка. "+
+            @"Лист ""Сотрудники"" должен содержать шесть столбцов: ID, Имя, Фамилия, Отчество, Должность, ID Участка. " +
             @"Заголовки столбцов обязательны. Порядок указанных столбцов обязателен. ";
 
 
         private string selectedFile = "Файл не выбран";
-        public string SelectedFile 
-        { 
+        public string SelectedFile
+        {
             get => selectedFile;
             set
             {
@@ -57,7 +57,7 @@ namespace ProblemsBoard.Windows
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if (PropertyChanged != null) 
+            if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
@@ -69,7 +69,35 @@ namespace ProblemsBoard.Windows
             {
                 SelectedFile = ExcelDataImport.FilePath;
             }
+            else
+                SelectedFile = "Файл не выбран";
+            FillTables(ExcelDataImport);
+        }
 
+        private ObservableCollection<Department> deltaDepartments = new();
+        public ObservableCollection<Department> DeltaDepartments
+        {
+            get => deltaDepartments;
+            set
+            {
+                deltaDepartments = value;
+                OnPropertyChanged(nameof(DeltaDepartments));
+            }
+        }
+
+        private ObservableCollection<Worker> deltaWorkers = new();
+        public ObservableCollection<Worker> DeltaWorkers
+        {
+            get => deltaWorkers;
+            set
+            {
+                deltaWorkers = value;
+                OnPropertyChanged(nameof(DeltaWorkers));
+            }
+        }
+
+        private void FillTables(ExcelDataImport ExcelDataImport)
+        {
             try
             {
                 ExcelDataImport.Read();
@@ -99,28 +127,6 @@ namespace ProblemsBoard.Windows
             }
         }
 
-        private ObservableCollection<Department> deltaDepartments = new();
-        public ObservableCollection<Department> DeltaDepartments
-        {
-            get => deltaDepartments;
-            set
-            {
-                deltaDepartments = value;
-                OnPropertyChanged(nameof(DeltaDepartments));
-            }
-        }
-
-        private ObservableCollection<Worker> deltaWorkers = new();
-        public ObservableCollection<Worker> DeltaWorkers
-        {
-            get => deltaWorkers;
-            set
-            {
-                deltaWorkers = value;
-                OnPropertyChanged(nameof(DeltaWorkers));
-            }
-        }
-
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
@@ -129,6 +135,38 @@ namespace ProblemsBoard.Windows
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void Grid_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                ExcelDataImport = new();
+
+                string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
+                ExcelDataImport.GetDropped(file[0]);
+
+                if (ExcelDataImport.IsPathAllowed && ExcelDataImport.IsRightFormat)
+                {
+                    SelectedFile = ExcelDataImport.FilePath;
+                }
+                else
+                    SelectedFile = "Файл не выбран";
+                FillTables(ExcelDataImport);
+            }
+        }
+
+        private void Grid_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = false;
         }
     }
 }
