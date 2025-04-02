@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Импорт Данных" MinHeight="450" MinWidth="600"
         FontSize="18">
-    <Grid Margin="10">
+    <Grid Margin="10" Drop="Grid_Drop" AllowDrop="True"
+          DragOver="Grid_DragOver">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>

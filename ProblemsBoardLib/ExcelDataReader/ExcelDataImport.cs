@@ -60,6 +60,11 @@ namespace ProblemsBoardLib.ExcelDataReader
             }
         }
 
+        public void GetDropped(string path)
+        {
+            filePath = path;
+        }
+
         public void Read()
         {
             if (!IsPathAllowed)
