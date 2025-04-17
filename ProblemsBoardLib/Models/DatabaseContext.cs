@@ -55,12 +55,5 @@ namespace ProblemsBoardLib.Models
         {
             optionsBuilder.UseSqlite("Data Source=board.db");
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Department>()
-                .HasIndex(department => department.ViewerNumber)
-                .IsUnique();
-        }
     }
 }

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 ﻿using ProblemsBoardLib.Commands;
 <<<<<<< HEAD
 using ProblemsBoardLib.Forms;
+=======
+﻿using Microsoft.EntityFrameworkCore;
+using ProblemsBoardLib.Commands;
+>>>>>>> 4bee76b (Fixed Themes, now themes can add to department)
 using ProblemsBoardLib.Models;
 using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.ViewModel;
@@ -60,11 +65,16 @@ namespace ProblemsBoardLib.ViewModel
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         private Theme selectedTheme = new();
         /// <summary>
         /// Объект выбранной Темы в таблице
         /// </summary>
 =======
+=======
+        public Department Department { get; set; }
+
+>>>>>>> 4bee76b (Fixed Themes, now themes can add to department)
         private Theme selectedTheme;
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         public Theme SelectedTheme
@@ -169,9 +179,11 @@ namespace ProblemsBoardLib.ViewModel
 
         private RelayCommand addTheme;
 
-        public ThemesViewModel()
+        public ThemesViewModel(Department department)
         {
-            foreach (var theme in dbContext.Themes) 
+            Department = department;
+            dbContext.Departments.Load();
+            foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == Department.DepartmentId || a.Department == null)) 
             {
                 Themes.Add(theme);
             }
@@ -186,7 +198,9 @@ namespace ProblemsBoardLib.ViewModel
                     AddEditThemeViewModel = new()
                     {
                         Theme = new(),
-                        Themes = this.Themes
+                        Themes = this.Themes,
+                        Department = Department,
+                        Title = "Новая тема"
                     };
                 },
                 obj => true));
