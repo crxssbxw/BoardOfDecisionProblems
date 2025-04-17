@@ -22,5 +22,6 @@ namespace ProblemsBoardLib.Models
         public ICollection<Worker> Workers { get; set; }
         public ICollection<Responsible> Responsibles { get; set; }
         public ICollection<Problem> Problems { get; set; }
+        public ICollection<Theme> Themes { get; set; }
     }
 }

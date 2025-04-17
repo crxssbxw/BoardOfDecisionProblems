@@ -146,6 +146,12 @@ namespace ProblemsBoard.Windows
                 string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
                 ExcelDataImport.GetDropped(file[0]);
 
+                if (!ExcelDataImport.IsRightFile)
+                {
+                    SelectedFile = "Файл не выбран";
+                    MessageBox.Show("Неправильный формат данных для импорта!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 if (ExcelDataImport.IsPathAllowed && ExcelDataImport.IsRightFormat)
                 {
                     SelectedFile = ExcelDataImport.FilePath;

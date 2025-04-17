@@ -1,7 +1,4 @@
-﻿using ProblemsBoard.Windows;
-using ProblemsBoardLib;
-using ProblemsBoardLib.Models;
-using ProblemsBoardLib.ViewModel;
+﻿using ProblemsBoardLib.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +18,15 @@ using System.Windows.Shapes;
 namespace ProblemsBoard.Panels
 {
     /// <summary>
-    /// Логика взаимодействия для NewProblem.xaml
+    /// Логика взаимодействия для Themes.xaml
     /// </summary>
-    public partial class NewProblem : UserControl
+    public partial class Themes : UserControl
     {
-        private NewProblemPanelViewModel viewModel;
-        public NewProblemPanelViewModel ViewModel 
-        { 
-            get => viewModel; 
-            set => viewModel = value; 
-        }
-
-        public NewProblem()
+        public Themes()
         {
             Animation.Completed += Animation_Completed;
             InitializeComponent();
-            DataContext = ViewModel;
         }
-
         static DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -52,7 +40,27 @@ namespace ProblemsBoard.Panels
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
-            this.BeginAnimation(OpacityProperty, Animation);
+            AddEditTheme.Visibility ^= Visibility.Collapsed;
+        }
+
+        private void ThemeAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditTheme.Visibility = Visibility.Visible;
+        }
+
+        private void AddEditCloseBT_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditTheme.Visibility ^= Visibility.Collapsed;
+        }
+
+        private void ThemesLB_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ThemesViewModel themesViewModel = DataContext as ThemesViewModel;
+            themesViewModel.AddEditThemeViewModel = new()
+            {
+                Theme = themesViewModel.SelectedTheme
+            };
+            AddEditTheme.Visibility = Visibility.Visible;
         }
     }
 }

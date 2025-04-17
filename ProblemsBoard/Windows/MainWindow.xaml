@@ -18,6 +18,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -49,6 +50,11 @@
                         <TextBlock Text="{Binding Status}" HorizontalAlignment="Right"/>
                         <Button x:Name="ProblemView" Content="Просмотр" Margin="0 5" Padding="5" HorizontalAlignment="Right"
                                 Click="ProblemView_Click"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" VerticalAlignment="Center" Margin="10" >
+                        <TextBlock Text="{Binding DaysLeft}" FontSize="16" FontWeight="Bold"
+                                   ToolTip="Осталось дней на решение"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -87,7 +93,10 @@
 
         <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu" IsMainMenu="True" >
             <MenuItem Header="Доска">
-                <MenuItem Header="Новая проблема"/>
+                <MenuItem Header="Новая проблема" Command="{Binding NewProblemAdd}"
+                          Click="NewProblem_Click"/>
+                <MenuItem x:Name="Themes" Header="Темы" Command="{Binding ThemesView}"
+                          Click="Themes_Click"/>
                 <Separator/>
                 <MenuItem Header="Сортировать">
                     <MenuItem Header="Сначала просроченные"/>
@@ -150,7 +159,8 @@
             
             <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     Content="Новая Проблема" Padding="10" Margin="5" Background="#008CFF"
-                    Foreground="White" FontWeight="Bold" Click="NewProblem_Click"/>
+                    Foreground="White" FontWeight="Bold" Click="NewProblem_Click"
+                    Command="{Binding NewProblemAdd}"/>
 
             <Button Grid.Row="2" HorizontalAlignment="Center" Padding="5" MinWidth="85" Margin="5"
                     Background="#D5E8D4">
@@ -213,9 +223,17 @@
 
         <panels:NewProblem
             Margin="10"
-            Panel.ZIndex="3"
+            Panel.ZIndex="3" DataContext="{Binding NewProblemVM}"
             x:Name="NewProblemPanel" Visibility="Collapsed"
             Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3">            
         </panels:NewProblem>
+
+        <panels:Themes
+            Margin="10"
+            Panel.ZIndex="4" DataContext="{Binding ThemesVM}"
+            x:Name="ThemesPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4">
+            
+        </panels:Themes>
     </Grid>
 </Window>

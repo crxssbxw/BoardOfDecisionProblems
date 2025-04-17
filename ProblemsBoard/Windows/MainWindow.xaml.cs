@@ -37,14 +37,6 @@ public partial class MainWindow : Window
     {
         NewProblemPanel.Visibility = Visibility.Visible;
         NewProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
-        Problem newProblem = new()
-        {
-            Department = ViewModel.Department,
-            DateOccurance = DateTime.Now,
-            Description = "Описание",
-            Status = "Решается"
-        };
-        NewProblemPanel.DataContext = newProblem;
     }
 
     private int TestPlusCount = 1;
@@ -79,5 +71,11 @@ public partial class MainWindow : Window
             startup.Show();
         }
         else Application.Current.Shutdown();
+    }
+
+    private void Themes_Click(object sender, RoutedEventArgs e)
+    {
+        ThemesPanel.Visibility = Visibility.Visible;
+        ThemesPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
     }
 }
