@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using ProblemsBoardLib;
 using ProblemsBoardLib.Models;
 using ProblemsBoardLib.ViewModel;
 
@@ -92,15 +93,8 @@ namespace ProblemsBoard.Windows
 
 		private void Continue_Click(object sender, RoutedEventArgs e)
 		{
-			Department department = new()
-			{
-				DepartmentId = SelectedDepartment.DepartmentId,
-				Name = SelectedDepartment.Name,
-				Problems = SelectedDepartment.Problems,
-				Responsibles = SelectedDepartment.Responsibles,
-				ViewerNumber = SelectedDepartment.ViewerNumber,
-				Workers = SelectedDepartment.Workers
-			};
+			Department department = new();
+			Helper.CopyTo(SelectedDepartment, department);
 
 			MainWindow mainWindow = new(department);
 			mainWindow.Show();

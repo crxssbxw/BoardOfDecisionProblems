@@ -25,27 +25,34 @@ namespace ProblemsBoard.Panels
     /// </summary>
     public partial class NewProblem : UserControl
     {
-        public ProblemsViewModel ViewModel { get; set; }
+        private NewProblemPanelViewModel viewModel;
+        public NewProblemPanelViewModel ViewModel 
+        { 
+            get => viewModel; 
+            set => viewModel = value; 
+        }
+
         public NewProblem()
         {
-            ViewModel = MainWindow.ViewModel;
             Animation.Completed += Animation_Completed;
             InitializeComponent();
+            DataContext = ViewModel;
         }
 
         static DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.BeginAnimation(OpacityProperty, Animation);
         }
         private void Animation_Completed(object? sender, EventArgs e)
         {
-            DataContext = null;
             Visibility = Visibility.Collapsed;
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             ProblemsBoardLib.Models.Problem? problem = DataContext as ProblemsBoardLib.Models.Problem;
 <<<<<<< HEAD
@@ -69,6 +76,8 @@ namespace ProblemsBoard.Panels
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 >>>>>>> e8a7a46 (Now problems added to DB)
+=======
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
             this.BeginAnimation(OpacityProperty, Animation);
         }
     }

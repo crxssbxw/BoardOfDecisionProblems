@@ -52,10 +52,14 @@ namespace ProblemsBoardLib.Models
         /// Идентификатор темы
         /// </summary>
         public int? ThemeId { get; set; }
+<<<<<<< HEAD
         
         /// <summary>
         /// Время решения проблемы (в БД не записывается)
         /// </summary>
+=======
+
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         [NotMapped]
         public int? DecisionTime
         {
@@ -86,23 +90,25 @@ namespace ProblemsBoardLib.Models
         /// Отображаемый статус (в БД не записывается)
         /// </summary>
         [NotMapped]
-        public byte ViewStatus
+        public int? DaysLeft
         {
             get
             {
-                if (Status == "Решено" || Status == "Решено оп." && DecisionTime < 20) return 1;
-                if (Status == "Решено" || Status == "Решено оп." && DecisionTime >= 20) return 2;
-                if (Status == "Решается" || Status == "Решается оп." && DecisionTime < 20) return 3;
-                if (Status == "Решается" || Status == "Решается оп." && DecisionTime >= 20) return 4;
-                else return 0;
+                if (DecisionTime >= Theme?.DaysToDecide) return 0;
+                else return Theme?.DaysToDecide - DecisionTime;
             }
         }
+<<<<<<< HEAD
         
         /// <summary>
         /// Название темы
         /// </summary>
+=======
+
+
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         [NotMapped]
-        public string? ThemeName { get => Theme.Name; }
+        public string? ThemeName { get => Theme?.Name; }
 
         /// <summary>
         /// Имя ответственного

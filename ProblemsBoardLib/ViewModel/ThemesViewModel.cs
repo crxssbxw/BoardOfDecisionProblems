@@ -1,14 +1,19 @@
 ﻿using ProblemsBoardLib.Commands;
+<<<<<<< HEAD
 using ProblemsBoardLib.Forms;
 using ProblemsBoardLib.Models;
 using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.ViewModel;
+=======
+using ProblemsBoardLib.Models;
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
@@ -25,6 +30,27 @@ namespace ProblemsBoardLib.ViewModel
         /// </summary>
         public ObservableCollection<Theme> Themes
         {
+=======
+
+namespace ProblemsBoardLib.ViewModel
+{
+    public class ThemesViewModel : BaseViewModel
+    {
+        private AddEditThemeViewModel addEditThemeViewModel;
+        public AddEditThemeViewModel AddEditThemeViewModel 
+        { 
+            get => addEditThemeViewModel; 
+            set
+            {
+                addEditThemeViewModel = value;
+                OnPropertyChanged(nameof(AddEditThemeViewModel));
+            }
+        }
+
+        private ObservableCollection<Theme> themes = new();
+        public ObservableCollection<Theme> Themes 
+        { 
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
             get => themes;
             set
             {
@@ -33,10 +59,14 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+<<<<<<< HEAD
         private Theme selectedTheme = new();
         /// <summary>
         /// Объект выбранной Темы в таблице
         /// </summary>
+=======
+        private Theme selectedTheme;
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         public Theme SelectedTheme
         {
             get => selectedTheme;
@@ -47,6 +77,7 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+<<<<<<< HEAD
         public ThemesViewModel()
         {
             dbContext.Problems.Load();
@@ -133,6 +164,33 @@ namespace ProblemsBoardLib.ViewModel
                         Themes.Remove(SelectedTheme);
                     }
                 }, obj => SelectedTheme != null));
+=======
+        #region Commands
+
+        private RelayCommand addTheme;
+
+        public ThemesViewModel()
+        {
+            foreach (var theme in dbContext.Themes) 
+            {
+                Themes.Add(theme);
+            }
+        }
+
+        public RelayCommand AddTheme
+        {
+            get
+            {
+                return addTheme ?? (addTheme = new(obj =>
+                {
+                    AddEditThemeViewModel = new()
+                    {
+                        Theme = new(),
+                        Themes = this.Themes
+                    };
+                },
+                obj => true));
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
             }
         }
 

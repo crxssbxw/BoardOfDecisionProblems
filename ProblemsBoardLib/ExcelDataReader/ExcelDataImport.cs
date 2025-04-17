@@ -20,6 +20,14 @@ namespace ProblemsBoardLib.ExcelDataReader
         {
             get => !string.IsNullOrEmpty(filePath);
         }
+        public bool IsRightFile
+        {
+            get
+            {
+                FileInfo fileInfo = new FileInfo(filePath);
+                return fileInfo.Extension.ToLower() == ".xlsx";
+            }
+        }
         public bool IsRightFormat
         {
             get

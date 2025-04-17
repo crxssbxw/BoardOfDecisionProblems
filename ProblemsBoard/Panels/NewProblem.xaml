@@ -59,30 +59,19 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Row="0" Margin="5">
-                        <Label Content="Номер"/>
-                        <TextBox IsReadOnly="True"
-                             Text="{Binding ProblemId}"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="2" Margin="5">
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
                         <Label Content="Тема"/>
                         <ComboBox/>
                     </StackPanel>
 
-                    <StackPanel Grid.ColumnSpan="3" Grid.Row="1" Margin="5">
-                        <Label Content="Участок/Отдел"/>
-                        <ComboBox IsEnabled="False" x:Name="DepartmentsCB" SelectedValue="{Binding Department}"/>
-                    </StackPanel>
-
                     <Label Content="Описание" Grid.Row="2" Margin="5 0"/>
                     <TextBox Grid.Row="3" Grid.ColumnSpan="3" Margin="5"
-                             Text="{Binding Description}"/>
+                             Text="{Binding NewProblem.Description}"/>
 
-                    <DatePicker Grid.Row="4" Margin="5" SelectedDate="{Binding DateOccurance}"/>
+                    <DatePicker Grid.Row="4" Margin="5" SelectedDate="{Binding NewProblem.DateOccurance}"/>
                     <Button x:Name="Accept" Content="Принять" Grid.Row="4" Grid.Column="2"
                             Margin="5" Background="#008CFF" Foreground="White"
-                            Click="Accept_Click"/>
+                            Click="Accept_Click" Command="{Binding Add}"/>
                 </Grid>
             </Grid>
         </Border>

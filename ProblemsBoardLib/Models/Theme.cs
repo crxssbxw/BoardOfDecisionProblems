@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,9 @@ namespace ProblemsBoardLib.Models
         /// Описание темы
         /// </summary>
         public string? Description { get; set; }
+        public int DaysToDecide { get; set; }
+        public Department? Department { get; set; }
+        public int? DepartmentId { get; set; } 
 
         /// <summary>
         /// Количество дней на решение проблемы этой темы
@@ -34,10 +38,15 @@ namespace ProblemsBoardLib.Models
         /// </summary>
         public ICollection<Problem> Problems { get; set; }
 
+<<<<<<< HEAD
         /// <summary>
         /// Представление объекта в виде строки
         /// </summary>
         /// <returns>Строка вида "Название"</returns>
+=======
+        public string Error => throw new NotImplementedException();
+
+>>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         public override string ToString()
         {
             return $"{Name}";

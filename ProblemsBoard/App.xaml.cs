@@ -16,5 +16,11 @@ public partial class App : Application
     {
         base.OnStartup(e);
     }
+
+    private class Test
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 }
 

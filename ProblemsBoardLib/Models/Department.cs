@@ -53,5 +53,6 @@ namespace ProblemsBoardLib.Models
         /// Проблемы, связанные с этим отделом
         /// </summary>
         public ICollection<Problem> Problems { get; set; }
+        public ICollection<Theme> Themes { get; set; }
     }
 }
