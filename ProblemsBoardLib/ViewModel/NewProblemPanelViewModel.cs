@@ -13,11 +13,21 @@ namespace ProblemsBoardLib.ViewModel
 {
     public class NewProblemPanelViewModel : BaseViewModel
     {
-        public NewProblemPanelViewModel(Problem problem, ObservableCollection<Problem> problems)
+        public NewProblemPanelViewModel(ObservableCollection<Problem> problems, Department department)
         {
+            dbContext.Themes.Load();
+            dbContext.Departments.Load();
             dbContext.Problems.Load();
-            NewProblem = problem;
+            NewProblem = new()
+            {
+                DateOccurance = DateTime.Now,
+                Department = department,
+                Description = "Описание",
+                Status = "Решается"
+            };
             Problems = problems;
+            foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
+                Themes.Add(theme);
         }
 
         private Problem newProblem;
@@ -32,6 +42,17 @@ namespace ProblemsBoardLib.ViewModel
         }
 
         public ObservableCollection<Problem> Problems { get; set; }
+
+        private ObservableCollection<Theme> themes = new();
+        public ObservableCollection<Theme> Themes
+        {
+            get => themes;
+            set
+            {
+                themes = value;
+                OnPropertyChanged(nameof(Themes));
+            }
+        }
 
         private bool IsValid
         {
@@ -52,7 +73,13 @@ namespace ProblemsBoardLib.ViewModel
                 {
                     try
                     {
-                        dbContext.Departments.Find(NewProblem.Department.DepartmentId).Problems?.Add(NewProblem);
+                        dbContext.ChangeTracker.Clear();
+
+						var dep = dbContext.Departments.Find(NewProblem.Department.DepartmentId);
+                        if (dep.Problems == null)
+                            dep.Problems = [];
+
+                        dep.Problems.Add(NewProblem);
                         dbContext.SaveChanges();
                         Problems.Add(NewProblem);
                     }

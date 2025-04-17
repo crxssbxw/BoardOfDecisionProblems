@@ -25,6 +25,32 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+        private bool isThisDepartment;
+        public bool IsThisDepartment
+        {
+            get => isThisDepartment;
+            set
+            {
+                isThisDepartment = value;
+                OnPropertyChanged(nameof(IsThisDepartment));
+            }
+        }
+
+        public bool IsNoEdit { get; set; } = true;
+
+        public Department Department { get; set; }
+
+        private string title;
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
         public ObservableCollection<Theme> Themes { get; set; }
 
         public string Name
@@ -83,8 +109,18 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return acceptTheme ?? (acceptTheme = new(obj =>
                 {
-                    if (Theme.ThemeId == 0)
+                    
+                    if (IsThisDepartment && Theme.ThemeId == 0)
+                    {
+                        var dep = dbContext.Departments.Find(Department.DepartmentId);
+                        if (dep.Themes == null)
+                            dep.Themes = [];
+
+                        dep.Themes.Add(Theme);
+                    }
+                    else if (Theme.ThemeId == 0)
                         dbContext.Themes.Add(Theme);
+
                     try
                     {
                         dbContext.SaveChanges();

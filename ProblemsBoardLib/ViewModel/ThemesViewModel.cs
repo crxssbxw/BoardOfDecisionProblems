@@ -1,4 +1,5 @@
-﻿using ProblemsBoardLib.Commands;
+﻿using Microsoft.EntityFrameworkCore;
+using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+        public Department Department { get; set; }
+
         private Theme selectedTheme;
         public Theme SelectedTheme
         {
@@ -48,9 +51,11 @@ namespace ProblemsBoardLib.ViewModel
 
         private RelayCommand addTheme;
 
-        public ThemesViewModel()
+        public ThemesViewModel(Department department)
         {
-            foreach (var theme in dbContext.Themes) 
+            Department = department;
+            dbContext.Departments.Load();
+            foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == Department.DepartmentId || a.Department == null)) 
             {
                 Themes.Add(theme);
             }
@@ -65,7 +70,9 @@ namespace ProblemsBoardLib.ViewModel
                     AddEditThemeViewModel = new()
                     {
                         Theme = new(),
-                        Themes = this.Themes
+                        Themes = this.Themes,
+                        Department = Department,
+                        Title = "Новая тема"
                     };
                 },
                 obj => true));

@@ -109,7 +109,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock FontSize="30" FontWeight="Bold" Foreground="#3A6AB2" Panel.ZIndex="1"
+                <TextBlock FontSize="26" FontWeight="Bold" Foreground="#3A6AB2" Panel.ZIndex="1"
                    Text="{Binding Title}" HorizontalAlignment="Center" d:Text="Тема"/>
 
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
@@ -123,6 +123,12 @@
                         
                         <Label Content="Дней на решение"/>
                         <TextBox Text="{Binding Theme.DaysToDecide, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <DockPanel>
+                            <Label Content="Привязать к участку" VerticalAlignment="Center"/>
+                            <CheckBox IsChecked="{Binding IsThisDepartment}"
+                                      IsEnabled="{Binding IsNoEdit}" VerticalAlignment="Center"/>
+                        </DockPanel>
                     </StackPanel>
                 </ScrollViewer>
 

@@ -58,7 +58,10 @@ namespace ProblemsBoard.Panels
             ThemesViewModel themesViewModel = DataContext as ThemesViewModel;
             themesViewModel.AddEditThemeViewModel = new()
             {
-                Theme = themesViewModel.SelectedTheme
+                Theme = themesViewModel.SelectedTheme,
+                Title = "Изменить тему",
+                Department = themesViewModel.Department,
+                IsNoEdit = false
             };
             AddEditTheme.Visibility = Visibility.Visible;
         }

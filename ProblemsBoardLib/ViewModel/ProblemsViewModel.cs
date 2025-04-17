@@ -78,7 +78,7 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private ThemesViewModel themesVM = new();
+        private ThemesViewModel themesVM = new(new Department());
         public ThemesViewModel ThemesVM
         {
             get => themesVM;
@@ -110,14 +110,7 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return newProblemAdd ?? (newProblemAdd = new(obj =>
                 {
-                    Problem newproblem = new()
-                    {
-                        DateOccurance = DateTime.Now,
-                        Department = Department,
-                        Description = "Описание",
-                        Status = "Решается"
-                    };
-                    NewProblemVM = new(newproblem, Problems);
+                    NewProblemVM = new(Problems, Department);
                 },
                 obj => true));
             }
@@ -130,7 +123,7 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return themesView ?? (themesView = new(obj =>
                 {
-                    ThemesVM = new();
+                    ThemesVM = new(Department);
                 },
                 obj => true));
             }
