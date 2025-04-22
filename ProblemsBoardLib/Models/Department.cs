@@ -41,7 +41,13 @@ namespace ProblemsBoardLib.Models
         /// </summary>
 =======
         
+<<<<<<< HEAD
 >>>>>>> 0e3fd82 (Edited database model and removed Users functions)
+=======
+        public Admin? Admin { get; set; }
+        public int? AdminId { get; set; }
+
+>>>>>>> 210d09c (Admin Authorization)
         public ICollection<Worker> Workers { get; set; }
 
         /// <summary>

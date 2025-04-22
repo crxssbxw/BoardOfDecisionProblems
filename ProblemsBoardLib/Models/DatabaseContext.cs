@@ -38,6 +38,7 @@ namespace ProblemsBoardLib.Models
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
@@ -54,6 +55,15 @@ namespace ProblemsBoardLib.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=board.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Admin>()
+                .HasOne(e => e.Department)
+                .WithOne(e => e.Admin)
+                .HasForeignKey<Admin>(e => e.DepartmentId);
         }
     }
 }
