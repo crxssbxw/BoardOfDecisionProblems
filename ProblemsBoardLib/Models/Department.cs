@@ -19,6 +19,9 @@ namespace ProblemsBoardLib.Models
             return $"[{ViewerNumber}] {Name}";
         }
         
+        public Admin? Admin { get; set; }
+        public int? AdminId { get; set; }
+
         public ICollection<Worker> Workers { get; set; }
         public ICollection<Responsible> Responsibles { get; set; }
         public ICollection<Problem> Problems { get; set; }

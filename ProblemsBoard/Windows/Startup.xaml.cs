@@ -33,6 +33,7 @@ namespace ProblemsBoard.Windows
 			DatabaseContext.Workers.Load();
 			DatabaseContext.Responsibles.Load();
 			DatabaseContext.Themes.Load();
+			DatabaseContext.Admins.Load();
             DataContext = this;
 			Refresh();
             InitializeComponent();
@@ -96,10 +97,22 @@ namespace ProblemsBoard.Windows
 			Department department = new();
 			Helper.CopyTo(SelectedDepartment, department);
 
-			MainWindow mainWindow = new(department);
-			mainWindow.Show();
+			if (department.Admin == null)
+			{
+				MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+				return;
+			}
+			else
+			{
+				AdminAuthorization adminAuthorization = new(department);
+				if (adminAuthorization.ShowDialog() == true)
+				{
+                    MainWindow mainWindow = new(department);
+                    mainWindow.Show();
 
-			Close();
+                    Close();
+                }
+			}
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)
