@@ -1,4 +1,5 @@
-﻿using ProblemsBoardLib.Models;
+﻿using ProblemsBoardLib;
+using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,14 @@ namespace ProblemsBoard.Windows
     public partial class AdminAuthorization : Window
     {
         public Department Department { get; set; }
-        public AdminAuthorization(Department department)
+        private Admin Super { get; set; } = new();
+        public AdminAuthorization(Department department = null)
         {
             InitializeComponent();
+            using (DatabaseContext context = new DatabaseContext())
+            {
+                Helper.CopyTo(context.Admins.Find(1), Super);
+            }
             Department = department;
         }
 
@@ -31,16 +37,25 @@ namespace ProblemsBoard.Windows
         {
             if (Department?.Admin?.Login == LoginTB.Text)
             {
-                if (Department?.Admin?.Password == PasswordPB.Password)
+                if (Department?.Admin?.Password == Helper.EncryptString(PasswordPB.Password))
                 {
                     DialogResult = true;
                 }
                 else
                     MessageBox.Show("Неверный пароль!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            else if (Super.Login == LoginTB.Text)
+            {
+                if (Super.Password == Helper.EncryptString(PasswordPB.Password))
+                {
+                    DialogResult = true;
+                }
+                else
+					MessageBox.Show("Неверный пароль!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
             else
-                MessageBox.Show("Неверный логин!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
+				MessageBox.Show("Неверный логин!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+		}
 
         private void CancelBT_Click(object sender, RoutedEventArgs e)
         {

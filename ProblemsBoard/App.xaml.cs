@@ -15,12 +15,20 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-    }
 
-    private class Test
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        using (DatabaseContext dbContext = new())
+        {
+            if (dbContext.Admins.Count() == 0)
+            {
+                dbContext.Add(
+                    new Admin()
+                    {
+                        Login = "super",
+                        Password = Helper.EncryptString("super")
+                    });
+                dbContext.SaveChanges();
+            }
+        }
     }
 }
 

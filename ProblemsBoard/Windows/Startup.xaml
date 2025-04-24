@@ -28,9 +28,15 @@
             <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single"
                      ItemsSource="{Binding Departments}" HorizontalContentAlignment="Stretch"
                      SelectedValue="{Binding SelectedDepartment}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Настроить" Click="MenuItem_Click"
+                                  IsEnabled="{Binding ContinueAvailable}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel>
+                        <DockPanel x:Name="ItemDockPanel">
                             <Border BorderThickness="2" BorderBrush="#3A6AB2" CornerRadius="2" Width="auto" Margin="2">
                                 <TextBlock Margin="5" Text="{Binding ViewerNumber}" FontSize="20" Foreground="#3A6AB2"
                                            VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>

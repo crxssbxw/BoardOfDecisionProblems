@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProblemsBoard.Windows"
         mc:Ignorable="d" FontSize="14" ResizeMode="NoResize"
-        Title="Авторизация" Height="250" Width="250">
+        Title="Авторизация" Height="250" Width="250"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <StackPanel VerticalAlignment="Center">
             <Label Content="Логин"/>

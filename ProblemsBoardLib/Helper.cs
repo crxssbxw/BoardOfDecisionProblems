@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Security.Cryptography;
 
 namespace ProblemsBoardLib
 {
@@ -39,5 +40,23 @@ namespace ProblemsBoardLib
                 dprop.SetValue(destination, value);
             }
         }
+
+		/// <summary>
+		/// Шифрует строку алгоритмом SHA256
+		/// </summary>
+		/// <param name="str">Шифруемая строка</param>
+		/// <returns>Зашифровання строка</returns>
+		public static string EncryptString(string str)
+        {
+			SHA256 sha256 = SHA256.Create();
+			byte[] bytesstr = Encoding.UTF8.GetBytes(str);
+			byte[] hash = sha256.ComputeHash(bytesstr);
+			string hashString = string.Empty;
+			foreach (byte x in hash)
+			{
+				hashString += String.Format("{0:x2}", x);
+			}
+			return hashString;
+		}
     }
 }
