@@ -147,5 +147,24 @@ namespace ProblemsBoard.Windows
 			else
 				MessageBox.Show("Пользователь не воспользовался окном импорта", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+		private void MenuItem_Click(object sender, RoutedEventArgs e)
+		{
+			if (SelectedDepartment != null)
+			{
+				AdminAuthorization adminAuthorization = new(SelectedDepartment);
+				if (adminAuthorization.ShowDialog() == true)
+				{
+					BoardPropertiesViewModel boardPropertiesViewModel = new(SelectedDepartment);
+					BoardProperties boardProperties = new(boardPropertiesViewModel);
+
+					if (boardProperties.ShowDialog() == true)
+					{
+						MessageBox.Show("Изменения сохранены", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+						Refresh();
+					}
+				}
+			}
+        }
     }
 }
