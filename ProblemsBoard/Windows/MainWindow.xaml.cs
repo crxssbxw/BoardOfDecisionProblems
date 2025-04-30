@@ -92,4 +92,9 @@ public partial class MainWindow : Window
         ThemesPanel.Visibility = Visibility.Visible;
         ThemesPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
     }
+
+    private void Responsibles_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }

@@ -60,10 +60,11 @@ namespace ProblemsBoardLib.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Admin>()
-                .HasOne(e => e.Department)
-                .WithOne(e => e.Admin)
-                .HasForeignKey<Admin>(e => e.DepartmentId);
+
+            modelBuilder.Entity<Department>()
+                .HasOne(e => e.Admin)
+                .WithOne(e => e.Department)
+                .HasForeignKey<Department>(e => e.AdminId);
         }
     }
 }

@@ -48,11 +48,17 @@ namespace ProblemsBoardLib.Models
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// Ответственные, связанные с работником
         /// </summary>
 =======
 >>>>>>> 0e3fd82 (Edited database model and removed Users functions)
+=======
+        [NotMapped]
+        public string WorkerInfo { get => $"{SecondName} {FirstName} {MiddleName} - {Post}"; }
+
+>>>>>>> c7d0ed8 (Board Properties with responsible set and themes view)
         public ICollection<Responsible>? Responsibles { get; set; }
 
         /// <summary>

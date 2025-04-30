@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ProblemsBoardLib.Models
@@ -12,6 +13,7 @@ namespace ProblemsBoardLib.Models
     /// </summary>
     public class Theme
     {
+<<<<<<< HEAD
         /// <summary>
         /// Идентификатор темы
         /// </summary>
@@ -44,6 +46,30 @@ namespace ProblemsBoardLib.Models
         /// </summary>
         /// <returns>Строка вида "Название"</returns>
 =======
+=======
+        [JsonIgnore]
+        public int ThemeId { get; set; }
+
+        [JsonPropertyName("ThemeName")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("ThemeDescription")]
+        public string? Description { get; set; }
+
+        [JsonPropertyName("ThemeDays")]
+        public int DaysToDecide { get; set; }
+
+        [JsonIgnore]
+        public Department? Department { get; set; }
+
+        [JsonIgnore]
+        public int? DepartmentId { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Problem> Problems { get; set; }
+
+        [JsonIgnore]
+>>>>>>> c7d0ed8 (Board Properties with responsible set and themes view)
         public string Error => throw new NotImplementedException();
 
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)

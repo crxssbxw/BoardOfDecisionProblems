@@ -42,11 +42,50 @@
 
 
                     <StackPanel Margin="0 5" Grid.Row="2" Grid.ColumnSpan="2">
-                        <TextBlock Text="Ответственные"/>
+                        <TextBlock>
+                            <Run Text="Ответственные"/>
+                            <Run Text="(назначен)" Foreground="Red"/>
+                        </TextBlock>
                         <ListBox ItemsSource="{Binding Responsibles}" MinHeight="20" BorderBrush="Gray" BorderThickness="1" Margin="0 5" d:ItemsSource="{d:SampleData ItemCount=5}"
                                  HorizontalContentAlignment="Stretch">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Name="FullNameTB" Text="{Binding FullName}"/>
 
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsCurrent}" Value="True">
+                                            <Setter TargetName="FullNameTB" Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsCurrent}" Value="False">
+                                            <Setter TargetName="FullNameTB" Property="Foreground" Value="Black"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
                         </ListBox>
+
+                        <DockPanel HorizontalAlignment="Right">
+                            <DockPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Padding" Value="10 2"/>
+                                </Style>
+                            </DockPanel.Resources>
+                            
+                            <Menu BorderBrush="Gray" BorderThickness="1">
+                                <MenuItem Header="Назначить">
+                                    <MenuItem Header="Назначить нового" Command="{Binding SetNewResponsible}">
+                                        <MenuItem.Icon>
+                                            <Image Source="/Assets/Images/plus2.ico"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="Назначить выбранного" Command="{Binding SetSelectedResponsible}">
+                                        <MenuItem.Icon>
+                                            <Image Source="/Assets/Images/select.ico"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </MenuItem>
+                            </Menu>
+                        </DockPanel>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -84,7 +123,8 @@
                              SelectedValue="{Binding SelectedTheme}">
                         
                     </ListBox>
-                    <TextBlock d:Text="Описание" Text="{Binding SelectedTheme.Description, StringFormat=Описание: {0}}"/>
+                    <TextBlock d:Text="Описание" Text="{Binding SelectedTheme.Description, StringFormat=Описание: {0}}"
+                               TextWrapping="Wrap" TextAlignment="Justify"/>
                 </StackPanel>
             </TabItem>
         </TabControl>
@@ -97,7 +137,7 @@
                 </Style>
             </DockPanel.Resources>
             <Button x:Name="OkBT" Content="ОК" IsDefault="True" Command="{Binding Accept}" Click="OkBT_Click"/>
-            <Button x:Name="CancelBT" Content="Отмена" Margin="10 0"/>
+            <Button x:Name="CancelBT" Content="Отмена" Margin="10 0" IsCancel="True" Click="CancelBT_Click"/>
             <Button x:Name="AcceptBT" Content="Применить" Command="{Binding Accept}"/>
         </DockPanel>
     </Grid>

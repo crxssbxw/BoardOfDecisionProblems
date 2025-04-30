@@ -61,10 +61,17 @@ namespace ProblemsBoardLib.Models
         
         [NotMapped]
         public string WorkerView { get => $"{Worker.SecondName} {Worker.FirstName}"; }
+<<<<<<< HEAD
         /// <summary>
         /// Представление объекта ответственного в виде строки
         /// </summary>
         /// <returns>Сторка вида "[Отдел] Фамилия Имя"</returns>
+=======
+
+        [NotMapped]
+        public string FullName { get => $"{Worker.SecondName} {Worker.FirstName} {Worker.MiddleName}"; }
+
+>>>>>>> c7d0ed8 (Board Properties with responsible set and themes view)
         public override string ToString()
         {
             return $"{Worker.Department} {Worker.SecondName} {Worker.FirstName}";
