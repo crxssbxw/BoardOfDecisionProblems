@@ -16,7 +16,6 @@ namespace ProblemsBoardLib.ViewModel
         public NewProblemPanelViewModel(ObservableCollection<Problem> problems, Department department)
         {
             dbContext.Themes.Load();
-            dbContext.Departments.Load();
             dbContext.Problems.Load();
             NewProblem = new()
             {

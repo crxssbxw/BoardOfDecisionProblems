@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Windows;
 using ProblemsBoardLib;
 using ProblemsBoardLib.Models;
@@ -26,6 +27,13 @@ public partial class App : Application
                         Login = "super",
                         Password = Helper.EncryptString("super")
                     });
+                dbContext.SaveChanges();
+            }
+
+            if (dbContext.Themes.Count() == 0)
+            {
+                string project = Directory.GetCurrentDirectory();
+                dbContext.AddRange(Helper.ThemesSerialization(@$"{project}\..\..\..\Assets\JSON\BaseThemes.json"));
                 dbContext.SaveChanges();
             }
         }

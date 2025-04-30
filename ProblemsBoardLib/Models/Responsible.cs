@@ -25,6 +25,9 @@ namespace ProblemsBoardLib.Models
         [NotMapped]
         public string WorkerView { get => $"{Worker.SecondName} {Worker.FirstName}"; }
 
+        [NotMapped]
+        public string FullName { get => $"{Worker.SecondName} {Worker.FirstName} {Worker.MiddleName}"; }
+
         public override string ToString()
         {
             return $"{Worker.Department} {Worker.SecondName} {Worker.FirstName}";

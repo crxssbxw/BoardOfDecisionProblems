@@ -1,7 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Remove="Assets\Images\copy.ico" />
     <None Remove="Assets\Images\logo.png" />
+    <None Remove="Assets\Images\plus.ico" />
+    <None Remove="Assets\Images\plus2.ico" />
+    <None Remove="Assets\Images\select.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +26,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\copy.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\logo.png" />
+    <Resource Include="Assets\Images\plus.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\plus2.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\select.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\JSON\" />
   </ItemGroup>
   
   <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿using ProblemsBoardLib.Commands;
+﻿using Microsoft.EntityFrameworkCore;
+using ProblemsBoardLib.Commands;
+using ProblemsBoardLib.DialogWindows;
 using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
@@ -13,8 +15,11 @@ namespace ProblemsBoardLib.ViewModel
 	public class BoardPropertiesViewModel : BaseViewModel
 	{
 		public Department Department { get; set; } = new();
+		public Department Temp { get; set; } = new();
 		public BoardPropertiesViewModel(Department department) 
 		{
+			dbContext.Themes.Load();
+			Temp = department;
 			Department = department;
 			if (Department.Admin == null)
 			{
@@ -27,6 +32,10 @@ namespace ProblemsBoardLib.ViewModel
 			foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == Department.DepartmentId || a.Department == null))
 			{
 				Themes.Add(theme);
+			}
+			foreach (var responsible in dbContext.Responsibles.Include(x => x.Worker).Where(a => a.Department.DepartmentId == Department.DepartmentId).AsNoTrackingWithIdentityResolution())
+			{
+				Responsibles.Add(responsible);
 			}
 		}
 
@@ -93,6 +102,17 @@ namespace ProblemsBoardLib.ViewModel
 			}
 		}
 
+		private ObservableCollection<Responsible> responsibles = new();
+		public ObservableCollection<Responsible> Responsibles
+		{
+			get => responsibles;
+			set
+			{
+				responsibles = value;
+				OnPropertyChanged(nameof(Responsibles));
+			}
+		}
+
 		private RelayCommand accept;
 		public RelayCommand Accept
 		{
@@ -104,12 +124,52 @@ namespace ProblemsBoardLib.ViewModel
 						Admin.Password = Helper.EncryptString(Password);
 					try
 					{
-						dbContext.Update(Department);
+						dbContext.Departments.Update(Department);
+						dbContext.Admins.Update(Department.Admin);
 						dbContext.SaveChanges();
 					}
 					catch (Exception ex)
 					{
 						MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+					}
+				},
+				obj => true));
+			}
+		}
+
+		private RelayCommand setNewResponsible;
+		public RelayCommand SetNewResponsible
+		{
+			get
+			{
+				return setNewResponsible ?? (setNewResponsible = new(obj =>
+				{
+					Worker worker = new();
+					NewResponsibleDialog newResponsibleDialog = new(Department, worker); 
+
+					if (newResponsibleDialog.ShowDialog() == true)
+					{
+						Responsible responsible = new();
+						responsible.Worker = worker;
+						responsible.Department = Department;
+						responsible.IsCurrent = true;
+
+						if (Responsibles.Any(a => a.Worker.WorkerId == worker.WorkerId))
+                        {
+							MessageBox.Show("Ответственный уже назначен", "Внимание", MessageBoxButton.OK, MessageBoxImage.Stop);
+							return;
+                        }
+
+						PasswordGenerator passwordGenerator = new();
+						if (passwordGenerator.ShowDialog() == true)
+						{
+							responsible.Password = Helper.EncryptString(passwordGenerator.Password);
+							responsible.Login = passwordGenerator.Login;
+						}
+
+                        dbContext.Add(responsible);
+						dbContext.Update(worker);
+						Responsibles.Add(responsible);
 					}
 				},
 				obj => true));

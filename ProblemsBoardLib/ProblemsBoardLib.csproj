@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DialogWindows\Images\copy.ico" />
     <None Remove="Images\eye.ico" />
     <None Remove="Images\eye.png" />
     <None Remove="Images\kemz.png" />
@@ -25,11 +26,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="DialogWindows\Images\copy.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\eye.ico" />
     <Resource Include="Images\eye.png" />
     <Resource Include="Images\kemz.png" />
     <Resource Include="Images\pbLogo2.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="DialogWindows\NewResponsibleDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LoginGenerator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

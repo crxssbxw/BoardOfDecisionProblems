@@ -37,5 +37,10 @@ namespace ProblemsBoard.Windows
 		{
 			DialogResult = true;
 		}
-	}
+
+        private void CancelBT_Click(object sender, RoutedEventArgs e)
+        {
+			DialogResult = false;
+        }
+    }
 }

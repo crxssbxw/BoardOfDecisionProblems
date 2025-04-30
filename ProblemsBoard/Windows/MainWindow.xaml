@@ -91,13 +91,22 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu" IsMainMenu="True" >
-            <MenuItem Header="Доска">
+        <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu"
+              IsMainMenu="True" FontSize="15">
+            <MenuItem Background="#3A6AB2" BorderThickness="0">
+                <MenuItem.Header>
+                    <TextBlock Text="Доска" Foreground="White"
+                               Padding="5 2" FontWeight="Bold"/>
+                </MenuItem.Header>
                 <MenuItem Header="Новая проблема" Command="{Binding NewProblemAdd}"
                           Click="NewProblem_Click"/>
                 <MenuItem x:Name="Themes" Header="Темы" Command="{Binding ThemesView}"
                           Click="Themes_Click"/>
+                <MenuItem x:Name="Responsibles" Header="Ответственные" Command="{Binding ResponsiblesView}"
+                          Click="Responsibles_Click"/>
+                
                 <Separator/>
+                
                 <MenuItem Header="Сортировать">
                     <MenuItem Header="Сначала просроченные"/>
                     <MenuItem Header="Сначала действительные"/>
@@ -162,30 +171,48 @@
                     Foreground="White" FontWeight="Bold" Click="NewProblem_Click"
                     Command="{Binding NewProblemAdd}"/>
 
-            <Button Grid.Row="2" HorizontalAlignment="Center" Padding="5" MinWidth="85" Margin="5"
-                    Background="#D5E8D4">
+            <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5"
+                    Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3">
                 <Button.Content>
-                    <StackPanel>
-                        <TextBlock Text="N" HorizontalAlignment="Center"/>
-                        <Label Content="Решено" HorizontalAlignment="Center"/>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#82B366"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Решено" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="3" HorizontalAlignment="Center" Padding="5" MinWidth="85" Margin="5"
-                    Background="#FFF2CC">
+            <Button Grid.Row="3" HorizontalAlignment="Center" Margin="5"
+                    Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3">
                 <Button.Content>
-                    <StackPanel>
-                        <TextBlock Text="N" HorizontalAlignment="Center"/>
-                        <Label Content="Решается" HorizontalAlignment="Center"/>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#D6B656"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Решается" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="4" HorizontalAlignment="Center" Padding="5" MinWidth="85" Margin="5"
-                    Background="#F8CECC">
+            <Button Grid.Row="4" HorizontalAlignment="Center" Margin="5"
+                    Background="#F8CECC" BorderBrush="#B85450" BorderThickness="3">
                 <Button.Content>
-                    <StackPanel>
-                        <TextBlock Text="N" HorizontalAlignment="Center"/>
-                        <Label Content="Не решено" HorizontalAlignment="Center"/>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#B85450"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Просрочено" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>

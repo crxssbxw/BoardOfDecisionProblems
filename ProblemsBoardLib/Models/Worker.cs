@@ -23,6 +23,9 @@ namespace ProblemsBoardLib.Models
             get => Department.ViewerNumber;
         }
 
+        [NotMapped]
+        public string WorkerInfo { get => $"{SecondName} {FirstName} {MiddleName} - {Post}"; }
+
         public ICollection<Responsible>? Responsibles { get; set; }
 
         public override string ToString()

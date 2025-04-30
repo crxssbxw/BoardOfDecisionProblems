@@ -26,14 +26,19 @@ namespace ProblemsBoard.Windows
 	/// </summary>
 	public partial class Startup : Window, INotifyPropertyChanged
     {
-		public DatabaseContext DatabaseContext { get; set; } = new();
+
+        private DatabaseContext databaseContext = new();
+        public DatabaseContext DatabaseContext 
+		{ 
+			get => databaseContext; 
+			set
+			{
+				databaseContext = value;
+				OnPropertyChanged(nameof(DatabaseContext));
+			} 
+		}
         public Startup()
         {
-			DatabaseContext.Problems.Load();
-			DatabaseContext.Workers.Load();
-			DatabaseContext.Responsibles.Load();
-			DatabaseContext.Themes.Load();
-			DatabaseContext.Admins.Load();
             DataContext = this;
 			Refresh();
             InitializeComponent();
@@ -41,7 +46,11 @@ namespace ProblemsBoard.Windows
 
 		private void Refresh()
 		{
-			Departments.Clear();
+            DatabaseContext.Problems.Load();
+            DatabaseContext.Responsibles.Load();
+            DatabaseContext.Themes.Load();
+            DatabaseContext.Admins.Load();
+            Departments.Clear();
             foreach (var dep in DatabaseContext.Departments)
             {
 				Departments.Add(dep);
@@ -82,7 +91,7 @@ namespace ProblemsBoard.Windows
 
 		private ObservableCollection<Department> departments = new();
 
-		public ObservableCollection<Department> Departments 
+        public ObservableCollection<Department> Departments 
 		{ 
 			get => departments; 
 			set
@@ -155,12 +164,16 @@ namespace ProblemsBoard.Windows
 				AdminAuthorization adminAuthorization = new(SelectedDepartment);
 				if (adminAuthorization.ShowDialog() == true)
 				{
-					BoardPropertiesViewModel boardPropertiesViewModel = new(SelectedDepartment);
+					Department dep = new();
+					Helper.CopyTo(SelectedDepartment, dep);
+
+					BoardPropertiesViewModel boardPropertiesViewModel = new(dep);
 					BoardProperties boardProperties = new(boardPropertiesViewModel);
 
 					if (boardProperties.ShowDialog() == true)
 					{
 						MessageBox.Show("Изменения сохранены", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+						DatabaseContext = new();
 						Refresh();
 					}
 				}
