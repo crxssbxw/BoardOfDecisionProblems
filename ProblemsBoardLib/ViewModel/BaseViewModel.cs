@@ -20,6 +20,7 @@ namespace ProblemsBoardLib.ViewModel
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <summary>
         /// Контекст БД
         /// </summary>
@@ -33,6 +34,9 @@ namespace ProblemsBoardLib.ViewModel
 =======
         public DatabaseContext dbContext { get; private set; } = new();
 >>>>>>> e8a7a46 (Now problems added to DB)
+=======
+        public DatabaseContext dbContext { get; protected set; } = new();
+>>>>>>> 33ba9c2 (Added New Logo, refactor themes vm)
         public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

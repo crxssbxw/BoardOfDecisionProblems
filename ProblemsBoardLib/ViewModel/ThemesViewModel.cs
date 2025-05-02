@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
@@ -36,22 +37,31 @@ namespace ProblemsBoardLib.ViewModel
         public ObservableCollection<Theme> Themes
         {
 =======
+=======
+using System.Windows;
+>>>>>>> 33ba9c2 (Added New Logo, refactor themes vm)
 
 namespace ProblemsBoardLib.ViewModel
 {
     public class ThemesViewModel : BaseViewModel
     {
-        private AddEditThemeViewModel addEditThemeViewModel;
-        public AddEditThemeViewModel AddEditThemeViewModel 
-        { 
-            get => addEditThemeViewModel; 
-            set
+        public ThemesViewModel(Department department)
+        {
+            Department = dbContext.Departments.Find(department.DepartmentId);
+            dbContext.Themes.Load();
+            if (Department != null && Department.Themes != null)
             {
-                addEditThemeViewModel = value;
-                OnPropertyChanged(nameof(AddEditThemeViewModel));
+                foreach (var theme in Department.Themes)
+                {
+                    Themes.Add(theme);
+                }
+            }
+
+            foreach (var theme in dbContext.Themes.Where(a => a.Department == null))
+            {
+                Themes.Add(theme);
             }
         }
-
         private ObservableCollection<Theme> themes = new();
         public ObservableCollection<Theme> Themes 
         { 
@@ -66,6 +76,7 @@ namespace ProblemsBoardLib.ViewModel
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         private Theme selectedTheme = new();
         /// <summary>
         /// Объект выбранной Темы в таблице
@@ -73,6 +84,40 @@ namespace ProblemsBoardLib.ViewModel
 =======
 =======
         public Department Department { get; set; }
+=======
+        private string title;
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        private Department department;
+        public Department Department 
+        { 
+            get => department; 
+            set 
+            { 
+                department = value;
+                OnPropertyChanged(nameof(Department));
+            }
+        }
+
+        private Theme theme;
+        public Theme Theme
+        {
+            get => theme;
+            set
+            {
+                theme = value;
+                OnPropertyChanged(nameof(Theme));
+            }
+        }
+>>>>>>> 33ba9c2 (Added New Logo, refactor themes vm)
 
 >>>>>>> 4bee76b (Fixed Themes, now themes can add to department)
         private Theme selectedTheme;
@@ -87,6 +132,7 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         public ThemesViewModel()
         {
@@ -180,28 +226,101 @@ namespace ProblemsBoardLib.ViewModel
         private RelayCommand addTheme;
 
         public ThemesViewModel(Department department)
+=======
+        private bool isThisDepartment;
+        public bool IsThisDepartment
+>>>>>>> 33ba9c2 (Added New Logo, refactor themes vm)
         {
-            Department = department;
-            dbContext.Departments.Load();
-            foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == Department.DepartmentId || a.Department == null)) 
+            get => isThisDepartment;
+            set
             {
-                Themes.Add(theme);
+                isThisDepartment = value;
+                OnPropertyChanged(nameof(IsThisDepartment));
             }
         }
 
+        private bool isNoEdit;
+        public bool IsNoEdit
+        {
+            get => isNoEdit;
+            set
+            {
+                isNoEdit = value;
+                OnPropertyChanged(nameof(IsNoEdit));
+            }
+        }
+
+        #region Commands
+
+        private RelayCommand addTheme;
         public RelayCommand AddTheme
         {
             get
             {
                 return addTheme ?? (addTheme = new(obj =>
                 {
-                    AddEditThemeViewModel = new()
+                    Title = "Добавить";
+                    IsNoEdit = true;
+                    Theme = new();
+                },
+                obj => true));
+            }
+        }
+
+        private RelayCommand editTheme;
+        public RelayCommand EditTheme
+        {
+            get
+            {
+                return editTheme ?? (editTheme = new(obj =>
+                {
+                    Title = "Изменить";
+                    IsNoEdit = false;
+                    Theme = SelectedTheme;
+                    if (SelectedTheme.Department == Department)
+                        IsThisDepartment = true;
+                    else IsThisDepartment = false;
+                },
+                obj => SelectedTheme != null));
+            }
+        }
+
+        private RelayCommand acceptTheme;
+        public RelayCommand AcceptTheme
+        {
+            get
+            {
+                return acceptTheme ?? (acceptTheme = new(obj =>
+                {
+                    
+                    if (Theme.ThemeId == 0)
                     {
-                        Theme = new(),
-                        Themes = this.Themes,
-                        Department = Department,
-                        Title = "Новая тема"
-                    };
+                        if (IsThisDepartment)
+                        {
+                            Theme.Department = Department;
+                        }
+                        dbContext.Add(Theme);
+                        try
+                        {
+                            dbContext.SaveChanges();
+                            Themes.Add(Theme);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            dbContext.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
                 },
                 obj => true));
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)

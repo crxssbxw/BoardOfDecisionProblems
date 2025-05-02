@@ -64,7 +64,7 @@
                 </Grid>
             </Border>
             <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Status}" Value="Решено">
+                <DataTrigger Binding="{Binding Status}" Value="Решена">
                     <Setter TargetName="Border" Property="Background" Value="#D5E8D4"/>
                     <Setter TargetName="Border" Property="BorderBrush" Value="#82B366"/>
                 </DataTrigger>

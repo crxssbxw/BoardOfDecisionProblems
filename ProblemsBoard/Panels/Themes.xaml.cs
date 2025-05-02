@@ -53,16 +53,8 @@ namespace ProblemsBoard.Panels
             AddEditTheme.Visibility ^= Visibility.Collapsed;
         }
 
-        private void ThemesLB_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ThemeEdit_Click(object sender, RoutedEventArgs e)
         {
-            ThemesViewModel themesViewModel = DataContext as ThemesViewModel;
-            themesViewModel.AddEditThemeViewModel = new()
-            {
-                Theme = themesViewModel.SelectedTheme,
-                Title = "Изменить тему",
-                Department = themesViewModel.Department,
-                IsNoEdit = false
-            };
             AddEditTheme.Visibility = Visibility.Visible;
         }
     }

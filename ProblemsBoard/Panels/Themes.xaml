@@ -63,8 +63,7 @@
                 <ListBox Grid.Row="1" Background="Transparent" x:Name="ThemesLB"
                          HorizontalContentAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}"
                          ItemsSource="{Binding Themes}" 
-                         SelectedItem="{Binding SelectedTheme}" SelectionMode="Single"
-                         PreviewMouseDoubleClick="ThemesLB_PreviewMouseDoubleClick">
+                         SelectedItem="{Binding SelectedTheme}" SelectionMode="Single">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Border BorderThickness="2" BorderBrush="#3A6AB2"
@@ -94,7 +93,10 @@
                 </ListBox>
 
                 <DockPanel Grid.Row="2" HorizontalAlignment="Right">
-                    <Button Content="Новая тема" Padding="20 2" x:Name="ThemeAdd"
+                    <Button Content="Редактировать" Padding="20 2" x:Name="ThemeEdit"
+                            Margin="5" Background="#008CFF" Foreground="White"
+                            Click="ThemeEdit_Click" Command="{Binding EditTheme}"/>
+                    <Button Content="Добавить" Padding="20 2" x:Name="ThemeAdd"
                             Margin="5" Background="#008CFF" Foreground="White"
                             Click="ThemeAdd_Click" Command="{Binding AddTheme}"/>
                 </DockPanel>
@@ -102,8 +104,7 @@
         </Border>
 
         <Border x:Name="AddEditTheme" Grid.Column="1" Margin="10 0"
-                Background="#E6E6E6" CornerRadius="10" Visibility="Collapsed"
-                DataContext="{Binding AddEditThemeViewModel}">
+                Background="#E6E6E6" CornerRadius="10" Visibility="Collapsed">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -117,14 +118,14 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
                         <Label Content="Название темы"/>
-                        <TextBox Text="{Binding Theme.Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding Theme.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label Content="Описание"/>
-                        <TextBox Text="{Binding Theme.Description, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Theme.Description, UpdateSourceTrigger=PropertyChanged}"
                                  Height="100"/>
                         
                         <Label Content="Дней на решение"/>
-                        <TextBox Text="{Binding Theme.DaysToDecide, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding Theme.DaysToDecide, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <DockPanel>
                             <Label Content="Привязать к участку" VerticalAlignment="Center"/>
