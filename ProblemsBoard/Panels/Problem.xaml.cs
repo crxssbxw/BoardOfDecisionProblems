@@ -26,13 +26,13 @@ namespace ProblemsBoard.Panels
         public ProblemsViewModel ViewModel { get; set; }
         public Problem()
         {
+            Animation.Completed += Animation_Completed;
             ViewModel = MainWindow.ViewModel;
             InitializeComponent();
         }
+        private DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            var Animation = new DoubleAnimation() { From = this.Opacity, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
-            Animation.Completed += Animation_Completed;
             this.BeginAnimation(OpacityProperty, Animation);
         }
         private void Animation_Completed(object? sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProblemsBoardLib.Models
 {
@@ -42,6 +43,15 @@ namespace ProblemsBoardLib.Models
             }
         }
 
+        [NotMapped]
+        public Visibility IsDecided
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Description)) return Visibility.Collapsed;
+                return Visibility.Visible;
+            }
+        }
 
         [NotMapped]
         public string? ThemeName { get => Theme?.Name; }

@@ -88,10 +88,23 @@ namespace ProblemsBoardLib.ViewModel
                 OnPropertyChanged(nameof(ThemesVM));
             }
         }
+
+        private ProblemDecisionViewModel decisionVM = new();
+        public ProblemDecisionViewModel DecisionVM
+        {
+            get => decisionVM;
+            set
+            {
+                decisionVM = value;
+                OnPropertyChanged(nameof(DecisionVM));
+            }
+        }
+
         public ProblemsViewModel(Department department)
         {
             dbContext.Problems.Load();
-            Department = department;
+            dbContext.Themes.Load();
+            Department = dbContext.Departments.Find(department.DepartmentId);
             if (Department.Problems != null) 
                 foreach (var problem in Department.Problems)
                 {
@@ -129,6 +142,31 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+        private RelayCommand problemWatch;
+        public RelayCommand ProblemWatch
+        {
+            get
+            {
+                return problemWatch ?? (problemWatch = new(obj =>
+                {
+                    ProblemVM = new(SelectedProblem);
+                },
+                obj => SelectedProblem != null));
+            }
+        }
+
+        private RelayCommand problemDecide;
+        public RelayCommand ProblemDecide
+        {
+            get
+            {
+                return problemDecide ?? (problemDecide = new(obj =>
+                {
+                    DecisionVM = new();
+                },
+                obj => SelectedProblem != null));
+            }
+        }
         #endregion
     }
 }

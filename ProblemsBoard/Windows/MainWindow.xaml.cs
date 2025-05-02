@@ -52,15 +52,6 @@ public partial class MainWindow : Window
         ViewModel.Problems.Add(problem);
     }
 
-    private void ProblemView_Click(object sender, RoutedEventArgs e)
-    {
-        ProblemPanel.Visibility = Visibility.Visible;
-        ProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
-        var DataSender = sender as Button;
-        ViewModel.SelectedProblem = DataSender.DataContext as Problem;
-        ProblemPanel.DataContext = ViewModel.SelectedProblem;
-    }
-
     private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
     {
         var result = MessageBox.Show("Хотите сменить отдел / цех?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -82,5 +73,17 @@ public partial class MainWindow : Window
     private void Responsibles_Click(object sender, RoutedEventArgs e)
     {
 
+    }
+
+    private void ProblemView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        ProblemPanel.Visibility = Visibility.Visible;
+        ProblemPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
+    }
+
+    private void DecideView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        DecisionPanel.Visibility = Visibility.Visible;
+        DecisionPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
     }
 }

@@ -1,8 +1,4 @@
-﻿using ProblemsBoard.Windows;
-using ProblemsBoardLib;
-using ProblemsBoardLib.Models;
-using ProblemsBoardLib.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,22 +17,14 @@ using System.Windows.Shapes;
 namespace ProblemsBoard.Panels
 {
     /// <summary>
-    /// Логика взаимодействия для NewProblem.xaml
+    /// Логика взаимодействия для DecideProblem.xaml
     /// </summary>
-    public partial class NewProblem : UserControl
+    public partial class DecideProblem : UserControl
     {
-        private NewProblemPanelViewModel viewModel;
-        public NewProblemPanelViewModel ViewModel 
-        { 
-            get => viewModel; 
-            set => viewModel = value; 
-        }
-
-        public NewProblem()
+        public DecideProblem()
         {
             Animation.Completed += Animation_Completed;
             InitializeComponent();
-            DataContext = ViewModel;
         }
 
         private DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
@@ -48,11 +36,6 @@ namespace ProblemsBoard.Panels
         private void Animation_Completed(object? sender, EventArgs e)
         {
             Visibility = Visibility.Collapsed;
-        }
-
-        private void Accept_Click(object sender, RoutedEventArgs e)
-        {
-            this.BeginAnimation(OpacityProperty, Animation);
         }
     }
 }
