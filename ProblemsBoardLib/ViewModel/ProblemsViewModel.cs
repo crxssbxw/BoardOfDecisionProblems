@@ -102,8 +102,7 @@ namespace ProblemsBoardLib.ViewModel
 
         public ProblemsViewModel(Department department)
         {
-            dbContext.Problems.Load();
-            dbContext.Themes.Load();
+            Load();
             Department = dbContext.Departments.Find(department.DepartmentId);
             if (Department.Problems != null) 
                 foreach (var problem in Department.Problems)
@@ -112,6 +111,25 @@ namespace ProblemsBoardLib.ViewModel
                 }
 
             ViewSource.Source = Problems;
+        }
+
+        public void ProblemsReload()
+        {
+            dbContext = new();
+            Load();
+            Department = dbContext.Departments.Find(department.DepartmentId);
+            Problems.Clear();
+            foreach(var problem in Department.Problems)
+            {
+                Problems.Add(problem);
+            }
+            CollectionView.Refresh();
+        }
+
+        private void Load()
+        {
+            dbContext.Problems.Load();
+            dbContext.Themes.Load();
         }
 
         #region Commands
@@ -123,7 +141,7 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return newProblemAdd ?? (newProblemAdd = new(obj =>
                 {
-                    NewProblemVM = new(Problems, Department);
+                    NewProblemVM = new(this, Department);
                 },
                 obj => true));
             }
@@ -162,9 +180,9 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return problemDecide ?? (problemDecide = new(obj =>
                 {
-                    DecisionVM = new();
+                    DecisionVM = new(SelectedProblem, this);
                 },
-                obj => SelectedProblem != null));
+                obj => SelectedProblem != null && SelectedProblem.Status != "Решена"));
             }
         }
         #endregion

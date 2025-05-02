@@ -41,6 +41,7 @@ namespace ProblemsBoardLib.ViewModel
         {
             get
             {
+                if (Problem == null) return false;
                 if (string.IsNullOrEmpty(Problem.Decision))
                     return false;
                 return true;

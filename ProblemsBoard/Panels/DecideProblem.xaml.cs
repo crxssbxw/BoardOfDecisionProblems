@@ -37,5 +37,10 @@ namespace ProblemsBoard.Panels
         {
             Visibility = Visibility.Collapsed;
         }
+
+        private void AcceptDecision_Click(object sender, RoutedEventArgs e)
+        {
+            this.BeginAnimation(OpacityProperty, Animation);
+        }
     }
 }

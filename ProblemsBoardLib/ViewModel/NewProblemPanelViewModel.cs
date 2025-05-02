@@ -13,7 +13,7 @@ namespace ProblemsBoardLib.ViewModel
 {
     public class NewProblemPanelViewModel : BaseViewModel
     {
-        public NewProblemPanelViewModel(ObservableCollection<Problem> problems, Department department)
+        public NewProblemPanelViewModel(ProblemsViewModel vm, Department department)
         {
             dbContext.Themes.Load();
             dbContext.Problems.Load();
@@ -25,11 +25,12 @@ namespace ProblemsBoardLib.ViewModel
                 Description = "Описание",
                 Status = "Решается"
             };
+            VM = vm;
             NewProblem.Responsible = dbContext.Responsibles.Find(NewProblem.Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault().ResponsibleId);
-            Problems = problems;
             foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
                 Themes.Add(theme);
         }
+        public ProblemsViewModel VM { get; set; }
 
         private Problem newProblem;
         public Problem NewProblem 
@@ -41,8 +42,6 @@ namespace ProblemsBoardLib.ViewModel
                 OnPropertyChanged(nameof(NewProblem));
             }
         }
-
-        public ObservableCollection<Problem> Problems { get; set; }
 
         private ObservableCollection<Theme> themes = new();
         public ObservableCollection<Theme> Themes
@@ -81,7 +80,7 @@ namespace ProblemsBoardLib.ViewModel
                     {
                         dbContext.Add(NewProblem);
                         dbContext.SaveChanges();
-                        Problems.Add(NewProblem);
+                        VM.ProblemsReload();
                     }
                     catch (Exception ex)
                     {

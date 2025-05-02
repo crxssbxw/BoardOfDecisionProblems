@@ -12,7 +12,7 @@
     <None Remove="Images\eye.ico" />
     <None Remove="Images\eye.png" />
     <None Remove="Images\kemz.png" />
-    <None Remove="Images\pbLogo2.ico" />
+    <None Remove="Images\ProblemsBoardLogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +32,7 @@
     <Resource Include="Images\eye.ico" />
     <Resource Include="Images\eye.png" />
     <Resource Include="Images\kemz.png" />
-    <Resource Include="Images\pbLogo2.ico">
+    <Resource Include="Images\ProblemsBoardLogo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
