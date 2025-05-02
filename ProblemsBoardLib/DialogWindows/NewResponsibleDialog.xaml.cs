@@ -28,12 +28,31 @@ namespace ProblemsBoardLib.DialogWindows
         {
             InitializeComponent();
             OutWorker = worker;
-            foreach(var dbworker in DatabaseContext.Workers.Where(a => 
-                a.Responsibles == null || 
-                a.Responsibles.Count() == 0 && 
-                a.Department.DepartmentId == department.DepartmentId))
+            var responsiblesworkers = new List<Worker>();
+
+            if (department.Workers == null || department.Workers.Count == 0)
             {
-                Workers.Add(dbworker);
+                MessageBox.Show("На участке нет сотрудников, назначить нового ответственного невозможно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                if (department.Responsibles != null)
+                {
+                    foreach (var responsible in department.Responsibles)
+                    {
+                        responsiblesworkers.Add(responsible.Worker);
+                    }
+                }
+
+                foreach (var depworker in department.Workers.Where(a => !responsiblesworkers.Any(b => a.WorkerId == b.WorkerId)))
+                {
+                    Workers.Add(depworker);
+                }
+
+                if (Workers.Count == 0)
+                {
+                    MessageBox.Show("На участке больше нет доступных сотрудников, назначить нового ответственного невозможно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
             }
 
             DataContext = this;

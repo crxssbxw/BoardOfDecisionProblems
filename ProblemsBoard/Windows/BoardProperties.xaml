@@ -47,7 +47,8 @@
                             <Run Text="(назначен)" Foreground="Red"/>
                         </TextBlock>
                         <ListBox ItemsSource="{Binding Responsibles}" MinHeight="20" BorderBrush="Gray" BorderThickness="1" Margin="0 5" d:ItemsSource="{d:SampleData ItemCount=5}"
-                                 HorizontalContentAlignment="Stretch">
+                                 HorizontalContentAlignment="Stretch"
+                                 SelectedValue="{Binding SelectedResponsible}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Name="FullNameTB" Text="{Binding FullName}"/>
@@ -102,7 +103,7 @@
                         <TextBlock Text="Изменить данные входа"/>
                         <DockPanel Margin="0 5">
                             <TextBlock Text="Логин: " Width="50"/>
-                            <TextBox Text="{Binding Admin.Login}"/>
+                            <TextBox Text="{Binding Login}"/>
                         </DockPanel>
                         <DockPanel Margin="0 5">
                             <TextBlock Text="Пароль: " Width="50"/>

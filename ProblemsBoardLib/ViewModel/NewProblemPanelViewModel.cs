@@ -17,13 +17,15 @@ namespace ProblemsBoardLib.ViewModel
         {
             dbContext.Themes.Load();
             dbContext.Problems.Load();
+            dbContext.Responsibles.Load();
             NewProblem = new()
             {
-                DateOccurance = DateTime.Now,
-                Department = department,
+                DateOccurance = Today,
+                Department = dbContext.Departments.Find(department.DepartmentId),
                 Description = "Описание",
                 Status = "Решается"
             };
+            NewProblem.Responsible = dbContext.Responsibles.Find(NewProblem.Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault().ResponsibleId);
             Problems = problems;
             foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
                 Themes.Add(theme);
@@ -53,10 +55,15 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+        public DateTime Today { get => DateTime.Today; }
+
         private bool IsValid
         {
             get
             {
+                if (NewProblem.Theme == null) return false;
+                if (string.IsNullOrEmpty(NewProblem.Description)) return false;
+                if (NewProblem.DateOccurance == null) return false;
                 return true;
             }
         }
@@ -72,13 +79,7 @@ namespace ProblemsBoardLib.ViewModel
                 {
                     try
                     {
-                        dbContext.ChangeTracker.Clear();
-
-						var dep = dbContext.Departments.Find(NewProblem.Department.DepartmentId);
-                        if (dep.Problems == null)
-                            dep.Problems = [];
-
-                        dep.Problems.Add(NewProblem);
+                        dbContext.Add(NewProblem);
                         dbContext.SaveChanges();
                         Problems.Add(NewProblem);
                     }

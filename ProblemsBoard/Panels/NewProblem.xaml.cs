@@ -39,7 +39,7 @@ namespace ProblemsBoard.Panels
             DataContext = ViewModel;
         }
 
-        static DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
+        private DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {

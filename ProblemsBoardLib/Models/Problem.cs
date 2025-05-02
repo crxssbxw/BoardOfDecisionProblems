@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ProblemsBoardLib.Models
 {
@@ -105,6 +106,15 @@ namespace ProblemsBoardLib.Models
         /// </summary>
 =======
 
+        [NotMapped]
+        public Visibility IsDecided
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Description)) return Visibility.Collapsed;
+                return Visibility.Visible;
+            }
+        }
 
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         [NotMapped]

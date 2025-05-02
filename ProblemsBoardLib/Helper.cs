@@ -60,6 +60,9 @@ namespace ProblemsBoardLib
 		/// <returns>Зашифровання строка</returns>
 		public static string EncryptString(string str)
         {
+            if (string.IsNullOrEmpty(str))
+                throw new ArgumentException("Argument can't be null", nameof(str));
+
 			SHA256 sha256 = SHA256.Create();
 			byte[] bytesstr = Encoding.UTF8.GetBytes(str);
 			byte[] hash = sha256.ComputeHash(bytesstr);

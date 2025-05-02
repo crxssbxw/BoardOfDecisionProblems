@@ -111,6 +111,11 @@ namespace ProblemsBoard.Windows
 				MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
 				return;
 			}
+			else if (department.Responsibles == null || department.Responsibles.Count == 0 || !department.Responsibles.Any(a => a.IsCurrent))
+			{
+                MessageBox.Show("На участке еще не назначен ответственный! Обратитесь к администратору приложения или доски для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 			else
 			{
 				AdminAuthorization adminAuthorization = new(department);

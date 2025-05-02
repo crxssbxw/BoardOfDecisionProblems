@@ -1,6 +1,4 @@
-﻿using ProblemsBoard.Windows;
-using ProblemsBoardLib.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +17,18 @@ using System.Windows.Shapes;
 namespace ProblemsBoard.Panels
 {
     /// <summary>
-    /// Логика взаимодействия для Problem.xaml
+    /// Логика взаимодействия для DecideProblem.xaml
     /// </summary>
-    public partial class Problem : UserControl
+    public partial class DecideProblem : UserControl
     {
-        public ProblemsViewModel ViewModel { get; set; }
-        public Problem()
+        public DecideProblem()
         {
             Animation.Completed += Animation_Completed;
-            ViewModel = MainWindow.ViewModel;
             InitializeComponent();
         }
+
         private DoubleAnimation Animation = new DoubleAnimation() { From = 1.0, To = 0, Duration = TimeSpan.FromSeconds(0.25) };
+
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             this.BeginAnimation(OpacityProperty, Animation);
