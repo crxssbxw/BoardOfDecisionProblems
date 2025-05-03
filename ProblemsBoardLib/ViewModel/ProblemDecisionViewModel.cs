@@ -38,10 +38,27 @@ namespace ProblemsBoardLib.ViewModel
 
         }
 
-        public ProblemDecisionViewModel(Problem problem, ProblemsViewModel vm)
+        public ProblemDecisionViewModel(Problem problem, ProblemsViewModel vm, bool isAuthorized)
         {
             Problem = dbContext.Problems.Find(problem.ProblemId);
             VM = vm;
+            IsAuthorized = isAuthorized;
+        }
+
+        public ProblemDecisionViewModel(bool isAuthorized)
+        {
+            IsAuthorized = isAuthorized;
+        }
+
+        private bool isAuthorized;
+        public bool IsAuthorized
+        {
+            get => isAuthorized;
+            set
+            {
+                isAuthorized = value;
+                OnPropertyChanged(nameof(IsAuthorized));
+            }
         }
 
         public string Title

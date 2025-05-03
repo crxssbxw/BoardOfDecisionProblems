@@ -182,6 +182,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -206,7 +207,26 @@
             </Grid>
 
             <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5"
-                    Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3">
+                    Background="LightGray" BorderBrush="DimGray" BorderThickness="3"
+                    Command="{Binding AllFilter}">
+                <Button.Content>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" Text="{Binding AllCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Всего" TextAlignment="Center" Width="80"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="3" HorizontalAlignment="Center" Margin="5"
+                    Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3"
+                    Command="{Binding DecidedFilter}">
                 <Button.Content>
                     <StackPanel Margin="0 20">
                         <StackPanel.Resources>
@@ -215,13 +235,15 @@
                                 <Setter Property="FontWeight" Value="Bold"/>
                             </Style>
                         </StackPanel.Resources>
-                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
+                        <TextBlock d:Text="N" Text="{Binding DecidedCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
                         <TextBlock Text="Решено" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="3" HorizontalAlignment="Center" Margin="5"
-                    Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3">
+            <Button Grid.Row="4" HorizontalAlignment="Center" Margin="5"
+                    Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3"
+                    Command="{Binding DecidingFilter}">
                 <Button.Content>
                     <StackPanel Margin="0 20">
                         <StackPanel.Resources>
@@ -230,13 +252,15 @@
                                 <Setter Property="FontWeight" Value="Bold"/>
                             </Style>
                         </StackPanel.Resources>
-                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
+                        <TextBlock d:Text="N" Text="{Binding DecidingCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
                         <TextBlock Text="Решается" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Grid.Row="4" HorizontalAlignment="Center" Margin="5"
-                    Background="#F8CECC" BorderBrush="#B85450" BorderThickness="3">
+            <Button Grid.Row="5" HorizontalAlignment="Center" Margin="5"
+                    Background="#F8CECC" BorderBrush="#B85450" BorderThickness="3"
+                    Command="{Binding NotDecidedFilter}">
                 <Button.Content>
                     <StackPanel Margin="0 20">
                         <StackPanel.Resources>
@@ -245,13 +269,14 @@
                                 <Setter Property="FontWeight" Value="Bold"/>
                             </Style>
                         </StackPanel.Resources>
-                        <TextBlock d:Text="N" HorizontalAlignment="Center"/>
-                        <TextBlock Text="Просрочено" TextAlignment="Center" Width="80"/>
+                        <TextBlock d:Text="N" Text="{Binding NotDecidedCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Срочные" TextAlignment="Center" Width="80"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
 
-            <Grid Grid.Row="6" Grid.RowSpan="2" Margin="5">
+            <Grid Grid.Row="7" Grid.RowSpan="2" Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>

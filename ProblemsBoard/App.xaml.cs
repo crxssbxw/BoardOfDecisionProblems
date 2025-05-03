@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using System.Windows;
 using ProblemsBoardLib;
+using ProblemsBoardLib.DialogWindows;
 using ProblemsBoardLib.Models;
 using ProblemsBoardLib.ViewModel;
 

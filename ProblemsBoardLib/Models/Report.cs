@@ -12,5 +12,6 @@ namespace ProblemsBoardLib.Models
         public string Type { get; set; }
         public string Number { get; set; }
         public byte[] ReportFile { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
