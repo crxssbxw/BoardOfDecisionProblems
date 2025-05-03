@@ -20,5 +20,6 @@ namespace ProblemsBoardLib.Models
 =======
 >>>>>>> 2c81db8 (Added models for Log, Report and Log Events, created base viewmodel for problems)
         public byte[] ReportFile { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

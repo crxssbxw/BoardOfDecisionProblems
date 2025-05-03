@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.Commands;
+using ProblemsBoardLib.DialogWindows;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Reporting;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -133,6 +135,26 @@ namespace ProblemsBoardLib.ViewModel
             ViewSource.Source = Problems;
         }
 
+        public int AllCounter
+        {
+            get => Department.Problems.Count;
+        }
+
+        public int DecidedCounter
+        {
+            get => Department.Problems.Where(a => a.Status == "Решена").Count();
+        }
+
+        public int DecidingCounter
+        {
+            get => Department.Problems.Where(a => a.Status == "Решается").Count();
+        }
+
+        public int NotDecidedCounter
+        {
+            get => Department.Problems.Where(a => a.Status == "Решается" && a.DaysLeft <= 1).Count();
+        }
+
         public void ProblemsReload()
         {
             dbContext = new();
@@ -143,6 +165,10 @@ namespace ProblemsBoardLib.ViewModel
             {
                 Problems.Add(problem);
             }
+
+            OnPropertyChanged(nameof(DecidedCounter));
+            OnPropertyChanged(nameof(DecidingCounter));
+            OnPropertyChanged(nameof(NotDecidedCounter));
             CollectionView.Refresh();
         }
 
@@ -150,6 +176,7 @@ namespace ProblemsBoardLib.ViewModel
         {
             dbContext.Problems.Load();
             dbContext.Themes.Load();
+            dbContext.Responsibles.Load();
         }
 
         #region Commands
@@ -200,11 +227,86 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return problemDecide ?? (problemDecide = new(obj =>
                 {
-                    DecisionVM = new(SelectedProblem, this);
+                    ResponsibleAuthorization responsibleAuthorization = new(SelectedProblem.Responsible);
+                    if (responsibleAuthorization.ShowDialog() == true)
+                    {
+                        DecisionVM = new(SelectedProblem, this, true);
+                    }
+                    else
+                        DecisionVM = new(false);
                 },
                 obj => SelectedProblem != null && SelectedProblem.Status != "Решена"));
             }
         }
+
+        private RelayCommand allFilter;
+        public RelayCommand AllFilter
+        {
+            get
+            {
+                return allFilter ?? (allFilter = new(obj =>
+                {
+                    CollectionView.Filter = null;
+                },
+                obj => true));
+            }
+        }
+
+        private RelayCommand decidedFilter;
+        public RelayCommand DecidedFilter
+        {
+            get
+            {
+                return decidedFilter ?? (decidedFilter = new(obj =>
+                {
+                    CollectionView.Filter = (object item) =>
+                    {
+                        var problem = item as Problem;
+
+                        return problem.Status == "Решена";
+                    };
+                },
+                obj => true));
+            }
+        }
+
+        private RelayCommand decidingFilter;
+        public RelayCommand DecidingFilter
+        {
+            get
+            {
+                return decidingFilter ?? (decidingFilter = new(obj =>
+                {
+                    CollectionView.Filter = (object item) =>
+                    {
+                        var problem = item as Problem;
+
+                        return problem.Status == "Решается";
+                    };
+                },
+                obj => true));
+            }
+        }
+
+        private RelayCommand notDecidedFilter;
+        public RelayCommand NotDecidedFilter
+        {
+            get
+            {
+                return notDecidedFilter ?? (notDecidedFilter = new(obj =>
+                {
+                    CollectionView.Filter = (object item) =>
+                    {
+                        var problem = item as Problem;
+
+                        return problem.Status == "Решается" && problem.DaysLeft <= 1;
+                    };
+                },
+                obj => true));
+            }
+        }
+
+
         #endregion
     }
 }

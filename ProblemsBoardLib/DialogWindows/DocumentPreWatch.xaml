@@ -1,0 +1,25 @@
+﻿<Window x:Class="ProblemsBoardLib.DialogWindows.DocumentPreWatch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProblemsBoardLib.DialogWindows"
+        mc:Ignorable="d"
+        Title="Предпросмотр документа" MinHeight="450" MinWidth="400" MaxWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <DocumentViewer Document="{Binding Document}" Zoom="90">
+        </DocumentViewer>
+
+        <DockPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0 10">
+            <Button x:Name="AcceptBT" Content="Сохранить" Margin="5 0" Padding="10 2" IsDefault="True"
+                    Click="AcceptBT_Click"/>
+            <Button x:Name="CancelBT" Content="Отмена" Padding="10 2" IsCancel="True"
+                    Click="CancelBT_Click"/>
+        </DockPanel>
+    </Grid>
+</Window>
