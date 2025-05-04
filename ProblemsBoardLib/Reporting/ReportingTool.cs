@@ -63,13 +63,13 @@ namespace ProblemsBoardLib.Reporting
             {
                 return BuildSolvedProblemText(problem);
             }
-            if (problem.Status == "Решается")
-            {
-                return BuildSolvingProblemText(problem);
-            }
             if (problem.DaysLeft < 1 && problem.Status == "Решается")
             {
                 return BuildOverdueProblemText(problem);
+            }
+            if (problem.Status == "Решается")
+            {
+                return BuildSolvingProblemText(problem);
             }
             return "Неизвестно";
         }
@@ -78,12 +78,12 @@ namespace ProblemsBoardLib.Reporting
         {
             return $"Проблема с ID {problem.ProblemId} " +
                     $"(тема: {problem.ThemeName}), " +
-                    $"возникшая {problem.DateOccurance.ToShortDateString()}, просрочена" +
-                    $"Срок: {problem.Theme.DaysToDecide} дней." +
-                    $"Ответственный: {problem.ResponsibleName} " +
-                    $"(участок {problem.DepartmentName}). " +
+                    $"возникшая {problem.DateOccurance.ToShortDateString()}, просрочена. " +
+                    $"Срок: {problem.Theme.DaysToDecide} дней. " +
+                    $"Ответственный: {problem.Responsible.FullName} " +
+                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
                     $"Описание: {problem.Description}. " +
-                    $"Текущий статус: {problem.Status}.";
+                    $"Текущий статус: {problem.Status}. ";
         }
 
         private string BuildSolvingProblemText(Problem problem)
@@ -94,9 +94,9 @@ namespace ProblemsBoardLib.Reporting
                     $"находится в процессе решения. " +
                     $"На решение потрачено {problem.DecisionTime} дней из {problem.Theme.DaysToDecide} дн. " +
                     $"Осталось {problem.DaysLeft} дней. " +
-                    $"Ответственный: {problem.ResponsibleName} " +
-                    $"(участок {problem.DepartmentName}). " +
-                    $"Описание: {problem.Description}.";
+                    $"Ответственный: {problem.Responsible.FullName} " +
+                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
+                    $"Описание: {problem.Description}. ";
         }
 
         private string BuildSolvedProblemText(Problem problem)
@@ -107,9 +107,9 @@ namespace ProblemsBoardLib.Reporting
                     $"была успешно решена {problem.DateElimination?.ToShortDateString()} " +
                     $"за {problem.DecisionTime} дней. " +
                     $"Описание: {problem.Description}. " +
-                    $"Ответственный: {problem.ResponsibleName} " +
-                    $"(участок {problem.DepartmentName}). " +
-                    $"Принятое решение: {problem.Decision}";
+                    $"Ответственный: {problem.Responsible.FullName} " +
+                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
+                    $"Принятое решение: {problem.Decision}. ";
         }
 
         public void GenerateProblemReport(Problem problem)
@@ -125,7 +125,7 @@ namespace ProblemsBoardLib.Reporting
             header.Format.RightIndent = 250;
 
             // Дата под шапкой
-            string datepar = $"Отчет от {Today.ToShortDateString()} \rг.Ковров\r";
+            string datepar = $"Отчет от {Today.ToShortDateString()} \rг. Ковров\r";
             Paragraph date = document.Content.Paragraphs.Add();
             date.Range.Text = datepar;
             date.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
@@ -143,6 +143,49 @@ namespace ProblemsBoardLib.Reporting
                 problempar.SpaceAfter = 16;
                 problempar.SpaceBefore = 16;
                 problempar.Format.RightIndent = 0;
+            }
+
+            SaveXpsFile();
+        }
+
+        public void GenerateStatisticReport(string general, string responsible = "", string theme = "")
+        {
+            // Установка стиля
+            SetStyle();
+            document.Content.Paragraphs.Format.RightIndent = 250;
+            document.Content.Paragraphs.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            // Шапка 
+            Paragraph header = document.Content.Paragraphs.Add();
+            header.Range.Text = $"Акционерное общество \rКовровский Электромеханический Завод \r";
+
+            // Дата под шапкой
+            string datepar = $"Отчет от {Today.ToShortDateString()} \rг. Ковров\r";
+            Paragraph date = document.Content.Paragraphs.Add();
+            date.Range.Text = datepar;
+            date.Alignment = WdParagraphAlignment.wdAlignParagraphJustify;
+            date.FirstLineIndent = wordApp.CentimetersToPoints(1.25f);
+            date.Format.RightIndent = 0;
+            date.Format.SpaceBefore = 8;
+
+
+            // Основной параграф
+            Paragraph generalpar = document.Content.Paragraphs.Add();
+            if (!string.IsNullOrEmpty(general))
+            {
+                generalpar.Range.Text = general;
+                generalpar.SpaceBefore = 0;
+            }
+
+            if (!string.IsNullOrEmpty(responsible))
+            {
+                Paragraph responsiblepar = document.Content.Paragraphs.Add();
+                responsiblepar.Range.Text = responsible;
+            }
+
+            if (!string.IsNullOrEmpty(theme))
+            {
+                Paragraph paragraph = document.Content.Paragraphs.Add();
+                paragraph.Range.Text = theme;
             }
 
             SaveXpsFile();
@@ -167,11 +210,6 @@ namespace ProblemsBoardLib.Reporting
             if (document != null)
             {
                 FileInfo fileInfo = new("xpsReport.xps");
-
-                if (fileInfo.Exists)
-                {
-                    fileInfo.Delete();
-                }
 
                 document.SaveAs2(FileName: fileInfo.FullName, FileFormat: WdSaveFormat.wdFormatXPS);
 

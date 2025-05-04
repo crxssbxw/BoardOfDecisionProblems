@@ -26,11 +26,13 @@ namespace ProblemsBoardLib.DialogWindows
 
         private void AcceptBT_Click(object sender, RoutedEventArgs e)
         {
+            DV.Document = null;
             DialogResult = true;
         }
 
         private void CancelBT_Click(object sender, RoutedEventArgs e)
         {
+            DV.Document = null;
             DialogResult = false;
         }
     }

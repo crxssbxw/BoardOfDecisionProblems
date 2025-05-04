@@ -47,6 +47,7 @@ namespace ProblemsBoardLib.Models
         public Admin? Admin { get; set; }
         public int? AdminId { get; set; }
 
+<<<<<<< HEAD
 >>>>>>> 210d09c (Admin Authorization)
         public ICollection<Worker> Workers { get; set; }
 
@@ -60,5 +61,11 @@ namespace ProblemsBoardLib.Models
         /// </summary>
         public ICollection<Problem> Problems { get; set; }
         public ICollection<Theme> Themes { get; set; }
+=======
+        public ICollection<Worker> Workers { get; set; } = [];
+        public ICollection<Responsible> Responsibles { get; set; } = [];
+        public ICollection<Problem> Problems { get; set; } = [];
+        public ICollection<Theme> Themes { get; set; } = [];
+>>>>>>> 1be2c83 (Added reporting window, more functional statistic and reporting for it)
     }
 }
