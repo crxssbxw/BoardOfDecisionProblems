@@ -205,7 +205,7 @@ namespace ProblemsBoardLib.ViewModel
 						PasswordGenerator passwordGenerator = new PasswordGenerator();
 						if (passwordGenerator.ShowDialog() == true)
 						{
-                            if (Department.Responsibles != null)
+                            if (Department.Responsibles != null && Department.Responsibles.Count > 0)
                             {
                                 prevResp = Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault();
                                 prevResp.IsCurrent = false;

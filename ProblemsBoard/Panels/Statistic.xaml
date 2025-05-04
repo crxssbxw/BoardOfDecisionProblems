@@ -8,10 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="400" >
     <UserControl.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0 2"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -19,13 +23,13 @@
             </Style.Resources>
         </Style>
         <Style TargetType="ComboBox">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
         <Style TargetType="DatePicker">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -39,11 +43,96 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <Label Content="Статистика" HorizontalAlignment="Center" Panel.ZIndex="1"
                        FontSize="30" FontWeight="Bold" Foreground="#3A6AB2"/>
 
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="5 0">
+                        <TextBlock Text="Общая статистика" HorizontalAlignment="Center"/>
+                        <DockPanel>
+                            <TextBlock Text="Всего проблем"/>
+                            <TextBlock Text="{Binding AllProblems}" HorizontalAlignment="Right" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решено проблем"/>
+                            <TextBlock Text="{Binding DecidedProblems}" HorizontalAlignment="Right"
+                                       Foreground="#82B366" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Процент решенных проблем"/>
+                            <TextBlock Text="{Binding DecidedPercent, StringFormat={}{0}%}" HorizontalAlignment="Right"
+                                       Foreground="#82B366" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решается проблем"/>
+                            <TextBlock Text="{Binding DecidingProblems}" HorizontalAlignment="Right"
+                                       Foreground="#D6B656" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Срочных проблем"/>
+                            <TextBlock Text="{Binding UrgentProblems}" HorizontalAlignment="Right"
+                                       Foreground="#B85450" FontWeight="Bold"/>
+                        </DockPanel>
+
+                        <Separator Margin="0 5"/>
+
+                        <TextBlock Text="Сатистика по ответственному" HorizontalAlignment="Center"/>
+                        <ComboBox ItemsSource="{Binding Responsibles}" SelectedValue="{Binding SelectedResponsible}"
+                                  IsTextSearchEnabled="True" DisplayMemberPath="FullName" IsEditable="True"/>
+                        
+                        <DockPanel>
+                            <TextBlock Text="Всего проблем"/>
+                            <TextBlock Text="{Binding ResponsibleAllProblems}" HorizontalAlignment="Right" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решено проблем"/>
+                            <TextBlock Text="{Binding ResponsibleDecidedProblems}" HorizontalAlignment="Right"
+                                       Foreground="#82B366" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решается проблем"/>
+                            <TextBlock Text="{Binding ResponsibleDecidingProblems}" HorizontalAlignment="Right"
+                                       Foreground="#D6B656" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Срочных проблем"/>
+                            <TextBlock Text="{Binding ResponsibleUrgentProblems}" HorizontalAlignment="Right"
+                                       Foreground="#B85450" FontWeight="Bold"/>
+                        </DockPanel>
+
+                        <Separator Margin="0 5"/>
+
+                        <TextBlock Text="Статистика по теме" HorizontalAlignment="Center"/>
+                        <ComboBox ItemsSource="{Binding Themes}" SelectedValue="{Binding SelectedTheme}"
+                                  IsTextSearchEnabled="True" IsEditable="True"/>
+
+                        <DockPanel>
+                            <TextBlock Text="Всего проблем"/>
+                            <TextBlock Text="{Binding ThemesAllProblems}" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решено проблем"/>
+                            <TextBlock Text="{Binding ThemesDecidedProblems}" HorizontalAlignment="Right"
+                                       Foreground="#82B366" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Процент решенных проблем"/>
+                            <TextBlock Text="{Binding ThemesPercentDecided, StringFormat={}{0}%}" HorizontalAlignment="Right"
+                                       Foreground="#82B366" FontWeight="Bold"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="Решается проблем"/>
+                            <TextBlock Text="{Binding ThemesDecidingProblems}" HorizontalAlignment="Right"
+                                       Foreground="#D6B656" FontWeight="Bold"/>
+                        </DockPanel>
+                    </StackPanel>
+                </ScrollViewer>
+                
+                <Button Grid.Row="2" Content="Создать отчет" HorizontalAlignment="Right" Padding="10 2"
+                        Margin="0 10" Command="{Binding GenerateReport}"/>
             </Grid>
         </Border>
     </Grid>

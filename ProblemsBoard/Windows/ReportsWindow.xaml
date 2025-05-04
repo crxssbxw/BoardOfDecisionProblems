@@ -1,0 +1,65 @@
+﻿<Window x:Class="ProblemsBoard.Windows.ReportsWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:ProblemsBoard.Windows"
+		mc:Ignorable="d" ResizeMode="NoResize" FontSize="14"
+		Title="Отчеты" Height="450" Width="500">
+	<Grid Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition />
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="0.5*"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Text="Отчеты" FontSize="24" Grid.ColumnSpan="2"
+				   HorizontalAlignment="Center" Foreground="#3A6AB2" FontWeight="Bold"/>
+
+		<ListBox Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"
+				 HorizontalContentAlignment="Stretch" ItemsSource="{Binding CollectionView}"
+                 SelectedValue="{Binding SelectedReport}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border BorderBrush="Black" BorderThickness="1">
+						<StackPanel Margin="3">
+							<TextBlock Text="Отчет: " FontSize="16" FontWeight="Bold" Foreground="#3A6AB2"/>
+							<DockPanel>
+								<TextBlock Text="{Binding Type}"/>
+								<TextBlock Text="{Binding Number}"/>
+							</DockPanel>
+							<TextBlock Text="{Binding CreatedAt, StringFormat=от {0:dd.MM.yyyy}}"/>
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<GroupBox Header="Фильтры" Grid.Row="1" Grid.Column="1" Margin="5 0">
+			<StackPanel>
+				<TextBlock Text="Дата" HorizontalAlignment="Center"/>
+				<DatePicker SelectedDate="{Binding DateFrom}" DisplayDateStart="{Binding MinDate, Mode=OneWay}" DisplayDateEnd="{Binding MaxDate, Mode=OneWay}"/>
+				<Separator Margin="0 5"/>
+				<TextBlock Text="Тип" HorizontalAlignment="Center"/>
+				<ComboBox IsEditable="True" IsTextSearchEnabled="True" ItemsSource="{Binding Types}"
+						  SelectedValue="{Binding SelectedType}"/>
+
+                <Button Content="Применить" Command="{Binding AcceptFilter}"
+                        Margin="0 10"/>
+                <Button Content="Сбросить" Command="{Binding ResetFilter}"/>
+            </StackPanel>
+		</GroupBox>
+		
+		<DockPanel HorizontalAlignment="Right" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center"> 
+			<TextBlock d:Text="Тип" Text="{Binding SelectedReport.FullType}" VerticalAlignment="Center"/>
+			<TextBlock d:Text="Номер" Text="{Binding SelectedReport.Number}" Margin="10 0" VerticalAlignment="Center"/>
+			<Button Content="Сохранить отчет" Padding="10 2" BorderThickness="0"
+					Background="#008CFF" Foreground="White" FontWeight="Bold"
+					Command="{Binding SaveReport}"/>
+		</DockPanel>
+	</Grid>
+</Window>

@@ -98,6 +98,8 @@ namespace ProblemsBoardLib.ViewModel
                         if (documentPreWatch.ShowDialog() == true)
                         {
                             reporting.SaveToDatabase("ОП");
+                            Document = null;
+                            doc.Close();
                         }
                     }
                 },

@@ -86,4 +86,10 @@ public partial class MainWindow : Window
         DecisionPanel.Visibility = Visibility.Visible;
         DecisionPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
     }
+
+    private void ReportsMenu_Click(object sender, RoutedEventArgs e)
+    {
+        ReportsWindow reportsWindow = new ReportsWindow();
+        reportsWindow.ShowDialog();
+    }
 }

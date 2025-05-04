@@ -12,7 +12,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
-        <DocumentViewer Document="{Binding Document}" Zoom="90">
+        <DocumentViewer x:Name="DV" Document="{Binding Document}" Zoom="90">
         </DocumentViewer>
 
         <DockPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0 10">

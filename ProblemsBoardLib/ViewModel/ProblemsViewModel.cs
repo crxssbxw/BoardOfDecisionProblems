@@ -69,7 +69,7 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private StatisticPanelViewModel statisticPanelVM = new();
+        private StatisticPanelViewModel statisticPanelVM;
         public StatisticPanelViewModel StatisticPanelVM
         {
             get => statisticPanelVM;
@@ -146,6 +146,7 @@ namespace ProblemsBoardLib.ViewModel
                 Problems.Add(problem);
             }
 
+            OnPropertyChanged(nameof(AllCounter));
             OnPropertyChanged(nameof(DecidedCounter));
             OnPropertyChanged(nameof(DecidingCounter));
             OnPropertyChanged(nameof(NotDecidedCounter));
@@ -286,6 +287,18 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
+        private RelayCommand statisticView;
+        public RelayCommand StatisticView
+        {
+            get
+            {
+                return statisticView ?? (statisticView = new(obj =>
+                {
+                    StatisticPanelVM = new(Department);
+                },
+                obj => Department.Problems != null));
+            }
+        }
 
         #endregion
     }

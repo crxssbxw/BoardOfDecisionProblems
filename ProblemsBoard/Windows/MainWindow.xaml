@@ -135,8 +135,8 @@
                     <MenuItem Header="Сначала старые"/>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Отчеты"/>
-            <MenuItem Header="Статистика" Click="Statistic_Click"/>
+            <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"/>
+            <MenuItem Header="Статистика" Click="Statistic_Click" Command="{Binding StatisticView}"/>
             <MenuItem Header="Журнал событий"/>
         </Menu>
 
@@ -297,7 +297,8 @@
             Margin="10"
             Panel.ZIndex="1"
             x:Name="StatisticPanel" Visibility="Collapsed"
-            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2">            
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"
+            DataContext="{Binding StatisticPanelVM}">            
         </panels:Statistic>
 
         <panels:Problem

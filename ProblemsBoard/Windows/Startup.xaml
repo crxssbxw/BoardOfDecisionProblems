@@ -27,7 +27,7 @@
             </TextBlock>
             <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single"
                      ItemsSource="{Binding Departments}" HorizontalContentAlignment="Stretch"
-                     SelectedValue="{Binding SelectedDepartment}">
+                     SelectedValue="{Binding SelectedDepartment}" MaxHeight="300">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Настроить" Click="MenuItem_Click"
