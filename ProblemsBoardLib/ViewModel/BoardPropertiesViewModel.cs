@@ -2,6 +2,7 @@
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.DialogWindows;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -169,14 +170,28 @@ namespace ProblemsBoardLib.ViewModel
 				return accept ?? (accept = new(obj =>
 				{
 					if (Department.Admin == null)
+					{
 						Department.Admin = new();
+						LoggingTool.NewAdminAuthorizationData(Department);
+					}
 
 					if (Login != Department.Admin.Login)
+					{
 						Department.Admin.Login = Login;
-					if (!string.IsNullOrEmpty(Password) && Helper.EncryptString(Password) != Department.Admin.Password)
-                        Department.Admin.Password = Helper.EncryptString(Password);
+						LoggingTool.NewAdminAuthorizationData(Department, login);
+					}
+					if (!string.IsNullOrEmpty(Password) && Helper.EncryptString(Password) != Department.Admin.Password)    
+					{ 
+						Department.Admin.Password = Helper.EncryptString(Password);
+						LoggingTool.NewAdminAuthorizationData(Department, password: Password);
+					}
 
 					dbContext.SaveChanges();
+
+					if (Department.Admin != null && Department.Responsibles.Any(a => a.IsCurrent))
+					{
+						LoggingTool.BoardSet(Department);
+					}
 				},
 				obj => true));
 			}
@@ -226,6 +241,7 @@ namespace ProblemsBoardLib.ViewModel
 							Department.Responsibles = [];
 						}
                         Department.Responsibles.Add(newResp);
+						LoggingTool.NewResponsibleSet(Department, newResp);
                         RefreshResponsibles();
 					}
 				},
@@ -251,6 +267,8 @@ namespace ProblemsBoardLib.ViewModel
                         SelectedResponsible.Login = passwordGenerator.Login;
 						SelectedResponsible.Password = Helper.EncryptString(passwordGenerator.Password);
 						SelectedResponsible.IsCurrent = true;
+
+						LoggingTool.ResponsibleReset(Department, prevResp, SelectedResponsible);
 					}
 					else
 					{

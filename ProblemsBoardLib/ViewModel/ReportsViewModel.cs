@@ -8,7 +8,11 @@ using Microsoft.Win32;
 using Microsoft.Win32;
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
+<<<<<<< HEAD
 >>>>>>> 1be2c83 (Added reporting window, more functional statistic and reporting for it)
+=======
+using ProblemsBoardLib.Tools;
+>>>>>>> fb5eff7 (Added Logging tool and logging window)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -330,7 +334,7 @@ namespace ProblemsBoardLib.ViewModel
                         {
                             fs.Write(SelectedReport.ReportFile, 0, SelectedReport.ReportFile.Length);
                         }
-
+                        LoggingTool.ReportSaved(SelectedReport, saveFileDialog.FileName);
                         var result = MessageBox.Show("Открыть папку с файлом?", "Подтвердждение действия", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (result == MessageBoxResult.Yes)
                         {

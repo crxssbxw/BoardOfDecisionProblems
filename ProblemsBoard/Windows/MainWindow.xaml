@@ -137,7 +137,7 @@
             </MenuItem>
             <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"/>
             <MenuItem Header="Статистика" Click="Statistic_Click" Command="{Binding StatisticView}"/>
-            <MenuItem Header="Журнал событий"/>
+            <MenuItem x:Name="LoggerMenu" Header="Журнал событий" Click="LoggerMenu_Click"/>
         </Menu>
 
         <DockPanel x:Name="Logo" Grid.Row="1" Grid.ColumnSpan="7">

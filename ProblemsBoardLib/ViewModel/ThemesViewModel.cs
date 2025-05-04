@@ -7,11 +7,15 @@ using ProblemsBoardLib.Forms;
 using ProblemsBoardLib.Commands;
 >>>>>>> 4bee76b (Fixed Themes, now themes can add to department)
 using ProblemsBoardLib.Models;
+<<<<<<< HEAD
 using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.ViewModel;
 =======
 using ProblemsBoardLib.Models;
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
+=======
+using ProblemsBoardLib.Tools;
+>>>>>>> fb5eff7 (Added Logging tool and logging window)
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -303,6 +307,7 @@ namespace ProblemsBoardLib.ViewModel
                         try
                         {
                             dbContext.SaveChanges();
+                            LoggingTool.NewThemeSet(Theme);
                             Themes.Add(Theme);
                         }
                         catch (Exception ex)
@@ -315,6 +320,7 @@ namespace ProblemsBoardLib.ViewModel
                         try
                         {
                             dbContext.SaveChanges();
+                            LoggingTool.ThemeChanged(Theme);
                         }
                         catch (Exception ex)
                         {

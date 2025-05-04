@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +19,7 @@ namespace ProblemsBoardLib.ViewModel
             dbContext.Themes.Load();
             dbContext.Problems.Load();
             dbContext.Responsibles.Load();
+            dbContext.Workers.Load();
             NewProblem = new()
             {
                 DateOccurance = Today,
@@ -80,6 +82,7 @@ namespace ProblemsBoardLib.ViewModel
                     {
                         dbContext.Add(NewProblem);
                         dbContext.SaveChanges();
+                        LoggingTool.NewProblemAdded(NewProblem);
                         VM.ProblemsReload();
                     }
                     catch (Exception ex)

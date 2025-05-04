@@ -1,6 +1,8 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,9 @@ namespace ProblemsBoardLib.ViewModel
 
         public ProblemDecisionViewModel(Problem problem, ProblemsViewModel vm, bool isAuthorized)
         {
+            dbContext.Responsibles.Load();
+            dbContext.Workers.Load();
+            dbContext.Departments.Load();
             Problem = dbContext.Problems.Find(problem.ProblemId);
             VM = vm;
             IsAuthorized = isAuthorized;
@@ -91,6 +96,7 @@ namespace ProblemsBoardLib.ViewModel
                 {
                     Problem.Status = "Решена";
                     dbContext.SaveChanges();
+                    LoggingTool.ProblemDecided(Problem);
                     VM.ProblemsReload();
                 },
                 obj => IsValid));
