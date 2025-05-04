@@ -92,4 +92,10 @@ public partial class MainWindow : Window
         ReportsWindow reportsWindow = new ReportsWindow();
         reportsWindow.ShowDialog();
     }
+
+    private void LoggerMenu_Click(object sender, RoutedEventArgs e)
+    {
+        LoggerWindow loggerWindow = new LoggerWindow();
+        loggerWindow.ShowDialog();
+    }
 }

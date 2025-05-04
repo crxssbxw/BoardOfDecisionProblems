@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using Microsoft.Office.Interop.Word;
 using ProblemsBoardLib.Models;
 
-namespace ProblemsBoardLib.Reporting 
+namespace ProblemsBoardLib.Tools 
 {
     public class ReportingTool : IDisposable
     {
@@ -245,6 +245,8 @@ namespace ProblemsBoardLib.Reporting
             {
                 databaseContext.Reports.Add(report);
                 databaseContext.SaveChanges();
+
+                LoggingTool.ReportCreated(report);
             }
             catch (Exception ex)
             {

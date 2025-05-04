@@ -2,7 +2,7 @@
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.DialogWindows;
 using ProblemsBoardLib.Models;
-using ProblemsBoardLib.Reporting;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;

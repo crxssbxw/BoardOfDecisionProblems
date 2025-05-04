@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -160,6 +161,7 @@ namespace ProblemsBoardLib.ViewModel
                         try
                         {
                             dbContext.SaveChanges();
+                            LoggingTool.NewThemeSet(Theme);
                             Themes.Add(Theme);
                         }
                         catch (Exception ex)
@@ -172,6 +174,7 @@ namespace ProblemsBoardLib.ViewModel
                         try
                         {
                             dbContext.SaveChanges();
+                            LoggingTool.ThemeChanged(Theme);
                         }
                         catch (Exception ex)
                         {

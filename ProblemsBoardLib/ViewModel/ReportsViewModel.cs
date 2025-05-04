@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using ProblemsBoardLib.Commands;
 using ProblemsBoardLib.Models;
+using ProblemsBoardLib.Tools;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -152,7 +153,7 @@ namespace ProblemsBoardLib.ViewModel
                         {
                             fs.Write(SelectedReport.ReportFile, 0, SelectedReport.ReportFile.Length);
                         }
-
+                        LoggingTool.ReportSaved(SelectedReport, saveFileDialog.FileName);
                         var result = MessageBox.Show("Открыть папку с файлом?", "Подтвердждение действия", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (result == MessageBoxResult.Yes)
                         {
