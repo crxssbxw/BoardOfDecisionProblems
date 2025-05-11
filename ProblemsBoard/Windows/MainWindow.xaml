@@ -1,0 +1,356 @@
+﻿<Window x:Class="ProblemsBoard.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProblemsBoard"
+        xmlns:panels="clr-namespace:ProblemsBoard.Panels"
+        mc:Ignorable="d"
+        Title="Доска Решения Проблем" MinHeight="500" MinWidth="800"
+        ResizeMode="CanResize" WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <DataTemplate x:Key="Problem">
+            <Border Margin="10" Name="Border" Width="auto"
+                    BorderThickness="2" CornerRadius="5" BorderBrush="Black">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="0"
+                                Margin="10 0">
+                        <TextBlock Text="{Binding Path=ProblemId, StringFormat=Проблема №{0}}"
+                                   FontWeight="Bold" FontSize="16"/>
+                        <TextBlock Text="{Binding ThemeName, StringFormat=Тема: {0}}"/>
+                        <TextBlock Text="{Binding DateOccurance, StringFormat=Дата создания: \{0:dd.MM.yy\}}"/>
+                        <TextBlock Text="{Binding DateElimination, StringFormat=Дата решения: \{0:dd.MM.yy\}}"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" MaxWidth="750">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Описание"
+                                FontWeight="Bold" FontSize="16"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
+                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <StackPanel Grid.Row="0" Grid.RowSpan="4" Grid.Column="2"
+                                Margin="10 0">
+                        <TextBlock Text="Статус" HorizontalAlignment="Right"
+                                   FontWeight="Bold" FontSize="16"/>
+                        <TextBlock Text="{Binding Status}" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Новая" Visibility="{Binding IsNew}" FontSize="18" FontWeight="Black"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" VerticalAlignment="Center" Margin="10" >
+                        <TextBlock Text="Осталось:" TextAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DaysLeft}" FontSize="16" FontWeight="Bold"
+                                   ToolTip="Осталось дней на решение" TextAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Status}" Value="Решена">
+                    <Setter TargetName="Border" Property="Background" Value="#D5E8D4"/>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#82B366"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Status}" Value="Решается">
+                    <Setter TargetName="Border" Property="Background" Value="#FFF2CC"/>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#D6B656"/>
+                </DataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Status}" Value="Решается"/>
+                        <Condition Binding="{Binding DaysLeft}" Value="0"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#EA6B66"/>
+                    <Setter TargetName="Border" Property="Background" Value="#F8CECC"/>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Status}" Value="Решается"/>
+                        <Condition Binding="{Binding DaysLeft}" Value="1"/>
+                    </MultiDataTrigger.Conditions>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#EA6B66"/>
+                    <Setter TargetName="Border" Property="Background" Value="#F8CECC"/>
+                </MultiDataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="ProblemsList">
+            <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch"/>
+        </ItemsPanelTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.ColumnSpan="6" Grid.Row="0" x:Name="MainMenu"
+              IsMainMenu="True" FontSize="15">
+            <MenuItem Background="#3A6AB2" BorderThickness="0">
+                <MenuItem.Header>
+                    <TextBlock Text="Доска" Foreground="White"
+                               Padding="5 2" FontWeight="Bold"/>
+                </MenuItem.Header>
+                <MenuItem Header="Новая проблема" Command="{Binding NewProblemAdd}"
+                          Click="NewProblem_Click"/>
+                <MenuItem x:Name="Themes" Header="Темы" Command="{Binding ThemesView}"
+                          Click="Themes_Click"/>
+
+                <Separator/>
+                <MenuItem x:Name="Filters" Header="Фильтрация">
+                    <MenuItem Header="Ответственный">
+                        <MenuItem Command="{Binding ResponsibleFilter}">
+                            <MenuItem.Header>
+                                <ComboBox ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
+                                          SelectedValue="{Binding SelectedResponsibleFilter}" 
+                                          IsEditable="True" IsTextSearchEnabled="True"
+                                          MinWidth="100"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Тема">
+                        <MenuItem Command="{Binding ThemeFilter}">
+                            <MenuItem.Header>
+                                <ComboBox ItemsSource="{Binding FilterThemes}"
+                                          SelectedValue="{Binding SelectedThemeFilter}"
+                                          IsEditable="True" IsTextSearchEnabled="True"
+                                          MinWidth="100"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Дата">
+                        <MenuItem Command="{Binding OneDateFilter}">
+                            <MenuItem.Header>
+                                <DatePicker SelectedDate="{Binding SelectedOneDateFilter}"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Диапазон дат">
+                        <MenuItem Command="{Binding MultiDateFilter}">
+                            <MenuItem.Header>
+                                <DockPanel>
+                                    <DatePicker SelectedDate="{Binding SelectedDateFromFilter}"/>
+                                    <TextBlock Text=" - "/>
+                                    <DatePicker SelectedDate="{Binding SelectedDateToFilter}"/>
+                                </DockPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Сбросить" Command="{Binding AllFilter}"/>
+                </MenuItem>
+                <MenuItem Header="Сортировка">
+                    <MenuItem Header="Сначала просроченные" Command="{Binding UrgentSort}"/>
+                    <MenuItem Header="Сначала действительные" Command="{Binding CurrentSort}"/>
+                    <MenuItem Header="Сначала новые" Command="{Binding NewSort}"/>
+                    <MenuItem Header="Сначала старые" Command="{Binding OldSort}"/>
+                </MenuItem>
+
+                <Separator/>
+
+                <MenuItem Header="Выход" Name="ExitMenu" Click="ExitMenu_Click"/>
+            </MenuItem>
+            
+            <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"
+                      IsEnabled="{Binding EnabledMenu}"/>
+            <MenuItem Header="Статистика" Click="Statistic_Click" Command="{Binding StatisticView}"/>
+            <MenuItem x:Name="LoggerMenu" Header="Журнал событий" Click="LoggerMenu_Click"
+                      IsEnabled="{Binding EnabledMenu}"/>
+        </Menu>
+
+        <DockPanel x:Name="Logo" Grid.Row="1" Grid.ColumnSpan="7">
+            <Image Width="auto" Height="50">
+                <Image.Source>
+                    ../Assets/Images/logo.png
+                </Image.Source>
+            </Image>
+            <Label FontSize="30" FontWeight="Bold"
+                   Foreground="#3A6AB2" HorizontalAlignment="Right">
+                <Label.Content>
+                    <TextBlock>
+                        <Run Text="ДОСКА РЕШЕНИЯ ПРОБЛЕМ |"/>
+                        <Run Text="{Binding Department.ViewerNumber, StringFormat=УЧАСТОК №{0}}"/>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+        </DockPanel>
+        
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <ListBox x:Name="ProblemsList" Grid.Row="1"
+                     ItemTemplate="{StaticResource Problem}"
+                     ItemsSource="{Binding CollectionView}"
+                     SelectedValue="{Binding SelectedProblem}"
+                     HorizontalContentAlignment="Stretch"
+                     HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="4"
+              Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Content="Новая Проблема" Padding="10" Margin="5" Background="#008CFF"
+                    Foreground="White" FontWeight="Bold" Click="NewProblem_Click"
+                    BorderThickness="0"
+                    Command="{Binding NewProblemAdd}"/>
+            <StackPanel Grid.Row="1" Margin="5">
+                <Button x:Name="ProblemView" Content="Просмотр" Padding="5"
+                        PreviewMouseDown="ProblemView_PreviewMouseDown" Command="{Binding ProblemWatch}" Grid.Column="0"
+                        FontWeight="Bold" BorderThickness="0" Margin="0 5"/>
+                <Button x:Name="DecideView" Content="Решить" Padding="5"
+                        PreviewMouseDown="DecideView_PreviewMouseDown" Command="{Binding ProblemDecide}" Grid.Column="1"
+                        FontWeight="Bold" BorderThickness="0"/>
+            </StackPanel>
+
+            <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5"
+                    Background="LightGray" BorderBrush="DimGray" BorderThickness="3"
+                    Command="{Binding AllFilter}">
+                <Button.Content>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" Text="{Binding AllCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Всего" TextAlignment="Center" Width="80"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Row="3" HorizontalAlignment="Center" Margin="5"
+                    Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3"
+                    Command="{Binding DecidedFilter}">
+                <Button.Content>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#82B366"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" Text="{Binding DecidedCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Решено" TextAlignment="Center" Width="80"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="4" HorizontalAlignment="Center" Margin="5"
+                    Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3"
+                    Command="{Binding DecidingFilter}">
+                <Button.Content>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#D6B656"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" Text="{Binding DecidingCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Решается" TextAlignment="Center" Width="80"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="5" HorizontalAlignment="Center" Margin="5"
+                    Background="#F8CECC" BorderBrush="#B85450" BorderThickness="3"
+                    Command="{Binding NotDecidedFilter}">
+                <Button.Content>
+                    <StackPanel Margin="0 20">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#B85450"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="N" Text="{Binding NotDecidedCounter}" HorizontalAlignment="Center"
+                                   FontSize="20"/>
+                        <TextBlock Text="Срочные" TextAlignment="Center" Width="80"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+        
+        <panels:Statistic 
+            Margin="10"
+            Panel.ZIndex="1"
+            x:Name="StatisticPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"
+            DataContext="{Binding StatisticPanelVM}">            
+        </panels:Statistic>
+
+        <panels:Problem
+            Margin="10"
+            Panel.ZIndex="2"
+            x:Name="ProblemPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3"
+            DataContext="{Binding ProblemVM}">            
+        </panels:Problem>
+
+        <panels:NewProblem
+            Margin="10"
+            Panel.ZIndex="3" DataContext="{Binding NewProblemVM}"
+            x:Name="NewProblemPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3">            
+        </panels:NewProblem>
+
+        <panels:Themes
+            Margin="10"
+            Panel.ZIndex="4" DataContext="{Binding ThemesVM}"
+            x:Name="ThemesPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="4">
+        </panels:Themes>
+
+        <panels:DecideProblem
+            Margin="10"
+            Panel.ZIndex="5" DataContext="{Binding DecisionVM}"
+            x:Name="DecisionPanel" Visibility="Collapsed"
+            Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="3">
+        </panels:DecideProblem>
+    </Grid>
+</Window>

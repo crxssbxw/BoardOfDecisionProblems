@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="ProblemsBoard.Panels.NewProblem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProblemsBoard.Panels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Button Content="X"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="30" Height="30"
+                Click="Close_Click"
+                Panel.ZIndex="1"/>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="30" FontWeight="Bold" Foreground="#3A6AB2" Panel.ZIndex="1"
+                           Text="Новая Проблема" HorizontalAlignment="Center"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
+                        <Label Content="Тема"/>
+                        <ComboBox ItemsSource="{Binding Themes}" SelectedValue="{Binding NewProblem.Theme}"
+                                  IsEditable="True" IsTextSearchEnabled="True"/>
+                    </StackPanel>
+
+                    <Label Content="Описание" Grid.Row="2" Margin="5 0"/>
+                    <TextBox Grid.Row="3" Grid.ColumnSpan="3" Margin="5"
+                             Text="{Binding NewProblem.Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <DatePicker Grid.Row="4" Margin="5" SelectedDate="{Binding NewProblem.DateOccurance}"
+                                DisplayDateEnd="{Binding Today, Mode=OneWay}"/>
+                    <Button x:Name="Accept" Content="Принять" Grid.Row="4" Grid.Column="2"
+                            Margin="5" Background="#008CFF" Foreground="White"
+                            Click="Accept_Click" Command="{Binding Add}"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

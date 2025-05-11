@@ -1,0 +1,82 @@
+﻿<Window x:Class="ProblemsBoard.Windows.ImportData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProblemsBoard.Windows"
+        mc:Ignorable="d"
+        Title="Импорт Данных" MinHeight="450" MinWidth="600"
+        FontSize="18">
+    <Grid Margin="10" Drop="Grid_Drop" AllowDrop="True"
+          DragOver="Grid_DragOver">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel HorizontalAlignment="Center">
+            <TextBlock Text="Импорт данных из Excel"
+                     FontSize="20" FontWeight="Bold"
+                     Foreground="#3A6AB2"/>
+        </DockPanel>
+        
+        <Expander Header="Справка" Grid.Row="1">
+            <TextBlock Text="{Binding Help}" FontSize="14" TextWrapping="Wrap"/>
+        </Expander>
+
+        <Grid Grid.Row="2" Margin="0 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="100"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition MinWidth="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Предпросмотр" Grid.ColumnSpan="3"
+                       HorizontalAlignment="Center" Margin="5" FontWeight="Bold"/>
+
+            <DataGrid Grid.Row="1" Margin="5 0" ColumnWidth="*" IsReadOnly="True" Grid.Column="0" x:Name="DepartmentsDeltaList" AutoGenerateColumns="False"
+                      ItemsSource="{Binding DeltaDepartments}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding DepartmentId}"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Номер" Binding="{Binding ViewerNumber}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <GridSplitter Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.Column="1" Width="3" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" />
+
+            <DataGrid Grid.Row="1" Margin="5 0" ColumnWidth="*" IsReadOnly="True" Grid.Column="2" x:Name="WorkersDeltaList" AutoGenerateColumns="False"
+                      ItemsSource="{Binding DeltaWorkers}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding WorkerId}"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"/>
+                    <DataGridTextColumn Header="Должность" Binding="{Binding Post}"/>
+                    <DataGridTextColumn Header="Участок" Binding="{Binding DepartmentId}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <DockPanel Grid.Row="3">
+            <Button x:Name="SelectFile" Margin="10 5" Padding="20 2" Content="Выберите файл" VerticalAlignment="Center"
+                    Click="SelectFile_Click"/>
+            <TextBlock Text="{Binding SelectedFile}" FontSize="14" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="4" HorizontalAlignment="Right">
+            <Button x:Name="Accept" Content="Принять" Padding="20 0" Margin="10 0"
+                    Click="Accept_Click"/>
+            <Button x:Name="Cancel" Content="Отмена" Padding="20 0"
+                    Click="Cancel_Click"/>
+        </DockPanel>
+    </Grid>
+</Window>

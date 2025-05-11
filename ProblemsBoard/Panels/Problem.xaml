@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="ProblemsBoard.Panels.Problem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProblemsBoard.Panels"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Button Content="X" Panel.ZIndex="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Width="30" Height="30"
+                    Click="Close_Click"/>
+        <Border Background="#E6E6E6" CornerRadius="10">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{Binding Problem.ProblemId, StringFormat=Проблема №{0}}" HorizontalAlignment="Center"
+                           FontSize="30" FontWeight="Bold" Foreground="#3A6AB2" Panel.ZIndex="1"
+                           d:Text="Проблема №"/>
+                <Grid Grid.Row="1">
+                    <Grid.Resources>
+                        <Style x:Key="StatusTrigger" TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Problem.Status}" Value="Решено">
+                                    <Setter Property="Background" Value="#D5E8D4"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Problem.Status}" Value="Решается">
+                                    <Setter Property="Background" Value="#FFF2CC"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Background="White" Margin="5"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.ThemeName}" d:Text="Тема"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Background="White" Margin="5"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.DateOccurance, StringFormat=\{0:dd.MM.yy\}}" d:Text="Дата появления дд.ММ.гггг"/>
+
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="4" Margin="5" Background="White"
+                               Text="{Binding Problem.Description}" TextWrapping="Wrap" FontSize="14"
+                               d:Text="Описание"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.Status}" Style="{StaticResource StatusTrigger}"
+                               d:Text="Статус"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Background="White"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.DecidionTime}"
+                               d:Text="Время решения"/>
+                    <TextBlock Grid.Row="3" Grid.ColumnSpan="4" Margin="5" Background="White"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.Responsible.FullName}"
+                               d:Text="Ответственный"/>
+
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="4" Margin="5" Background="White"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.DepartmentName}"
+                               d:Text="Участок"/>
+
+                    <Expander Grid.Row="5" Grid.ColumnSpan="4" IsEnabled="{Binding IsDecided}">
+                        <Expander.Header>
+                            <TextBlock Text="{Binding IsDecidedText}" d:Text="Решение | Решения нет" FontSize="18" FontWeight="Bold"/>
+                        </Expander.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock  Margin="5" Background="White"
+                                 Text="{Binding Problem.Decision}" TextWrapping="Wrap"
+                                 d:Text="Решение"/>
+                            <TextBlock Grid.Row="1" Margin="5" Background="White" FontSize="18" FontWeight="Bold"
+                                 Text="{Binding Problem.DateElimination, StringFormat=Решение от \{0:dd.MM.yy\}}"/>
+                        </Grid>
+                    </Expander>
+
+                    <DockPanel Grid.Row="6" Grid.ColumnSpan="4" Margin="0 10" HorizontalAlignment="Right">
+                        <Button Content="Создать отчет" Padding="10 2" Margin="10 0"
+                                Command="{Binding GenerateReport}"/>
+                        <Button Content="OK" Padding="10 2" Click="Close_Click"
+                                BorderThickness="0" Background="#008CFF" Foreground="White"/>
+                    </DockPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
