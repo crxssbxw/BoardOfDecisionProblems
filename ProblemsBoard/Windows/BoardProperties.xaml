@@ -128,6 +128,34 @@
                                TextWrapping="Wrap" TextAlignment="Justify"/>
                 </StackPanel>
             </TabItem>
+
+            <TabItem Header="Сотрудники">
+                <StackPanel Margin="5">
+                    <TextBlock Text="Сотрудники"/>
+                    <ListBox BorderBrush="Gray" BorderThickness="1"
+                             ItemsSource="{Binding Workers}" MinHeight="20"
+                             Margin="0 5" MaxHeight="300"
+                             SelectedValue="{Binding SelectedWorker}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Name="FullNameTB" Text="{Binding WorkerInfo}"/>
+
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsHeader}" Value="True">
+                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsHeader}" Value="False">
+                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Black"/>
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Content="Назначить главным" Command="{Binding SetHeader}"
+                            HorizontalAlignment="Right" Style="{StaticResource DefaultButton}"
+                            Background="Transparent"/>
+                </StackPanel>
+            </TabItem>
         </TabControl>
 
         <DockPanel Grid.Row="1" HorizontalAlignment="Right" Margin="0 5">

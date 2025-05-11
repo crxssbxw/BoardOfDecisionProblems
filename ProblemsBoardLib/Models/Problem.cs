@@ -45,9 +45,13 @@ namespace ProblemsBoardLib.Models
         /// Идентификатор ответственного за решение проблемы
         /// </summary>
         public int? ResponsibleId { get; set; }
+<<<<<<< HEAD
         /// <summary>
         /// Идентификатор Отдела, в котором возникла проблемы
         /// </summary>
+=======
+        public int? WorkerId { get; set; }
+>>>>>>> 3952904 (Added more difference between roles, added roles enum, added new role: header worker; added email sender class)
         public int? DepartmentId { get; set; }
         /// <summary>
         /// Идентификатор темы
@@ -118,6 +122,16 @@ namespace ProblemsBoardLib.Models
 
 >>>>>>> ce1a19b (Added themes view in menu, adding themes to db, model changes)
         [NotMapped]
+        public Visibility IsNew
+        {
+            get
+            {
+                if (DateOccurance.Date == DateTime.Today) return Visibility.Visible;
+                return Visibility.Collapsed;
+            }
+        }
+
+        [NotMapped]
         public string? ThemeName { get => Theme?.Name; }
 
         /// <summary>
@@ -140,9 +154,13 @@ namespace ProblemsBoardLib.Models
         /// Ссылка на ответственного
         /// </summary>
         public Responsible? Responsible { get; set; }
+<<<<<<< HEAD
         /// <summary>
         /// Ссылка на отдел
         /// </summary>
+=======
+        public Worker? Worker { get; set; }
+>>>>>>> 3952904 (Added more difference between roles, added roles enum, added new role: header worker; added email sender class)
         public Department? Department { get; set; }
 
         public override string ToString()

@@ -36,6 +36,10 @@ namespace ProblemsBoardLib.Models
         /// Идентификатор отдела работника
         /// </summary>
         public int DepartmentId { get; set; }
+        public bool IsHeader { get; set; } = false;
+        public string? HeaderLogin { get; set; }
+        public string? HeaderPassword { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// Ссылка на отдел

@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProblemsBoardLib;
 
 namespace ProblemsBoard.Windows;
 
@@ -33,10 +34,14 @@ public partial class MainWindow : Window
     public MainWindow()
 =======
     public static ProblemsViewModel ViewModel { get; set; }
+<<<<<<< HEAD
     public MainWindow(Department department)
 >>>>>>> e8a7a46 (Now problems added to DB)
+=======
+    public MainWindow(Department department, Roles role = Roles.RAdmin)
+>>>>>>> 3952904 (Added more difference between roles, added roles enum, added new role: header worker; added email sender class)
     {
-        ViewModel = new(department);
+        ViewModel = new(department, role);
         InitializeComponent();
         DataContext = ViewModel;
     }
@@ -112,4 +117,9 @@ public partial class MainWindow : Window
         LoggerWindow loggerWindow = new LoggerWindow();
         loggerWindow.ShowDialog();
     }
+
+	private void ExitMenu_Click(object sender, RoutedEventArgs e)
+	{
+        Close();
+	}
 }

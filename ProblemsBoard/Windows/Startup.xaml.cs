@@ -121,7 +121,7 @@ namespace ProblemsBoard.Windows
 				AdminAuthorization adminAuthorization = new(department);
 				if (adminAuthorization.ShowDialog() == true)
 				{
-                    MainWindow mainWindow = new(department);
+                    MainWindow mainWindow = new(department, adminAuthorization.OutRole);
                     mainWindow.Show();
 
                     Close();
