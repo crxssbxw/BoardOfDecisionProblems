@@ -366,3 +366,6 @@ FodyWeavers.xsd
 board.db
 board.db-shm
 board.db-wal
+/ProblemsBoard/ProblemsBoardClassDiagram.cd
+/ProblemsBoardLib/Models/ModelClassDiagram.cd
+/ProblemsBoardLib/ViewModel/ViewModelClassDiagram.cd
