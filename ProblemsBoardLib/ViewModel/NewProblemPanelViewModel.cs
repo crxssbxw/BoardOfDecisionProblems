@@ -29,6 +29,7 @@ namespace ProblemsBoardLib.ViewModel
             };
             VM = vm;
             NewProblem.Responsible = dbContext.Responsibles.Find(NewProblem.Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault().ResponsibleId);
+            NewProblem.Worker = dbContext.Workers.Find(NewProblem.Department.Workers.FirstOrDefault(a => a.IsHeader, null).WorkerId);
             foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
                 Themes.Add(theme);
         }

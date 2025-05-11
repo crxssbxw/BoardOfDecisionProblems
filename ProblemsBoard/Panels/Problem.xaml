@@ -64,6 +64,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -98,15 +99,19 @@
                                d:Text="Время решения"/>
                     <TextBlock Grid.Row="3" Grid.ColumnSpan="4" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
-                               Text="{Binding Problem.Responsible.FullName}"
+                               Text="{Binding Problem.Responsible.FullName, StringFormat=Ответственный: {0}}"
                                d:Text="Ответственный"/>
-
                     <TextBlock Grid.Row="4" Grid.ColumnSpan="4" Margin="5" Background="White"
+                               FontSize="18" FontWeight="Bold"
+                               Text="{Binding Problem.Worker.WorkerInfo, StringFormat=Добавил: {0}}"
+                               d:Text="Добавил"/>
+
+                    <TextBlock Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
                                Text="{Binding Problem.DepartmentName}"
                                d:Text="Участок"/>
 
-                    <Expander Grid.Row="5" Grid.ColumnSpan="4" IsEnabled="{Binding IsDecided}">
+                    <Expander Grid.Row="6" Grid.ColumnSpan="4" IsEnabled="{Binding IsDecided}">
                         <Expander.Header>
                             <TextBlock Text="{Binding IsDecidedText}" d:Text="Решение | Решения нет" FontSize="18" FontWeight="Bold"/>
                         </Expander.Header>
@@ -123,7 +128,7 @@
                         </Grid>
                     </Expander>
 
-                    <DockPanel Grid.Row="6" Grid.ColumnSpan="4" Margin="0 10" HorizontalAlignment="Right">
+                    <DockPanel Grid.Row="7" Grid.ColumnSpan="4" Margin="0 10" HorizontalAlignment="Right">
                         <Button Content="Создать отчет" Padding="10 2" Margin="10 0"
                                 Command="{Binding GenerateReport}"/>
                         <Button Content="OK" Padding="10 2" Click="Close_Click"

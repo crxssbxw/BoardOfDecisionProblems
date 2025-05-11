@@ -89,7 +89,6 @@ namespace ProblemsBoardTest
             // Тестовый пример 4.2
             string tempPath = Path.Combine(Directory.GetCurrentDirectory(), "LoginGenerator.json");
             File.Delete(tempPath);
-            // Проверка MessageBox требует GUI, поэтому пропускаем, но проверяем возврат логина
             string login = Helper.GenerateLogin();
             Assert.IsNull(login);
         }
