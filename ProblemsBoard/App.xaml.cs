@@ -34,7 +34,8 @@ public partial class App : Application
             if (dbContext.Themes.Count() == 0)
             {
                 string project = Directory.GetCurrentDirectory();
-                dbContext.AddRange(Helper.ThemesSerialization(@$"{project}\..\..\..\Assets\JSON\BaseThemes.json"));
+                string jsonPath = Path.Combine(project, "Assets/JSON/BaseThemes.json");
+                dbContext.AddRange(Helper.ThemesSerialization(jsonPath));
                 dbContext.SaveChanges();
             }
         }

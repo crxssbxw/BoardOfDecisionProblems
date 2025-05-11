@@ -46,6 +46,12 @@
   <ItemGroup>
     <Folder Include="Assets\JSON\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\JSON\BaseThemes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   
   <PropertyGroup>
     <OutputType>WinExe</OutputType>

@@ -152,7 +152,7 @@ namespace ProblemsBoardLib
         public static string GenerateLogin()
         {
             LoginGenerator loginGenerator = new();
-            string path = @"../../../../ProblemsBoardLib/LoginGenerator.json";
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "LoginGenerator.json");
 
             try
             {
