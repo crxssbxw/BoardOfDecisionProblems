@@ -54,6 +54,7 @@
                         <TextBlock Text="Статус" HorizontalAlignment="Right"
                                    FontWeight="Bold" FontSize="16"/>
                         <TextBlock Text="{Binding Status}" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Новая" Visibility="{Binding IsNew}" FontSize="18" FontWeight="Black"/>
                     </StackPanel>
                     
                     <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" VerticalAlignment="Center" Margin="10" >
@@ -123,21 +124,66 @@
                           Click="NewProblem_Click"/>
                 <MenuItem x:Name="Themes" Header="Темы" Command="{Binding ThemesView}"
                           Click="Themes_Click"/>
-                <MenuItem x:Name="Responsibles" Header="Ответственные" Command="{Binding ResponsiblesView}"
-                          Click="Responsibles_Click"/>
-                
+
                 <Separator/>
-                
-                <MenuItem Header="Сортировать">
-                    <MenuItem Header="Сначала просроченные"/>
-                    <MenuItem Header="Сначала действительные"/>
-                    <MenuItem Header="Сначала новые"/>
-                    <MenuItem Header="Сначала старые"/>
+                <MenuItem x:Name="Filters" Header="Фильтрация">
+                    <MenuItem Header="Ответственный">
+                        <MenuItem Command="{Binding ResponsibleFilter}">
+                            <MenuItem.Header>
+                                <ComboBox ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
+                                          SelectedValue="{Binding SelectedResponsibleFilter}" 
+                                          IsEditable="True" IsTextSearchEnabled="True"
+                                          MinWidth="100"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Тема">
+                        <MenuItem Command="{Binding ThemeFilter}">
+                            <MenuItem.Header>
+                                <ComboBox ItemsSource="{Binding FilterThemes}"
+                                          SelectedValue="{Binding SelectedThemeFilter}"
+                                          IsEditable="True" IsTextSearchEnabled="True"
+                                          MinWidth="100"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Дата">
+                        <MenuItem Command="{Binding OneDateFilter}">
+                            <MenuItem.Header>
+                                <DatePicker SelectedDate="{Binding SelectedOneDateFilter}"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Диапазон дат">
+                        <MenuItem Command="{Binding MultiDateFilter}">
+                            <MenuItem.Header>
+                                <DockPanel>
+                                    <DatePicker SelectedDate="{Binding SelectedDateFromFilter}"/>
+                                    <TextBlock Text=" - "/>
+                                    <DatePicker SelectedDate="{Binding SelectedDateToFilter}"/>
+                                </DockPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Сбросить" Command="{Binding AllFilter}"/>
                 </MenuItem>
+                <MenuItem Header="Сортировка">
+                    <MenuItem Header="Сначала просроченные" Command="{Binding UrgentSort}"/>
+                    <MenuItem Header="Сначала действительные" Command="{Binding CurrentSort}"/>
+                    <MenuItem Header="Сначала новые" Command="{Binding NewSort}"/>
+                    <MenuItem Header="Сначала старые" Command="{Binding OldSort}"/>
+                </MenuItem>
+
+                <Separator/>
+
+                <MenuItem Header="Выход" Name="ExitMenu" Click="ExitMenu_Click"/>
             </MenuItem>
-            <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"/>
+            
+            <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"
+                      IsEnabled="{Binding EnabledMenu}"/>
             <MenuItem Header="Статистика" Click="Statistic_Click" Command="{Binding StatisticView}"/>
-            <MenuItem x:Name="LoggerMenu" Header="Журнал событий" Click="LoggerMenu_Click"/>
+            <MenuItem x:Name="LoggerMenu" Header="Журнал событий" Click="LoggerMenu_Click"
+                      IsEnabled="{Binding EnabledMenu}"/>
         </Menu>
 
         <DockPanel x:Name="Logo" Grid.Row="1" Grid.ColumnSpan="7">
@@ -183,9 +229,6 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
             
             <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
@@ -193,18 +236,14 @@
                     Foreground="White" FontWeight="Bold" Click="NewProblem_Click"
                     BorderThickness="0"
                     Command="{Binding NewProblemAdd}"/>
-            <Grid Grid.Row="1" Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="1" Margin="5">
                 <Button x:Name="ProblemView" Content="Просмотр" Padding="5"
                         PreviewMouseDown="ProblemView_PreviewMouseDown" Command="{Binding ProblemWatch}" Grid.Column="0"
-                        FontWeight="Bold" BorderThickness="0"/>
+                        FontWeight="Bold" BorderThickness="0" Margin="0 5"/>
                 <Button x:Name="DecideView" Content="Решить" Padding="5"
                         PreviewMouseDown="DecideView_PreviewMouseDown" Command="{Binding ProblemDecide}" Grid.Column="1"
-                        Visibility="{Binding IsDecided}" FontWeight="Bold" BorderThickness="0"/>
-            </Grid>
+                        FontWeight="Bold" BorderThickness="0"/>
+            </StackPanel>
 
             <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5"
                     Background="LightGray" BorderBrush="DimGray" BorderThickness="3"
@@ -275,22 +314,6 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-
-            <Grid Grid.Row="7" Grid.RowSpan="2" Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Label Content="Фильтры" Grid.Row="0"
-                       FontWeight="Bold"/>
-
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                    <Grid>
-                        
-                    </Grid>
-                </ScrollViewer>
-            </Grid>
         </Grid>
         
         <panels:Statistic 

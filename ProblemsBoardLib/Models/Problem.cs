@@ -17,6 +17,7 @@ namespace ProblemsBoardLib.Models
         public DateTime? DateElimination { get; set; }
         public string? Decision { get; set; }
         public int? ResponsibleId { get; set; }
+        public int? WorkerId { get; set; }
         public int? DepartmentId { get; set; }
         public int? ThemeId { get; set; }
 
@@ -54,6 +55,16 @@ namespace ProblemsBoardLib.Models
         }
 
         [NotMapped]
+        public Visibility IsNew
+        {
+            get
+            {
+                if (DateOccurance.Date == DateTime.Today) return Visibility.Visible;
+                return Visibility.Collapsed;
+            }
+        }
+
+        [NotMapped]
         public string? ThemeName { get => Theme?.Name; }
 
         [NotMapped]
@@ -64,6 +75,7 @@ namespace ProblemsBoardLib.Models
 
         public Theme? Theme { get; set; }
         public Responsible? Responsible { get; set; }
+        public Worker? Worker { get; set; }
         public Department? Department { get; set; }
     }
 }

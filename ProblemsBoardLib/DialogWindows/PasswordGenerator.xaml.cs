@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,6 +62,28 @@ namespace ProblemsBoardLib.DialogWindows
             }
         }
 
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+
+        private bool sendEmail;
+        public bool SendEmail
+        {
+            get => sendEmail;
+            set
+            {
+                sendEmail = value;
+                OnPropertyChanged(nameof(SendEmail));
+            }
+        }
+
         private string password;
         public string Password
         {
@@ -99,6 +122,15 @@ namespace ProblemsBoardLib.DialogWindows
 
         private void OkBT_Click(object sender, RoutedEventArgs e)
         {
+            MailAddress mailAddress;
+            if (SendEmail)
+            {
+                if (!MailAddress.TryCreate(Email, out mailAddress))
+                {
+                    Message = "Неверный формат электронной почты!";
+                    return;
+                }
+            }
             DialogResult = true;
         }
 

@@ -61,7 +61,8 @@
 
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="5">
                         <Label Content="Тема"/>
-                        <ComboBox ItemsSource="{Binding Themes}" SelectedValue="{Binding NewProblem.Theme}"/>
+                        <ComboBox ItemsSource="{Binding Themes}" SelectedValue="{Binding NewProblem.Theme}"
+                                  IsEditable="True" IsTextSearchEnabled="True"/>
                     </StackPanel>
 
                     <Label Content="Описание" Grid.Row="2" Margin="5 0"/>

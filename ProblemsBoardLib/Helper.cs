@@ -16,6 +16,13 @@ namespace ProblemsBoardLib
     /// <summary>
     /// Вспомогательный статический класс для упрощения работы с данными
     /// </summary>
+    public enum Roles
+    {
+        RAdmin = 1,
+        RResponsible = 2,
+        RHeaderWorker = 3
+    } 
+
     public static class Helper
     {
         /// <summary>

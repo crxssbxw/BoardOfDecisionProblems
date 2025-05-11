@@ -15,6 +15,10 @@ namespace ProblemsBoardLib.Models
         public string? MiddleName { get; set; }
         public string Post { get; set; }
         public int DepartmentId { get; set; }
+        public bool IsHeader { get; set; } = false;
+        public string? HeaderLogin { get; set; }
+        public string? HeaderPassword { get; set; }
+        public string? Email { get; set; }
 
         public Department Department { get; set; }
         [NotMapped]

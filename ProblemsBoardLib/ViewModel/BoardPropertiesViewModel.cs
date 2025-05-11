@@ -55,6 +55,14 @@ namespace ProblemsBoardLib.ViewModel
                 }
             }
 
+			if (Department.Workers != null)
+			{
+				foreach (var worker in Department.Workers)
+				{
+					Workers.Add(worker);
+				}
+			}
+
             if (Department.Admin == null)
 			{
 				Login = "admin";
@@ -74,6 +82,15 @@ namespace ProblemsBoardLib.ViewModel
                 Responsibles.Add(responsible);
             }
         }
+
+		private void RefreshWorkers()
+		{
+			Workers.Clear();
+			foreach (var worker in Department.Workers)
+			{
+				Workers.Add(worker);
+			}
+		}
 
 		private string login;
 		public string Login
@@ -162,6 +179,28 @@ namespace ProblemsBoardLib.ViewModel
 			}
 		}
 
+		private ObservableCollection<Worker> workers = new();
+		public ObservableCollection<Worker> Workers
+		{
+			get => workers;
+			set
+			{
+				workers = value;
+				OnPropertyChanged(nameof(Workers));
+			}
+		}
+
+		private Worker selectedWorker;
+		public Worker SelectedWorker
+		{
+			get => selectedWorker;
+			set
+			{
+				selectedWorker = value;
+				OnPropertyChanged(nameof(SelectedWorker));
+			}
+		}
+
 		private RelayCommand accept;
 		public RelayCommand Accept
 		{
@@ -229,6 +268,21 @@ namespace ProblemsBoardLib.ViewModel
                             newResp.Login = passwordGenerator.Login;
 							newResp.Password = Helper.EncryptString(passwordGenerator.Password);
 							newResp.IsCurrent = true;
+
+							if (passwordGenerator.SendEmail)
+							{
+								try
+								{
+									MailSender sender = new();
+									sender.RecepientEmail = passwordGenerator.Email;
+									sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, newResp.Worker, "ответственным по решению проблем");
+									MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+								}
+								catch
+								{
+									MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+								}
+							}
 						}
 						else
 						{
@@ -250,7 +304,6 @@ namespace ProblemsBoardLib.ViewModel
 		}
 
 		private RelayCommand setSelectedResponsible;
-
         public RelayCommand SetSelectedResponsible
 		{
 			get
@@ -268,6 +321,21 @@ namespace ProblemsBoardLib.ViewModel
 						SelectedResponsible.Password = Helper.EncryptString(passwordGenerator.Password);
 						SelectedResponsible.IsCurrent = true;
 
+						if (passwordGenerator.SendEmail)
+						{
+							try
+							{
+								MailSender sender = new();
+								sender.RecepientEmail = passwordGenerator.Email;
+								sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, SelectedResponsible.Worker, "ответственным по решению проблем");
+								MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+							}
+							catch
+							{
+								MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+							}
+						}
+
 						LoggingTool.ResponsibleReset(Department, prevResp, SelectedResponsible);
 					}
 					else
@@ -279,6 +347,57 @@ namespace ProblemsBoardLib.ViewModel
 					RefreshResponsibles();
 				},
 				obj => SelectedResponsible != null && SelectedResponsible.IsCurrent == false)) ;
+			}
+		}
+
+		private RelayCommand setHeader;
+		public RelayCommand SetHeader
+		{
+			get
+			{
+				return setHeader ?? (setHeader = new(obj =>
+				{
+					PasswordGenerator passwordGenerator = new();
+					if (passwordGenerator.ShowDialog() == true)
+					{
+						Worker? prevHeader = Workers.FirstOrDefault(a => a.IsHeader == true, null);
+						if (prevHeader != null)
+						{
+							prevHeader.HeaderLogin = null;
+							prevHeader.HeaderPassword = null;
+							prevHeader.IsHeader = false;
+						}
+
+						SelectedWorker.IsHeader = true;
+						SelectedWorker.HeaderLogin = passwordGenerator.Login;
+						SelectedWorker.HeaderPassword = Helper.EncryptString(passwordGenerator.Password);
+
+						if (passwordGenerator.SendEmail)
+						{
+							try
+							{
+								MailSender sender = new();
+								sender.RecepientEmail = passwordGenerator.Email;
+								sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, SelectedWorker, "ответственным по учету проблем");
+								MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+							}
+							catch
+							{
+								MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+							}
+						}
+
+						LoggingTool.HeaderReset(Department, prevHeader, SelectedWorker);
+					}
+					else
+					{
+						MessageBox.Show("Логин и пароль не установлены, операция отменена!", "Отмена", MessageBoxButton.OK, MessageBoxImage.Information);
+						return;
+					}
+
+					RefreshWorkers();
+				},
+				obj => SelectedWorker != null));
 			}
 		}
 	}

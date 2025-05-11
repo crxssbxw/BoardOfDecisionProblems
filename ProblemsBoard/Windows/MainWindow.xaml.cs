@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProblemsBoardLib;
 
 namespace ProblemsBoard.Windows;
 
@@ -20,9 +21,9 @@ namespace ProblemsBoard.Windows;
 public partial class MainWindow : Window
 {
     public static ProblemsViewModel ViewModel { get; set; }
-    public MainWindow(Department department)
+    public MainWindow(Department department, Roles role = Roles.RAdmin)
     {
-        ViewModel = new(department);
+        ViewModel = new(department, role);
         InitializeComponent();
         DataContext = ViewModel;
     }
@@ -98,4 +99,9 @@ public partial class MainWindow : Window
         LoggerWindow loggerWindow = new LoggerWindow();
         loggerWindow.ShowDialog();
     }
+
+	private void ExitMenu_Click(object sender, RoutedEventArgs e)
+	{
+        Close();
+	}
 }
