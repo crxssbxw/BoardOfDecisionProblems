@@ -2,4 +2,6 @@
 
 Автор: Илья "crxssbxw" Афанасьев
 
-*Для работы необходим .NET Runtime 8.0*
+Для работы необходимы:
+- .NET Runtime 8.0
+- Microsoft Office 2016 и выше
