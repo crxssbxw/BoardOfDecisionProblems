@@ -55,6 +55,7 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>ProblemsBoardLogo.ico</ApplicationIcon>
     <PlatformTarget>x86</PlatformTarget>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
 
 </Project>
