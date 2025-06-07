@@ -474,7 +474,7 @@ namespace ProblemsBoardLib.ViewModel
                 return urgentSort ?? (urgentSort = new(obj =>
                 {
                     CollectionView.SortDescriptions.Clear();
-                    CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("DaysLeft", System.ComponentModel.ListSortDirection.Descending));
+                    CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("DaysLeft", System.ComponentModel.ListSortDirection.Ascending));
 					CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("Status", System.ComponentModel.ListSortDirection.Descending));
 				},
                 obj => true));
@@ -489,7 +489,7 @@ namespace ProblemsBoardLib.ViewModel
                 return currentSort ?? (currentSort = new(obj =>
                 {
                     CollectionView.SortDescriptions.Clear();
-                    CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("DaysLeft", System.ComponentModel.ListSortDirection.Ascending));
+                    CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("DaysLeft", System.ComponentModel.ListSortDirection.Descending));
                     CollectionView.SortDescriptions.Add(new System.ComponentModel.SortDescription("Status", System.ComponentModel.ListSortDirection.Descending));
                 },
                 obj => true));

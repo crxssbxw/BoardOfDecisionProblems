@@ -39,8 +39,7 @@ namespace ProblemsBoardLib.Models
         {
             get
             {
-                if (DecisionTime >= Theme?.DaysToDecide) return 0;
-                else return Theme?.DaysToDecide - DecisionTime;
+                return Theme?.DaysToDecide - DecisionTime;
             }
         }
 

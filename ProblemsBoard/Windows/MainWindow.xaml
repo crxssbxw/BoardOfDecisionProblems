@@ -127,30 +127,39 @@
 
                 <Separator/>
                 <MenuItem x:Name="Filters" Header="Фильтрация">
-                    <MenuItem Header="Ответственный">
+                    <MenuItem Header="Ответственный" Width="auto">
                         <MenuItem Command="{Binding ResponsibleFilter}">
                             <MenuItem.Header>
-                                <ComboBox ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
-                                          SelectedValue="{Binding SelectedResponsibleFilter}" 
-                                          IsEditable="True" IsTextSearchEnabled="True"
-                                          MinWidth="100"/>
+                                <DockPanel Width="auto">
+                                    <TextBlock>Ответственный:</TextBlock>
+                                    <ComboBox ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
+                                              SelectedValue="{Binding SelectedResponsibleFilter}" 
+                                              IsEditable="True" IsTextSearchEnabled="True"
+                                              MinWidth="100"/>
+                                </DockPanel>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Тема">
                         <MenuItem Command="{Binding ThemeFilter}">
                             <MenuItem.Header>
-                                <ComboBox ItemsSource="{Binding FilterThemes}"
-                                          SelectedValue="{Binding SelectedThemeFilter}"
-                                          IsEditable="True" IsTextSearchEnabled="True"
-                                          MinWidth="100"/>
+                                <DockPanel>
+                                    <TextBlock>Выбор темы:</TextBlock>
+                                    <ComboBox ItemsSource="{Binding FilterThemes}"
+                                              SelectedValue="{Binding SelectedThemeFilter}"
+                                              IsEditable="True" IsTextSearchEnabled="True"
+                                              MinWidth="100"/>
+                                </DockPanel>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Дата">
                         <MenuItem Command="{Binding OneDateFilter}">
                             <MenuItem.Header>
-                                <DatePicker SelectedDate="{Binding SelectedOneDateFilter}"/>
+                                <DockPanel>
+                                    <DatePicker SelectedDate="{Binding SelectedOneDateFilter}"/>
+                                    <TextBlock>Принять</TextBlock>
+                                </DockPanel>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
@@ -168,8 +177,8 @@
                     <MenuItem Header="Сбросить" Command="{Binding AllFilter}"/>
                 </MenuItem>
                 <MenuItem Header="Сортировка">
-                    <MenuItem Header="Сначала просроченные" Command="{Binding UrgentSort}"/>
-                    <MenuItem Header="Сначала действительные" Command="{Binding CurrentSort}"/>
+                    <MenuItem Header="Сначала срочные" Command="{Binding UrgentSort}"/>
+                    <MenuItem Header="Сначала решенные" Command="{Binding CurrentSort}"/>
                     <MenuItem Header="Сначала новые" Command="{Binding NewSort}"/>
                     <MenuItem Header="Сначала старые" Command="{Binding OldSort}"/>
                 </MenuItem>
