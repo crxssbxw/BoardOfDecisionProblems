@@ -129,23 +129,34 @@ namespace ProblemsBoardLib.Tools
             Paragraph date = document.Content.Paragraphs.Add();
             date.Range.Text = datepar;
             date.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-            date.Format.RightIndent = 250;
+            date.Format.RightIndent = 0;
 
-            // Основной параграф
-            Paragraph problempar = document.Content.Paragraphs.Add();
-            string problemtext = BuildProblemText(problem);
-            
-            if (!string.IsNullOrEmpty(problemtext))
-            {
-                problempar.Range.Text = problemtext;
-                problempar.Alignment = WdParagraphAlignment.wdAlignParagraphJustify;
-                problempar.FirstLineIndent = wordApp.CentimetersToPoints(1.25f);
-                problempar.SpaceAfter = 16;
-                problempar.SpaceBefore = 16;
-                problempar.Format.RightIndent = 0;
-            }
+            Paragraph paragraph = document.Content.Paragraphs.Add();
 
-            SaveXpsFile();
+			Table problemTable = document.Tables.Add(paragraph.Range, 5, 2); // Например, 5 строк и 2 столбца
+
+			problemTable.Columns[1].Width = wordApp.InchesToPoints(2.5f);
+			problemTable.Columns[2].Width = wordApp.InchesToPoints(4.5f);
+
+			problemTable.Cell(1, 1).Range.Text = "Параметр";
+			problemTable.Cell(1, 2).Range.Text = "Значение";
+
+			problemTable.Cell(2, 1).Range.Text = "ID";
+			problemTable.Cell(2, 2).Range.Text = problem.ProblemId.ToString();
+
+			problemTable.Cell(3, 1).Range.Text = "Описание";
+			problemTable.Cell(3, 2).Range.Text = problem.Description;
+
+			problemTable.Cell(4, 1).Range.Text = "Дата возникновения";
+			problemTable.Cell(4, 2).Range.Text = problem.DateOccurance.ToShortDateString();
+
+			problemTable.Cell(5, 1).Range.Text = "Статус";
+			problemTable.Cell(5, 2).Range.Text = problem.Status.ToString();
+
+			problemTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
+			problemTable.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleSingle;
+
+			SaveXpsFile();
         }
 
         public void GenerateStatisticReport(string general, string responsible = "", string theme = "")
