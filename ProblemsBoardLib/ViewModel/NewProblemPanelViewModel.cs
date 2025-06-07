@@ -16,22 +16,22 @@ namespace ProblemsBoardLib.ViewModel
     {
         public NewProblemPanelViewModel(ProblemsViewModel vm, Department department)
         {
-            dbContext.Themes.Load();
-            dbContext.Problems.Load();
-            dbContext.Responsibles.Load();
-            dbContext.Workers.Load();
-            NewProblem = new()
-            {
-                DateOccurance = Today,
-                Department = dbContext.Departments.Find(department.DepartmentId),
-                Description = "Описание",
-                Status = "Решается"
-            };
-            VM = vm;
-            NewProblem.Responsible = dbContext.Responsibles.Find(NewProblem.Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault().ResponsibleId);
-            NewProblem.Worker = dbContext.Workers.Find(NewProblem.Department.Workers.FirstOrDefault(a => a.IsHeader, null).WorkerId);
-            foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
-                Themes.Add(theme);
+            //dbContext.Themes.Load();
+            //dbContext.Problems.Load();
+            //dbContext.Responsibles.Load();
+            //dbContext.Workers.Load();
+            //NewProblem = new()
+            //{
+            //    DateOccurance = Today,
+            //    Department = dbContext.Departments.Find(department.DepartmentId),
+            //    Description = "Описание",
+            //    Status = "Решается"
+            //};
+            //VM = vm;
+            //NewProblem.Responsible = dbContext.Responsibles.Find(NewProblem.Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault().ResponsibleId);
+            //NewProblem.Worker = dbContext.Workers.Find(NewProblem.Department.Workers.FirstOrDefault(a => a.IsHeader, null).WorkerId);
+            //foreach (var theme in dbContext.Themes.Where(a => a.Department.DepartmentId == NewProblem.Department.DepartmentId || a.Department == null))
+            //    Themes.Add(theme);
         }
         public ProblemsViewModel VM { get; set; }
 

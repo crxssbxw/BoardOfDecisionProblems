@@ -16,8 +16,7 @@ namespace ProblemsBoardLib.Models
         public string Post { get; set; }
         public int DepartmentId { get; set; }
         public bool IsHeader { get; set; } = false;
-        public string? HeaderLogin { get; set; }
-        public string? HeaderPassword { get; set; }
+        public bool IsResponsible { get; set; } = false;
         public string? Email { get; set; }
 
         public Department Department { get; set; }
@@ -27,10 +26,11 @@ namespace ProblemsBoardLib.Models
             get => Department.ViewerNumber;
         }
 
+        public ICollection<Problem> HeaderProblems { get; set; }
+        public ICollection<Problem> ResponsibleProblems { get; set; }
+
         [NotMapped]
         public string WorkerInfo { get => $"{SecondName} {FirstName} {MiddleName} - {Post}"; }
-
-        public ICollection<Responsible>? Responsibles { get; set; }
 
         public override string ToString()
         {

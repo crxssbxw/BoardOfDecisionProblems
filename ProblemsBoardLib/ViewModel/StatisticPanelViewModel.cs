@@ -36,13 +36,13 @@ namespace ProblemsBoardLib.ViewModel
         {
             dbContext.Themes.Load();
             dbContext.Problems.Load();
-            dbContext.Responsibles.Load();
+            //dbContext.Responsibles.Load();
             dbContext.Workers.Load();
 
             Department = dbContext.Departments.Find(department.DepartmentId);
-            Responsibles = Department.Responsibles.ToList();
+            //Responsibles = Department.Responsibles.ToList();
             Themes = Department.Themes.ToList();
-            Themes = dbContext.Themes.Where(a => a.Department == null).ToList();
+            //Themes = dbContext.Themes.Where(a => a.Department == null).ToList();
         }
 
         public int AllProblems
@@ -74,49 +74,49 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private List<Responsible> responsibles = new();
-        public List<Responsible> Responsibles
-        {
-            get => responsibles;
-            set
-            {
-                responsibles = value;
-                OnPropertyChanged(nameof(Responsibles));
-            }
-        }
+        //private List<Responsible> responsibles = new();
+        //public List<Responsible> Responsibles
+        //{
+        //    get => responsibles;
+        //    set
+        //    {
+        //        responsibles = value;
+        //        OnPropertyChanged(nameof(Responsibles));
+        //    }
+        //}
 
-        private Responsible selectedResponsible;
-        public Responsible SelectedResponsible
-        {
-            get => selectedResponsible;
-            set
-            {
-                selectedResponsible = value;
-                OnPropertyChanged(nameof(SelectedResponsible));
-                OnPropertyChanged(nameof(ResponsibleAllProblems));
-                OnPropertyChanged(nameof(ResponsibleDecidedProblems));
-                OnPropertyChanged(nameof(ResponsibleDecidingProblems));
-                OnPropertyChanged(nameof(ResponsibleUrgentProblems));
-            }
-        }
+        //private Responsible selectedResponsible;
+        //public Responsible SelectedResponsible
+        //{
+        //    get => selectedResponsible;
+        //    set
+        //    {
+        //        selectedResponsible = value;
+        //        OnPropertyChanged(nameof(SelectedResponsible));
+        //        OnPropertyChanged(nameof(ResponsibleAllProblems));
+        //        OnPropertyChanged(nameof(ResponsibleDecidedProblems));
+        //        OnPropertyChanged(nameof(ResponsibleDecidingProblems));
+        //        OnPropertyChanged(nameof(ResponsibleUrgentProblems));
+        //    }
+        //}
 
-        public int ResponsibleAllProblems
-        {
-            get => Department.Problems.Where(a => a.Responsible == SelectedResponsible).Count();
-        }
+        //public int ResponsibleAllProblems
+        //{
+        //    get => Department.Problems.Where(a => a.Responsible == SelectedResponsible).Count();
+        //}
 
-        public int ResponsibleDecidedProblems
-        {
-            get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решена").Count();
-        }
-        public int ResponsibleDecidingProblems
-        {
-            get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решается").Count();
-        }
-        public int ResponsibleUrgentProblems
-        {
-            get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решается" && a.DaysLeft <= 1).Count();
-        }
+        //public int ResponsibleDecidedProblems
+        //{
+        //    get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решена").Count();
+        //}
+        //public int ResponsibleDecidingProblems
+        //{
+        //    get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решается").Count();
+        //}
+        //public int ResponsibleUrgentProblems
+        //{
+        //    get => Department.Problems.Where(a => a.Responsible == SelectedResponsible && a.Status == "Решается" && a.DaysLeft <= 1).Count();
+        //}
 
         private List<Theme> themes = new();
         public List<Theme> Themes
@@ -179,21 +179,21 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private string GetStatisticToString()
-        {
-            string statistic =
-                $"На участке {Department} всего {AllProblems} проблем. " +
-                $"Из них решено {DecidedProblems} проблем. Находится в процессе решения {DecidingProblems} проблем, из них {UrgentProblems} \u2014 срочные. ";
-            if (SelectedResponsible != null)
-                statistic +=
-                    $"\nОтветственный {SelectedResponsible.FullName} решил {ResponsibleDecidedProblems} проблем. " +
-                    $"Находится в процессе решения {ResponsibleDecidingProblems} проблем, из них {ResponsibleUrgentProblems} \u2014 срочные. ";
-            if (SelectedTheme != null)
-                statistic +=
-                    $"\nНа данном участке по теме «{SelectedTheme.Name}» всего {ThemesAllProblems}. Из них решено {ThemesDecidedProblems} проблем. " +
-                    $"Находится в процессе решения {ThemesDecidingProblems} проблем. ";
-            return statistic;
-        }
+        //private string GetStatisticToString()
+        //{
+        //    string statistic =
+        //        $"На участке {Department} всего {AllProblems} проблем. " +
+        //        $"Из них решено {DecidedProblems} проблем. Находится в процессе решения {DecidingProblems} проблем, из них {UrgentProblems} \u2014 срочные. ";
+        //    if (SelectedResponsible != null)
+        //        statistic +=
+        //            $"\nОтветственный {SelectedResponsible.FullName} решил {ResponsibleDecidedProblems} проблем. " +
+        //            $"Находится в процессе решения {ResponsibleDecidingProblems} проблем, из них {ResponsibleUrgentProblems} \u2014 срочные. ";
+        //    if (SelectedTheme != null)
+        //        statistic +=
+        //            $"\nНа данном участке по теме «{SelectedTheme.Name}» всего {ThemesAllProblems}. Из них решено {ThemesDecidedProblems} проблем. " +
+        //            $"Находится в процессе решения {ThemesDecidingProblems} проблем. ";
+        //    return statistic;
+        //}
 
         private string GetGeneralToString()
         {
@@ -202,13 +202,13 @@ namespace ProblemsBoardLib.ViewModel
                $"Из них решено {DecidedProblems} проблем. Находится в процессе решения {DecidingProblems} проблем, из них {UrgentProblems} \u2014 срочные.\r";
         }
 
-        private string GetResponsibleToString()
-        {
-            if (SelectedResponsible == null) return "";
-            return
-                    $"Ответственный {SelectedResponsible.FullName} решил {ResponsibleDecidedProblems} проблем. " +
-                    $"Находится в процессе решения {ResponsibleDecidingProblems} проблем, из них {ResponsibleUrgentProblems} \u2014 срочные.\r";
-        }
+        //private string GetResponsibleToString()
+        //{
+        //    if (SelectedResponsible == null) return "";
+        //    return
+        //            $"Ответственный {SelectedResponsible.FullName} решил {ResponsibleDecidedProblems} проблем. " +
+        //            $"Находится в процессе решения {ResponsibleDecidingProblems} проблем, из них {ResponsibleUrgentProblems} \u2014 срочные.\r";
+        //}
 
         private string GetThemeToString()
         {
@@ -225,25 +225,24 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return generateReport ?? (generateReport = new(obj =>
                 {
+                    //using (var reporting = new ReportingTool(false))
+                    //{
+                    //    reporting.GenerateStatisticReport(GetGeneralToString(), GetResponsibleToString(), GetThemeToString());
 
-                    using (var reporting = new ReportingTool(false))
-                    {
-                        reporting.GenerateStatisticReport(GetGeneralToString(), GetResponsibleToString(), GetThemeToString());
+                    //    XpsDocument doc = new XpsDocument(reporting.Xps.FullName, FileAccess.Read);
+                    //    Document = doc.GetFixedDocumentSequence();
 
-                        XpsDocument doc = new XpsDocument(reporting.Xps.FullName, FileAccess.Read);
-                        Document = doc.GetFixedDocumentSequence();
-
-                        DocumentPreWatch documentPreWatch = new()
-                        {
-                            DataContext = this
-                        };
-                        if (documentPreWatch.ShowDialog() == true)
-                        {
-                            reporting.SaveToDatabase("ОС");
-                            Document = null;
-                            doc.Close();
-                        }
-                    }
+                    //    DocumentPreWatch documentPreWatch = new()
+                    //    {
+                    //        DataContext = this
+                    //    };
+                    //    if (documentPreWatch.ShowDialog() == true)
+                    //    {
+                    //        reporting.SaveToDatabase("ОС");
+                    //        Document = null;
+                    //        doc.Close();
+                    //    }
+                    //}
                 },
                 obj => true));
             }

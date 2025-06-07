@@ -47,9 +47,9 @@ namespace ProblemsBoard.Windows
 		private void Refresh()
 		{
             DatabaseContext.Problems.Load();
-            DatabaseContext.Responsibles.Load();
+            //DatabaseContext.Responsibles.Load();
             DatabaseContext.Themes.Load();
-            DatabaseContext.Admins.Load();
+            //DatabaseContext.Admins.Load();
             Departments.Clear();
             foreach (var dep in DatabaseContext.Departments)
             {
@@ -106,27 +106,27 @@ namespace ProblemsBoard.Windows
 			Department department = new();
 			Helper.CopyTo(SelectedDepartment, department);
 
-			if (department.Admin == null)
-			{
-				MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-				return;
-			}
-			else if (department.Responsibles == null || department.Responsibles.Count == 0 || !department.Responsibles.Any(a => a.IsCurrent))
-			{
-                MessageBox.Show("На участке еще не назначен ответственный! Обратитесь к администратору приложения или доски для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-			else
-			{
-				AdminAuthorization adminAuthorization = new(department);
-				if (adminAuthorization.ShowDialog() == true)
-				{
-                    MainWindow mainWindow = new(department, adminAuthorization.OutRole);
-                    mainWindow.Show();
+			//if (department.Admin == null)
+			//{
+			//	MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+			//	return;
+			//}
+			//else if (department.Responsibles == null || department.Responsibles.Count == 0 || !department.Responsibles.Any(a => a.IsCurrent))
+			//{
+   //             MessageBox.Show("На участке еще не назначен ответственный! Обратитесь к администратору приложения или доски для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+   //             return;
+   //         }
+			//else
+			//{
+			//	AdminAuthorization adminAuthorization = new(department);
+			//	if (adminAuthorization.ShowDialog() == true)
+			//	{
+   //                 MainWindow mainWindow = new(department, adminAuthorization.OutRole);
+   //                 mainWindow.Show();
 
-                    Close();
-                }
-			}
+   //                 Close();
+   //             }
+			//}
         }
 
         private void Import_Click(object sender, RoutedEventArgs e)

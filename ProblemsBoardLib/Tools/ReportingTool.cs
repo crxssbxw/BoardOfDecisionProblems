@@ -80,7 +80,7 @@ namespace ProblemsBoardLib.Tools
                     $"(тема: {problem.ThemeName}), " +
                     $"возникшая {problem.DateOccurance.ToShortDateString()}, просрочена. " +
                     $"Срок: {problem.Theme.DaysToDecide} дней. " +
-                    $"Ответственный: {problem.Responsible.FullName} " +
+                    //$"Ответственный: {problem.Responsible.FullName} " +
                     $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
                     $"Описание: {problem.Description}. " +
                     $"Текущий статус: {problem.Status}. ";
@@ -94,7 +94,7 @@ namespace ProblemsBoardLib.Tools
                     $"находится в процессе решения. " +
                     $"На решение потрачено {problem.DecisionTime} дней из {problem.Theme.DaysToDecide} дн. " +
                     $"Осталось {problem.DaysLeft} дней. " +
-                    $"Ответственный: {problem.Responsible.FullName} " +
+                    //$"Ответственный: {problem.Responsible.FullName} " +
                     $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
                     $"Описание: {problem.Description}. ";
         }
@@ -107,7 +107,7 @@ namespace ProblemsBoardLib.Tools
                     $"была успешно решена {problem.DateElimination?.ToShortDateString()} " +
                     $"за {problem.DecisionTime} дней. " +
                     $"Описание: {problem.Description}. " +
-                    $"Ответственный: {problem.Responsible.FullName} " +
+                    //$"Ответственный: {problem.Responsible.FullName} " +
                     $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
                     $"Принятое решение: {problem.Decision}. ";
         }

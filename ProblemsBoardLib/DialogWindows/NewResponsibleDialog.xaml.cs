@@ -36,13 +36,13 @@ namespace ProblemsBoardLib.DialogWindows
             }
             else
             {
-                if (department.Responsibles != null)
-                {
-                    foreach (var responsible in department.Responsibles)
-                    {
-                        responsiblesworkers.Add(responsible.Worker);
-                    }
-                }
+                //if (department.Responsibles != null)
+                //{
+                //    foreach (var responsible in department.Responsibles)
+                //    {
+                //        responsiblesworkers.Add(responsible.Worker);
+                //    }
+                //}
 
                 foreach (var depworker in department.Workers.Where(a => !responsiblesworkers.Any(b => a.WorkerId == b.WorkerId)))
                 {

@@ -23,10 +23,7 @@ namespace ProblemsBoardLib.Models
         public int DaysToDecide { get; set; }
 
         [JsonIgnore]
-        public Department? Department { get; set; }
-
-        [JsonIgnore]
-        public int? DepartmentId { get; set; }
+        public ICollection<Department> Departments { get; set; }
 
         [JsonIgnore]
         public ICollection<Problem> Problems { get; set; }

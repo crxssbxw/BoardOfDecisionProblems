@@ -34,7 +34,7 @@ namespace ProblemsBoardLib.Tools
             {
                 Comment = message,
                 Title = "Новые данные администратора",
-                Object = $"{nameof(department.Admin)}",
+                //Object = $"{nameof(department.Admin)}",
                 Table = $"{nameof(Department)}",
                 User = "Admin",
                 Date = DateOnly.FromDateTime(DateTime.Today),
@@ -57,7 +57,7 @@ namespace ProblemsBoardLib.Tools
             {
                 Comment = message,
                 Title = "Новые данные администратора",
-                Object = $"{nameof(department.Admin)}",
+                //Object = $"{nameof(department.Admin)}",
                 Table = $"{nameof(Department)}",
                 User = "Admin",
                 Date = DateOnly.FromDateTime(DateTime.Today),
@@ -67,15 +67,15 @@ namespace ProblemsBoardLib.Tools
             SaveLogToDB(logEvent);
         }
 
-        public static void NewResponsibleSet(Department department, Responsible responsible)
+        public static void NewResponsibleSet(Department department/*, Responsible responsible*/)
         {
-            message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) назначен новый ответственный {responsible.FullName}";
+            message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) назначен новый ответственный ";
             LogEvent logEvent = new LogEvent()
             {
                 Comment = message,
                 Title = "Новый ответственный",
-                Object = $"{nameof(Department.Responsibles)}",
-                Table = $"{nameof(Department)} {nameof(Responsible)}",
+                //Object = $"{nameof(Department.Responsibles)}",
+                //Table = $"{nameof(Department)} {nameof(Responsible)}",
                 User = "Admin",
                 Date = DateOnly.FromDateTime(DateTime.Today),
                 Time = TimeOnly.FromDateTime(DateTime.Now)
@@ -84,23 +84,23 @@ namespace ProblemsBoardLib.Tools
             SaveLogToDB(logEvent);
         }
 
-        public static void ResponsibleReset(Department department, Responsible prev, Responsible current)
-        {
-            message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
-                $"переназначен ответственный:\n{prev.FullName} ===> {current.FullName}";
-            LogEvent logEvent = new LogEvent()
-            {
-                Comment = message,
-                Title = "Переназначен ответственный",
-                Object = $"{nameof(Department.Responsibles)}",
-                Table = $"{nameof(Department)} {nameof(Responsible)}",
-                User = "Admin",
-                Date = DateOnly.FromDateTime(DateTime.Today),
-                Time = TimeOnly.FromDateTime(DateTime.Now)
-            };
+        //public static void ResponsibleReset(Department department, Responsible prev, Responsible current)
+        //{
+        //    message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
+        //        $"переназначен ответственный:\n{prev.FullName} ===> {current.FullName}";
+        //    LogEvent logEvent = new LogEvent()
+        //    {
+        //        Comment = message,
+        //        Title = "Переназначен ответственный",
+        //        Object = $"{nameof(Department.Responsibles)}",
+        //        Table = $"{nameof(Department)} {nameof(Responsible)}",
+        //        User = "Admin",
+        //        Date = DateOnly.FromDateTime(DateTime.Today),
+        //        Time = TimeOnly.FromDateTime(DateTime.Now)
+        //    };
 
-            SaveLogToDB(logEvent);
-        }
+        //    SaveLogToDB(logEvent);
+        //}
         public static void HeaderReset(Department department, Worker? prev, Worker current)
         {
             message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
@@ -140,8 +140,8 @@ namespace ProblemsBoardLib.Tools
         {
             message = $"Была добавлена новая тема:\n" +
                 $"(ID:{theme.ThemeId}) Название: {theme.Name}; Описание: {theme.Description}";
-            if (theme.Department != null)
-                message += $"; Участок {theme.Department}";
+            //if (theme.Department != null)
+            //    message += $"; Участок {theme.Department}";
 
             LogEvent logEvent = new LogEvent()
             {
@@ -161,8 +161,8 @@ namespace ProblemsBoardLib.Tools
         {
             message = $"Была изменена тема:\n" +
                 $"(ID:{theme.ThemeId}) Название: {theme.Name}; Описание: {theme.Description}";
-            if (theme.Department != null)
-                message += $"; Участок {theme.Department}";
+            //if (theme.Department != null)
+            //    message += $"; Участок {theme.Department}";
 
             LogEvent logEvent = new LogEvent()
             {
@@ -181,7 +181,7 @@ namespace ProblemsBoardLib.Tools
         public static void NewProblemAdded(Problem problem)
         {
             message = $"На участке {problem.Department} была создана новая проблема.\n" +
-                $"(ID:{problem.ProblemId}) Тема: {problem.ThemeName}, Ответственный: {problem.Responsible.FullName}";
+                $"(ID:{problem.ProblemId}) Тема: {problem.ThemeName}, Ответственный: ";
 
             LogEvent logEvent = new LogEvent()
             {
@@ -200,7 +200,7 @@ namespace ProblemsBoardLib.Tools
         public static void ProblemDecided(Problem problem)
         {
             message = $"На участке {problem.Department} была решена проблема.\n" +
-                $"(ID:{problem.ProblemId}) Тема: {problem.ThemeName}, Ответственный: {problem.Responsible.FullName}\n" +
+                $"(ID:{problem.ProblemId}) Тема: {problem.ThemeName}, Ответственный: \n" +
                 $"Дата создания: {problem.DateOccurance}; Дата решения: {problem.DateElimination}; Решение: {problem.Decision}";
 
             LogEvent logEvent = new LogEvent()
@@ -209,7 +209,7 @@ namespace ProblemsBoardLib.Tools
                 Title = "Решена проблема",
                 Object = $"{nameof(Problem)}",
                 Table = $"{nameof(Problem)}",
-                User = $"{problem.Responsible.FullName}",
+                //User = $"{problem.Responsible.FullName}",
                 Date = DateOnly.FromDateTime(DateTime.Today),
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };

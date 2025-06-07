@@ -20,16 +20,16 @@ public partial class App : Application
 
         using (DatabaseContext dbContext = new())
         {
-            if (dbContext.Admins.Count() == 0)
-            {
-                dbContext.Add(
-                    new Admin()
-                    {
-                        Login = "super",
-                        Password = Helper.EncryptString("super")
-                    });
-                dbContext.SaveChanges();
-            }
+            //if (dbContext.Admins.Count() == 0)
+            //{
+            //    dbContext.Add(
+            //        new Admin()
+            //        {
+            //            Login = "super",
+            //            Password = Helper.EncryptString("super")
+            //        });
+            //    dbContext.SaveChanges();
+            //}
 
             if (dbContext.Themes.Count() == 0)
             {

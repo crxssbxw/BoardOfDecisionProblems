@@ -12,15 +12,15 @@ namespace ProblemsBoardLib.Models
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Problem> Problems { get; set; }
-        public DbSet<Responsible> Responsibles { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
         public DbSet<Report> Reports { get; set; }
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DatabaseContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -33,10 +33,15 @@ namespace ProblemsBoardLib.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Department>()
-                .HasOne(e => e.Admin)
-                .WithOne(e => e.Department)
-                .HasForeignKey<Department>(e => e.AdminId);
+            modelBuilder.Entity<Problem>()
+                .HasOne(h => h.Header)
+                .WithMany(p => p.HeaderProblems)
+                .HasForeignKey(h => h.HeaderId);
+
+            modelBuilder.Entity<Problem>()
+                .HasOne(r => r.Responsible)
+                .WithMany(p => p.ResponsibleProblems)
+                .HasForeignKey(r => r.ResponsibleId);
         }
     }
 }

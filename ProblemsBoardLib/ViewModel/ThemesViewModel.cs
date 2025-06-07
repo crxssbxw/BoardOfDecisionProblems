@@ -26,10 +26,10 @@ namespace ProblemsBoardLib.ViewModel
                 }
             }
 
-            foreach (var theme in dbContext.Themes.Where(a => a.Department == null))
-            {
-                Themes.Add(theme);
-            }
+            //foreach (var theme in dbContext.Themes.Where(a => a.Department == null))
+            //{
+            //    Themes.Add(theme);
+            //}
         }
         private ObservableCollection<Theme> themes = new();
         public ObservableCollection<Theme> Themes 
@@ -135,9 +135,9 @@ namespace ProblemsBoardLib.ViewModel
                     Title = "Изменить";
                     IsNoEdit = false;
                     Theme = SelectedTheme;
-                    if (SelectedTheme.Department == Department)
-                        IsThisDepartment = true;
-                    else IsThisDepartment = false;
+                    //if (SelectedTheme.Department == Department)
+                    //    IsThisDepartment = true;
+                    //else IsThisDepartment = false;
                 },
                 obj => SelectedTheme != null));
             }
@@ -155,7 +155,7 @@ namespace ProblemsBoardLib.ViewModel
                     {
                         if (IsThisDepartment)
                         {
-                            Theme.Department = Department;
+                            //Theme.Department = Department;
                         }
                         dbContext.Add(Theme);
                         try

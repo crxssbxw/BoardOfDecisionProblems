@@ -97,16 +97,16 @@ namespace ProblemsBoardLib.DialogWindows
 
         private void Generate()
         {
-            using (DatabaseContext dbContext = new DatabaseContext())
-            {
-                do
-                {
-                    Login = Helper.GenerateLogin();
-                }
-                while (dbContext.Responsibles.Any(a => Login == a.Login));
-            }
+            //using (DatabaseContext dbContext = new DatabaseContext())
+            //{
+            //    do
+            //    {
+            //        Login = Helper.GenerateLogin();
+            //    }
+            //    while (dbContext.Responsibles.Any(a => Login == a.Login));
+            //}
 
-            Password = Helper.GeneratePassword(10);
+            //Password = Helper.GeneratePassword(10);
         }
 
         private void ResetBT_Click(object sender, RoutedEventArgs e)

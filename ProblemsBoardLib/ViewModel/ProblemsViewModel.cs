@@ -69,17 +69,6 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private Responsible selectedResponsibleFilter;
-        public Responsible SelectedResponsibleFilter
-        {
-            get => selectedResponsibleFilter;
-            set
-            {
-                selectedResponsibleFilter = value;
-                OnPropertyChanged(nameof(SelectedResponsibleFilter));
-            }
-        }
-
         private Theme selectedThemeFilter;
         public Theme SelectedThemeFilter
         {
@@ -199,7 +188,7 @@ namespace ProblemsBoardLib.ViewModel
             get
             {
                 List<Theme> themes;
-                themes = dbContext.Themes.Where(a => a.Department == null).ToList();
+                themes = dbContext.Themes.Where(a => a.Departments.Count == 0).ToList();
                 foreach (var theme in Department?.Themes)
                     themes.Add(theme);
 
@@ -250,7 +239,6 @@ namespace ProblemsBoardLib.ViewModel
         {
             dbContext.Problems.Load();
             dbContext.Themes.Load();
-            dbContext.Responsibles.Load();
             dbContext.Workers.Load();
         }
 
@@ -302,13 +290,13 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return problemDecide ?? (problemDecide = new(obj =>
                 {
-                    ResponsibleAuthorization responsibleAuthorization = new(SelectedProblem.Responsible);
-                    if (responsibleAuthorization.ShowDialog() == true)
-                    {
-                        DecisionVM = new(SelectedProblem, this, true);
-                    }
-                    else
-                        DecisionVM = new(false);
+                    // ResponsibleAuthorization responsibleAuthorization = new(SelectedProblem.Responsible);
+                    //if (responsibleAuthorization.ShowDialog() == true)
+                    //{
+                    //    DecisionVM = new(SelectedProblem, this, true);
+                    //}
+                    //else
+                    //    DecisionVM = new(false);
                 },
                 obj => SelectedProblem != null && SelectedProblem.Status != "Решена" && CurrentRole == Roles.RResponsible));
             }
@@ -401,12 +389,12 @@ namespace ProblemsBoardLib.ViewModel
             {
                 return responsibleFilter ?? (responsibleFilter = new(obj =>
                 {
-					CollectionView.Filter = (object item) =>
-					{
-						var problem = item as Problem;
+					//CollectionView.Filter = (object item) =>
+					//{
+					//	var problem = item as Problem;
 
-						return problem.Responsible == SelectedResponsibleFilter;
-					};
+					//	return problem.Responsible == SelectedResponsibleFilter;
+					//};
 				},
                 obj => true));
             }

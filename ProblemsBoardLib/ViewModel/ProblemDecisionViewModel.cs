@@ -42,7 +42,7 @@ namespace ProblemsBoardLib.ViewModel
 
         public ProblemDecisionViewModel(Problem problem, ProblemsViewModel vm, bool isAuthorized)
         {
-            dbContext.Responsibles.Load();
+            //dbContext.Responsibles.Load();
             dbContext.Workers.Load();
             dbContext.Departments.Load();
             Problem = dbContext.Problems.Find(problem.ProblemId);

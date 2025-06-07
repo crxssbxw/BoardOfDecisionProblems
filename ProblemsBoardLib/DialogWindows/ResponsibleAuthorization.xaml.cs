@@ -23,12 +23,12 @@ namespace ProblemsBoardLib.DialogWindows
     public partial class ResponsibleAuthorization : Window, INotifyPropertyChanged
     {
         DatabaseContext DatabaseContext { get; set; } = new();
-        public ResponsibleAuthorization(Responsible responsible)
-        {
-            Responsible = DatabaseContext.Responsibles.Find(responsible.ResponsibleId);
-            InitializeComponent();
-            DataContext = this;
-        }
+        //public ResponsibleAuthorization(Responsible responsible)
+        //{
+        //    Responsible = DatabaseContext.Responsibles.Find(responsible.ResponsibleId);
+        //    InitializeComponent();
+        //    DataContext = this;
+        //}
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -37,17 +37,6 @@ namespace ProblemsBoardLib.DialogWindows
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
-        }
-
-        private Responsible responsible;
-        public Responsible Responsible 
-        { 
-            get => responsible; 
-            set 
-            {
-                responsible = value;
-                OnPropertyChanged(nameof(Responsible));
-            }        
         }
 
         private string login;
@@ -68,14 +57,14 @@ namespace ProblemsBoardLib.DialogWindows
 
         private bool Validation()
         {
-            if (Login == Responsible.Login)
-            {
-                if (Helper.EncryptString(Password) == Responsible.Password)
-                    return true;
-                else
-                    MessageBox.Show("Неверный пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else MessageBox.Show("Неверный логин", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //if (Login == Responsible.Login)
+            //{
+            //    if (Helper.EncryptString(Password) == Responsible.Password)
+            //        return true;
+            //    else
+            //        MessageBox.Show("Неверный пароль", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //}
+            //else MessageBox.Show("Неверный логин", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             return false;
         }
 

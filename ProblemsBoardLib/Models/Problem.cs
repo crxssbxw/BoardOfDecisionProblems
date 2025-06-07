@@ -16,8 +16,8 @@ namespace ProblemsBoardLib.Models
         public string Description { get; set; } = string.Empty;
         public DateTime? DateElimination { get; set; }
         public string? Decision { get; set; }
+        public int? HeaderId { get; set; }
         public int? ResponsibleId { get; set; }
-        public int? WorkerId { get; set; }
         public int? DepartmentId { get; set; }
         public int? ThemeId { get; set; }
 
@@ -67,14 +67,11 @@ namespace ProblemsBoardLib.Models
         public string? ThemeName { get => Theme?.Name; }
 
         [NotMapped]
-        public string? ResponsibleName { get => $"{Responsible.Worker.FirstName} {Responsible.Worker.SecondName} {Responsible.Worker.Post}"; }
-
-        [NotMapped]
         public string? DepartmentName { get => $"[{Department.ViewerNumber}] {Department.Name}"; }
 
         public Theme? Theme { get; set; }
-        public Responsible? Responsible { get; set; }
-        public Worker? Worker { get; set; }
+        public Worker? Header { get; set; }
+        public Worker? Responsible { get; set; }
         public Department? Department { get; set; }
     }
 }
