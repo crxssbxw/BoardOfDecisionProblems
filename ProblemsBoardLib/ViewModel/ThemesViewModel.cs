@@ -16,20 +16,18 @@ namespace ProblemsBoardLib.ViewModel
     {
         public ThemesViewModel(Department department)
         {
-            Department = dbContext.Departments.Find(department.DepartmentId);
             dbContext.Themes.Load();
-            if (Department != null && Department.Themes != null)
-            {
-                foreach (var theme in Department.Themes)
-                {
-                    Themes.Add(theme);
-                }
-            }
+            dbContext.DepartmentThemes.Load();
+            Department = dbContext.Departments.Find(department.DepartmentId);
 
-            //foreach (var theme in dbContext.Themes.Where(a => a.Department == null))
-            //{
-            //    Themes.Add(theme);
-            //}
+            foreach (var theme in Department.Themes)
+            {
+                Themes.Add(theme);
+            }
+            foreach (var theme in dbContext.Themes.Where(a => a.Departments.Count() == 0))
+            {
+                Themes.Add(theme);
+            }
         }
         private ObservableCollection<Theme> themes = new();
         public ObservableCollection<Theme> Themes 
@@ -135,9 +133,9 @@ namespace ProblemsBoardLib.ViewModel
                     Title = "Изменить";
                     IsNoEdit = false;
                     Theme = SelectedTheme;
-                    //if (SelectedTheme.Department == Department)
-                    //    IsThisDepartment = true;
-                    //else IsThisDepartment = false;
+                    if (SelectedTheme.Departments != null && SelectedTheme.Departments.Any(a => a == Department))
+                        IsThisDepartment = true;
+                    else IsThisDepartment = false;
                 },
                 obj => SelectedTheme != null));
             }
@@ -155,7 +153,7 @@ namespace ProblemsBoardLib.ViewModel
                     {
                         if (IsThisDepartment)
                         {
-                            //Theme.Department = Department;
+                            Theme.Departments.Add(Department);
                         }
                         dbContext.Add(Theme);
                         try

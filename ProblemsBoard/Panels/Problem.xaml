@@ -95,17 +95,16 @@
                                d:Text="Статус"/>
                     <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
-                               Text="{Binding Problem.DecidionTime}"
+                               Text="{Binding Problem.DecisionTime, StringFormat=Дней решения: {0}}"
                                d:Text="Время решения"/>
                     <TextBlock Grid.Row="3" Grid.ColumnSpan="4" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
-                               Text="{Binding Problem.Responsible.FullName, StringFormat=Ответственный: {0}}"
+                               Text="{Binding Problem.Responsible.WorkerInfo, StringFormat=Ответственный: {0}}"
                                d:Text="Ответственный"/>
                     <TextBlock Grid.Row="4" Grid.ColumnSpan="4" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
-                               Text="{Binding Problem.Worker.WorkerInfo, StringFormat=Добавил: {0}}"
+                               Text="{Binding Problem.Header.WorkerInfo, StringFormat=Добавил: {0}}"
                                d:Text="Добавил"/>
-
                     <TextBlock Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Background="White"
                                FontSize="18" FontWeight="Bold"
                                Text="{Binding Problem.DepartmentName}"

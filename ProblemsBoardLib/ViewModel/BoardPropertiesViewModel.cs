@@ -29,59 +29,49 @@ namespace ProblemsBoardLib.ViewModel
 		public BoardPropertiesViewModel(Department department) 
 		{
 			dbContext.Themes.Load();
-			//dbContext.Responsibles.Load();
+			dbContext.Departments.Load();
 			dbContext.Workers.Load();
-			//dbContext.Admins.Load();
+			dbContext.DepartmentThemes.Load();
 			Department = dbContext.Departments.Find(department.DepartmentId);
 
-			if (Department.Themes != null)
-			{
-                foreach (var theme in Department.Themes)
-                {
-                    Themes.Add(theme);
-                }
+			// var themesload = dbContext.Themes.Include(a => a.Departments).ToList();
+
+            foreach (var theme in Department.Themes)
+            {
+                Themes.Add(theme);
             }
 
-			//foreach (var theme in dbContext.Themes.Where(a => a.Department == null))
-			//{
-			//	Themes.Add(theme);
-			//}
+            foreach (var theme in dbContext.Themes.Where(a => a.Departments.Count() == 0))
+			{
+				Themes.Add(theme);
+			}
 
 			//if (Department.Responsibles != null)
 			//{
-   //             foreach (var responsible in Department.Responsibles)
-   //             {
-   //                 Responsibles.Add(responsible);
-   //             }
-   //         }
+			//             foreach (var responsible in Department.Responsibles)
+			//             {
+			//                 Responsibles.Add(responsible);
+			//             }
+			//         }
 
-			//if (Department.Workers != null)
-			//{
-			//	foreach (var worker in Department.Workers)
-			//	{
-			//		Workers.Add(worker);
-			//	}
-			//}
+			if (Department.Workers != null)
+			{
+				foreach (var worker in Department.Workers)
+				{
+					Workers.Add(worker);
+				}
+			}
 
-   //         if (Department.Admin == null)
+			//         if (Department.Admin == null)
 			//{
 			//	Login = "admin";
 			//	Password = "admin";
 			//}
 			//else
 			//{
-				//Login = Department.Admin.Login;
+			//Login = Department.Admin.Login;
 			//}
 		}
-
-		private void RefreshResponsibles()
-		{
-			//Responsibles.Clear();
-   //         foreach (var responsible in Department.Responsibles)
-   //         {
-   //             Responsibles.Add(responsible);
-   //         }
-        }
 
 		private void RefreshWorkers()
 		{
@@ -89,28 +79,6 @@ namespace ProblemsBoardLib.ViewModel
 			foreach (var worker in Department.Workers)
 			{
 				Workers.Add(worker);
-			}
-		}
-
-		private string login;
-		public string Login
-		{
-			get => login;
-			set
-			{
-				login = value;
-				OnPropertyChanged(nameof(Login));
-			}
-		}
-
-		private string password;
-		public string Password
-		{
-			get => password;
-			set
-			{
-				password = value;
-				OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -186,29 +154,7 @@ namespace ProblemsBoardLib.ViewModel
 			{
 				return accept ?? (accept = new(obj =>
 				{
-					//if (Department.Admin == null)
-					//{
-					//	Department.Admin = new();
-					//	LoggingTool.NewAdminAuthorizationData(Department);
-					//}
-
-					//if (Login != Department.Admin.Login)
-					//{
-					//	Department.Admin.Login = Login;
-					//	LoggingTool.NewAdminAuthorizationData(Department, login);
-					//}
-					//if (!string.IsNullOrEmpty(Password) && Helper.EncryptString(Password) != Department.Admin.Password)    
-					//{ 
-					//	Department.Admin.Password = Helper.EncryptString(Password);
-					//	LoggingTool.NewAdminAuthorizationData(Department, password: Password);
-					//}
-
-					//dbContext.SaveChanges();
-
-					//if (Department.Admin != null && Department.Responsibles.Any(a => a.IsCurrent))
-					//{
-					//	LoggingTool.BoardSet(Department);
-					//}
+					dbContext.SaveChanges();
 				},
 				obj => true));
 			}
@@ -221,110 +167,53 @@ namespace ProblemsBoardLib.ViewModel
 			{
 				return setNewResponsible ?? (setNewResponsible = new(obj =>
 				{
-					//Responsible newResp = new();
-					//Worker worker = new Worker();
-					//Responsible prevResp = new();
+                    PasswordGenerator passwordGenerator = new();
+                    if (passwordGenerator.ShowDialog() == true)
+                    {
+                        Worker? prevResp = Workers.FirstOrDefault(a => a.IsResponsible == true, null);
+                        if (prevResp != null)
+                        {
+                            prevResp.IsResponsible = false;
+                        }
 
-					//Department temp = new();
-					//Helper.CopyTo(department, temp);
-					//NewResponsibleDialog newResponsibleDialog;
-					//newResponsibleDialog = new(temp, worker);
+                        SelectedWorker.IsResponsible = true;
+                        User user = new()
+                        {
+                            Login = passwordGenerator.Login,
+                            Password = Helper.EncryptString(passwordGenerator.Password),
+                            Role = "Ответственный по решению проблем"
+                        };
 
-					//if (newResponsibleDialog.ShowDialog() == true)
-					//{
-     //                   newResp.Worker = dbContext.Workers.Find(worker.WorkerId);
+                        dbContext.Users.Add(user);
 
-					//	PasswordGenerator passwordGenerator = new PasswordGenerator();
-					//	if (passwordGenerator.ShowDialog() == true)
-					//	{
-     //                       if (Department.Responsibles != null && Department.Responsibles.Count > 0)
-     //                       {
-     //                           prevResp = Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault();
-     //                           prevResp.IsCurrent = false;
-     //                       }
+                        if (passwordGenerator.SendEmail)
+                        {
+                            try
+                            {
+                                MailSender sender = new();
+                                sender.RecepientEmail = passwordGenerator.Email;
+                                sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, SelectedWorker, "ответственным по решению проблем");
+                                MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
 
-     //                       newResp.Login = passwordGenerator.Login;
-					//		newResp.Password = Helper.EncryptString(passwordGenerator.Password);
-					//		newResp.IsCurrent = true;
+                        LoggingTool.ResponsibleReset(Department, prevResp, SelectedWorker);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Логин и пароль не установлены, операция отменена!", "Отмена", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                    }
 
-					//		if (passwordGenerator.SendEmail)
-					//		{
-					//			try
-					//			{
-					//				MailSender sender = new();
-					//				sender.RecepientEmail = passwordGenerator.Email;
-					//				sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, newResp.Worker, "ответственным по решению проблем");
-					//				MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-					//			}
-					//			catch
-					//			{
-					//				MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-					//			}
-					//		}
-					//	}
-					//	else
-					//	{
-					//		MessageBox.Show("Логин и пароль не установлены, операция отменена!");
-					//		return;
-					//	}
-
-     //                   if (Department.Responsibles == null)
-					//	{
-					//		Department.Responsibles = [];
-					//	}
-     //                   Department.Responsibles.Add(newResp);
-					//	LoggingTool.NewResponsibleSet(Department, newResp);
-     //                   RefreshResponsibles();
-					//}
-				},
-				obj => true));
-			}
-		}
-
-		private RelayCommand setSelectedResponsible;
-        public RelayCommand SetSelectedResponsible
-		{
-			get
-			{
-				return setSelectedResponsible ?? (setSelectedResponsible = new(obj =>
-				{
-					//PasswordGenerator passwordGenerator = new PasswordGenerator();
-					//if (passwordGenerator.ShowDialog() == true)
-					//{
-     //                   Responsible prevResp = new();
-     //                   prevResp = Department.Responsibles.Where(a => a.IsCurrent).FirstOrDefault();
-     //                   prevResp.IsCurrent = false;
-
-     //                   SelectedResponsible.Login = passwordGenerator.Login;
-					//	SelectedResponsible.Password = Helper.EncryptString(passwordGenerator.Password);
-					//	SelectedResponsible.IsCurrent = true;
-
-					//	if (passwordGenerator.SendEmail)
-					//	{
-					//		try
-					//		{
-					//			MailSender sender = new();
-					//			sender.RecepientEmail = passwordGenerator.Email;
-					//			sender.SendAuthorizationData(passwordGenerator.Login, passwordGenerator.Password, SelectedResponsible.Worker, "ответственным по решению проблем");
-					//			MessageBox.Show("Письмо успешно отправлено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-					//		}
-					//		catch
-					//		{
-					//			MessageBox.Show("Ошибка при отправке письма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-					//		}
-					//	}
-
-					//	LoggingTool.ResponsibleReset(Department, prevResp, SelectedResponsible);
-					//}
-					//else
-					//{
-					//	MessageBox.Show("Логин и пароль не установлены, операция отменена!", "Отмена", MessageBoxButton.OK, MessageBoxImage.Information);
-					//	return;
-					//}
-
-					//RefreshResponsibles();
-				},
-				obj => true/*SelectedResponsible != null && SelectedResponsible.IsCurrent == false*/)) ;
+                    OnPropertyChanged(nameof(Workers));
+                    OnPropertyChanged(nameof(SelectedWorker));
+                    RefreshWorkers();
+                },
+				obj => SelectedWorker != null));
 			}
 		}
 
@@ -341,9 +230,18 @@ namespace ProblemsBoardLib.ViewModel
 						Worker? prevHeader = Workers.FirstOrDefault(a => a.IsHeader == true, null);
 						if (prevHeader != null)
 						{
-							
+							prevHeader.IsHeader = false;
 						}
 
+						SelectedWorker.IsHeader = true;
+						User user = new()
+						{
+							Login = passwordGenerator.Login,
+							Password = Helper.EncryptString(passwordGenerator.Password),
+							Role = "Главный по сбору проблем"
+                        };
+
+						dbContext.Users.Add(user);
 
 						if (passwordGenerator.SendEmail)
 						{
@@ -368,7 +266,9 @@ namespace ProblemsBoardLib.ViewModel
 						return;
 					}
 
-					RefreshWorkers();
+                    OnPropertyChanged(nameof(Workers));
+					OnPropertyChanged(nameof(SelectedWorker));
+                    RefreshWorkers();
 				},
 				obj => SelectedWorker != null));
 			}

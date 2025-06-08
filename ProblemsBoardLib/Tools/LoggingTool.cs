@@ -84,31 +84,31 @@ namespace ProblemsBoardLib.Tools
             SaveLogToDB(logEvent);
         }
 
-        //public static void ResponsibleReset(Department department, Responsible prev, Responsible current)
-        //{
-        //    message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
-        //        $"переназначен ответственный:\n{prev.FullName} ===> {current.FullName}";
-        //    LogEvent logEvent = new LogEvent()
-        //    {
-        //        Comment = message,
-        //        Title = "Переназначен ответственный",
-        //        Object = $"{nameof(Department.Responsibles)}",
-        //        Table = $"{nameof(Department)} {nameof(Responsible)}",
-        //        User = "Admin",
-        //        Date = DateOnly.FromDateTime(DateTime.Today),
-        //        Time = TimeOnly.FromDateTime(DateTime.Now)
-        //    };
-
-        //    SaveLogToDB(logEvent);
-        //}
-        public static void HeaderReset(Department department, Worker? prev, Worker current)
+        public static void ResponsibleReset(Department department, Worker prev, Worker current)
         {
             message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
-                $"переназначен ответственный по сброу проблем:\n{prev?.WorkerInfo} ===> {current.WorkerInfo}";
+                $"переназначен ответственный:\n{prev?.WorkerInfo} ===> {current.WorkerInfo}";
             LogEvent logEvent = new LogEvent()
             {
                 Comment = message,
-                Title = "Переназначен ответственный по сбору проблем",
+                Title = "Переназначен ответственный",
+                Object = $"{nameof(Department.Workers)}",
+                Table = $"{nameof(Department)} {nameof(Worker)}",
+                User = "Admin",
+                Date = DateOnly.FromDateTime(DateTime.Today),
+                Time = TimeOnly.FromDateTime(DateTime.Now)
+            };
+
+            SaveLogToDB(logEvent);
+        }
+        public static void HeaderReset(Department department, Worker? prev, Worker current)
+        {
+            message = $"На участке {department.Name} {department.ViewerNumber} (ID:{department.DepartmentId}) " +
+                $"переназначен главный по сброу проблем:\n{prev?.WorkerInfo} ===> {current.WorkerInfo}";
+            LogEvent logEvent = new LogEvent()
+            {
+                Comment = message,
+                Title = "Переназначен главный по сбору проблем",
                 Object = $"{nameof(Department.Workers)}",
                 Table = $"{nameof(Department)} {nameof(Worker)}",
                 User = "Admin",
@@ -209,7 +209,7 @@ namespace ProblemsBoardLib.Tools
                 Title = "Решена проблема",
                 Object = $"{nameof(Problem)}",
                 Table = $"{nameof(Problem)}",
-                //User = $"{problem.Responsible.FullName}",
+                User = $"{problem.Responsible.WorkerInfo}",
                 Date = DateOnly.FromDateTime(DateTime.Today),
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };

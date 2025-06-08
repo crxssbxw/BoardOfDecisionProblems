@@ -58,7 +58,7 @@
                     </StackPanel>
                     
                     <StackPanel Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" VerticalAlignment="Center" Margin="10" >
-                        <TextBlock Text="Осталось:" TextAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Name="DaysLeftText" Text="Осталось:" TextAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Text="{Binding DaysLeft}" FontSize="16" FontWeight="Bold"
                                    ToolTip="Осталось дней на решение" TextAlignment="Center"/>
                     </StackPanel>
@@ -70,24 +70,33 @@
                     <Setter TargetName="Border" Property="BorderBrush" Value="#82B366"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Status}" Value="Решается">
-                    <Setter TargetName="Border" Property="Background" Value="#FFF2CC"/>
-                    <Setter TargetName="Border" Property="BorderBrush" Value="#D6B656"/>
+                    <Setter TargetName="Border" Property="Background" Value="#B0E0E6"/>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#1E90FF"/>
                 </DataTrigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding Status}" Value="Решается"/>
                         <Condition Binding="{Binding DaysLeft}" Value="0"/>
                     </MultiDataTrigger.Conditions>
-                    <Setter TargetName="Border" Property="BorderBrush" Value="#EA6B66"/>
-                    <Setter TargetName="Border" Property="Background" Value="#F8CECC"/>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#D6B656"/>
+                    <Setter TargetName="Border" Property="Background" Value="#FFF2CC"/>
                 </MultiDataTrigger>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding Status}" Value="Решается"/>
                         <Condition Binding="{Binding DaysLeft}" Value="1"/>
                     </MultiDataTrigger.Conditions>
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#D6B656"/>
+                    <Setter TargetName="Border" Property="Background" Value="#FFF2CC"/>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Status}" Value="Решается"/>
+                        <Condition Binding="{Binding IsUrgent}" Value="True"/>
+                    </MultiDataTrigger.Conditions>
                     <Setter TargetName="Border" Property="BorderBrush" Value="#EA6B66"/>
                     <Setter TargetName="Border" Property="Background" Value="#F8CECC"/>
+                    <Setter TargetName="DaysLeftText" Property="Text" Value="Просрочена:"/>
                 </MultiDataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
@@ -95,14 +104,13 @@
             <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch"/>
         </ItemsPanelTemplate>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
 
@@ -127,50 +135,67 @@
 
                 <Separator/>
                 <MenuItem x:Name="Filters" Header="Фильтрация">
-                    <MenuItem Header="Ответственный" Width="auto">
+                    <MenuItem Header="Ответственный">
                         <MenuItem Command="{Binding ResponsibleFilter}">
                             <MenuItem.Header>
-                                <DockPanel Width="auto">
-                                    <TextBlock>Ответственный:</TextBlock>
-                                    <ComboBox ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
-                                              SelectedValue="{Binding SelectedResponsibleFilter}" 
-                                              IsEditable="True" IsTextSearchEnabled="True"
-                                              MinWidth="100"/>
-                                </DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Ответственный:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <ComboBox Grid.Column="1" ItemsSource="{Binding Department.Responsibles}" DisplayMemberPath="FullName"
+                              SelectedValue="{Binding SelectedResponsibleFilter}" 
+                              IsEditable="True" IsTextSearchEnabled="True"
+                              MinWidth="100" VerticalAlignment="Center"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Тема">
                         <MenuItem Command="{Binding ThemeFilter}">
                             <MenuItem.Header>
-                                <DockPanel>
-                                    <TextBlock>Выбор темы:</TextBlock>
-                                    <ComboBox ItemsSource="{Binding FilterThemes}"
-                                              SelectedValue="{Binding SelectedThemeFilter}"
-                                              IsEditable="True" IsTextSearchEnabled="True"
-                                              MinWidth="100"/>
-                                </DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Выбор темы:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <ComboBox Grid.Column="1" ItemsSource="{Binding FilterThemes}"
+                              SelectedValue="{Binding SelectedThemeFilter}"
+                              IsEditable="True" IsTextSearchEnabled="True"
+                              MinWidth="100" VerticalAlignment="Center"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Дата">
                         <MenuItem Command="{Binding OneDateFilter}">
                             <MenuItem.Header>
-                                <DockPanel>
-                                    <DatePicker SelectedDate="{Binding SelectedOneDateFilter}"/>
-                                    <TextBlock>Принять</TextBlock>
-                                </DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DatePicker Grid.Column="0" SelectedDate="{Binding SelectedOneDateFilter}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Text="Принять" VerticalAlignment="Center"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Диапазон дат">
                         <MenuItem Command="{Binding MultiDateFilter}">
                             <MenuItem.Header>
-                                <DockPanel>
-                                    <DatePicker SelectedDate="{Binding SelectedDateFromFilter}"/>
-                                    <TextBlock Text=" - "/>
-                                    <DatePicker SelectedDate="{Binding SelectedDateToFilter}"/>
-                                </DockPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DatePicker Grid.Column="0" SelectedDate="{Binding SelectedDateFromFilter}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Text=" - " VerticalAlignment="Center" Margin="5,0,5,0"/>
+                                    <DatePicker Grid.Column="2" SelectedDate="{Binding SelectedDateToFilter}" VerticalAlignment="Center"/>
+                                </Grid>
                             </MenuItem.Header>
                         </MenuItem>
                     </MenuItem>
@@ -229,100 +254,110 @@
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="4"
-              Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10">
-
+              Grid.RowSpan="2" Margin="10">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <Button Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    Content="Новая Проблема" Padding="10" Margin="5" Background="#008CFF"
+            <Button Grid.Row="0" HorizontalAlignment="Stretch"
+                    Content="Новая Проблема" Background="#008CFF"
                     Foreground="White" FontWeight="Bold" Click="NewProblem_Click"
                     BorderThickness="0"
                     Command="{Binding NewProblemAdd}"/>
             <StackPanel Grid.Row="1" Margin="5">
                 <Button x:Name="ProblemView" Content="Просмотр" Padding="5"
                         PreviewMouseDown="ProblemView_PreviewMouseDown" Command="{Binding ProblemWatch}" Grid.Column="0"
-                        FontWeight="Bold" BorderThickness="0" Margin="0 5"/>
+                        FontWeight="Bold" BorderThickness="0" Margin="0 5" HorizontalAlignment="Stretch"/>
                 <Button x:Name="DecideView" Content="Решить" Padding="5"
                         PreviewMouseDown="DecideView_PreviewMouseDown" Command="{Binding ProblemDecide}" Grid.Column="1"
-                        FontWeight="Bold" BorderThickness="0"/>
+                        FontWeight="Bold" BorderThickness="0" HorizontalAlignment="Stretch" Margin="0"/>
             </StackPanel>
 
-            <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5"
-                    Background="LightGray" BorderBrush="DimGray" BorderThickness="3"
-                    Command="{Binding AllFilter}">
-                <Button.Content>
-                    <StackPanel Margin="0 20">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="DimGray"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock d:Text="N" Text="{Binding AllCounter}" HorizontalAlignment="Center"
+            <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal"
+                       MaxWidth="150">
+                <Button Background="LightGray" BorderBrush="DimGray"
+                        BorderThickness="3" Command="{Binding AllFilter}">
+                    <Button.Content>
+                        <StackPanel MinWidth="60">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="DimGray"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock d:Text="N" Text="{Binding AllCounter}" HorizontalAlignment="Center"
                                    FontSize="20"/>
-                        <TextBlock Text="Всего" TextAlignment="Center" Width="80"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+                            <TextBlock Text="Всего" TextAlignment="Center" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
 
-            <Button Grid.Row="3" HorizontalAlignment="Center" Margin="5"
-                    Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3"
-                    Command="{Binding DecidedFilter}">
-                <Button.Content>
-                    <StackPanel Margin="0 20">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#82B366"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock d:Text="N" Text="{Binding DecidedCounter}" HorizontalAlignment="Center"
-                                   FontSize="20"/>
-                        <TextBlock Text="Решено" TextAlignment="Center" Width="80"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button Grid.Row="4" HorizontalAlignment="Center" Margin="5"
-                    Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3"
-                    Command="{Binding DecidingFilter}">
-                <Button.Content>
-                    <StackPanel Margin="0 20">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#D6B656"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock d:Text="N" Text="{Binding DecidingCounter}" HorizontalAlignment="Center"
-                                   FontSize="20"/>
-                        <TextBlock Text="Решается" TextAlignment="Center" Width="80"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button Grid.Row="5" HorizontalAlignment="Center" Margin="5"
-                    Background="#F8CECC" BorderBrush="#B85450" BorderThickness="3"
-                    Command="{Binding NotDecidedFilter}">
-                <Button.Content>
-                    <StackPanel Margin="0 20">
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="#B85450"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock d:Text="N" Text="{Binding NotDecidedCounter}" HorizontalAlignment="Center"
-                                   FontSize="20"/>
-                        <TextBlock Text="Срочные" TextAlignment="Center" Width="80"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+                <Button Background="#D5E8D4" BorderBrush="#82B366" BorderThickness="3"
+                        Command="{Binding DecidedFilter}">
+                    <Button.Content>
+                        <StackPanel MinWidth="60">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#82B366"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock d:Text="N" Text="{Binding DecidedCounter}" HorizontalAlignment="Center"
+                       FontSize="20"/>
+                            <TextBlock Text="Решено" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Background="#B0E0E6" BorderBrush="#1E90FF" BorderThickness="3"
+                        Command="{Binding DecidingFilter}">
+                    <Button.Content>
+                        <StackPanel MinWidth="60">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#1E90FF"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock d:Text="N" Text="{Binding DecidingCounter}" HorizontalAlignment="Center"
+                                       FontSize="20"/>
+                            <TextBlock Text="Решается" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Background="#FFF2CC" BorderBrush="#D6B656" BorderThickness="3"
+                        Command="{Binding NotDecidedFilter}">
+                    <Button.Content>
+                        <StackPanel MinWidth="60">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#D6B656"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock d:Text="N" Text="{Binding NotDecidedCounter}" HorizontalAlignment="Center"
+                                       FontSize="20"/>
+                            <TextBlock Text="Срочные" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </WrapPanel>
         </Grid>
         
         <panels:Statistic 

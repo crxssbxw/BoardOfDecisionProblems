@@ -49,6 +49,7 @@ namespace ProblemsBoard.Windows
             DatabaseContext.Problems.Load();
             //DatabaseContext.Responsibles.Load();
             DatabaseContext.Themes.Load();
+			DatabaseContext.Workers.Load();
             //DatabaseContext.Admins.Load();
             Departments.Clear();
             foreach (var dep in DatabaseContext.Departments)
@@ -103,31 +104,22 @@ namespace ProblemsBoard.Windows
 
 		private void Continue_Click(object sender, RoutedEventArgs e)
 		{
-			Department department = new();
-			Helper.CopyTo(SelectedDepartment, department);
+			if (!SelectedDepartment.Workers.Any(a => a.IsHeader == true) && !SelectedDepartment.Workers.Any(a => a.IsResponsible == true))
+			{
+				MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+			}
+			else
+			{
+				Authorization authorization = new Authorization();
+				if (authorization.ShowDialog() == true)
+				{
+					MainWindow mainWindow = new(SelectedDepartment, authorization.OutRole);
+					mainWindow.Show();
 
-			//if (department.Admin == null)
-			//{
-			//	MessageBox.Show("Доска для этого участка еще не настроена! Обратитесь к администратору приложения для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-			//	return;
-			//}
-			//else if (department.Responsibles == null || department.Responsibles.Count == 0 || !department.Responsibles.Any(a => a.IsCurrent))
-			//{
-   //             MessageBox.Show("На участке еще не назначен ответственный! Обратитесь к администратору приложения или доски для настройки!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-   //             return;
-   //         }
-			//else
-			//{
-			//	AdminAuthorization adminAuthorization = new(department);
-			//	if (adminAuthorization.ShowDialog() == true)
-			//	{
-   //                 MainWindow mainWindow = new(department, adminAuthorization.OutRole);
-   //                 mainWindow.Show();
-
-   //                 Close();
-   //             }
-			//}
-        }
+					Close();
+				}
+			}
+		}
 
         private void Import_Click(object sender, RoutedEventArgs e)
         {
@@ -166,8 +158,8 @@ namespace ProblemsBoard.Windows
 		{
 			if (SelectedDepartment != null)
 			{
-				AdminAuthorization adminAuthorization = new(SelectedDepartment);
-				if (adminAuthorization.ShowDialog() == true)
+				Authorization authorization = new Authorization(Roles.RAdmin);
+				if (authorization.ShowDialog() == true)
 				{
 					Department dep = new();
 					Helper.CopyTo(SelectedDepartment, dep);

@@ -32,14 +32,12 @@ namespace ProblemsBoardLib.ViewModel
         public ProblemPanelViewModel()
         {
             dbContext.Themes.Load();
-            //dbContext.Responsibles.Load();
             dbContext.Workers.Load();
         }
 
         public ProblemPanelViewModel(Problem problem) : base()
         {
             dbContext.Themes.Load();
-            //dbContext.Responsibles.Load();
             dbContext.Workers.Load();
             dbContext.Departments.Load();
             Problem = dbContext.Problems.Find(problem.ProblemId);

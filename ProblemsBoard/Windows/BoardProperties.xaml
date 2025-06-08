@@ -40,78 +40,6 @@
                     <TextBox Text="{Binding ViewerNumber}" IsReadOnly="True"
                              Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10"/>
 
-
-                    <StackPanel Margin="0 5" Grid.Row="2" Grid.ColumnSpan="2">
-                        <TextBlock>
-                            <Run Text="Ответственные"/>
-                            <Run Text="(назначен)" Foreground="Red"/>
-                        </TextBlock>
-                        <ListBox ItemsSource="{Binding Responsibles}" MinHeight="20" BorderBrush="Gray" BorderThickness="1" Margin="0 5" d:ItemsSource="{d:SampleData ItemCount=5}"
-                                 HorizontalContentAlignment="Stretch"
-                                 SelectedValue="{Binding SelectedResponsible}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Name="FullNameTB" Text="{Binding FullName}"/>
-
-                                    <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding IsCurrent}" Value="True">
-                                            <Setter TargetName="FullNameTB" Property="Foreground" Value="Red"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsCurrent}" Value="False">
-                                            <Setter TargetName="FullNameTB" Property="Foreground" Value="Black"/>
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-
-                        <DockPanel HorizontalAlignment="Right">
-                            <DockPanel.Resources>
-                                <Style TargetType="Button">
-                                    <Setter Property="Padding" Value="10 2"/>
-                                </Style>
-                            </DockPanel.Resources>
-                            
-                            <Menu BorderBrush="Gray" BorderThickness="1">
-                                <MenuItem Header="Назначить">
-                                    <MenuItem Header="Назначить нового" Command="{Binding SetNewResponsible}">
-                                        <MenuItem.Icon>
-                                            <Image Source="/Assets/Images/plus2.ico"/>
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                    <MenuItem Header="Назначить выбранного" Command="{Binding SetSelectedResponsible}">
-                                        <MenuItem.Icon>
-                                            <Image Source="/Assets/Images/select.ico"/>
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                </MenuItem>
-                            </Menu>
-                        </DockPanel>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="Безопасность">
-                <Grid Margin="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Margin="0 5" Grid.Row="1">
-                        <TextBlock Text="Изменить данные входа"/>
-                        <DockPanel Margin="0 5">
-                            <TextBlock Text="Логин: " Width="50"/>
-                            <TextBox Text="{Binding Login}"/>
-                        </DockPanel>
-                        <DockPanel Margin="0 5">
-                            <TextBlock Text="Пароль: " Width="50"/>
-                            <TextBox Text="{Binding Password}"/>
-                        </DockPanel>
-                        
-                        <Separator Margin="0 5"/>
-                    </StackPanel>
                 </Grid>
             </TabItem>
 
@@ -142,18 +70,21 @@
 
                                 <DataTemplate.Triggers>
                                     <DataTrigger Binding="{Binding IsHeader}" Value="True">
-                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Red"/>
+                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Orange"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsHeader}" Value="False">
-                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Black"/>
+                                    <DataTrigger Binding="{Binding IsResponsible}" Value="True">
+                                        <Setter TargetName="FullNameTB" Property="Foreground" Value="Purple"/>
                                     </DataTrigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="Назначить главным" Command="{Binding SetHeader}"
+                    <Button Content="Назначить главным по сбору проблем" Command="{Binding SetHeader}"
                             HorizontalAlignment="Right" Style="{StaticResource DefaultButton}"
-                            Background="Transparent"/>
+                            Background="Transparent" Foreground="Orange"/>
+                    <Button Content="Назначить ответственным по решению проблем" Command="{Binding SetNewResponsible}"
+                            HorizontalAlignment="Right" Style="{StaticResource DefaultButton}"
+                            Background="Transparent" Margin="0 5" Foreground="Purple"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

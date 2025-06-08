@@ -23,10 +23,10 @@ namespace ProblemsBoardLib.Models
         public int DaysToDecide { get; set; }
 
         [JsonIgnore]
-        public ICollection<Department> Departments { get; set; }
+        public List<Department> Departments { get; set; } = new();
 
         [JsonIgnore]
-        public ICollection<Problem> Problems { get; set; }
+        public List<Problem> Problems { get; set; } = new();
 
         [JsonIgnore]
         public string Error => throw new NotImplementedException();

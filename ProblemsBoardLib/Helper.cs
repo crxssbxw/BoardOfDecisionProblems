@@ -20,7 +20,8 @@ namespace ProblemsBoardLib
     {
         RAdmin = 1,
         RResponsible = 2,
-        RHeaderWorker = 3
+        RHeaderWorker = 3,
+        None = 0
     } 
 
     public static class Helper

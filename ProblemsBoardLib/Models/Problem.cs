@@ -44,6 +44,17 @@ namespace ProblemsBoardLib.Models
         }
 
         [NotMapped]
+        public bool IsUrgent
+        {
+            get
+            {
+                if (DaysLeft < 0)
+                    return true;
+                return false;
+            }
+        }
+
+        [NotMapped]
         public Visibility IsDecided
         {
             get

@@ -121,6 +121,7 @@ namespace ProblemsBoardLib.Tools
             // Шапка 
             Paragraph header = document.Content.Paragraphs.Add();
             header.Range.Text = $"Акционерное общество \rКовровский Электромеханический Завод \r";
+            header.Range.Bold = 1;
             header.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
             header.Format.RightIndent = 250;
 
@@ -130,30 +131,51 @@ namespace ProblemsBoardLib.Tools
             date.Range.Text = datepar;
             date.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
             date.Format.RightIndent = 0;
+            date.Range.Bold = 0;
+            date.Format.SpaceBefore = 0;
+            date.Format.SpaceAfter = 0;
+            date.LineSpacingRule = WdLineSpacing.wdLineSpaceSingle;
 
             Paragraph paragraph = document.Content.Paragraphs.Add();
 
-			Table problemTable = document.Tables.Add(paragraph.Range, 5, 2); // Например, 5 строк и 2 столбца
+            Table problemTable = document.Tables.Add(paragraph.Range, 10, 2);
 
-			problemTable.Columns[1].Width = wordApp.InchesToPoints(2.5f);
-			problemTable.Columns[2].Width = wordApp.InchesToPoints(4.5f);
+            problemTable.Columns[1].Width = wordApp.InchesToPoints(2.5f);
+            problemTable.Columns[2].Width = wordApp.InchesToPoints(4.5f);
 
-			problemTable.Cell(1, 1).Range.Text = "Параметр";
-			problemTable.Cell(1, 2).Range.Text = "Значение";
+            problemTable.Cell(1, 1).Range.Text = "Свойство проблемы";
+            problemTable.Cell(1, 2).Range.Text = "Значение";
+            problemTable.Cell(1, 2).Range.Font.Bold = 1;
+            problemTable.Cell(1, 1).Range.Font.Bold = 1;
 
-			problemTable.Cell(2, 1).Range.Text = "ID";
-			problemTable.Cell(2, 2).Range.Text = problem.ProblemId.ToString();
+            problemTable.Cell(2, 1).Range.Text = "Идентификатор";
+            problemTable.Cell(2, 2).Range.Text = problem.ProblemId.ToString("D4");
 
-			problemTable.Cell(3, 1).Range.Text = "Описание";
-			problemTable.Cell(3, 2).Range.Text = problem.Description;
+            problemTable.Cell(3, 1).Range.Text = "Описание";
+            problemTable.Cell(3, 2).Range.Text = problem.Description ?? "";
 
-			problemTable.Cell(4, 1).Range.Text = "Дата возникновения";
-			problemTable.Cell(4, 2).Range.Text = problem.DateOccurance.ToShortDateString();
+            problemTable.Cell(4, 1).Range.Text = "Дата возникновения";
+            problemTable.Cell(4, 2).Range.Text = problem.DateOccurance.ToShortDateString();
 
-			problemTable.Cell(5, 1).Range.Text = "Статус";
-			problemTable.Cell(5, 2).Range.Text = problem.Status.ToString();
+            problemTable.Cell(5, 1).Range.Text = "Статус";
+            problemTable.Cell(5, 2).Range.Text = problem.Status ?? "---";
 
-			problemTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
+            problemTable.Cell(6, 1).Range.Text = "Дата устранения";
+            problemTable.Cell(6, 2).Range.Text = problem.DateElimination?.ToShortDateString() ?? "---";
+
+            problemTable.Cell(7, 1).Range.Text = "Решение";
+            problemTable.Cell(7, 2).Range.Text = problem.Decision ?? "---";
+
+            problemTable.Cell(8, 1).Range.Text = "Время решения (дни)";
+            problemTable.Cell(8, 2).Range.Text = problem.DecisionTime?.ToString() ?? "---";
+
+            problemTable.Cell(9, 1).Range.Text = "Отдел";
+            problemTable.Cell(9, 2).Range.Text = $"[{problem.Department?.ViewerNumber}] {problem.Department?.Name}" ?? "";
+
+            problemTable.Cell(10, 1).Range.Text = "Тема";
+            problemTable.Cell(10, 2).Range.Text = problem.Theme?.Name ?? "";
+
+            problemTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
 			problemTable.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleSingle;
 
 			SaveXpsFile();

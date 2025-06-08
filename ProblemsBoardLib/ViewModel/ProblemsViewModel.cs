@@ -146,7 +146,7 @@ namespace ProblemsBoardLib.ViewModel
             }
         }
 
-        private ThemesViewModel themesVM = new(new Department());
+        private ThemesViewModel themesVM;
         public ThemesViewModel ThemesVM
         {
             get => themesVM;
@@ -297,6 +297,8 @@ namespace ProblemsBoardLib.ViewModel
                     //}
                     //else
                     //    DecisionVM = new(false);
+
+                    DecisionVM = new(SelectedProblem, this, true);
                 },
                 obj => SelectedProblem != null && SelectedProblem.Status != "Решена" && CurrentRole == Roles.RResponsible));
             }

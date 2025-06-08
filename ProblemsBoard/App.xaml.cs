@@ -31,6 +31,18 @@ public partial class App : Application
             //    dbContext.SaveChanges();
             //}
 
+            if (dbContext.Users.Count() == 0)
+            {
+                dbContext.Users.Add(
+                    new User()
+                    {
+                        Login = "super",
+                        Password = Helper.EncryptString("super"),
+                        Role = "Админ"
+                    });
+                dbContext.SaveChanges();
+            }
+
             if (dbContext.Themes.Count() == 0)
             {
                 string project = Directory.GetCurrentDirectory();

@@ -9,12 +9,28 @@ namespace ProblemsBoardLib.Models
 {
     public class User
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
 
         [NotMapped]
-        public Roles EnumRole { get; set; }
+        public Roles EnumRole
+        {
+            get
+            {
+                switch (Role)
+                {
+                    case "Админ":
+                        return Roles.RAdmin;
+                    case "Ответственный по решению проблем":
+                        return Roles.RResponsible;
+                    case "Главный по сбору проблем":
+                        return Roles.RHeaderWorker;
+                    default:
+                        return Roles.None;
+                }
+            }
+        }
     }
 }

@@ -17,10 +17,10 @@ namespace ProblemsBoardLib.Models
         public DbSet<LogEvent> LogEvents { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<DepartmentTheme> DepartmentThemes { get; set; }
 
         public DatabaseContext()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -42,6 +42,14 @@ namespace ProblemsBoardLib.Models
                 .HasOne(r => r.Responsible)
                 .WithMany(p => p.ResponsibleProblems)
                 .HasForeignKey(r => r.ResponsibleId);
+
+            modelBuilder.Entity<DepartmentTheme>()
+                .HasKey(dt => new { dt.ThemeId, dt.DepartmentId });
+
+            modelBuilder.Entity<Department>()
+                .HasMany(d => d.Themes)
+                .WithMany(t => t.Departments)
+                .UsingEntity<DepartmentTheme>();
         }
     }
 }
