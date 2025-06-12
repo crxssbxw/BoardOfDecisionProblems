@@ -129,7 +129,7 @@ namespace ProblemsBoardLib.Tools
             string datepar = $"Отчет от {Today.ToShortDateString()} \rг. Ковров\r";
             Paragraph date = document.Content.Paragraphs.Add();
             date.Range.Text = datepar;
-            date.Format.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            date.Format.Alignment = WdParagraphAlignment.wdAlignParagraphJustify;
             date.Format.RightIndent = 0;
             date.Range.Bold = 0;
             date.Format.SpaceBefore = 0;
@@ -147,6 +147,8 @@ namespace ProblemsBoardLib.Tools
             problemTable.Cell(1, 2).Range.Text = "Значение";
             problemTable.Cell(1, 2).Range.Font.Bold = 1;
             problemTable.Cell(1, 1).Range.Font.Bold = 1;
+            problemTable.Cell(1, 1).Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            problemTable.Cell(1, 2).Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
 
             problemTable.Cell(2, 1).Range.Text = "Идентификатор";
             problemTable.Cell(2, 2).Range.Text = problem.ProblemId.ToString("D4");
@@ -250,6 +252,7 @@ namespace ProblemsBoardLib.Tools
             }
         }
 
+        // Убрать
         public void SaveToDatabase(string type)
         {
             FileInfo fileInfo = new("report.docx");

@@ -82,6 +82,9 @@
 
             <Button x:Name="Import" Content="Импорт"
                     Click="Import_Click"/>
+
+            <Button x:Name="Export" Content="Экспорт"
+                    Click="Export_Click" ToolTip="Экспорт всех проблем в Excel"/>
         </DockPanel>
     </Grid>
 </Window>

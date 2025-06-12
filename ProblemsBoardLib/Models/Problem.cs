@@ -20,7 +20,7 @@ namespace ProblemsBoardLib.Models
         public int? ResponsibleId { get; set; }
         public int? DepartmentId { get; set; }
         public int? ThemeId { get; set; }
-
+        
         [NotMapped]
         public int? DecisionTime
         {
@@ -42,6 +42,7 @@ namespace ProblemsBoardLib.Models
                 return Theme?.DaysToDecide - DecisionTime;
             }
         }
+
 
         [NotMapped]
         public bool IsUrgent

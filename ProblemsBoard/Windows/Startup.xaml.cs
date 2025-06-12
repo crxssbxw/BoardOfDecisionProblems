@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using ProblemsBoardLib;
+using ProblemsBoardLib.ExcelDataReader;
 using ProblemsBoardLib.Models;
 using ProblemsBoardLib.ViewModel;
 
@@ -176,5 +177,11 @@ namespace ProblemsBoard.Windows
 				}
 			}
         }
-    }
+
+		private void Export_Click(object sender, RoutedEventArgs e)
+		{
+			ExcelDataExport exportData = new();
+			exportData.GenerateReport();
+		}
+	}
 }
