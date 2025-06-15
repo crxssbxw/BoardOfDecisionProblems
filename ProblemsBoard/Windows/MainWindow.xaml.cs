@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProblemsBoardLib;
+using System.IO;
 
 namespace ProblemsBoard.Windows;
 
@@ -88,20 +89,14 @@ public partial class MainWindow : Window
         DecisionPanel.BeginAnimation(OpacityProperty, OpacityAnimation);
     }
 
-    private void ReportsMenu_Click(object sender, RoutedEventArgs e)
-    {
-        ReportsWindow reportsWindow = new ReportsWindow();
-        reportsWindow.ShowDialog();
-    }
-
-    private void LoggerMenu_Click(object sender, RoutedEventArgs e)
-    {
-        LoggerWindow loggerWindow = new LoggerWindow();
-        loggerWindow.ShowDialog();
-    }
 
 	private void ExitMenu_Click(object sender, RoutedEventArgs e)
 	{
         Close();
+	}
+
+	private void LoggerMenu_Click(object sender, RoutedEventArgs e)
+	{
+        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("log.txt") { UseShellExecute = true});
 	}
 }

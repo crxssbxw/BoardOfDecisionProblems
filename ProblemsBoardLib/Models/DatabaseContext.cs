@@ -13,9 +13,6 @@ namespace ProblemsBoardLib.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<Problem> Problems { get; set; }
         public DbSet<Theme> Themes { get; set; }
-        public DbSet<Log> Logs { get; set; }
-        public DbSet<LogEvent> LogEvents { get; set; }
-        public DbSet<Report> Reports { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<DepartmentTheme> DepartmentThemes { get; set; }
 

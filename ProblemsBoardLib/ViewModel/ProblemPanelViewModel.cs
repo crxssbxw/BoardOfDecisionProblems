@@ -85,20 +85,6 @@ namespace ProblemsBoardLib.ViewModel
                     using (var reporting = new ReportingTool(false))
                     {
                         reporting.GenerateProblemReport(Problem);
-
-                        XpsDocument doc = new XpsDocument(reporting.Xps.FullName, FileAccess.Read);
-                        Document = doc.GetFixedDocumentSequence();
-
-                        DocumentPreWatch documentPreWatch = new()
-                        {
-                            DataContext = this
-                        };
-                        if (documentPreWatch.ShowDialog() == true)
-                        {
-                            reporting.SaveToDatabase("ОП");
-                            Document = null;
-                            doc.Close();
-                        }
                     }
                 },
                 obj => true));

@@ -1,6 +1,7 @@
 ﻿using ProblemsBoardLib.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +14,11 @@ namespace ProblemsBoardLib.Tools
         private static DatabaseContext dbContext { get; set; } = new();
         private static string message { get; set; }
 
-        private static void SaveLogToDB(LogEvent logEvent)
+        private static void SaveLogToFile(LogEvent logEvent)
         {
-            try
+            using (StreamWriter sw = new("log.txt", true, Encoding.UTF8))
             {
-                dbContext.LogEvents.Add(logEvent);
-                dbContext.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                sw.WriteLine($"{logEvent.Date}:{logEvent.Time} | {message}");
             }
         }
 
@@ -41,7 +37,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
         public static void NewAdminAuthorizationData(Department department, string login = "", string password = "")
         {
@@ -64,7 +60,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void NewResponsibleSet(Department department/*, Responsible responsible*/)
@@ -81,7 +77,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void ResponsibleReset(Department department, Worker prev, Worker current)
@@ -99,7 +95,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
         public static void HeaderReset(Department department, Worker? prev, Worker current)
         {
@@ -116,7 +112,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void BoardSet(Department department)
@@ -133,7 +129,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void NewThemeSet(Theme theme)
@@ -154,7 +150,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void ThemeChanged(Theme theme)
@@ -175,7 +171,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void NewProblemAdded(Problem problem)
@@ -194,7 +190,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void ProblemDecided(Problem problem)
@@ -214,7 +210,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
         public static void ReportCreated(Report report)
@@ -233,14 +229,12 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
 
-        public static void ReportSaved(Report report, string path)
+        public static void ReportSaved(string path, string type)
         {
-            message = $"Был сохранен отчет:\n" +
-                $"(ID:{report.ReportId}) Тип: {report.FullType}; Порядковый номер: {report.Number}; Создан {report.CreatedAt}\n" +
-                $"Путь сохранения: {path}";
+            message = $"Был сохранен отчет {type}\n\tПуть: {path}";
 
             LogEvent logEvent = new LogEvent()
             {
@@ -253,7 +247,7 @@ namespace ProblemsBoardLib.Tools
                 Time = TimeOnly.FromDateTime(DateTime.Now)
             };
 
-            SaveLogToDB(logEvent);
+            SaveLogToFile(logEvent);
         }
     }
 }

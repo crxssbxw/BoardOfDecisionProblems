@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Microsoft.Office.Interop.Word;
+using Microsoft.Win32;
 using ProblemsBoardLib.Models;
 
 namespace ProblemsBoardLib.Tools 
@@ -55,61 +56,6 @@ namespace ProblemsBoardLib.Tools
             style.ParagraphFormat.SpaceAfter = 0;
             style.ParagraphFormat.SpaceBefore = 0;
             style.ParagraphFormat.LineSpacingRule = WdLineSpacing.wdLineSpace1pt5;
-        }
-
-        private string BuildProblemText(Problem problem)
-        {
-            if (problem.Status == "Решена")
-            {
-                return BuildSolvedProblemText(problem);
-            }
-            if (problem.DaysLeft < 1 && problem.Status == "Решается")
-            {
-                return BuildOverdueProblemText(problem);
-            }
-            if (problem.Status == "Решается")
-            {
-                return BuildSolvingProblemText(problem);
-            }
-            return "Неизвестно";
-        }
-
-        private string BuildOverdueProblemText(Problem problem)
-        {
-            return $"Проблема с ID {problem.ProblemId} " +
-                    $"(тема: {problem.ThemeName}), " +
-                    $"возникшая {problem.DateOccurance.ToShortDateString()}, просрочена. " +
-                    $"Срок: {problem.Theme.DaysToDecide} дней. " +
-                    //$"Ответственный: {problem.Responsible.FullName} " +
-                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
-                    $"Описание: {problem.Description}. " +
-                    $"Текущий статус: {problem.Status}. ";
-        }
-
-        private string BuildSolvingProblemText(Problem problem)
-        {
-            return $"Проблема с ID {problem.ProblemId} " +
-                    $"(тема: {problem.ThemeName}), " +
-                    $"возникшая {problem.DateOccurance.ToShortDateString()}, " +
-                    $"находится в процессе решения. " +
-                    $"На решение потрачено {problem.DecisionTime} дней из {problem.Theme.DaysToDecide} дн. " +
-                    $"Осталось {problem.DaysLeft} дней. " +
-                    //$"Ответственный: {problem.Responsible.FullName} " +
-                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
-                    $"Описание: {problem.Description}. ";
-        }
-
-        private string BuildSolvedProblemText(Problem problem)
-        {
-            return $"Проблема с ID {problem.ProblemId} " +
-                    $"(тема: {problem.ThemeName}), " +
-                    $"возникшая {problem.DateOccurance.ToShortDateString()}, " +
-                    $"была успешно решена {problem.DateElimination?.ToShortDateString()} " +
-                    $"за {problem.DecisionTime} дней. " +
-                    $"Описание: {problem.Description}. " +
-                    //$"Ответственный: {problem.Responsible.FullName} " +
-                    $"(участок {problem.Department.ViewerNumber} - {problem.Department.Name}). " +
-                    $"Принятое решение: {problem.Decision}. ";
         }
 
         public void GenerateProblemReport(Problem problem)
@@ -180,8 +126,22 @@ namespace ProblemsBoardLib.Tools
             problemTable.Borders.InsideLineStyle = WdLineStyle.wdLineStyleSingle;
 			problemTable.Borders.OutsideLineStyle = WdLineStyle.wdLineStyleSingle;
 
-			SaveXpsFile();
-        }
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.FileName = $"Отчет по проблеме";
+			saveFileDialog.Filter = "Документ MS Office Word 2007(*.docx)|*.docx";
+
+			if (saveFileDialog.ShowDialog() == true)
+			{
+				document.SaveAs2(saveFileDialog.FileName);
+				LoggingTool.ReportSaved(saveFileDialog.FileName, "по проблеме");
+				var result = System.Windows.MessageBox.Show("Открыть папку с файлом?", "Подтвердждение действия", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+				if (result == System.Windows.MessageBoxResult.Yes)
+				{
+					string argument = "/select, \"" + saveFileDialog.FileName + "\"";
+					System.Diagnostics.Process.Start("explorer.exe", argument);
+				}
+			}
+		}
 
         public void GenerateStatisticReport(string general, string responsible = "", string theme = "")
         {
@@ -201,7 +161,6 @@ namespace ProblemsBoardLib.Tools
             date.FirstLineIndent = wordApp.CentimetersToPoints(1.25f);
             date.Format.RightIndent = 0;
             date.Format.SpaceBefore = 8;
-
 
             // Основной параграф
             Paragraph generalpar = document.Content.Paragraphs.Add();
@@ -223,75 +182,21 @@ namespace ProblemsBoardLib.Tools
                 paragraph.Range.Text = theme;
             }
 
-            SaveXpsFile();
-        }
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.FileName = $"Отчет по статистике";
+			saveFileDialog.Filter = "Документ MS Office Word 2007(*.docx)|*.docx";
 
-        private void ResetDocument()
-        {
-            try
-            {
-                document?.Close();
-            }
-            catch
-            { }
-            finally
-            {
-                document = wordApp.Documents.Add();
-            }
-        }
-
-        private void SaveXpsFile()
-        {
-            if (document != null)
-            {
-                FileInfo fileInfo = new("xpsReport.xps");
-
-                document.SaveAs2(FileName: fileInfo.FullName, FileFormat: WdSaveFormat.wdFormatXPS);
-
-                Xps = fileInfo;
-            }
-        }
-
-        // Убрать
-        public void SaveToDatabase(string type)
-        {
-            FileInfo fileInfo = new("report.docx");
-
-            document.SaveAs2(FileName: fileInfo.FullName, FileFormat: WdSaveFormat.wdFormatDocumentDefault);
-            document.Close(WdSaveOptions.wdSaveChanges);
-
-            byte[] bytes = File.ReadAllBytes(fileInfo.FullName);
-
-            int nextNumber = 1;
-            if (databaseContext.Reports.Any())
-            {
-                nextNumber = databaseContext.Reports
-                    .Where(r => r.Type == type)
-                    .Count() + 1;
-            }
-
-            Report report = new()
-            {
-                Type = type,
-                Number = nextNumber.ToString("D4"),
-                ReportFile = bytes,
-                CreatedAt = Today
-            };
-            try
-            {
-                databaseContext.Reports.Add(report);
-                databaseContext.SaveChanges();
-
-                LoggingTool.ReportCreated(report);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(ex.Message, "Ошибка", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
-            }
-            finally
-            {
-                ResetDocument();
-            }
+			if (saveFileDialog.ShowDialog() == true)
+			{
+				document.SaveAs2(saveFileDialog.FileName);
+				LoggingTool.ReportSaved(saveFileDialog.FileName, "по статистике");
+				var result = System.Windows.MessageBox.Show("Открыть папку с файлом?", "Подтвердждение действия", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+				if (result == System.Windows.MessageBoxResult.Yes)
+				{
+					string argument = "/select, \"" + saveFileDialog.FileName + "\"";
+					System.Diagnostics.Process.Start("explorer.exe", argument);
+				}
+			}
         }
     }
 }

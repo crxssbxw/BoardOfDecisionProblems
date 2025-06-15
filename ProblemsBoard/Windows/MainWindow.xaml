@@ -213,8 +213,6 @@
                 <MenuItem Header="Выход" Name="ExitMenu" Click="ExitMenu_Click"/>
             </MenuItem>
             
-            <MenuItem x:Name="ReportsMenu" Header="Отчеты" Click="ReportsMenu_Click"
-                      IsEnabled="{Binding EnabledMenu}"/>
             <MenuItem Header="Статистика" Click="Statistic_Click" Command="{Binding StatisticView}"/>
             <MenuItem x:Name="LoggerMenu" Header="Журнал событий" Click="LoggerMenu_Click"
                       IsEnabled="{Binding EnabledMenu}"/>

@@ -88,45 +88,5 @@ namespace ProblemsBoardLib.ExcelDataReader
 				workbook.SaveAs(saveFileDialog.FileName);
 			}
 		}
-
-		private void SaveDatabaseReport(XLWorkbook workbook)
-		{
-			string type = "ExcelЭкспорт";
-			using (DatabaseContext databaseContext = new())
-			{
-				int nextNumber = 1;
-				if (databaseContext.Reports.Any())
-				{
-					nextNumber = databaseContext.Reports
-						.Where(r => r.Type == type)
-						.Count() + 1;
-				}
-
-				byte[] bytes;
-				using (MemoryStream stream = new MemoryStream())
-				{
-					workbook.SaveAs(stream);
-					bytes = stream.ToArray();
-				}
-
-				Report report = new()
-				{
-					Type = type,
-					Number = nextNumber.ToString("D4"),
-					ReportFile = bytes,
-					CreatedAt = DateTime.Today
-				};
-
-				databaseContext.Add(report);
-				try
-				{
-					databaseContext.SaveChanges();
-				}
-				catch(Exception ex)
-				{
-					return;
-				}
-			}
-		}
 	}
 }
